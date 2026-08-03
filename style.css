@@ -58,8 +58,8 @@ body {
     background:
         linear-gradient(
             145deg,
-            rgba(7, 22, 63, 0.98),
-            rgba(1, 12, 44, 0.98)
+            rgba(255, 255, 255, 0.98),
+            #009688
         );
 
     border: 1px solid var(--chroma-border);
