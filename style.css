@@ -1,0 +1,463 @@
+```css id="r3n4wq"
+@import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Roboto:wght@400;500;700&display=swap");
+
+:root {
+    --chroma-dark: #010c2c;
+    --chroma-dark-light: #07163f;
+    --chroma-blue: #3c9195;
+    --chroma-green: #8fecc9;
+    --chroma-white: #ffffff;
+    --chroma-text: #dce8f5;
+    --chroma-muted: #9fb2c8;
+    --chroma-border: rgba(143, 236, 201, 0.25);
+    --chroma-danger: #ff5b6e;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    font-family: "Roboto", Arial, sans-serif;
+
+    color: var(--chroma-text);
+
+    background:
+        radial-gradient(
+            circle at top,
+            rgba(60, 145, 149, 0.25),
+            transparent 45%
+        ),
+        var(--chroma-dark);
+}
+
+.page {
+    width: 100%;
+    min-height: 100vh;
+
+    padding: 50px 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.adhesion-card {
+    width: 100%;
+    max-width: 850px;
+
+    padding: 45px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(7, 22, 63, 0.98),
+            rgba(1, 12, 44, 0.98)
+        );
+
+    border: 1px solid var(--chroma-border);
+
+    border-radius: 22px;
+
+    box-shadow:
+        0 20px 70px rgba(0, 0, 0, 0.45);
+}
+
+.logo-zone {
+    text-align: center;
+
+    margin-bottom: 35px;
+}
+
+.logo-zone h1 {
+    margin: 0;
+
+    font-family: "Rajdhani", Arial, sans-serif;
+
+    font-size: clamp(2.5rem, 7vw, 4.5rem);
+
+    font-weight: 700;
+
+    letter-spacing: 5px;
+
+    color: var(--chroma-green);
+
+    text-shadow:
+        0 0 20px rgba(143, 236, 201, 0.35);
+}
+
+.logo-zone p {
+    margin: 5px 0 0;
+
+    font-family: "Rajdhani", Arial, sans-serif;
+
+    font-size: 1.35rem;
+
+    font-weight: 600;
+
+    letter-spacing: 1.5px;
+
+    color: var(--chroma-blue);
+}
+
+.info-box {
+    margin-bottom: 35px;
+
+    padding: 22px;
+
+    background:
+        rgba(60, 145, 149, 0.1);
+
+    border-left:
+        4px solid var(--chroma-green);
+
+    border-radius: 10px;
+}
+
+.info-box strong {
+    display: block;
+
+    margin-bottom: 10px;
+
+    font-family: "Rajdhani", Arial, sans-serif;
+
+    font-size: 1.55rem;
+
+    color: var(--chroma-green);
+}
+
+.info-box p {
+    margin: 8px 0;
+
+    line-height: 1.6;
+
+    color: var(--chroma-text);
+}
+
+form h2 {
+    margin:
+        38px 0
+        20px;
+
+    padding-bottom: 10px;
+
+    font-family:
+        "Rajdhani",
+        Arial,
+        sans-serif;
+
+    font-size: 2rem;
+
+    letter-spacing: 1px;
+
+    color:
+        var(--chroma-green);
+
+    border-bottom:
+        1px solid
+        var(--chroma-border);
+}
+
+.form-row {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 20px;
+}
+
+.form-group {
+    margin-bottom: 22px;
+
+    display: flex;
+
+    flex-direction:
+        column;
+}
+
+.form-group label {
+    margin-bottom: 8px;
+
+    font-family:
+        "Rajdhani",
+        Arial,
+        sans-serif;
+
+    font-size: 1.2rem;
+
+    font-weight: 700;
+
+    color:
+        var(--chroma-white);
+}
+
+.form-group input {
+    width: 100%;
+
+    min-height: 50px;
+
+    padding:
+        12px 15px;
+
+    font-family:
+        "Roboto",
+        Arial,
+        sans-serif;
+
+    font-size: 1rem;
+
+    color:
+        var(--chroma-white);
+
+    background:
+        rgba(255, 255, 255, 0.06);
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.15);
+
+    border-radius:
+        9px;
+
+    outline:
+        none;
+
+    transition:
+        border-color 0.2s,
+        box-shadow 0.2s,
+        background 0.2s;
+}
+
+.form-group input:focus {
+    background:
+        rgba(255, 255, 255, 0.09);
+
+    border-color:
+        var(--chroma-green);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(143, 236, 201, 0.1);
+}
+
+.form-group input::placeholder {
+    color:
+        rgba(220, 232, 245, 0.45);
+}
+
+.form-group small {
+    margin-top: 7px;
+
+    line-height: 1.45;
+
+    color:
+        var(--chroma-muted);
+}
+
+.checkbox-group {
+    margin-bottom:
+        15px;
+
+    padding:
+        15px 17px;
+
+    background:
+        rgba(255, 255, 255, 0.035);
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.08);
+
+    border-radius:
+        9px;
+
+    transition:
+        border-color 0.2s,
+        background 0.2s;
+}
+
+.checkbox-group:hover {
+    background:
+        rgba(60, 145, 149, 0.08);
+
+    border-color:
+        rgba(143, 236, 201, 0.22);
+}
+
+.checkbox-group label {
+    display:
+        flex;
+
+    align-items:
+        flex-start;
+
+    gap:
+        12px;
+
+    line-height:
+        1.5;
+
+    cursor:
+        pointer;
+}
+
+.checkbox-group input {
+    width:
+        19px;
+
+    height:
+        19px;
+
+    margin-top:
+        2px;
+
+    accent-color:
+        var(--chroma-green);
+
+    cursor:
+        pointer;
+
+    flex-shrink:
+        0;
+}
+
+button[type="submit"] {
+    width: 100%;
+
+    margin-top: 25px;
+
+    min-height: 58px;
+
+    padding:
+        15px 25px;
+
+    font-family:
+        "Rajdhani",
+        Arial,
+        sans-serif;
+
+    font-size:
+        1.35rem;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        2px;
+
+    color:
+        var(--chroma-dark);
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--chroma-green),
+            #5ecfb0
+        );
+
+    border:
+        none;
+
+    border-radius:
+        10px;
+
+    cursor:
+        pointer;
+
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s,
+        filter 0.2s;
+}
+
+button[type="submit"]:hover {
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 10px 30px
+        rgba(143, 236, 201, 0.25);
+
+    filter:
+        brightness(1.06);
+}
+
+button[type="submit"]:active {
+    transform:
+        translateY(0);
+}
+
+.message {
+    min-height:
+        25px;
+
+    margin:
+        20px 0 0;
+
+    text-align:
+        center;
+
+    line-height:
+        1.5;
+
+    font-weight:
+        600;
+}
+
+.message.success {
+    color:
+        var(--chroma-green);
+}
+
+.message.error {
+    color:
+        var(--chroma-danger);
+}
+
+@media (max-width: 700px) {
+
+    .page {
+        padding:
+            20px 12px;
+    }
+
+    .adhesion-card {
+        padding:
+            28px 20px;
+
+        border-radius:
+            16px;
+    }
+
+    .form-row {
+        grid-template-columns:
+            1fr;
+
+        gap:
+            0;
+    }
+
+    .logo-zone h1 {
+        letter-spacing:
+            3px;
+    }
+
+    .logo-zone p {
+        font-size:
+            1.1rem;
+    }
+
+    form h2 {
+        font-size:
+            1.7rem;
+    }
+}
+```
