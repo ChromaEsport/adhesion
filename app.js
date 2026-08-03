@@ -11,6 +11,16 @@ const emailConfirmation = document.getElementById(
     "emailConfirmation"
 );
 
+const don = document.getElementById("don");
+
+const donLibreZone = document.getElementById(
+    "donLibreZone"
+);
+
+const donLibre = document.getElementById(
+    "donLibre"
+);
+
 // Limite automatique à 18 ans minimum
 
 const aujourdHui = new Date();
@@ -23,6 +33,31 @@ const dateLimite = new Date(
 
 dateNaissance.max =
     dateLimite.toISOString().split("T")[0];
+
+
+// aparition don
+don.addEventListener(
+    "change",
+    function () {
+
+        if (don.value === "autre") {
+
+            donLibreZone.hidden = false;
+
+            donLibre.required = true;
+
+        } else {
+
+            donLibreZone.hidden = true;
+
+            donLibre.required = false;
+
+            donLibre.value = "";
+
+        }
+
+    }
+);
 
 // Calcul de l'âge
 function calculerAge(date) {
@@ -148,11 +183,54 @@ adhesionForm.addEventListener(
 
         }
 
+        
+let montantDon = Number(don.value);
+
+
+if (don.value === "autre") {
+
+    montantDon = Number(
+        donLibre.value
+    );
+
+
+    if (
+        !Number.isFinite(montantDon)
+        ||
+        montantDon <= 0
+    ) {
 
         afficherMessage(
-            "Votre formulaire est valide. L’enregistrement dans la base de données sera ajouté à la prochaine étape.",
-            "success"
+            "Veuillez indiquer un montant de don valide.",
+            "error"
         );
+
+        donLibre.focus();
+
+        return;
+
+    }
+
+}
+        
+const cotisation = 50;
+
+const montantTotal =
+    cotisation + montantDon;
+
+        
+        afficherMessage(
+    "Votre formulaire est valide. "
+    + "Cotisation : "
+    + cotisation.toFixed(2)
+    + " € — Don : "
+    + montantDon.toFixed(2)
+    + " € — Total prévu : "
+    + montantTotal.toFixed(2)
+    + " €. "
+    + "L’enregistrement dans la base de données sera ajouté à la prochaine étape.",
+    "success"
+);
 
     }
 );
