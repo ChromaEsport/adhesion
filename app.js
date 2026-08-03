@@ -19,6 +19,14 @@ const donLibreZone = document.getElementById(
 
 const donLibre = document.getElementById(
     "donLibre"
+
+ // Masquer le champ de don libre au chargement
+
+donLibreZone.classList.add(
+    "hidden"
+);
+
+donLibre.required = false;   
 );
 
 // Limite automatique à 18 ans minimum
