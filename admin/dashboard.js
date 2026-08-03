@@ -1,3 +1,4 @@
+```javascript
 import {
     initializeApp
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
@@ -26,23 +27,38 @@ import {
 const firebaseConfig = {
 
     apiKey: "AIzaSyAedIKW_LRWLpa9V_t7PcTTbrDmQOj4HAo",
-  authDomain: "chroma-adhesion.firebaseapp.com",
-  projectId: "chroma-adhesion",
-  storageBucket: "chroma-adhesion.firebasestorage.app",
-  messagingSenderId: "892582501197",
-  appId: "1:892582501197:web:2483ffc9c98e47a3d17504"
+
+    authDomain:
+        "chroma-adhesion.firebaseapp.com",
+
+    projectId:
+        "chroma-adhesion",
+
+    storageBucket:
+        "chroma-adhesion.firebasestorage.app",
+
+    messagingSenderId:
+        "892582501197",
+
+    appId:
+        "1:892582501197:web:2483ffc9c98e47a3d17504"
 
 };
 
 
 
-const app = initializeApp(firebaseConfig);
+const app =
+    initializeApp(
+        firebaseConfig
+    );
 
 
-const auth = getAuth(app);
+const auth =
+    getAuth(app);
 
 
-const db = getFirestore(app);
+const db =
+    getFirestore(app);
 
 
 
@@ -57,27 +73,31 @@ const logout =
         "logout"
     );
 
+
 const onglets =
     document.querySelectorAll(
         ".onglet"
     );
 
 
+
 let statutActuel =
     "en_attente";
 
 
-// Vérification connexion
+
+/* =========================
+   VÉRIFICATION CONNEXION
+========================= */
 
 onAuthStateChanged(
     auth,
-    (user)=>{
+    (user) => {
 
-
-        if(!user){
+        if (!user) {
 
             window.location.href =
-            "index.html";
+                "index.html";
 
             return;
 
@@ -86,9 +106,14 @@ onAuthStateChanged(
 
         chargerDemandes();
 
-
     }
 );
+
+
+
+/* =========================
+   GESTION DES ONGLETS
+========================= */
 
 onglets.forEach(
     (onglet) => {
@@ -100,7 +125,9 @@ onglets.forEach(
                 onglets.forEach(
                     (autreOnglet) => {
 
-                        autreOnglet.classList.remove(
+                        autreOnglet
+                        .classList
+                        .remove(
                             "actif"
                         );
 
@@ -108,7 +135,9 @@ onglets.forEach(
                 );
 
 
-                onglet.classList.add(
+                onglet
+                .classList
+                .add(
                     "actif"
                 );
 
@@ -126,7 +155,10 @@ onglets.forEach(
 );
 
 
-// Chargement Firestore
+
+/* =========================
+   CHARGEMENT DES DEMANDES
+========================= */
 
 async function chargerDemandes() {
 
@@ -135,444 +167,791 @@ async function chargerDemandes() {
         "Chargement des demandes...";
 
 
-    let q;
+    try {
 
 
-    if (
-        statutActuel === "toutes"
-    ) {
-
-        q =
-            collection(
-                db,
-                "adhesions"
-            );
-
-    }
-    else {
-
-        q =
-            query(
-                collection(
-                    db,
-                    "adhesions"
-                ),
-                where(
-                    "statut",
-                    "==",
-                    statutActuel
-                )
-            );
-
-    }
+        let result;
 
 
-    const result =
-        await getDocs(q);
+        /*
+        ONGLET TOUTES
 
+        Aucun filtre :
+        tous les documents de la
+        collection sont récupérés.
+        */
 
+        if (
+            statutActuel ===
+            "toutes"
+        ) {
 
-    listeDemandes.innerHTML = "";
+            result =
+                await getDocs(
+                    collection(
+                        db,
+                        "adhesions"
+                    )
+                );
 
-
-
-    if(result.empty){
-
-
-       listeDemandes.innerHTML =
-    "<p>Aucune demande dans cette catégorie.</p>";
-
-
-        return;
-
-    }
-
-
-
-    result.forEach(
-        (doc)=>{
-
-
-            const data =
-            doc.data();
-
-
-
-            const bloc =
-            document.createElement(
-                "div"
-            );
-
-
-
-            bloc.className =
-            "demande";
-
-
-
-            const dateEnvoi = data.dateDemande
-    ? data.dateDemande.toDate().toLocaleString(
-        "fr-FR",
-        {
-            dateStyle: "long",
-            timeStyle: "short"
         }
-    )
-    : "Date en cours d’enregistrement";
 
 
-const boutonsDecision =
-    data.statut === "en_attente"
+        /*
+        AUTRES ONGLETS
 
-    ? `
+        Filtrage selon le statut.
+        */
 
-        <div class="actions">
+        else {
 
-            <button class="accepter">
+            const q =
+                query(
+                    collection(
+                        db,
+                        "adhesions"
+                    ),
 
-                ✅ Accepter
+                    where(
+                        "statut",
+                        "==",
+                        statutActuel
+                    )
+                );
 
-            </button>
 
-            <button class="refuser">
+            result =
+                await getDocs(q);
 
-                ❌ Refuser
+        }
 
-            </button>
 
-        </div>
 
-    `
+        listeDemandes.innerHTML =
+            "";
 
-    : "";
-            
-bloc.innerHTML = `
 
-    <h3>
-        ${data.prenom || ""}
-        ${data.nom || ""}
-    </h3>
 
+        if (
+            result.empty
+        ) {
 
-    <div class="information">
+            listeDemandes.innerHTML =
+                "<p>Aucune demande dans cette catégorie.</p>";
 
-        <strong>
-            Date de naissance :
-        </strong>
 
-        <span>
-            ${data.dateNaissance || "Non renseignée"}
-        </span>
+            return;
 
-    </div>
+        }
 
 
-    <div class="information">
 
-        <strong>
-            E-mail :
-        </strong>
+        /*
+        AFFICHAGE DES DEMANDES
+        */
 
-        <span>
-            ${data.email || "Non renseigné"}
-        </span>
+        result.forEach(
+            (documentFirestore) => {
 
-    </div>
 
+                const data =
+                    documentFirestore.data();
 
-    <div class="information">
 
-        <strong>
-            Discord :
-        </strong>
 
-        <span>
-            ${data.discord || "Non renseigné"}
-        </span>
+                const bloc =
+                    document.createElement(
+                        "div"
+                    );
 
-    </div>
 
+                bloc.className =
+                    "demande";
 
-    <div class="information">
 
-        <strong>
-            Année d’adhésion :
-        </strong>
 
-        <span>
-            ${data.annee || "Non renseignée"}
-        </span>
+                /*
+                DATE D'ENVOI
+                */
 
-    </div>
+                const dateEnvoi =
+                    data.dateDemande
 
-
-    <div class="information">
-
-        <strong>
-            Cotisation :
-        </strong>
-
-        <span>
-            ${Number(
-                data.cotisation || 0
-            ).toFixed(2)} €
-        </span>
-
-    </div>
-
-
-    <div class="information">
-
-        <strong>
-            Don :
-        </strong>
-
-        <span>
-            ${Number(
-                data.don || 0
-            ).toFixed(2)} €
-        </span>
-
-    </div>
-
-
-    <div class="information total">
-
-        <strong>
-            Total à payer :
-        </strong>
-
-        <span>
-            ${Number(
-                data.total || 0
-            ).toFixed(2)} €
-        </span>
-
-    </div>
-
-
-    <div class="information">
-
-        <strong>
-            Statut :
-        </strong>
-
-        <span>
-            ${data.statut || "Non renseigné"}
-        </span>
-
-    </div>
-
-
-    <div class="information">
-
-        <strong>
-            Demande envoyée le :
-        </strong>
-
-        <span>
-            ${dateEnvoi}
-        </span>
-
-    </div>
-${
-    data.dateDecision
-
-    ? `
-
-        <div class="information">
-
-            <strong>
-                Décision prise le :
-            </strong>
-
-            <span>
-
-                ${
-                    data
-                    .dateDecision
+                    ? data
+                    .dateDemande
                     .toDate()
                     .toLocaleString(
                         "fr-FR",
                         {
+
                             dateStyle:
                                 "long",
 
                             timeStyle:
                                 "short"
+
                         }
                     )
-                }
 
-            </span>
-
-        </div>
-
-
-        <div class="information">
-
-            <strong>
-                Décision par :
-            </strong>
-
-            <span>
-
-                ${
-                    data.decisionParNom
-                    ||
-                    "Non renseigné"
-                }
-
-            </span>
-
-        </div>
-
-    `
-
-    : ""
-}
-
-   ${boutonsDecision}
-
-`;
+                    : "Date non disponible";
 
 
 
-            listeDemandes.appendChild(
-                bloc
-            );
+                /*
+                DATE DE DÉCISION
+                */
+
+                const dateDecision =
+                    data.dateDecision
+
+                    ? data
+                    .dateDecision
+                    .toDate()
+                    .toLocaleString(
+                        "fr-FR",
+                        {
+
+                            dateStyle:
+                                "long",
+
+                            timeStyle:
+                                "short"
+
+                        }
+                    )
+
+                    : "Non renseignée";
 
 
-const boutonAccepter =
-    bloc.querySelector(".accepter");
 
-const boutonRefuser =
-    bloc.querySelector(".refuser");
+                /*
+                BOUTONS
+
+                Affichés uniquement
+                pour les demandes
+                en attente.
+                */
+
+                const boutonsDecision =
+
+                    data.statut ===
+                    "en_attente"
+
+                    ? `
+
+                    <div class="actions">
+
+                        <button
+                            class="accepter"
+                        >
+
+                            ✅ Accepter
+
+                        </button>
 
 
-// Les boutons existent uniquement
-// pour les demandes en attente
+                        <button
+                            class="refuser"
+                        >
 
-if (
-    boutonAccepter
-    &&
-    boutonRefuser
-) {
+                            ❌ Refuser
 
-    boutonAccepter.addEventListener(
-        "click",
-        async () => {
+                        </button>
 
-            const confirmation =
-                confirm(
-                    "Confirmer l’acceptation de cette demande ?"
+                    </div>
+
+                    `
+
+                    : "";
+
+
+
+                /*
+                INFORMATIONS
+                DE LA DÉCISION
+                */
+
+                const informationsDecision =
+
+                    data.dateDecision
+
+                    ? `
+
+                    <div class="information">
+
+                        <strong>
+
+                            Décision prise le :
+
+                        </strong>
+
+
+                        <span>
+
+                            ${dateDecision}
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="information">
+
+                        <strong>
+
+                            Décision prise par :
+
+                        </strong>
+
+
+                        <span>
+
+                            ${
+                                data.decisionParNom
+                                ||
+                                "Non renseigné"
+                            }
+
+                        </span>
+
+                    </div>
+
+                    `
+
+                    : "";
+
+
+
+                /*
+                CONTENU DE LA FICHE
+                */
+
+                bloc.innerHTML = `
+
+                    <h3>
+
+                        ${
+                            data.prenom
+                            ||
+                            ""
+                        }
+
+                        ${
+                            data.nom
+                            ||
+                            ""
+                        }
+
+                    </h3>
+
+
+                    <div class="information">
+
+                        <strong>
+
+                            Date de naissance :
+
+                        </strong>
+
+
+                        <span>
+
+                            ${
+                                data.dateNaissance
+                                ||
+                                "Non renseignée"
+                            }
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="information">
+
+                        <strong>
+
+                            E-mail :
+
+                        </strong>
+
+
+                        <span>
+
+                            ${
+                                data.email
+                                ||
+                                "Non renseigné"
+                            }
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="information">
+
+                        <strong>
+
+                            Discord :
+
+                        </strong>
+
+
+                        <span>
+
+                            ${
+                                data.discord
+                                ||
+                                "Non renseigné"
+                            }
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="information">
+
+                        <strong>
+
+                            Année d’adhésion :
+
+                        </strong>
+
+
+                        <span>
+
+                            ${
+                                data.annee
+                                ||
+                                "Non renseignée"
+                            }
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="information">
+
+                        <strong>
+
+                            Cotisation :
+
+                        </strong>
+
+
+                        <span>
+
+                            ${
+                                Number(
+                                    data.cotisation
+                                    ||
+                                    0
+                                )
+                                .toFixed(2)
+                            }
+
+                            €
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="information">
+
+                        <strong>
+
+                            Don :
+
+                        </strong>
+
+
+                        <span>
+
+                            ${
+                                Number(
+                                    data.don
+                                    ||
+                                    0
+                                )
+                                .toFixed(2)
+                            }
+
+                            €
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="information total">
+
+                        <strong>
+
+                            Total à payer :
+
+                        </strong>
+
+
+                        <span>
+
+                            ${
+                                Number(
+                                    data.total
+                                    ||
+                                    0
+                                )
+                                .toFixed(2)
+                            }
+
+                            €
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="information">
+
+                        <strong>
+
+                            Statut :
+
+                        </strong>
+
+
+                        <span>
+
+                            ${
+                                data.statut
+                                ||
+                                "Non renseigné"
+                            }
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="information">
+
+                        <strong>
+
+                            Demande envoyée le :
+
+                        </strong>
+
+
+                        <span>
+
+                            ${dateEnvoi}
+
+                        </span>
+
+                    </div>
+
+
+                    ${informationsDecision}
+
+
+                    ${boutonsDecision}
+
+                `;
+
+
+
+                /*
+                AJOUT DE LA FICHE
+                */
+
+                listeDemandes
+                .appendChild(
+                    bloc
                 );
 
-            if (!confirmation) {
 
-                return;
+
+                /*
+                RÉCUPÉRATION
+                DES BOUTONS
+                */
+
+                const boutonAccepter =
+
+                    bloc.querySelector(
+                        ".accepter"
+                    );
+
+
+                const boutonRefuser =
+
+                    bloc.querySelector(
+                        ".refuser"
+                    );
+
+
+
+                /*
+                ÉVÉNEMENTS
+
+                Seulement si les
+                boutons existent.
+                */
+
+                if (
+
+                    boutonAccepter
+
+                    &&
+
+                    boutonRefuser
+
+                ) {
+
+
+                    boutonAccepter
+                    .addEventListener(
+
+                        "click",
+
+                        async () => {
+
+
+                            const confirmation =
+
+                                confirm(
+
+                                    "Confirmer l’acceptation de cette demande ?"
+
+                                );
+
+
+
+                            if (
+
+                                !confirmation
+
+                            ) {
+
+                                return;
+
+                            }
+
+
+
+                            await changerStatut(
+
+                                documentFirestore.id,
+
+                                "acceptee",
+
+                                auth.currentUser
+
+                            );
+
+
+                        }
+
+                    );
+
+
+
+                    boutonRefuser
+                    .addEventListener(
+
+                        "click",
+
+                        async () => {
+
+
+                            const confirmation =
+
+                                confirm(
+
+                                    "Confirmer le refus de cette demande ?"
+
+                                );
+
+
+
+                            if (
+
+                                !confirmation
+
+                            ) {
+
+                                return;
+
+                            }
+
+
+
+                            await changerStatut(
+
+                                documentFirestore.id,
+
+                                "refusee",
+
+                                auth.currentUser
+
+                            );
+
+
+                        }
+
+                    );
+
+
+                }
+
 
             }
 
-            await changerStatut(
-                doc.id,
-                "acceptee",
-                auth.currentUser
-            );
+        );
 
-        }
-    );
-
-
-    boutonRefuser.addEventListener(
-        "click",
-        async () => {
-
-            const confirmation =
-                confirm(
-                    "Confirmer le refus de cette demande ?"
-                );
-
-            if (!confirmation) {
-
-                return;
-
-            }
-
-            await changerStatut(
-                doc.id,
-                "refusee",
-                auth.currentUser
-            );
-
-        }
-    );
-
-}
-
-
-logout.addEventListener(
-    "click",
-    ()=>{
-
-        signOut(auth);
-
-        window.location.href =
-        "index.html";
 
     }
+    catch (error) {
+
+
+        console.error(
+
+            "Erreur lors du chargement des demandes :",
+
+            error
+
+        );
+
+
+        listeDemandes.innerHTML =
+
+            "<p>Impossible de charger les demandes.</p>";
+
+
+    }
+
+
+}
+
+
+
+/* =========================
+   DÉCONNEXION
+========================= */
+
+logout.addEventListener(
+
+    "click",
+
+    async () => {
+
+
+        await signOut(
+            auth
+        );
+
+
+        window.location.href =
+
+            "index.html";
+
+
+    }
+
 );
 
+
+
+/* =========================
+   ACCEPTATION / REFUS
+========================= */
+
 async function changerStatut(
+
     id,
+
     nouveauStatut,
+
     utilisateur
+
 ) {
+
 
     try {
 
+
         const demande =
+
             doc(
+
                 db,
+
                 "adhesions",
+
                 id
+
             );
 
 
+
         const nomDecisionnaire =
+
             utilisateur.displayName
+
             ||
+
             utilisateur.email
+
             ||
+
             "Administrateur non identifié";
 
 
+
         await updateDoc(
+
             demande,
+
             {
 
+
                 statut:
+
                     nouveauStatut,
 
 
                 dateDecision:
+
                     serverTimestamp(),
 
 
                 decisionParNom:
+
                     nomDecisionnaire,
 
 
                 decisionParEmail:
+
                     utilisateur.email
-                    || "",
+
+                    ||
+
+
+                    "",
 
 
                 decisionParUid:
+
                     utilisateur.uid
 
+
             }
+
         );
+
 
 
         await chargerDemandes();
@@ -581,14 +960,25 @@ async function changerStatut(
     }
     catch (error) {
 
+
         console.error(
+
             "Erreur lors de la décision :",
+
             error
+
         );
 
 
         alert(
+
             "La décision n’a pas pu être enregistrée."
+
         );
 
+
     }
+
+
+}
+```
