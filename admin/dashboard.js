@@ -179,8 +179,8 @@ async function chargerDemandes() {
     if(result.empty){
 
 
-        listeDemandes.innerHTML =
-        "<p>Aucune demande en attente.</p>";
+       listeDemandes.innerHTML =
+    "<p>Aucune demande dans cette catégorie.</p>";
 
 
         return;
@@ -442,38 +442,74 @@ ${
                 bloc
             );
 
+
 const boutonAccepter =
     bloc.querySelector(".accepter");
-
 
 const boutonRefuser =
     bloc.querySelector(".refuser");
 
 
+// Les boutons existent uniquement
+// pour les demandes en attente
 
-boutonAccepter.addEventListener(
-    "click",
-    async () => {
+if (
+    boutonAccepter
+    &&
+    boutonRefuser
+) {
 
-        const confirmation =
-            confirm(
-                "Confirmer l’acceptation de cette demande ?"
+    boutonAccepter.addEventListener(
+        "click",
+        async () => {
+
+            const confirmation =
+                confirm(
+                    "Confirmer l’acceptation de cette demande ?"
+                );
+
+            if (!confirmation) {
+
+                return;
+
+            }
+
+            await changerStatut(
+                doc.id,
+                "acceptee",
+                auth.currentUser
             );
 
-        if (!confirmation) {
+        }
+    );
 
-            return;
+
+    boutonRefuser.addEventListener(
+        "click",
+        async () => {
+
+            const confirmation =
+                confirm(
+                    "Confirmer le refus de cette demande ?"
+                );
+
+            if (!confirmation) {
+
+                return;
+
+            }
+
+            await changerStatut(
+                doc.id,
+                "refusee",
+                auth.currentUser
+            );
 
         }
+    );
 
-        await changerStatut(
-            doc.id,
-            "acceptee",
-            auth.currentUser
-        );
+}
 
-    }
-);
 
 
 
