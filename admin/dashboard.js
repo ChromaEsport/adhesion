@@ -148,55 +148,164 @@ async function chargerDemandes(){
 
 
 
-            bloc.innerHTML = `
-
-<h3>
-${data.prenom} ${data.nom}
-</h3>
-
-
-<p>
-Discord :
-${data.discord}
-</p>
+            const dateEnvoi = data.dateDemande
+    ? data.dateDemande.toDate().toLocaleString(
+        "fr-FR",
+        {
+            dateStyle: "long",
+            timeStyle: "short"
+        }
+    )
+    : "Date en cours d’enregistrement";
 
 
-<p>
-Email :
-${data.email}
-</p>
+bloc.innerHTML = `
+
+    <h3>
+        ${data.prenom || ""}
+        ${data.nom || ""}
+    </h3>
 
 
-<p>
-Cotisation :
-${data.cotisation} €
-</p>
+    <div class="information">
+
+        <strong>
+            Date de naissance :
+        </strong>
+
+        <span>
+            ${data.dateNaissance || "Non renseignée"}
+        </span>
+
+    </div>
 
 
-<p>
-Don :
-${data.don} €
-</p>
+    <div class="information">
+
+        <strong>
+            E-mail :
+        </strong>
+
+        <span>
+            ${data.email || "Non renseigné"}
+        </span>
+
+    </div>
 
 
-<p>
-Total :
-${data.total} €
-</p>
+    <div class="information">
+
+        <strong>
+            Discord :
+        </strong>
+
+        <span>
+            ${data.discord || "Non renseigné"}
+        </span>
+
+    </div>
 
 
-<div class="actions">
+    <div class="information">
 
-<button class="accepter">
-✅ Accepter
-</button>
+        <strong>
+            Année d’adhésion :
+        </strong>
+
+        <span>
+            ${data.annee || "Non renseignée"}
+        </span>
+
+    </div>
 
 
-<button class="refuser">
-❌ Refuser
-</button>
+    <div class="information">
 
-</div>
+        <strong>
+            Cotisation :
+        </strong>
+
+        <span>
+            ${Number(
+                data.cotisation || 0
+            ).toFixed(2)} €
+        </span>
+
+    </div>
+
+
+    <div class="information">
+
+        <strong>
+            Don :
+        </strong>
+
+        <span>
+            ${Number(
+                data.don || 0
+            ).toFixed(2)} €
+        </span>
+
+    </div>
+
+
+    <div class="information total">
+
+        <strong>
+            Total à payer :
+        </strong>
+
+        <span>
+            ${Number(
+                data.total || 0
+            ).toFixed(2)} €
+        </span>
+
+    </div>
+
+
+    <div class="information">
+
+        <strong>
+            Statut :
+        </strong>
+
+        <span>
+            ${data.statut || "Non renseigné"}
+        </span>
+
+    </div>
+
+
+    <div class="information">
+
+        <strong>
+            Demande envoyée le :
+        </strong>
+
+        <span>
+            ${dateEnvoi}
+        </span>
+
+    </div>
+
+
+    <div class="actions">
+
+        <button class="accepter">
+
+            ✅ Accepter
+
+        </button>
+
+
+        <button class="refuser">
+
+            ❌ Refuser
+
+        </button>
+
+    </div>
 
 `;
 
