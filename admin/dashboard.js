@@ -16,7 +16,9 @@ import {
     collection,
     getDocs,
     query,
-    where
+    where,
+    doc,
+    updateDoc
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
 
@@ -149,36 +151,55 @@ async function chargerDemandes(){
 
             bloc.innerHTML = `
 
-                <h3>
-                ${data.prenom} ${data.nom}
-                </h3>
+<h3>
+${data.prenom} ${data.nom}
+</h3>
 
-                <p>
-                Discord :
-                ${data.discord}
-                </p>
 
-                <p>
-                Email :
-                ${data.email}
-                </p>
+<p>
+Discord :
+${data.discord}
+</p>
 
-                <p>
-                Cotisation :
-                ${data.cotisation} €
-                </p>
 
-                <p>
-                Don :
-                ${data.don} €
-                </p>
+<p>
+Email :
+${data.email}
+</p>
 
-                <p>
-                Total :
-                ${data.total} €
-                </p>
 
-            `;
+<p>
+Cotisation :
+${data.cotisation} €
+</p>
+
+
+<p>
+Don :
+${data.don} €
+</p>
+
+
+<p>
+Total :
+${data.total} €
+</p>
+
+
+<div class="actions">
+
+<button class="accepter">
+✅ Accepter
+</button>
+
+
+<button class="refuser">
+❌ Refuser
+</button>
+
+</div>
+
+`;
 
 
 
@@ -186,7 +207,44 @@ async function chargerDemandes(){
                 bloc
             );
 
+const boutonAccepter =
+    bloc.querySelector(".accepter");
 
+
+const boutonRefuser =
+    bloc.querySelector(".refuser");
+
+
+
+boutonAccepter.addEventListener(
+    "click",
+    async ()=>{
+
+
+        await changerStatut(
+            doc.id,
+            "acceptee"
+        );
+
+
+    }
+);
+
+
+
+boutonRefuser.addEventListener(
+    "click",
+    async ()=>{
+
+
+        await changerStatut(
+            doc.id,
+            "refusee"
+        );
+
+
+    }
+);
         }
     );
 
@@ -208,3 +266,30 @@ logout.addEventListener(
     }
 );
 
+async function changerStatut(
+    id,
+    nouveauStatut
+){
+
+    const demande =
+        doc(
+            db,
+            "adhesions",
+            id
+        );
+
+
+    await updateDoc(
+        demande,
+        {
+
+            statut:
+            nouveauStatut
+
+        }
+    );
+
+
+    chargerDemandes();
+
+}
