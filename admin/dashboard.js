@@ -57,7 +57,14 @@ const logout =
         "logout"
     );
 
+const onglets =
+    document.querySelectorAll(
+        ".onglet"
+    );
 
+
+let statutActuel =
+    "en_attente";
 
 
 // Vérification connexion
@@ -83,27 +90,81 @@ onAuthStateChanged(
     }
 );
 
+onglets.forEach(
+    (onglet) => {
 
+        onglet.addEventListener(
+            "click",
+            () => {
+
+                onglets.forEach(
+                    (autreOnglet) => {
+
+                        autreOnglet.classList.remove(
+                            "actif"
+                        );
+
+                    }
+                );
+
+
+                onglet.classList.add(
+                    "actif"
+                );
+
+
+                statutActuel =
+                    onglet.dataset.statut;
+
+
+                chargerDemandes();
+
+            }
+        );
+
+    }
+);
 
 
 // Chargement Firestore
 
-async function chargerDemandes(){
+async function chargerDemandes() {
 
 
-    const q =
-        query(
+    listeDemandes.innerHTML =
+        "Chargement des demandes...";
+
+
+    let q;
+
+
+    if (
+        statutActuel === "toutes"
+    ) {
+
+        q =
             collection(
                 db,
                 "adhesions"
-            ),
-            where(
-                "statut",
-                "==",
-                "en_attente"
-            )
-        );
+            );
 
+    }
+    else {
+
+        q =
+            query(
+                collection(
+                    db,
+                    "adhesions"
+                ),
+                where(
+                    "statut",
+                    "==",
+                    statutActuel
+                )
+            );
+
+    }
 
 
     const result =
@@ -160,6 +221,31 @@ async function chargerDemandes(){
     : "Date en cours d’enregistrement";
 
 
+const boutonsDecision =
+    data.statut === "en_attente"
+
+    ? `
+
+        <div class="actions">
+
+            <button class="accepter">
+
+                ✅ Accepter
+
+            </button>
+
+            <button class="refuser">
+
+                ❌ Refuser
+
+            </button>
+
+        </div>
+
+    `
+
+    : "";
+            
 bloc.innerHTML = `
 
     <h3>
@@ -289,24 +375,64 @@ bloc.innerHTML = `
         </span>
 
     </div>
+${
+    data.dateDecision
+
+    ? `
+
+        <div class="information">
+
+            <strong>
+                Décision prise le :
+            </strong>
+
+            <span>
+
+                ${
+                    data
+                    .dateDecision
+                    .toDate()
+                    .toLocaleString(
+                        "fr-FR",
+                        {
+                            dateStyle:
+                                "long",
+
+                            timeStyle:
+                                "short"
+                        }
+                    )
+                }
+
+            </span>
+
+        </div>
 
 
-    <div class="actions">
+        <div class="information">
 
-        <button class="accepter">
+            <strong>
+                Décision par :
+            </strong>
 
-            ✅ Accepter
+            <span>
 
-        </button>
+                ${
+                    data.decisionParNom
+                    ||
+                    "Non renseigné"
+                }
 
+            </span>
 
-        <button class="refuser">
+        </div>
 
-            ❌ Refuser
+    `
 
-        </button>
+    : ""
+}
 
-    </div>
+   ${boutonsDecision}
 
 `;
 
