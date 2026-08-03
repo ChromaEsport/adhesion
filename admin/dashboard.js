@@ -592,5 +592,3 @@ async function changerStatut(
         );
 
     }
-
-}
