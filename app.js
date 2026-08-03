@@ -1,4 +1,4 @@
-```javascript
+
 const adhesionForm = document.getElementById("adhesionForm");
 
 const message = document.getElementById("message");
@@ -143,4 +143,4 @@ adhesionForm.addEventListener(
 
     }
 );
-```
+
