@@ -27,7 +27,7 @@ donLibreZone.classList.add(
 );
 
 donLibre.required = false;   
-);
+;
 
 // Limite automatique à 18 ans minimum
 
