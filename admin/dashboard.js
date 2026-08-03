@@ -17,7 +17,8 @@ import {
     query,
     where,
     doc,
-    updateDoc
+    updateDoc,
+    serverTimestamp
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
 
@@ -326,14 +327,24 @@ const boutonRefuser =
 
 boutonAccepter.addEventListener(
     "click",
-    async ()=>{
+    async () => {
 
+        const confirmation =
+            confirm(
+                "Confirmer l’acceptation de cette demande ?"
+            );
+
+        if (!confirmation) {
+
+            return;
+
+        }
 
         await changerStatut(
             doc.id,
-            "acceptee"
+            "acceptee",
+            auth.currentUser
         );
-
 
     }
 );
@@ -342,14 +353,24 @@ boutonAccepter.addEventListener(
 
 boutonRefuser.addEventListener(
     "click",
-    async ()=>{
+    async () => {
 
+        const confirmation =
+            confirm(
+                "Confirmer le refus de cette demande ?"
+            );
+
+        if (!confirmation) {
+
+            return;
+
+        }
 
         await changerStatut(
             doc.id,
-            "refusee"
+            "refusee",
+            auth.currentUser
         );
-
 
     }
 );
@@ -376,28 +397,72 @@ logout.addEventListener(
 
 async function changerStatut(
     id,
-    nouveauStatut
-){
+    nouveauStatut,
+    utilisateur
+) {
 
-    const demande =
-        doc(
-            db,
-            "adhesions",
-            id
+    try {
+
+        const demande =
+            doc(
+                db,
+                "adhesions",
+                id
+            );
+
+
+        const nomDecisionnaire =
+            utilisateur.displayName
+            ||
+            utilisateur.email
+            ||
+            "Administrateur non identifié";
+
+
+        await updateDoc(
+            demande,
+            {
+
+                statut:
+                    nouveauStatut,
+
+
+                dateDecision:
+                    serverTimestamp(),
+
+
+                decisionParNom:
+                    nomDecisionnaire,
+
+
+                decisionParEmail:
+                    utilisateur.email
+                    || "",
+
+
+                decisionParUid:
+                    utilisateur.uid
+
+            }
         );
 
 
-    await updateDoc(
-        demande,
-        {
-
-            statut:
-            nouveauStatut
-
-        }
-    );
+        await chargerDemandes();
 
 
-    chargerDemandes();
+    }
+    catch (error) {
+
+        console.error(
+            "Erreur lors de la décision :",
+            error
+        );
+
+
+        alert(
+            "La décision n’a pas pu être enregistrée."
+        );
+
+    }
 
 }
