@@ -511,40 +511,6 @@ if (
 }
 
 
-
-
-boutonRefuser.addEventListener(
-    "click",
-    async () => {
-
-        const confirmation =
-            confirm(
-                "Confirmer le refus de cette demande ?"
-            );
-
-        if (!confirmation) {
-
-            return;
-
-        }
-
-        await changerStatut(
-            doc.id,
-            "refusee",
-            auth.currentUser
-        );
-
-    }
-);
-        }
-    );
-
-}
-
-
-
-
-
 logout.addEventListener(
     "click",
     ()=>{
