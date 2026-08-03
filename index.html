@@ -1,13 +1,25 @@
+```html
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Adhésion 2026 | Chroma Esport</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
 </head>
+
 
 <body>
 
@@ -16,33 +28,52 @@
         <section class="adhesion-card">
 
             <div class="logo-zone">
+
                 <h1>CHROMA ESPORT</h1>
-                <p>Demande d’adhésion annuelle 2026</p>
+
+                <p>
+                    Demande d’adhésion annuelle 2026
+                </p>
+
             </div>
+
 
             <div class="info-box">
-                <strong>Cotisation annuelle : 50 €</strong>
+
+                <strong>
+                    Cotisation annuelle : 50 €
+                </strong>
 
                 <p>
-                    L’adhésion est valable du 1er janvier 2026
-                    au 31 décembre 2026.
+                    L’adhésion est valable du
+                    1er janvier 2026 au
+                    31 décembre 2026.
                 </p>
 
                 <p>
-                    Aucun paiement n’est demandé lors de l’envoi
-                    de la demande. Votre dossier sera d’abord
-                    examiné par Chroma Esport.
+                    Aucun paiement n’est demandé lors
+                    de l’envoi de la demande.
+                    Votre dossier sera d’abord examiné
+                    par Chroma Esport.
                 </p>
+
             </div>
+
 
             <form id="adhesionForm">
 
+
                 <h2>Vos informations</h2>
+
 
                 <div class="form-row">
 
+
                     <div class="form-group">
-                        <label for="prenom">Prénom *</label>
+
+                        <label for="prenom">
+                            Prénom *
+                        </label>
 
                         <input
                             type="text"
@@ -51,10 +82,15 @@
                             required
                             autocomplete="given-name"
                         >
+
                     </div>
 
+
                     <div class="form-group">
-                        <label for="nom">Nom *</label>
+
+                        <label for="nom">
+                            Nom *
+                        </label>
 
                         <input
                             type="text"
@@ -63,15 +99,21 @@
                             required
                             autocomplete="family-name"
                         >
+
                     </div>
 
+
                 </div>
+
 
                 <div class="form-group">
 
                     <label for="naissance">
+
                         Date de naissance *
+
                     </label>
+
 
                     <input
                         type="date"
@@ -80,18 +122,26 @@
                         required
                     >
 
+
                     <small>
+
                         L’adhésion en ligne est réservée
-                        aux personnes âgées de 18 ans ou plus.
+                        aux personnes âgées de
+                        18 ans ou plus.
+
                     </small>
 
                 </div>
 
+
                 <div class="form-group">
 
                     <label for="email">
+
                         Adresse e-mail *
+
                     </label>
+
 
                     <input
                         type="email"
@@ -103,11 +153,15 @@
 
                 </div>
 
+
                 <div class="form-group">
 
                     <label for="emailConfirmation">
+
                         Confirmer votre adresse e-mail *
+
                     </label>
+
 
                     <input
                         type="email"
@@ -119,11 +173,15 @@
 
                 </div>
 
+
                 <div class="form-group">
 
                     <label for="discord">
+
                         Pseudo Discord *
+
                     </label>
+
 
                     <input
                         type="text"
@@ -133,14 +191,194 @@
                         placeholder="Exemple : ChromaPlayer"
                     >
 
+
                     <small>
-                        Un compte Discord est nécessaire pour
-                        suivre les informations de Chroma Esport.
+
+                        Un compte Discord est nécessaire
+                        pour suivre les informations
+                        et la vie de Chroma Esport.
+
                     </small>
 
                 </div>
 
-                <h2>Conditions d’adhésion</h2>
+
+                <h2>
+                    Cotisation et soutien
+                </h2>
+
+
+                <div class="info-box">
+
+                    <strong>
+                        Cotisation : 50 €
+                    </strong>
+
+                    <p>
+
+                        La cotisation annuelle permet
+                        de demander à devenir membre
+                        adhérent de Chroma Esport.
+
+                    </p>
+
+                    <p>
+
+                        Vous pouvez également ajouter
+                        un don facultatif afin de soutenir
+                        les activités de l’association.
+
+                    </p>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="don">
+
+                        Souhaitez-vous ajouter un don ?
+
+                    </label>
+
+
+                    <select
+                        id="don"
+                        name="don"
+                    >
+
+                        <option value="0">
+
+                            Non, uniquement la cotisation
+                            de 50 €
+
+                        </option>
+
+
+                        <option value="5">
+
+                            Oui, ajouter un don de 5 €
+
+                        </option>
+
+
+                        <option value="10">
+
+                            Oui, ajouter un don de 10 €
+
+                        </option>
+
+
+                        <option value="20">
+
+                            Oui, ajouter un don de 20 €
+
+                        </option>
+
+
+                        <option value="autre">
+
+                            Oui, choisir un autre montant
+
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div
+                    class="form-group"
+                    id="donLibreZone"
+                    hidden
+                >
+
+                    <label for="donLibre">
+
+                        Montant du don en euros
+
+                    </label>
+
+
+                    <input
+                        type="number"
+                        id="donLibre"
+                        name="donLibre"
+                        min="1"
+                        step="1"
+                        placeholder="Exemple : 15"
+                    >
+
+
+                    <small>
+
+                        Le montant du don sera ajouté
+                        à la cotisation annuelle de 50 €.
+
+                    </small>
+
+                </div>
+
+
+                <h2>
+                    Statut de membre
+                </h2>
+
+
+                <div class="info-box">
+
+                    <strong>
+                        Membre adhérent et membre actif
+                    </strong>
+
+
+                    <p>
+
+                        La qualité de membre adhérent
+                        ne donne pas automatiquement
+                        accès au droit de vote lors
+                        des Assemblées Générales.
+
+                    </p>
+
+
+                    <p>
+
+                        Après six (6) mois d’ancienneté,
+                        un membre adhérent peut demander
+                        à devenir membre actif, à condition
+                        de participer régulièrement à la vie
+                        de l’association et de remplir les
+                        critères prévus par les statuts et
+                        le règlement intérieur.
+
+                    </p>
+
+
+                    <p>
+
+                        Le bureau vérifie que les conditions
+                        sont remplies.
+
+                    </p>
+
+
+                    <p>
+
+                        Le statut de membre actif donne
+                        accès au droit de vote dans les
+                        conditions prévues par les statuts
+                        de Chroma Esport.
+
+                    </p>
+
+                </div>
+
+
+                <h2>
+                    Conditions d’adhésion
+                </h2>
+
 
                 <div class="checkbox-group">
 
@@ -152,11 +390,13 @@
                             required
                         >
 
-                        Je certifie avoir au moins 18 ans.
+                        Je certifie avoir au moins
+                        18 ans.
 
                     </label>
 
                 </div>
+
 
                 <div class="checkbox-group">
 
@@ -175,6 +415,7 @@
 
                 </div>
 
+
                 <div class="checkbox-group">
 
                     <label>
@@ -186,12 +427,34 @@
                         >
 
                         J’ai pris connaissance des statuts
-                        et du règlement intérieur de
-                        Chroma Esport.
+                        et du règlement intérieur
+                        de Chroma Esport.
 
                     </label>
 
                 </div>
+
+
+                <div class="checkbox-group">
+
+                    <label>
+
+                        <input
+                            type="checkbox"
+                            id="reglesMembre"
+                            required
+                        >
+
+                        Je reconnais avoir pris connaissance
+                        des conditions relatives au statut
+                        de membre adhérent et à l’évolution
+                        possible vers le statut de
+                        membre actif.
+
+                    </label>
+
+                </div>
+
 
                 <div class="checkbox-group">
 
@@ -211,6 +474,7 @@
 
                 </div>
 
+
                 <div class="checkbox-group">
 
                     <label>
@@ -229,13 +493,32 @@
 
                 </div>
 
+
+                <div class="info-box">
+
+                    <p>
+
+                        La date et l’heure d’envoi de
+                        votre demande seront enregistrées
+                        automatiquement.
+
+                    </p>
+
+                </div>
+
+
                 <button type="submit">
 
                     ENVOYER MA DEMANDE
 
                 </button>
 
-                <p id="message" class="message"></p>
+
+                <p
+                    id="message"
+                    class="message"
+                ></p>
+
 
             </form>
 
@@ -243,7 +526,10 @@
 
     </main>
 
+
     <script src="app.js"></script>
 
 </body>
+
 </html>
+```
