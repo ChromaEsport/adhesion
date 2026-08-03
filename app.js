@@ -149,7 +149,7 @@ function afficherMessage(
 
 adhesionForm.addEventListener(
     "submit",
-    function (event) {
+    async function (event) {
 
         event.preventDefault();
 
@@ -254,18 +254,84 @@ const montantTotal =
     cotisation + montantDon;
 
         
-        afficherMessage(
-    "Votre formulaire est valide. "
-    + "Cotisation : "
-    + cotisation.toFixed(2)
-    + " € — Don : "
-    + montantDon.toFixed(2)
-    + " € — Total prévu : "
-    + montantTotal.toFixed(2)
-    + " €. "
-    + "L’enregistrement dans la base de données sera ajouté à la prochaine étape.",
-    "success"
-);
+       try {
+
+    await addDoc(
+        collection(db, "adhesions"),
+        {
+
+            prenom:
+                document.getElementById("prenom").value,
+
+            nom:
+                document.getElementById("nom").value,
+
+            dateNaissance:
+                dateNaissance.value,
+
+            email:
+                email.value,
+
+            discord:
+                document.getElementById("discord").value,
+
+
+            annee:
+                2026,
+
+
+            cotisation:
+                cotisation,
+
+
+            don:
+                montantDon,
+
+
+            total:
+                montantTotal,
+
+
+            statut:
+                "en_attente",
+
+
+            dateDemande:
+                serverTimestamp()
+
+        }
+    );
+
+
+    afficherMessage(
+        "Votre demande d’adhésion a bien été envoyée. Elle sera examinée par Chroma Esport avant toute demande de paiement.",
+        "success"
+    );
+
+
+    adhesionForm.reset();
+
+
+    donLibreZone.classList.add(
+        "hidden"
+    );
+
+
+}
+catch(error) {
+
+    console.error(
+        "Erreur Firebase : ",
+        error
+    );
+
+
+    afficherMessage(
+        "Une erreur est survenue lors de l’envoi de votre demande. Veuillez réessayer.",
+        "error"
+    );
+
+}
 
     }
 );
