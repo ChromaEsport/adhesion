@@ -11,7 +11,20 @@ const emailConfirmation = document.getElementById(
     "emailConfirmation"
 );
 
+// Limite automatique à 18 ans minimum
 
+const aujourdHui = new Date();
+
+const dateLimite = new Date(
+    aujourdHui.getFullYear() - 18,
+    aujourdHui.getMonth(),
+    aujourdHui.getDate()
+);
+
+dateNaissance.max =
+    dateLimite.toISOString().split("T")[0];
+
+// Calcul de l'âge
 function calculerAge(date) {
 
     const aujourdHui = new Date();
