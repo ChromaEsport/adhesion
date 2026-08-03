@@ -20,3 +20,35 @@
     margin-top:0;
 
 }
+.actions {
+
+    display:flex;
+
+    gap:15px;
+
+    margin-top:20px;
+
+}
+
+
+.actions button {
+
+    flex:1;
+
+}
+
+
+.accepter {
+
+    background:#8fecc9;
+
+}
+
+
+.refuser {
+
+    background:#ff5b6e;
+
+    color:white;
+
+}
