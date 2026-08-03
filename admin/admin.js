@@ -14,17 +14,12 @@ import {
 
 const firebaseConfig = {
 
-    apiKey: "TON_API_KEY",
-
-    authDomain: "TON_PROJET.firebaseapp.com",
-
-    projectId: "TON_PROJECT_ID",
-
-    storageBucket: "TON_PROJECT_ID.firebasestorage.app",
-
-    messagingSenderId: "TON_MESSAGING_ID",
-
-    appId: "TON_APP_ID"
+    apiKey: "AIzaSyAedIKW_LRWLpa9V_t7PcTTbrDmQOj4HAo",
+  authDomain: "chroma-adhesion.firebaseapp.com",
+  projectId: "chroma-adhesion",
+  storageBucket: "chroma-adhesion.firebasestorage.app",
+  messagingSenderId: "892582501197",
+  appId: "1:892582501197:web:2483ffc9c98e47a3d17504"
 
 };
 
