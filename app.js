@@ -40,21 +40,25 @@ don.addEventListener(
     "change",
     function () {
 
-        if (don.value === "autre") {
+       if (don.value === "autre") {
 
-            donLibreZone.hidden = false;
+    donLibreZone.classList.remove(
+        "hidden"
+    );
 
-            donLibre.required = true;
+    donLibre.required = true;
 
-        } else {
+} else {
 
-            donLibreZone.hidden = true;
+    donLibreZone.classList.add(
+        "hidden"
+    );
 
-            donLibre.required = false;
+    donLibre.required = false;
 
-            donLibre.value = "";
+    donLibre.value = "";
 
-        }
+}
 
     }
 );
