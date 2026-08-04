@@ -31,7 +31,7 @@ const firebaseConfig = {
   projectId: "chroma-adhesion",
   storageBucket: "chroma-adhesion.firebasestorage.app",
   messagingSenderId: "892582501197",
-  appId: "1:892582501197:web:2483ffc9c98e47a3d17504""
+  appId: "1:892582501197:web:2483ffc9c98e47a3d17504",
 
 };
 
