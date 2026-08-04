@@ -35,7 +35,10 @@ const firebaseConfig = {
 
 };
 
-
+const rechercheMembre =
+    document.getElementById(
+        "rechercheMembre"
+    );
 
 const app =
     initializeApp(
@@ -82,7 +85,7 @@ const onglets =
 let filtreActuel =
     "en_attente_paiement";
 
-
+let listeCompleteMembres = [];
 
 /* =========================
    VÉRIFICATION CONNEXION
@@ -388,6 +391,22 @@ async function chargerMembres() {
         pour chaque membre
         */
 
+        listeCompleteMembres = [];
+
+
+resultat.forEach(
+    (documentMembre)=>{
+
+        listeCompleteMembres.push({
+
+            id:
+                documentMembre.id,
+
+            ...documentMembre.data()
+
+        });
+
+        
         resultat.forEach(
             (documentMembre) => {
 
@@ -882,4 +901,65 @@ logout.addEventListener(
 
     }
 
+);
+
+
+function rechercherMembres(){
+
+
+    const recherche =
+
+        rechercheMembre.value
+        .toLowerCase()
+        .trim();
+
+
+
+    const fiches =
+
+        document.querySelectorAll(
+            ".membre"
+        );
+
+
+
+    fiches.forEach(
+        (fiche)=>{
+
+
+            const texte =
+
+                fiche.textContent
+                .toLowerCase();
+
+
+
+            if(
+                texte.includes(
+                    recherche
+                )
+            ){
+
+                fiche.style.display =
+                    "block";
+
+            }
+
+            else {
+
+                fiche.style.display =
+                    "none";
+
+            }
+
+
+        }
+    );
+
+
+}
+
+rechercheMembre.addEventListener(
+    "input",
+    rechercherMembres
 );
