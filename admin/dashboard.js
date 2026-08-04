@@ -19,6 +19,7 @@ import {
     doc,
     updateDoc,
     setDoc,
+    getDocs,
     serverTimestamp
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
@@ -882,6 +883,47 @@ logout.addEventListener(
    ACCEPTATION / REFUS
 ========================= */
 
+async function obtenirProchainNumeroMembre() {
+
+    const membres =
+        await getDocs(
+            collection(
+                db,
+                "membres"
+            )
+        );
+
+
+    return membres.size + 1;
+
+}
+
+
+
+function genererNumeroMembre(
+    annee,
+    numero
+) {
+
+    return (
+
+        "CHRO-"
+        +
+        annee
+        +
+        "-"
+        +
+        numero
+        .toString()
+        .padStart(
+            4,
+            "0"
+        )
+
+    );
+
+}
+
 
 async function changerStatut(
     id,
@@ -959,7 +1001,15 @@ async function changerStatut(
             nouveauStatut ===
             "acceptee"
         ) {
+           const prochainNumero =
+              await obtenirProchainNumeroMembre();
 
+
+           const numeroMembre =
+               genererNumeroMembre(
+                 new Date().getFullYear(),
+                 prochainNumero
+                   );
             /*
             Récupération de toutes
             les informations de
@@ -1006,7 +1056,12 @@ async function changerStatut(
                     ),
                     {
 
-                        nom:
+
+                       numeroMembre:
+
+                          numeroMembre,
+
+                         nom:
 
                             informationsAdhesion.nom
                             || "",
