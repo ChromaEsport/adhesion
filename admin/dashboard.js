@@ -1006,7 +1006,7 @@ async function accepterAdhesion(
         ){
 
             console.error(
-                stripe
+               "Réponse Stripe :", stripe
             );
 
 
@@ -1066,7 +1066,13 @@ async function accepterAdhesion(
 
         );
 
+/*
+ Redirection immédiate
+ vers la page Stripe
+*/
 
+window.location.href =
+    stripe.url;
 
         await chargerDemandes();
 
