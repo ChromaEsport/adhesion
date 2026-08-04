@@ -14,11 +14,11 @@ import {
     getFirestore,
     collection,
     getDocs,
+    getDoc,
     query,
     where,
     doc,
     updateDoc,
-    setDoc,
     serverTimestamp
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
@@ -752,15 +752,10 @@ async function chargerDemandes() {
 
 
 
-                            await changerStatut(
-
-                                documentFirestore.id,
-
-                                "acceptee",
-
-                                auth.currentUser
-
-                            );
+                            await accepterAdhesion(
+                            doc.id,
+                            auth.currentUser
+                              );
 
 
                         }
@@ -919,6 +914,181 @@ function genererNumeroMembre(
     );
 
 }
+
+async function accepterAdhesion(
+    id,
+    utilisateur
+){
+
+    try {
+
+
+        const adhesionRef =
+            doc(
+                db,
+                "adhesions",
+                id
+            );
+
+
+        const adhesionSnap =
+            await getDoc(
+                adhesionRef
+            );
+
+
+        if(
+            !adhesionSnap.exists()
+        ){
+
+            alert(
+                "Demande introuvable."
+            );
+
+            return;
+
+        }
+
+
+        const data =
+            adhesionSnap.data();
+
+
+
+        const reponse =
+            await fetch(
+
+                "https://chroma-stripe.max2501.workers.dev",
+
+                {
+
+                    method:
+                        "POST",
+
+
+                    headers:
+                    {
+
+                        "Content-Type":
+                            "application/json"
+
+                    },
+
+
+                    body:
+
+                    JSON.stringify({
+
+                        montant:
+                            data.total,
+
+
+                        email:
+                            data.email
+
+                    })
+
+                }
+
+            );
+
+
+
+        const stripe =
+            await reponse.json();
+
+
+
+        if(
+            !stripe.url
+        ){
+
+            console.error(
+                stripe
+            );
+
+
+            alert(
+                "Impossible de créer le paiement Stripe."
+            );
+
+
+            return;
+
+        }
+
+
+
+        await updateDoc(
+
+            adhesionRef,
+
+            {
+
+                statut:
+                    "acceptee",
+
+
+                statutPaiement:
+                    "en_attente",
+
+
+                stripeSessionId:
+                    stripe.sessionId,
+
+
+                lienPaiement:
+                    stripe.url,
+
+
+                dateDecision:
+                    serverTimestamp(),
+
+
+                decisionParNom:
+
+                    utilisateur.displayName
+                    ||
+                    utilisateur.email
+                    ||
+                    "Administrateur",
+
+
+                decisionParEmail:
+
+                    utilisateur.email
+                    ||
+                    ""
+
+            }
+
+        );
+
+
+
+        await chargerDemandes();
+
+
+
+    }
+
+
+    catch(error){
+
+        console.error(
+            "Erreur acceptation :",
+            error
+        );
+
+
+        alert(
+            "Erreur lors de l'acceptation."
+        );
+
+    }
+
+}
+
 
 
 async function changerStatut(
