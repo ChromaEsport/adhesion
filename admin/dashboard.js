@@ -621,6 +621,19 @@ async function chargerDemandes() {
 
                         </strong>
 
+                        <div class="information">
+
+                        <strong>
+                           
+                            Paiement :
+                         
+                         </strong>
+
+                         <span>
+                            ${data.statutPaiement || "Non défini"}
+                         </span>
+
+                      </div>
 
                         <span>
 
@@ -921,7 +934,12 @@ async function changerStatut(
 
                     nouveauStatut,
 
+                statutPaiement:
+                    nouveauStatut === "acceptee"
+                                    ? "en_attente"
+                                    : "non_concerne",
 
+                
                 dateDecision:
 
                     serverTimestamp(),
