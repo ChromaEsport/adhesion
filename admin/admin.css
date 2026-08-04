@@ -196,3 +196,101 @@ button {
         #010c2c;
 
 }
+/* =========================
+   NAVIGATION ENTRE DASHBOARDS
+========================= */
+
+.navigation-admin {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+
+}
+
+
+.bouton-navigation {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 42px;
+
+    padding: 0 18px;
+
+    border:
+
+        1px solid
+
+        #8fecc9;
+
+    border-radius:
+
+        8px;
+
+    background:
+
+        #3c9195;
+
+    color:
+
+        #ffffff;
+
+    text-decoration:
+
+        none;
+
+    font-weight:
+
+        700;
+
+    font-size:
+
+        15px;
+
+    cursor:
+
+        pointer;
+
+    transition:
+
+        background 0.2s,
+        color 0.2s,
+        transform 0.2s;
+
+}
+
+
+.bouton-navigation:hover {
+
+    background:
+
+        #8fecc9;
+
+    color:
+
+        #010c2c;
+
+    transform:
+
+        translateY(-1px);
+
+}
+
+
+.bouton-navigation:active {
+
+    transform:
+
+        translateY(0);
+
+}
