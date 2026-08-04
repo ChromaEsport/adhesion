@@ -193,7 +193,10 @@ async function obtenirProchainNumeroMembre(){
 
         );
 
+ return prochainNumero;
 
+
+}
 
 function genererNumeroMembre(
     annee,
