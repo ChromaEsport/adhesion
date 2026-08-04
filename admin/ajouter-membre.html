@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>
+Ajouter un membre - Chroma Esport
+</title>
+
+
+<link rel="stylesheet" href="dashboard.css">
+
+
+</head>
+
+
+<body>
+
+
+<header class="admin-header">
+
+
+<h1>
+CHROMA ESPORT
+</h1>
+
+
+<div class="navigation-admin">
+
+
+<a
+href="membres.html"
+class="bouton-navigation"
+>
+👥 Membres
+</a>
+
+
+<button id="logout">
+Déconnexion
+</button>
+
+
+</div>
+
+
+</header>
+
+
+
+<main class="admin-container">
+
+
+<h2>
+Ajouter un membre manuellement
+</h2>
+
+
+
+<form id="formAjoutMembre"
+class="demande">
+
+
+
+<div class="information">
+
+<label>
+Nom
+</label>
+
+<input
+type="text"
+id="nom"
+required
+>
+
+</div>
+
+
+
+
+<div class="information">
+
+<label>
+Prénom
+</label>
+
+<input
+type="text"
+id="prenom"
+required
+>
+
+</div>
+
+
+
+
+<div class="information">
+
+<label>
+Date de naissance
+</label>
+
+<input
+type="date"
+id="dateNaissance"
+required
+>
+
+</div>
+
+
+
+
+<div class="information">
+
+<label>
+Email
+</label>
+
+<input
+type="email"
+id="email"
+>
+
+</div>
+
+
+
+
+<div class="information">
+
+<label>
+Discord
+</label>
+
+<input
+type="text"
+id="discord"
+>
+
+</div>
+
+
+
+
+<div class="information">
+
+<label>
+Année d’adhésion
+</label>
+
+<input
+type="number"
+id="annee"
+value="2026"
+>
+
+</div>
+
+
+
+
+<div class="information">
+
+<label>
+Cotisation
+</label>
+
+<input
+type="number"
+id="cotisation"
+value="50"
+>
+
+</div>
+
+
+
+
+<div class="information">
+
+<label>
+Don
+</label>
+
+<input
+type="number"
+id="don"
+value="0"
+>
+
+</div>
+
+
+
+
+<div class="information">
+
+<label>
+Statut membre
+</label>
+
+<select id="statutMembre">
+
+<option value="adherent">
+Membre adhérent
+</option>
+
+
+<option value="actif">
+Membre actif
+</option>
+
+
+</select>
+
+</div>
+
+
+
+
+<div class="information">
+
+<label>
+Paiement
+</label>
+
+
+<select id="statutPaiement">
+
+
+<option value="paye">
+Payé
+</option>
+
+
+<option value="en_attente">
+En attente
+</option>
+
+
+</select>
+
+</div>
+
+
+
+
+<div class="information">
+
+<label>
+Statut adhésion
+</label>
+
+
+<select id="statutAdhesion">
+
+
+<option value="active">
+Active
+</option>
+
+
+<option value="expiree">
+Expirée
+</option>
+
+
+</select>
+
+
+</div>
+
+
+
+<button
+type="submit"
+class="bouton-navigation"
+>
+
+Créer le membre
+
+</button>
+
+
+</form>
+
+
+
+<p id="message"></p>
+
+
+</main>
+
+
+
+<script
+type="module"
+src="ajouter-membre.js"
+></script>
+
+
+</body>
+
+</html>
