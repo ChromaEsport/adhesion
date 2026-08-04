@@ -52,3 +52,89 @@
     color:white;
 
 }
+.navigation-admin {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+
+}
+
+
+.bouton-navigation {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 11px 16px;
+
+    border-radius: 8px;
+
+    background:
+
+        #3c9195;
+
+    color:
+
+        white;
+
+    text-decoration:
+
+        none;
+
+    font-weight:
+
+        bold;
+
+    transition:
+
+        0.2s;
+
+}
+
+
+.bouton-navigation:hover {
+
+    background:
+
+        #8fecc9;
+
+    color:
+
+        #010c2c;
+
+}
+
+
+.description-dashboard {
+
+    margin-bottom: 25px;
+
+    color:
+
+        rgba(
+            255,
+            255,
+            255,
+            0.75
+        );
+
+}
+
+
+.membre {
+
+    border-left:
+
+        4px solid
+
+        #8fecc9;
+
+}
