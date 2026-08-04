@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Test Stripe Chroma</title>
+
+</head>
+
+
+<body>
+
+
+<h1>
+Test paiement Chroma Esport
+</h1>
+
+
+<button id="payer">
+
+💳 Créer un paiement de 50 €
+
+</button>
+
+
+<p id="message"></p>
+
+
+
+<script>
+
+
+const bouton =
+    document.getElementById(
+        "payer"
+    );
+
+
+const message =
+    document.getElementById(
+        "message"
+    );
+
+
+
+bouton.addEventListener(
+    "click",
+    async()=>{
+
+
+        message.innerHTML =
+            "Création du paiement...";
+
+
+        try {
+
+
+            const reponse =
+
+                await fetch(
+
+                    "https://chroma-stripe.max2501.workers.dev",
+
+                    {
+
+                        method:
+                            "POST",
+
+
+                        headers:
+                        {
+
+                            "Content-Type":
+                                "application/json"
+
+                        },
+
+
+                        body:
+
+                            JSON.stringify({
+
+                                montant:
+                                    50,
+
+
+                                email:
+                                    "test@chroma-esport.fr"
+
+                            })
+
+                    }
+
+                );
+
+
+
+            const data =
+                await reponse.json();
+
+
+
+            if(
+                data.url
+            ){
+
+                window.location.href =
+                    data.url;
+
+            }
+
+            else {
+
+                message.innerHTML =
+                    "Erreur : lien Stripe non reçu";
+
+                console.log(data);
+
+            }
+
+
+        }
+
+
+        catch(error){
+
+
+            console.error(error);
+
+
+            message.innerHTML =
+                "Erreur lors de la création du paiement";
+
+
+        }
+
+
+    }
+
+);
+
+
+</script>
+
+
+</body>
+
+</html>
