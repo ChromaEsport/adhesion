@@ -852,7 +852,7 @@ bouton.addEventListener(
             }
         );
 
-    }
+    
 
     catch (error) {
 
@@ -876,7 +876,7 @@ bouton.addEventListener(
 
 }
 
-
+}
 
 /* =========================
    DÉCONNEXION
