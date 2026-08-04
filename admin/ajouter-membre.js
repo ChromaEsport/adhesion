@@ -246,6 +246,54 @@ const total =
         "total"
     );
 
+const anneeAdhesion =
+    document.getElementById(
+        "annee"
+    );
+
+
+const dateDebutAdhesion =
+    document.getElementById(
+        "dateDebutAdhesion"
+    );
+
+
+const dateFinAdhesion =
+    document.getElementById(
+        "dateFinAdhesion"
+    );
+
+function definirDateFinAdhesion(){
+
+
+    const annee =
+
+        Number(
+            anneeAdhesion.value
+        );
+
+
+    if(
+        !annee
+    ){
+
+        dateFinAdhesion.value =
+            "";
+
+        return;
+
+    }
+
+
+    dateFinAdhesion.value =
+
+        annee
+        +
+        "-12-31";
+
+
+}
+
 
 function calculerTotal(){
 
@@ -280,7 +328,15 @@ don.addEventListener(
     calculerTotal
 );
 
+anneeAdhesion.addEventListener(
+    "input",
+    definirDateFinAdhesion
+);
 
+calculerTotal();
+
+
+definirDateFinAdhesion();
 
 /*
  Création du membre
