@@ -852,8 +852,6 @@ bouton.addEventListener(
             }
         );
 
-
-    }
     catch (error) {
 
 
