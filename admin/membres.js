@@ -35,10 +35,7 @@ const firebaseConfig = {
 
 };
 
-const rechercheMembre =
-    document.getElementById(
-        "rechercheMembre"
-    );
+
 
 const app =
     initializeApp(
@@ -64,6 +61,10 @@ const listeMembres =
         "listeMembres"
     );
 
+const rechercheMembre =
+    document.getElementById(
+        "rechercheMembre"
+    );
 
 const logout =
     document.getElementById(
@@ -395,7 +396,8 @@ async function chargerMembres() {
 
 
 resultat.forEach(
-    (documentMembre)=>{
+    (documentMembre) => {
+
 
         listeCompleteMembres.push({
 
@@ -405,10 +407,6 @@ resultat.forEach(
             ...documentMembre.data()
 
         });
-
-        
-        resultat.forEach(
-            (documentMembre) => {
 
 
                 const membre =
