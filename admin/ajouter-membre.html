@@ -4,18 +4,17 @@
 
 <head>
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-<title>
-Ajouter un membre - Chroma Esport
-</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-<link rel="stylesheet" href="dashboard.css">
+    <title>
+        Ajouter un membre - Chroma Esport
+    </title>
 
+
+    <link rel="stylesheet" href="dashboard.css">
 
 </head>
 
@@ -26,28 +25,30 @@ Ajouter un membre - Chroma Esport
 <header class="admin-header">
 
 
-<h1>
-CHROMA ESPORT
-</h1>
+    <h1>
+        CHROMA ESPORT
+    </h1>
 
 
-<div class="navigation-admin">
+    <div class="navigation-admin">
 
 
-<a
-href="membres.html"
-class="bouton-navigation"
->
-👥 Membres
-</a>
+        <a
+            href="membres.html"
+            class="bouton-navigation"
+        >
+            👥 Membres
+        </a>
 
 
-<button id="logout">
-Déconnexion
-</button>
+        <button id="logout">
+
+            Déconnexion
+
+        </button>
 
 
-</div>
+    </div>
 
 
 </header>
@@ -58,13 +59,21 @@ Déconnexion
 
 
 <h2>
-Ajouter un membre manuellement
+    Ajouter un membre manuellement
 </h2>
 
 
 
-<form id="formAjoutMembre"
-class="demande">
+<form
+id="formAjoutMembre"
+class="demande"
+>
+
+
+
+<h3>
+Informations personnelles
+</h3>
 
 
 
@@ -73,6 +82,7 @@ class="demande">
 <label>
 Nom
 </label>
+
 
 <input
 type="text"
@@ -84,12 +94,12 @@ required
 
 
 
-
 <div class="information">
 
 <label>
 Prénom
 </label>
+
 
 <input
 type="text"
@@ -101,12 +111,12 @@ required
 
 
 
-
 <div class="information">
 
 <label>
 Date de naissance
 </label>
+
 
 <input
 type="date"
@@ -118,12 +128,12 @@ required
 
 
 
-
 <div class="information">
 
 <label>
-Email
+Adresse e-mail
 </label>
+
 
 <input
 type="email"
@@ -134,12 +144,12 @@ id="email"
 
 
 
-
 <div class="information">
 
 <label>
 Discord
 </label>
+
 
 <input
 type="text"
@@ -151,20 +161,86 @@ id="discord"
 
 
 
+<h3>
+Informations adhésion
+</h3>
+
+
+
+<div class="information">
+
+<label>
+Numéro membre
+</label>
+
+
+<input
+type="text"
+id="numeroMembre"
+readonly
+placeholder="Génération automatique"
+>
+
+</div>
+
+
+
 <div class="information">
 
 <label>
 Année d’adhésion
 </label>
 
+
 <input
 type="number"
 id="annee"
 value="2026"
+required
 >
 
 </div>
 
+
+
+<div class="information">
+
+<label>
+Début adhésion
+</label>
+
+
+<input
+type="date"
+id="dateDebutAdhesion"
+required
+>
+
+</div>
+
+
+
+<div class="information">
+
+<label>
+Fin adhésion
+</label>
+
+
+<input
+type="date"
+id="dateFinAdhesion"
+required
+>
+
+</div>
+
+
+
+
+<h3>
+Informations paiement
+</h3>
 
 
 
@@ -174,14 +250,15 @@ value="2026"
 Cotisation
 </label>
 
+
 <input
 type="number"
 id="cotisation"
 value="50"
+required
 >
 
 </div>
-
 
 
 
@@ -190,6 +267,7 @@ value="50"
 <label>
 Don
 </label>
+
 
 <input
 type="number"
@@ -201,6 +279,29 @@ value="0"
 
 
 
+<div class="information">
+
+<label>
+Total
+</label>
+
+
+<input
+type="number"
+id="total"
+readonly
+>
+
+</div>
+
+
+
+
+<h3>
+Statuts
+</h3>
+
+
 
 <div class="information">
 
@@ -208,7 +309,9 @@ value="0"
 Statut membre
 </label>
 
+
 <select id="statutMembre">
+
 
 <option value="adherent">
 Membre adhérent
@@ -226,11 +329,10 @@ Membre actif
 
 
 
-
 <div class="information">
 
 <label>
-Paiement
+Statut paiement
 </label>
 
 
@@ -250,7 +352,6 @@ En attente
 </select>
 
 </div>
-
 
 
 
@@ -276,8 +377,8 @@ Expirée
 
 </select>
 
-
 </div>
+
 
 
 
@@ -306,6 +407,7 @@ Créer le membre
 type="module"
 src="ajouter-membre.js"
 ></script>
+
 
 
 </body>
