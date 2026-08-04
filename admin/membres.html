@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+
+    <title>
+        Gestion des membres - Chroma Esport
+    </title>
+
+
+    <link
+        rel="stylesheet"
+        href="admin.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <header class="admin-header">
+
+
+        <div>
+
+            <h1>
+
+                CHROMA ESPORT
+
+            </h1>
+
+
+            <p>
+
+                Gestion des membres
+
+            </p>
+
+        </div>
+
+
+        <div class="navigation-admin">
+
+
+            <a
+                href="admin.html"
+                class="bouton-navigation"
+            >
+
+                📋 Demandes
+
+            </a>
+
+
+            <button
+                id="logout"
+            >
+
+                Déconnexion
+
+            </button>
+
+        </div>
+
+
+    </header>
+
+
+
+    <main class="admin-container">
+
+
+        <h2>
+
+            Membres de Chroma Esport
+
+        </h2>
+
+
+        <p class="description-dashboard">
+
+            Consultez les adhésions, les paiements
+            et le statut des membres.
+
+        </p>
+
+
+
+        <div class="onglets">
+
+
+            <button
+                class="onglet actif"
+                data-filtre="en_attente_paiement"
+            >
+
+                En attente de paiement
+
+            </button>
+
+
+            <button
+                class="onglet"
+                data-filtre="active"
+            >
+
+                Adhésions actives
+
+            </button>
+
+
+            <button
+                class="onglet"
+                data-filtre="expiree"
+            >
+
+                Expirées
+
+            </button>
+
+
+            <button
+                class="onglet"
+                data-filtre="tous"
+            >
+
+                Tous
+
+            </button>
+
+
+        </div>
+
+
+
+        <div
+            id="listeMembres"
+        >
+
+            Chargement des membres...
+
+        </div>
+
+
+    </main>
+
+
+
+    <script
+        type="module"
+        src="membres.js"
+    ></script>
+
+
+</body>
+
+</html>
