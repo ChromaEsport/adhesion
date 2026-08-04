@@ -18,7 +18,7 @@ import {
     where,
     doc,
     updateDoc,
-    addDoc,
+    setDoc,
     serverTimestamp
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
@@ -998,10 +998,11 @@ async function changerStatut(
                 membres
                 */
 
-                await addDoc(
-                    collection(
+                await setDoc(
+                    doc(
                         db,
-                        "membres"
+                        "membres",
+                        id
                     ),
                     {
 
