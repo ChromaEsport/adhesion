@@ -975,16 +975,18 @@ async function accepterAdhesion(
                     },
 
 
-                    body:
+                     body:
 
-                    JSON.stringify({
+            JSON.stringify({
 
-                        montant:
-                            data.total,
+                montant:
+                    data.total,
 
+                email:
+                    data.email,
 
-                        email:
-                            data.email
+                adhesionId:
+                    id
 
                     })
 
