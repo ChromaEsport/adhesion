@@ -1167,32 +1167,3 @@ async function changerStatut(
     }
 
 }
-
-
-        await chargerDemandes();
-
-
-    }
-    catch (error) {
-
-
-        console.error(
-
-            "Erreur lors de la décision :",
-
-            error
-
-        );
-
-
-        alert(
-
-            "La décision n’a pas pu être enregistrée."
-
-        );
-
-
-    }
-
-
-}
