@@ -619,9 +619,18 @@ async function chargerDemandes() {
                         <strong>
 
                             Statut :
+                            </strong>
+                            <span>
 
-                        </strong>
+                            ${
+                                data.statut
+                                ||
+                                "Non renseigné"
+                            }
 
+                        </span>
+                        
+     </div>
                         <div class="information">
 
                         <strong>
@@ -635,18 +644,6 @@ async function chargerDemandes() {
                          </span>
 
                       </div>
-
-                        <span>
-
-                            ${
-                                data.statut
-                                ||
-                                "Non renseigné"
-                            }
-
-                        </span>
-
-                    </div>
 
 
                     <div class="information">
