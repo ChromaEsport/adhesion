@@ -813,7 +813,23 @@ async function chargerMembres() {
                     fiche
                 );
 
+                const bouton =
+    fiche.querySelector(
+        ".voir-membre"
+    );
 
+
+bouton.addEventListener(
+    "click",
+    ()=>{
+
+        window.location.href =
+        "membre.html?id="
+        +
+        documentMembre.id;
+
+    }
+);
             }
         );
 
