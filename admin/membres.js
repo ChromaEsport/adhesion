@@ -794,7 +794,7 @@ async function chargerMembres() {
 
                     <button
                        class="voir-membre"
-                       data-id="${documentFiche-Membre.id}"
+                       data-id="${documentFiche-membre.id}"
                        >
                       👤 Voir la fiche complète
                     </button>
