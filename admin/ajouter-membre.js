@@ -445,7 +445,30 @@ form.addEventListener(
                             "statutAdhesion"
                         ).value,
 
+accepteParNom:
 
+    auth.currentUser.displayName
+    ||
+    auth.currentUser.email
+    ||
+    "Administrateur non identifié",
+
+
+accepteParEmail:
+
+    auth.currentUser.email
+    ||
+    "",
+
+
+accepteParUid:
+
+    auth.currentUser.uid,
+
+
+dateAcceptation:
+
+    serverTimestamp(),
 
                     dateCreation:
 
