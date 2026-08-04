@@ -52,3 +52,53 @@
     color:white;
 
 }
+.recherche-membres {
+
+    margin-bottom: 25px;
+
+}
+
+
+.recherche-membres input {
+
+    width: 100%;
+
+    max-width: 600px;
+
+    padding: 14px 18px;
+
+    border-radius: 8px;
+
+    border:
+
+        1px solid
+
+        #3c9195;
+
+    background:
+
+        #010c2c;
+
+    color:
+
+        white;
+
+    font-size:
+
+        15px;
+
+}
+
+
+.recherche-membres input::placeholder {
+
+    color:
+
+        rgba(
+            255,
+            255,
+            255,
+            0.6
+        );
+
+}
