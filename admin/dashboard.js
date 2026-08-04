@@ -18,6 +18,7 @@ import {
     where,
     doc,
     updateDoc,
+    addDoc,
     serverTimestamp
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
@@ -881,94 +882,291 @@ logout.addEventListener(
    ACCEPTATION / REFUS
 ========================= */
 
+
 async function changerStatut(
-
     id,
-
     nouveauStatut,
-
     utilisateur
-
 ) {
-
 
     try {
 
-
         const demande =
-
             doc(
-
                 db,
-
                 "adhesions",
-
                 id
-
             );
 
 
-
         const nomDecisionnaire =
-
             utilisateur.displayName
-
             ||
-
             utilisateur.email
-
             ||
-
             "Administrateur non identifié";
 
 
+        /*
+        Mise à jour de la demande
+        dans la collection adhesions
+        */
 
         await updateDoc(
-
             demande,
-
             {
 
-
                 statut:
-
                     nouveauStatut,
 
+
                 statutPaiement:
+
                     nouveauStatut === "acceptee"
-                                    ? "en_attente"
-                                    : "non_concerne",
 
-                
+                    ? "en_attente"
+
+                    : "non_concerne",
+
+
                 dateDecision:
-
                     serverTimestamp(),
 
 
                 decisionParNom:
-
                     nomDecisionnaire,
 
 
                 decisionParEmail:
-
                     utilisateur.email
-
-                    ||
-
-
-                    "",
+                    || "",
 
 
                 decisionParUid:
-
                     utilisateur.uid
 
+            }
+        );
+
+
+        /*
+        Création de la fiche membre
+        uniquement si la demande
+        est acceptée
+        */
+
+        if (
+            nouveauStatut ===
+            "acceptee"
+        ) {
+
+            /*
+            Récupération de toutes
+            les informations de
+            la demande d’adhésion
+            */
+
+            const demandeRecuperee =
+                await getDocs(
+                    query(
+                        collection(
+                            db,
+                            "adhesions"
+                        ),
+                        where(
+                            "__name__",
+                            "==",
+                            id
+                        )
+                    )
+                );
+
+
+            if (
+                !demandeRecuperee.empty
+            ) {
+
+                const informationsAdhesion =
+                    demandeRecuperee
+                    .docs[0]
+                    .data();
+
+
+                /*
+                Création du membre
+                dans la collection
+                membres
+                */
+
+                await addDoc(
+                    collection(
+                        db,
+                        "membres"
+                    ),
+                    {
+
+                        nom:
+
+                            informationsAdhesion.nom
+                            || "",
+
+
+                        prenom:
+
+                            informationsAdhesion.prenom
+                            || "",
+
+
+                        email:
+
+                            informationsAdhesion.email
+                            || "",
+
+
+                        discord:
+
+                            informationsAdhesion.discord
+                            || "",
+
+
+                        dateNaissance:
+
+                            informationsAdhesion.dateNaissance
+                            || "",
+
+
+                        annee:
+
+                            informationsAdhesion.annee
+                            || "",
+
+
+                        cotisation:
+
+                            Number(
+                                informationsAdhesion.cotisation
+                                || 0
+                            ),
+
+
+                        don:
+
+                            Number(
+                                informationsAdhesion.don
+                                || 0
+                            ),
+
+
+                        total:
+
+                            Number(
+                                informationsAdhesion.total
+                                || 0
+                            ),
+
+
+                        /*
+                        Le membre est accepté,
+                        mais il n’a pas encore
+                        payé.
+                        */
+
+                        statutMembre:
+
+                            "en_attente_paiement",
+
+
+                        statutPaiement:
+
+                            "en_attente",
+
+
+                        /*
+                        L’adhésion n’est pas
+                        encore active.
+                        */
+
+                        statutAdhesion:
+
+                            "non_active",
+
+
+                        /*
+                        Lien avec la demande
+                        d’origine.
+                        */
+
+                        adhesionId:
+
+                            id,
+
+
+                        /*
+                        Informations sur
+                        la décision.
+                        */
+
+                        dateAcceptation:
+
+                            serverTimestamp(),
+
+
+                        accepteParNom:
+
+                            nomDecisionnaire,
+
+
+                        accepteParEmail:
+
+                            utilisateur.email
+                            || "",
+
+
+                        accepteParUid:
+
+                            utilisateur.uid,
+
+
+                        /*
+                        Date de création
+                        de la fiche membre.
+                        */
+
+                        dateCreation:
+
+                            serverTimestamp()
+
+                    }
+                );
 
             }
 
+        }
+
+
+        /*
+        Actualisation du dashboard
+        */
+
+        await chargerDemandes();
+
+
+    }
+    catch (error) {
+
+        console.error(
+            "Erreur lors de la décision :",
+            error
         );
 
+
+        alert(
+            "La décision n’a pas pu être enregistrée."
+        );
+
+    }
+
+}
 
 
         await chargerDemandes();
