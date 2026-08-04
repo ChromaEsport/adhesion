@@ -13,9 +13,10 @@ import {
 import {
     getFirestore,
     collection,
-    getDocs,
     addDoc,
-    serverTimestamp
+    serverTimestamp,
+    doc,
+    runTransaction
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
 
@@ -98,18 +99,99 @@ onAuthStateChanged(
 async function obtenirProchainNumeroMembre(){
 
 
-    const membres =
-        await getDocs(
-            collection(
-                db,
-                "membres"
-            )
+    const compteurRef =
+
+        doc(
+            db,
+            "compteurs",
+            "membres"
         );
 
 
-    return membres.size + 1;
 
-}
+    const prochainNumero =
+
+        await runTransaction(
+
+            db,
+
+            async (
+                transaction
+            ) => {
+
+
+                const compteur =
+
+                    await transaction.get(
+                        compteurRef
+                    );
+
+
+
+                let nouveauNumero =
+
+                    1;
+
+
+
+                if(
+                    compteur.exists()
+                ){
+
+
+                    nouveauNumero =
+
+                        Number(
+
+                            compteur
+                            .data()
+                            .dernierNumero
+
+                            ||
+
+                            0
+
+                        )
+
+                        +
+
+                        1;
+
+
+                }
+
+
+
+                transaction.set(
+
+                    compteurRef,
+
+                    {
+
+                        dernierNumero:
+
+                            nouveauNumero
+
+                    },
+
+                    {
+
+                        merge:
+
+                            true
+
+                    }
+
+                );
+
+
+
+                return nouveauNumero;
+
+
+            }
+
+        );
 
 
 
