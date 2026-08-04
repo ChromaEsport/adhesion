@@ -19,9 +19,9 @@ import {
     where,
     doc,
     updateDoc,
+    setDoc,
     serverTimestamp
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
-
 
 
 const firebaseConfig = {
@@ -753,7 +753,7 @@ async function chargerDemandes() {
 
 
                             await accepterAdhesion(
-                            doc.id,
+                            documentFirestore.id,
                             auth.currentUser
                               );
 
