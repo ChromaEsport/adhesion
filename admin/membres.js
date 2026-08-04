@@ -793,11 +793,11 @@ async function chargerMembres() {
                     </div>
 
                     <button
-                       class="voir-membre"
-                       data-id="${documentFiche-membre.id}"
-                       >
-                      👤 Voir la fiche complète
-                    </button>
+    class="voir-membre"
+    data-id="${documentMembre.id}"
+>
+    👤 Voir la fiche complète
+</button>
 
 
                 `;
@@ -824,7 +824,7 @@ bouton.addEventListener(
     ()=>{
 
         window.location.href =
-        "membre.html?id="
+        "fiche-membre.html?id="
         +
         documentMembre.id;
 
