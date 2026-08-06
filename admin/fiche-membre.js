@@ -1,294 +1,490 @@
 import {
-    initializeApp
+initializeApp
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
 
 
 import {
-    getAuth,
-    onAuthStateChanged,
-    signOut
+getAuth,
+onAuthStateChanged,
+signOut
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 
 
 import {
-    getFirestore,
-    doc,
-    getDoc
+getFirestore,
+doc,
+getDoc
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
 
 
 const firebaseConfig = {
 
-    apiKey:
-        "AIzaSyAedIKW_LRWLpa9V_t7PcTTbrDmQOj4HAo",
+apiKey:
+"AIzaSyAedIKW_LRWLpa9V_t7PcTTbrDmQOj4HAo",
 
-    authDomain:
-        "chroma-adhesion.firebaseapp.com",
+authDomain:
+"chroma-adhesion.firebaseapp.com",
 
-    projectId:
-        "chroma-adhesion",
+projectId:
+"chroma-adhesion",
 
-    storageBucket:
-        "chroma-adhesion.firebasestorage.app",
+storageBucket:
+"chroma-adhesion.firebasestorage.app",
 
-    messagingSenderId:
-        "892582501197",
+messagingSenderId:
+"892582501197",
 
-    appId:
-        "1:892582501197:web:2483ffc9c98e47a3d17504"
+appId:
+"1:892582501197:web:2483ffc9c98e47a3d17504"
 
 };
 
 
 
 const app =
-    initializeApp(firebaseConfig);
+initializeApp(firebaseConfig);
 
 
 const auth =
-    getAuth(app);
+getAuth(app);
 
 
 const db =
-    getFirestore(app);
+getFirestore(app);
 
 
 
-const ficheMembre =
-    document.getElementById(
-        "ficheMembre"
-    );
+const fiche =
+document.getElementById(
+"ficheMembre"
+);
 
 
-const titreMembre =
-    document.getElementById(
-        "titreMembre"
-    );
+const titre =
+document.getElementById(
+"titreMembre"
+);
 
 
 const logout =
-    document.getElementById(
-        "logout"
-    );
+document.getElementById(
+"logout"
+);
+
+
 
 
 
 onAuthStateChanged(
-    auth,
-    (user)=>{
+auth,
+(user)=>{
 
 
-        if(!user){
+if(!user){
 
-            window.location.href =
-            "index.html";
+window.location.href =
+"index.html";
 
-            return;
+return;
 
-        }
-
-
-        chargerMembre();
+}
 
 
-    }
+chargerMembre();
+
+
+}
 );
+
+
 
 
 
 async function chargerMembre(){
 
 
-    const parametre =
-        new URLSearchParams(
-            window.location.search
-        );
+const params =
+new URLSearchParams(
+window.location.search
+);
 
 
-    const id =
-        parametre.get(
-            "id"
-        );
+const id =
+params.get(
+"id"
+);
 
 
-    if(!id){
 
-        ficheMembre.innerHTML =
-        "Aucun membre sélectionné.";
+if(!id){
 
-        return;
+fiche.innerHTML =
+"Aucun membre sélectionné.";
 
-    }
-
-
-
-    const membreRef =
-        doc(
-            db,
-            "membres",
-            id
-        );
-
-
-
-    const resultat =
-        await getDoc(
-            membreRef
-        );
-
-
-
-    if(!resultat.exists()){
-
-
-        ficheMembre.innerHTML =
-        "Membre introuvable.";
-
-        return;
-
-    }
-
-
-
-    const membre =
-        resultat.data();
-
-
-
-    titreMembre.innerHTML =
-
-        membre.numeroMembre
-        ||
-        "Fiche membre";
-
-
-
-    ficheMembre.innerHTML = `
-
-
-        <h3>
-
-            ${
-                membre.prenom
-                ||
-                ""
-            }
-
-            ${
-                membre.nom
-                ||
-                ""
-            }
-
-        </h3>
-
-
-
-        <p>
-            <strong>
-            Numéro membre :
-            </strong>
-
-            ${
-                membre.numeroMembre
-                ||
-                "Non défini"
-            }
-
-        </p>
-
-
-
-        <p>
-            <strong>
-            Email :
-            </strong>
-
-            ${
-                membre.email
-                ||
-                ""
-            }
-
-        </p>
-
-
-
-        <p>
-            <strong>
-            Discord :
-            </strong>
-
-            ${
-                membre.discord
-                ||
-                ""
-            }
-
-        </p>
-
-
-
-        <p>
-            <strong>
-            Statut membre :
-            </strong>
-
-            ${
-                membre.statutMembre
-                ||
-                ""
-            }
-
-        </p>
-
-
-
-        <p>
-            <strong>
-            Paiement :
-            </strong>
-
-            ${
-                membre.statutPaiement
-                ||
-                ""
-            }
-
-        </p>
-
-
-
-        <p>
-            <strong>
-            Adhésion :
-            </strong>
-
-            ${
-                membre.statutAdhesion
-                ||
-                ""
-            }
-
-        </p>
-
-
-
-    `;
+return;
 
 }
 
 
 
+
+
+const membreDoc =
+await getDoc(
+
+doc(
+db,
+"membres",
+id
+)
+
+);
+
+
+
+
+if(!membreDoc.exists()){
+
+
+fiche.innerHTML =
+"Membre introuvable.";
+
+
+return;
+
+
+}
+
+
+
+
+const membre =
+membreDoc.data();
+
+
+
+
+
+titre.textContent =
+
+membre.numeroMembre
+||
+"Fiche membre";
+
+
+
+
+
+fiche.innerHTML = `
+
+
+
+<div class="carte-identite">
+
+
+<div class="numero-membre">
+
+${membre.numeroMembre || "-"}
+
+</div>
+
+
+
+<h2>
+
+${membre.prenom || ""}
+
+${membre.nom || ""}
+
+</h2>
+
+
+
+<span class="badge">
+
+${membre.statutMembre || "-"}
+
+</span>
+
+
+</div>
+
+
+
+
+
+<div class="bloc-fiche">
+
+
+<h3>
+Informations personnelles
+</h3>
+
+
+<p>
+<strong>Email :</strong>
+
+${membre.email || "-"}
+
+</p>
+
+
+
+<p>
+<strong>Discord :</strong>
+
+${membre.discord || "-"}
+
+</p>
+
+
+
+<p>
+<strong>Date de naissance :</strong>
+
+${membre.dateNaissance || "-"}
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+<div class="bloc-fiche">
+
+
+<h3>
+Adresse
+</h3>
+
+
+<p>
+
+${membre.adresse || "-"}
+
+</p>
+
+
+<p>
+
+${membre.complementAdresse || ""}
+
+</p>
+
+
+<p>
+
+${membre.codePostal || ""}
+${membre.ville || ""}
+
+</p>
+
+
+<p>
+
+${membre.pays || ""}
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+<div class="bloc-fiche">
+
+
+<h3>
+Adhésion
+</h3>
+
+
+
+<p>
+
+<strong>Année :</strong>
+
+${membre.annee || "-"}
+
+</p>
+
+
+
+<p>
+
+<strong>Début :</strong>
+
+${afficherDate(
+membre.dateDebutAdhesion
+)}
+
+</p>
+
+
+
+<p>
+
+<strong>Fin :</strong>
+
+${membre.dateFinAdhesion || "-"}
+
+</p>
+
+
+
+<p>
+
+<strong>Statut adhésion :</strong>
+
+${membre.statutAdhesion || "-"}
+
+</p>
+
+
+
+<p>
+
+<strong>Paiement :</strong>
+
+${membre.statutPaiement || "-"}
+
+</p>
+
+
+
+</div>
+
+
+
+
+
+
+<div class="bloc-fiche">
+
+
+<h3>
+Cotisation
+</h3>
+
+
+
+<p>
+
+Cotisation :
+
+${membre.cotisation || 0} €
+
+</p>
+
+
+
+<p>
+
+Don :
+
+${membre.don || 0} €
+
+</p>
+
+
+
+<p>
+
+Total :
+
+${membre.total || 0} €
+
+</p>
+
+
+
+</div>
+
+
+
+
+
+
+<div class="bloc-fiche">
+
+
+<h3>
+Validation
+</h3>
+
+
+
+<p>
+
+Accepté par :
+
+${membre.accepteParNom || "-"}
+
+</p>
+
+
+
+</div>
+
+
+
+`;
+
+
+
+}
+
+
+
+
+
+function afficherDate(date){
+
+
+if(!date)
+return "-";
+
+
+if(date.toDate){
+
+return date
+.toDate()
+.toLocaleDateString(
+"fr-FR"
+);
+
+}
+
+
+return date;
+
+
+}
+
+
+
+
+
+
 logout.addEventListener(
-    "click",
-    ()=>{
+"click",
+async()=>{
 
-        signOut(auth);
 
-        window.location.href =
-        "index.html";
+await signOut(auth);
 
-    }
+
+window.location.href =
+"index.html";
+
+
+}
 );
