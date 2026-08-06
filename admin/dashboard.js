@@ -483,7 +483,7 @@ auth.currentUser
 }
 );
 
-        );
+    
 
 
     }
