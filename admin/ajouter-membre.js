@@ -1,600 +1,327 @@
 import {
-    initializeApp
+initializeApp
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
 
 
 import {
-    getAuth,
-    onAuthStateChanged,
-    signOut
+getAuth,
+onAuthStateChanged,
+signOut
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 
 
 import {
-    getFirestore,
-    collection,
-    addDoc,
-    serverTimestamp,
-    doc,
-    runTransaction
+getFirestore,
+collection,
+getDocs,
+doc,
+setDoc
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
 
 
 const firebaseConfig = {
 
-    apiKey: "AIzaSyAedIKW_LRWLpa9V_t7PcTTbrDmQOj4HAo",
+apiKey:
+"AIzaSyAedIKW_LRWLpa9V_t7PcTTbrDmQOj4HAo",
 
-    authDomain: "chroma-adhesion.firebaseapp.com",
+authDomain:
+"chroma-adhesion.firebaseapp.com",
 
-    projectId: "chroma-adhesion",
+projectId:
+"chroma-adhesion",
 
-    storageBucket: "chroma-adhesion.firebasestorage.app",
+storageBucket:
+"chroma-adhesion.firebasestorage.app",
 
-    messagingSenderId: "892582501197",
+messagingSenderId:
+"892582501197",
 
-    appId: "1:892582501197:web:2483ffc9c98e47a3d17504"
+appId:
+"1:892582501197:web:2483ffc9c98e47a3d17504"
 
 };
 
 
 
 const app =
-    initializeApp(
-        firebaseConfig
-    );
+initializeApp(firebaseConfig);
 
 
 const auth =
-    getAuth(app);
+getAuth(app);
 
 
 const db =
-    getFirestore(app);
+getFirestore(app);
 
 
 
 const form =
-    document.getElementById(
-        "formAjoutMembre"
-    );
+document.getElementById(
+"formAjoutMembre"
+);
 
 
 const message =
-    document.getElementById(
-        "message"
-    );
+document.getElementById(
+"message"
+);
 
 
 const logout =
-    document.getElementById(
-        "logout"
-    );
+document.getElementById(
+"logout"
+);
+
+
 
 
 
 onAuthStateChanged(
-    auth,
-    (user)=>{
+auth,
+(user)=>{
 
 
-        if(!user){
+if(!user){
 
-            window.location.href =
-            "index.html";
+window.location.href =
+"index.html";
 
-            return;
+return;
 
-        }
+}
 
-    }
+
+}
 );
 
 
 
-/*
- Génération numéro membre
-*/
-
-async function obtenirProchainNumeroMembre(){
-
-
-    const compteurRef =
-
-        doc(
-            db,
-            "compteurs",
-            "membres"
-        );
 
 
 
-    const prochainNumero =
-
-        await runTransaction(
-
-            db,
-
-            async (
-                transaction
-            ) => {
+async function prochainNumero(){
 
 
-                const compteur =
-
-                    await transaction.get(
-                        compteurRef
-                    );
+const membres =
+await getDocs(
+collection(
+db,
+"membres"
+)
+);
 
 
 
-                let nouveauNumero =
+return membres.size + 1;
 
-                    1;
-
-
-
-                if(
-                    compteur.exists()
-                ){
-
-
-                    nouveauNumero =
-
-                        Number(
-
-                            compteur
-                            .data()
-                            .dernierNumero
-
-                            ||
-
-                            0
-
-                        )
-
-                        +
-
-                        1;
-
-
-                }
-
-
-
-                transaction.set(
-
-                    compteurRef,
-
-                    {
-
-                        dernierNumero:
-
-                            nouveauNumero
-
-                    },
-
-                    {
-
-                        merge:
-
-                            true
-
-                    }
-
-                );
-
-
-
-                return nouveauNumero;
-
-
-            }
-
-        );
-
- return prochainNumero;
-
-
-}
-
-function genererNumeroMembre(
-    annee,
-    numero
-){
-
-    return (
-
-        "CHRO-"
-        +
-        annee
-        +
-        "-"
-        +
-        numero
-        .toString()
-        .padStart(
-            4,
-            "0"
-        )
-
-    );
 
 }
 
 
 
-/*
- Calcul automatique du total
-*/
 
-
-const cotisation =
-    document.getElementById(
-        "cotisation"
-    );
-
-
-const don =
-    document.getElementById(
-        "don"
-    );
-
-
-const total =
-    document.getElementById(
-        "total"
-    );
-
-const anneeAdhesion =
-    document.getElementById(
-        "annee"
-    );
-
-
-const dateDebutAdhesion =
-    document.getElementById(
-        "dateDebutAdhesion"
-    );
-
-
-const dateFinAdhesion =
-    document.getElementById(
-        "dateFinAdhesion"
-    );
-
-function definirDateFinAdhesion(){
-
-
-    const annee =
-
-        Number(
-            anneeAdhesion.value
-        );
-
-
-    if(
-        !annee
-    ){
-
-        dateFinAdhesion.value =
-            "";
-
-        return;
-
-    }
-
-
-    dateFinAdhesion.value =
-
-        annee
-        +
-        "-12-31";
-
-
-}
-
-
-function calculerTotal(){
-
-
-    total.value =
-
-        Number(
-            cotisation.value
-            ||
-            0
-        )
-        +
-
-        Number(
-            don.value
-            ||
-            0
-        );
-
-
-}
-
-
-cotisation.addEventListener(
-    "input",
-    calculerTotal
-);
-
-
-don.addEventListener(
-    "input",
-    calculerTotal
-);
-
-anneeAdhesion.addEventListener(
-    "input",
-    definirDateFinAdhesion
-);
-
-calculerTotal();
-
-
-definirDateFinAdhesion();
-
-/*
- Création du membre
-*/
 
 
 form.addEventListener(
-    "submit",
-    async(e)=>{
+"submit",
+async(e)=>{
 
 
-        e.preventDefault();
+e.preventDefault();
 
 
 
-        try {
+try{
 
 
+const numero =
+await prochainNumero();
 
-            const annee =
 
-                document.getElementById(
-                    "annee"
-                ).value;
 
+const annee =
+new Date()
+.getFullYear();
 
 
-            const numero =
 
-                await obtenirProchainNumeroMembre();
+const numeroMembre =
 
-
-
-            const numeroMembre =
-
-                genererNumeroMembre(
-                    annee,
-                    numero
-                );
-
-
-
-            await addDoc(
-                collection(
-                    db,
-                    "membres"
-                ),
-                {
-
-
-                    numeroMembre:
-
-
-                        numeroMembre,
-
-
-
-                    nom:
-
-                        document.getElementById(
-                            "nom"
-                        ).value,
-
-
-
-                    prenom:
-
-                        document.getElementById(
-                            "prenom"
-                        ).value,
-
-
-
-                    dateNaissance:
-
-                        document.getElementById(
-                            "dateNaissance"
-                        ).value,
-
-
-
-                    email:
-
-                        document.getElementById(
-                            "email"
-                        ).value,
-
-
-
-                    discord:
-
-                        document.getElementById(
-                            "discord"
-                        ).value,
-
-
-
-                    annee:
-
-                        Number(
-                            annee
-                        ),
-
-
-
-                    dateDebutAdhesion:
-
-                        document.getElementById(
-                            "dateDebutAdhesion"
-                        ).value,
-
-
-
-                    dateFinAdhesion:
-
-                        document.getElementById(
-                            "dateFinAdhesion"
-                        ).value,
-
-
-
-                    cotisation:
-
-                        Number(
-                            cotisation.value
-                        ),
-
-
-
-                    don:
-
-                        Number(
-                            don.value
-                        ),
-
-
-
-                    total:
-
-                        Number(
-                            total.value
-                        ),
-
-
-
-                    statutMembre:
-
-                        document.getElementById(
-                            "statutMembre"
-                        ).value,
-
-
-
-                    statutPaiement:
-
-                        document.getElementById(
-                            "statutPaiement"
-                        ).value,
-
-
-
-                    statutAdhesion:
-
-                        document.getElementById(
-                            "statutAdhesion"
-                        ).value,
-
-accepteParNom:
-
-    auth.currentUser.displayName
-    ||
-    auth.currentUser.email
-    ||
-    "Administrateur non identifié",
-
-
-accepteParEmail:
-
-    auth.currentUser.email
-    ||
-    "",
-
-
-accepteParUid:
-
-    auth.currentUser.uid,
-
-
-dateAcceptation:
-
-    serverTimestamp(),
-
-                    dateCreation:
-
-                        serverTimestamp(),
-
-
-
-                    ajoutManuel:
-
-                        true
-
-
-
-                }
-
-            );
-
-
-
-            message.innerHTML =
-
-                "✅ Membre créé avec succès : "
-                +
-                numeroMembre;
-
-
-
-            form.reset();
-
-
-
-        }
-
-        catch(error){
-
-
-            console.error(
-                error
-            );
-
-
-            message.innerHTML =
-
-                "❌ Erreur lors de la création du membre.";
-
-
-        }
-
-
-    }
+"CHRO-"
++
+annee
++
+"-"
++
+String(numero)
+.padStart(
+4,
+"0"
 );
+
+
+
+
+const id =
+crypto.randomUUID();
+
+
+
+
+await setDoc(
+
+doc(
+db,
+"membres",
+id
+),
+
+{
+
+
+numeroMembre,
+
+
+prenom:
+prenom.value,
+
+
+nom:
+nom.value,
+
+
+dateNaissance:
+dateNaissance.value,
+
+
+email:
+email.value,
+
+
+discord:
+discord.value,
+
+
+adresse:
+adresse.value,
+
+
+complementAdresse:
+complementAdresse.value,
+
+
+codePostal:
+codePostal.value,
+
+
+ville:
+ville.value,
+
+
+pays:
+pays.value,
+
+
+
+annee,
+
+
+
+cotisation:
+Number(
+cotisation.value
+),
+
+
+don:
+Number(
+don.value
+),
+
+
+total:
+
+Number(
+cotisation.value
+)
++
+Number(
+don.value
+),
+
+
+
+statutMembre:
+"adherent",
+
+
+statutPaiement:
+"paye",
+
+
+statutAdhesion:
+"active",
+
+
+ajoutManuel:
+true,
+
+
+dateCreation:
+new Date()
+
+}
+
+
+);
+
+
+
+message.textContent =
+"Le membre a été créé avec succès.";
+
+
+form.reset();
+
+
+
+}
+
+catch(error){
+
+
+console.error(error);
+
+
+message.textContent =
+"Erreur lors de la création.";
+
+
+}
+
+
+
+}
+);
+
+
+
 
 
 
 logout.addEventListener(
-    "click",
-    async()=>{
+"click",
+async()=>{
 
 
-        await signOut(
-            auth
-        );
+await signOut(auth);
 
 
-        window.location.href =
-        "index.html";
+window.location.href =
+"index.html";
 
 
-    }
+}
 );
