@@ -415,420 +415,97 @@ resultat.forEach(
 
 
 
-                const fiche =
+                const ligne = document.createElement("tr");
 
-                    document.createElement(
-                        "div"
-                    );
 
+ligne.innerHTML = `
 
-                fiche.className =
-                    "demande membre";
 
+<td>
+${membre.numeroMembre || "-"}
+</td>
 
 
-                /*
-                Date de création
-                */
+<td>
+${membre.nom || "-"}
+</td>
 
-                const dateCreation =
 
-                    membre.dateCreation
+<td>
+${membre.prenom || "-"}
+</td>
 
-                    ?
 
-                    membre
-                    .dateCreation
-                    .toDate()
-                    .toLocaleString(
+<td>
+${membre.ville || "-"}
+</td>
 
-                        "fr-FR",
 
-                        {
+<td>
 
-                            dateStyle:
-                                "long",
+${membre.statutMembre || "-"}
 
-                            timeStyle:
-                                "short"
+</td>
 
-                        }
 
-                    )
 
-                    :
+<td>
 
-                    "Non renseignée";
+${
+membre.statutPaiement === "paye"
+?
+"✅ Payé"
+:
+"❌ En attente"
+}
 
+</td>
 
 
-                /*
-                Date d'acceptation
-                */
 
-                const dateAcceptation =
+<td>
+${membre.dateFinAdhesion || "-"}
+</td>
 
-                    membre.dateAcceptation
 
-                    ?
+<td>
 
-                    membre
-                    .dateAcceptation
-                    .toDate()
-                    .toLocaleString(
-
-                        "fr-FR",
-
-                        {
-
-                            dateStyle:
-                                "long",
-
-                            timeStyle:
-                                "short"
-
-                        }
-
-                    )
-
-                    :
-
-                    "Non renseignée";
-
-
-
-                /*
-                Contenu de la fiche
-                */
-
-                fiche.innerHTML = `
-
-
-                    <h3>
-
-                        ${
-                            membre.prenom
-                            ||
-                            ""
-                        }
-
-                        ${
-                            membre.nom
-                            ||
-                            ""
-                        }
-
-                    </h3>
-
-
-
-                    <div class="information">
-
-                        <strong>
-
-                            E-mail :
-
-                        </strong>
-
-
-                        <span>
-
-                            ${
-                                membre.email
-                                ||
-                                "Non renseigné"
-                            }
-
-                        </span>
-
-                    </div>
-
-
-
-                    <div class="information">
-
-                        <strong>
-
-                            Discord :
-
-                        </strong>
-
-
-                        <span>
-
-                            ${
-                                membre.discord
-                                ||
-                                "Non renseigné"
-                            }
-
-                        </span>
-
-                    </div>
-
-
-
-                    <div class="information">
-
-                        <strong>
-
-                            Année d’adhésion :
-
-                        </strong>
-
-
-                        <span>
-
-                            ${
-                                membre.annee
-                                ||
-                                "Non renseignée"
-                            }
-
-                        </span>
-
-                    </div>
-
-
-
-                    <div class="information">
-
-                        <strong>
-
-                            Cotisation :
-
-                        </strong>
-
-
-                        <span>
-
-                            ${
-                                Number(
-
-                                    membre.cotisation
-                                    ||
-                                    0
-
-                                )
-                                .toFixed(2)
-                            }
-
-                            €
-
-                        </span>
-
-                    </div>
-
-
-
-                    <div class="information">
-
-                        <strong>
-
-                            Don :
-
-                        </strong>
-
-
-                        <span>
-
-                            ${
-                                Number(
-
-                                    membre.don
-                                    ||
-                                    0
-
-                                )
-                                .toFixed(2)
-                            }
-
-                            €
-
-                        </span>
-
-                    </div>
-
-
-
-                    <div class="information total">
-
-                        <strong>
-
-                            Total :
-
-                        </strong>
-
-
-                        <span>
-
-                            ${
-                                Number(
-
-                                    membre.total
-                                    ||
-                                    0
-
-                                )
-                                .toFixed(2)
-                            }
-
-                            €
-
-                        </span>
-
-                    </div>
-
-
-
-                    <div class="information">
-
-                        <strong>
-
-                            Statut du membre :
-
-                        </strong>
-
-
-                        <span>
-
-                            ${
-                                membre.statutMembre
-                                ||
-                                "Non renseigné"
-                            }
-
-                        </span>
-
-                    </div>
-
-
-
-                    <div class="information">
-
-                        <strong>
-
-                            Statut du paiement :
-
-                        </strong>
-
-
-                        <span>
-
-                            ${
-                                membre.statutPaiement
-                                ||
-                                "Non renseigné"
-                            }
-
-                        </span>
-
-                    </div>
-
-
-
-                    <div class="information">
-
-                        <strong>
-
-                            Statut de l’adhésion :
-
-                        </strong>
-
-
-                        <span>
-
-                            ${
-                                membre.statutAdhesion
-                                ||
-                                "Non renseigné"
-                            }
-
-                        </span>
-
-                    </div>
-
-
-
-                    <div class="information">
-
-                        <strong>
-
-                            Accepté par :
-
-                        </strong>
-
-
-                        <span>
-
-                            ${
-                                membre.accepteParNom
-                                ||
-                                "Non renseigné"
-                            }
-
-                        </span>
-
-                    </div>
-
-
-
-                    <div class="information">
-
-                        <strong>
-
-                            Date d’acceptation :
-
-                        </strong>
-
-
-                        <span>
-
-                            ${dateAcceptation}
-
-                        </span>
-
-                    </div>
-
-
-
-                    <div class="information">
-
-                        <strong>
-
-                            Fiche membre créée le :
-
-                        </strong>
-
-
-                        <span>
-
-                            ${dateCreation}
-
-                        </span>
-
-                    </div>
-
-                    <button
-    class="voir-membre"
-    data-id="${documentMembre.id}"
+<button
+class="voir-membre"
+data-id="${documentMembre.id}"
 >
-    👤 Voir la fiche complète
+
+👤 Voir
+
 </button>
 
-
-                `;
-
+</td>
 
 
-                /*
-                Ajout de la fiche
-                */
+`;
 
-                listeMembres
-                .appendChild(
-                    fiche
-                );
+
+
+listeMembres.appendChild(
+    ligne
+);
+
+
+
+ligne.querySelector(
+".voir-membre"
+)
+.addEventListener(
+"click",
+()=>{
+
+window.location.href =
+"fiche-membre.html?id="
++
+documentMembre.id;
+
+}
+);
 
                 const bouton =
     fiche.querySelector(
