@@ -10,7 +10,7 @@
 
 
 <title>
-Ajouter un membre - Chroma Esport
+Fiche membre - Chroma Esport
 </title>
 
 
@@ -35,7 +35,7 @@ CHROMA ESPORT
 
 
 <p>
-Ajouter un membre manuellement
+Fiche membre
 </p>
 
 </div>
@@ -50,14 +50,6 @@ href="membres.html"
 class="bouton-navigation"
 >
 👥 Membres
-</a>
-
-
-<a
-href="dashboard.html"
-class="bouton-navigation"
->
-📋 Demandes
 </a>
 
 
@@ -78,179 +70,22 @@ Déconnexion
 <main class="admin-container">
 
 
-<h2>
-Nouvel adhérent
+<h2 id="titreMembre">
+
+Chargement...
+
 </h2>
 
 
 
-<div class="formulaire-admin">
 
-
-<form id="formAjoutMembre">
-
-
-
-<h3>
-Identité
-</h3>
-
-
-<div class="ligne-form">
-
-
-<input
-id="prenom"
-type="text"
-placeholder="Prénom"
-required
+<div
+id="ficheMembre"
+class="fiche-membre"
 >
 
 
-<input
-id="nom"
-type="text"
-placeholder="Nom"
-required
->
-
-
-</div>
-
-
-
-<input
-id="dateNaissance"
-type="date"
->
-
-
-
-<h3>
-Contact
-</h3>
-
-
-
-<input
-id="email"
-type="email"
-placeholder="Email"
-required
->
-
-
-<input
-id="discord"
-type="text"
-placeholder="Discord"
->
-
-
-
-
-<h3>
-Adresse
-</h3>
-
-
-
-<input
-id="adresse"
-type="text"
-placeholder="Adresse"
->
-
-
-<input
-id="complementAdresse"
-type="text"
-placeholder="Complément d'adresse"
->
-
-
-<div class="ligne-form">
-
-
-<input
-id="codePostal"
-type="text"
-placeholder="Code postal"
->
-
-
-<input
-id="ville"
-type="text"
-placeholder="Ville"
->
-
-
-</div>
-
-
-
-<input
-id="pays"
-type="text"
-placeholder="Pays"
-value="France"
->
-
-
-
-
-<h3>
-Cotisation
-</h3>
-
-
-
-<div class="ligne-form">
-
-
-<input
-id="cotisation"
-type="number"
-value="50"
-placeholder="Cotisation"
->
-
-
-<input
-id="don"
-type="number"
-value="0"
-placeholder="Don"
->
-
-
-</div>
-
-
-
-
-<button
-type="submit"
-class="bouton-validation"
->
-
-➕ Créer le membre
-
-</button>
-
-
-
-<p
-id="message"
->
-
-</p>
-
-
-
-</form>
-
+Chargement des informations...
 
 
 </div>
@@ -261,10 +96,9 @@ id="message"
 
 
 
-
 <script
 type="module"
-src="ajouter-membre.js"
+src="fiche-membre.js"
 ></script>
 
 
