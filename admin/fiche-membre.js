@@ -12,10 +12,8 @@ signOut
 
 import {
 getFirestore,
-collection,
-getDocs,
 doc,
-setDoc
+getDoc
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
 
@@ -57,15 +55,15 @@ getFirestore(app);
 
 
 
-const form =
+const fiche =
 document.getElementById(
-"formAjoutMembre"
+"ficheMembre"
 );
 
 
-const message =
+const titre =
 document.getElementById(
-"message"
+"titreMembre"
 );
 
 
@@ -93,218 +91,383 @@ return;
 }
 
 
-}
-);
-
-
-
-
-
-
-async function prochainNumero(){
-
-
-const membres =
-await getDocs(
-collection(
-db,
-"membres"
-)
-);
-
-
-
-return membres.size + 1;
+chargerMembre();
 
 
 }
-
-
-
-
-
-
-form.addEventListener(
-"submit",
-async(e)=>{
-
-
-e.preventDefault();
-
-
-
-try{
-
-
-const numero =
-await prochainNumero();
-
-
-
-const annee =
-new Date()
-.getFullYear();
-
-
-
-const numeroMembre =
-
-"CHRO-"
-+
-annee
-+
-"-"
-+
-String(numero)
-.padStart(
-4,
-"0"
 );
 
 
+
+
+
+async function chargerMembre(){
+
+
+const params =
+new URLSearchParams(
+window.location.search
+);
 
 
 const id =
-crypto.randomUUID();
+params.get(
+"id"
+);
+
+
+
+if(!id){
+
+fiche.innerHTML =
+"Aucun membre sélectionné.";
+
+return;
+
+}
 
 
 
 
-await setDoc(
+
+const membreDoc =
+await getDoc(
 
 doc(
 db,
 "membres",
 id
-),
-
-{
-
-
-numeroMembre,
-
-
-prenom:
-prenom.value,
-
-
-nom:
-nom.value,
-
-
-dateNaissance:
-dateNaissance.value,
-
-
-email:
-email.value,
-
-
-discord:
-discord.value,
-
-
-adresse:
-adresse.value,
-
-
-complementAdresse:
-complementAdresse.value,
-
-
-codePostal:
-codePostal.value,
-
-
-ville:
-ville.value,
-
-
-pays:
-pays.value,
-
-
-
-annee,
-
-
-
-cotisation:
-Number(
-cotisation.value
-),
-
-
-don:
-Number(
-don.value
-),
-
-
-total:
-
-Number(
-cotisation.value
 )
-+
-Number(
-don.value
-),
-
-
-
-statutMembre:
-"adherent",
-
-
-statutPaiement:
-"paye",
-
-
-statutAdhesion:
-"active",
-
-
-ajoutManuel:
-true,
-
-
-dateCreation:
-new Date()
-
-}
-
 
 );
 
 
 
-message.textContent =
-"Le membre a été créé avec succès.";
+
+if(!membreDoc.exists()){
 
 
-form.reset();
+fiche.innerHTML =
+"Membre introuvable.";
 
 
-
-}
-
-catch(error){
-
-
-console.error(error);
-
-
-message.textContent =
-"Erreur lors de la création.";
+return;
 
 
 }
 
 
 
+
+const membre =
+membreDoc.data();
+
+
+
+
+
+titre.textContent =
+
+membre.numeroMembre
+||
+"Fiche membre";
+
+
+
+
+
+fiche.innerHTML = `
+
+
+
+<div class="carte-identite">
+
+
+<div class="numero-membre">
+
+${membre.numeroMembre || "-"}
+
+</div>
+
+
+
+<h2>
+
+${membre.prenom || ""}
+
+${membre.nom || ""}
+
+</h2>
+
+
+
+<span class="badge">
+
+${membre.statutMembre || "-"}
+
+</span>
+
+
+</div>
+
+
+
+
+
+<div class="bloc-fiche">
+
+
+<h3>
+Informations personnelles
+</h3>
+
+
+<p>
+<strong>Email :</strong>
+
+${membre.email || "-"}
+
+</p>
+
+
+
+<p>
+<strong>Discord :</strong>
+
+${membre.discord || "-"}
+
+</p>
+
+
+
+<p>
+<strong>Date de naissance :</strong>
+
+${membre.dateNaissance || "-"}
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+<div class="bloc-fiche">
+
+
+<h3>
+Adresse
+</h3>
+
+
+<p>
+
+${membre.adresse || "-"}
+
+</p>
+
+
+<p>
+
+${membre.complementAdresse || ""}
+
+</p>
+
+
+<p>
+
+${membre.codePostal || ""}
+${membre.ville || ""}
+
+</p>
+
+
+<p>
+
+${membre.pays || ""}
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+<div class="bloc-fiche">
+
+
+<h3>
+Adhésion
+</h3>
+
+
+
+<p>
+
+<strong>Année :</strong>
+
+${membre.annee || "-"}
+
+</p>
+
+
+
+<p>
+
+<strong>Début :</strong>
+
+${afficherDate(
+membre.dateDebutAdhesion
+)}
+
+</p>
+
+
+
+<p>
+
+<strong>Fin :</strong>
+
+${membre.dateFinAdhesion || "-"}
+
+</p>
+
+
+
+<p>
+
+<strong>Statut adhésion :</strong>
+
+${membre.statutAdhesion || "-"}
+
+</p>
+
+
+
+<p>
+
+<strong>Paiement :</strong>
+
+${membre.statutPaiement || "-"}
+
+</p>
+
+
+
+</div>
+
+
+
+
+
+
+<div class="bloc-fiche">
+
+
+<h3>
+Cotisation
+</h3>
+
+
+
+<p>
+
+Cotisation :
+
+${membre.cotisation || 0} €
+
+</p>
+
+
+
+<p>
+
+Don :
+
+${membre.don || 0} €
+
+</p>
+
+
+
+<p>
+
+Total :
+
+${membre.total || 0} €
+
+</p>
+
+
+
+</div>
+
+
+
+
+
+
+<div class="bloc-fiche">
+
+
+<h3>
+Validation
+</h3>
+
+
+
+<p>
+
+Accepté par :
+
+${membre.accepteParNom || "-"}
+
+</p>
+
+
+
+</div>
+
+
+
+`;
+
+
+
 }
+
+
+
+
+
+function afficherDate(date){
+
+
+if(!date)
+return "-";
+
+
+if(date.toDate){
+
+return date
+.toDate()
+.toLocaleDateString(
+"fr-FR"
 );
+
+}
+
+
+return date;
+
+
+}
 
 
 
