@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Modifier un membre - Chroma Esport</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<header class="admin-header">
+
+<div>
+
+<h1>CHROMA ESPORT</h1>
+
+<p>Modifier un membre</p>
+
+</div>
+
+<div class="navigation-admin">
+
+<a href="membres.html" class="bouton-navigation">
+👥 Membres
+</a>
+
+<a href="dashboard.html" class="bouton-navigation">
+📋 Demandes
+</a>
+
+<button id="logout">
+Déconnexion
+</button>
+
+</div>
+
+</header>
+
+<main class="admin-container">
+
+<h2 id="titrePage">
+Modification du membre
+</h2>
+
+<div class="formulaire-admin">
+
+<form id="formModifier">
+
+<h3>Identité</h3>
+
+<div class="ligne-form">
+
+<input id="prenom" type="text" required>
+
+<input id="nom" type="text" required>
+
+</div>
+
+<input id="dateNaissance" type="date">
+
+<h3>Contact</h3>
+
+<input id="email" type="email">
+
+<input id="discord" type="text">
+
+<h3>Adresse</h3>
+
+<input id="adresse" type="text">
+
+<input id="complementAdresse" type="text">
+
+<div class="ligne-form">
+
+<input id="codePostal" type="text">
+
+<input id="ville" type="text">
+
+</div>
+
+<input id="pays" type="text">
+
+<h3>Cotisation</h3>
+
+<div class="ligne-form">
+
+<input id="cotisation" type="number">
+
+<input id="don" type="number">
+
+</div>
+
+<h3>Statuts</h3>
+
+<select id="statutMembre">
+
+<option value="adherent">Adhérent</option>
+
+<option value="membre_actif">Membre actif</option>
+
+<option value="bienfaiteur">Bienfaiteur</option>
+
+<option value="honneur">Membre d'honneur</option>
+
+</select>
+
+<select id="statutPaiement">
+
+<option value="paye">Payé</option>
+
+<option value="en_attente">En attente</option>
+
+</select>
+
+<select id="statutAdhesion">
+
+<option value="active">Active</option>
+
+<option value="expiree">Expirée</option>
+
+<option value="non_active">Non active</option>
+
+</select>
+
+<button
+type="submit"
+class="bouton-validation">
+
+💾 Enregistrer les modifications
+
+</button>
+
+<p id="message"></p>
+
+</form>
+
+</div>
+
+</main>
+
+<script type="module" src="modifier-membre.js"></script>
+
+</body>
+</html>
