@@ -1,5 +1,5 @@
-
 <!DOCTYPE html>
+
 <html lang="fr">
 
 <head>
@@ -8,9 +8,14 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Dashboard | Chroma Esport</title>
+
+<title>
+Demandes adhésion - Chroma Esport
+</title>
+
 
 <link rel="stylesheet" href="style.css">
+
 
 </head>
 
@@ -18,15 +23,57 @@
 <body>
 
 
-<main class="admin-page">
+<header class="admin-header">
 
 
-<section class="admin-card dashboard">
-
+<div>
 
 <h1>
 CHROMA ESPORT
 </h1>
+
+<p>
+Gestion des demandes d’adhésion
+</p>
+
+</div>
+
+
+
+<div class="navigation-admin">
+
+
+<a
+href="membres.html"
+class="bouton-navigation"
+>
+👥 Membres
+</a>
+
+
+<a
+href="ajouter-membre.html"
+class="bouton-navigation"
+>
+➕ Ajouter un membre
+</a>
+
+
+<button id="logout">
+Déconnexion
+</button>
+
+
+</div>
+
+
+</header>
+
+
+
+
+
+<main class="admin-container">
 
 
 <h2>
@@ -34,70 +81,137 @@ Demandes d’adhésion
 </h2>
 
 
+
 <div class="onglets">
 
-    <button
-        class="onglet actif"
-        data-statut="en_attente"
-    >
-        En attente
-    </button>
 
-    <button
-        class="onglet"
-        data-statut="acceptee"
-    >
-        Acceptées
-    </button>
-
-    <button
-        class="onglet"
-        data-statut="refusee"
-    >
-        Refusées
-    </button>
-
-    <button
-        class="onglet"
-        data-statut="toutes"
-    >
-        Toutes
-    </button>
-
-</div>
-
-
-<div id="listeDemandes">
-
-    Chargement des demandes...
-
-</div>
-
-<div class="navigation-admin">
-<a
-    href="membres.html" 
-    class="bouton-navigation" 
-    > 
-    👥 Membres 
-</a>
-    
-<button id="logout">
-
-Se déconnecter
-
+<button
+class="onglet actif"
+data-statut="en_attente"
+>
+En attente
 </button>
+
+
+
+<button
+class="onglet"
+data-statut="acceptee"
+>
+Acceptées
+</button>
+
+
+
+<button
+class="onglet"
+data-statut="refusee"
+>
+Refusées
+</button>
+
+
+
+<button
+class="onglet"
+data-statut="toutes"
+>
+Toutes
+</button>
+
+
 </div>
 
-</section>
+
+
+
+<div class="table-container">
+
+
+<table class="table-membres">
+
+
+<thead>
+
+<tr>
+
+<th>
+Nom
+</th>
+
+
+<th>
+Email
+</th>
+
+
+<th>
+Discord
+</th>
+
+
+<th>
+Total
+</th>
+
+
+<th>
+Statut
+</th>
+
+
+<th>
+Date
+</th>
+
+
+<th>
+Action
+</th>
+
+
+</tr>
+
+
+</thead>
+
+
+
+<tbody id="listeDemandes">
+
+
+<tr>
+
+<td colspan="7">
+
+Chargement...
+
+</td>
+
+</tr>
+
+
+</tbody>
+
+
+</table>
+
+
+</div>
+
 
 
 </main>
 
 
-<script type="module" src="dashboard.js"></script>
+
+<script
+type="module"
+src="dashboard.js"
+></script>
 
 
 </body>
 
-</html>
 
+</html>
