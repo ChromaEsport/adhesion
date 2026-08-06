@@ -24,27 +24,39 @@ import {
    CONFIGURATION FIREBASE
 ========================= */
 
+
 const firebaseConfig = {
 
-    apiKey: "AIzaSyAedIKW_LRWLpa9V_t7PcTTbrDmQOj4HAo",
-  authDomain: "chroma-adhesion.firebaseapp.com",
-  projectId: "chroma-adhesion",
-  storageBucket: "chroma-adhesion.firebasestorage.app",
-  messagingSenderId: "892582501197",
-  appId: "1:892582501197:web:2483ffc9c98e47a3d17504",
+    apiKey:
+        "AIzaSyAedIKW_LRWLpa9V_t7PcTTbrDmQOj4HAo",
+
+    authDomain:
+        "chroma-adhesion.firebaseapp.com",
+
+    projectId:
+        "chroma-adhesion",
+
+    storageBucket:
+        "chroma-adhesion.firebasestorage.app",
+
+    messagingSenderId:
+        "892582501197",
+
+    appId:
+        "1:892582501197:web:2483ffc9c98e47a3d17504"
 
 };
 
 
 
 const app =
-    initializeApp(
-        firebaseConfig
-    );
+    initializeApp(firebaseConfig);
+
 
 
 const auth =
     getAuth(app);
+
 
 
 const db =
@@ -52,19 +64,23 @@ const db =
 
 
 
+
 /* =========================
-   ÉLÉMENTS HTML
+   ELEMENTS HTML
 ========================= */
+
 
 const listeMembres =
     document.getElementById(
         "listeMembres"
     );
 
+
 const rechercheMembre =
     document.getElementById(
         "rechercheMembre"
     );
+
 
 const logout =
     document.getElementById(
@@ -79,31 +95,35 @@ const onglets =
 
 
 
+
 /* =========================
-   FILTRE ACTUEL
+   VARIABLES
 ========================= */
+
 
 let filtreActuel =
-    "en_attente_paiement";
+    "active";
 
-let listeCompleteMembres = [];
+
+let tousLesMembres = [];
+
+
+
 
 /* =========================
-   VÉRIFICATION CONNEXION
+   AUTHENTIFICATION
 ========================= */
+
 
 onAuthStateChanged(
     auth,
-    (user) => {
+    (user)=>{
 
 
-        if (
-            !user
-        ) {
+        if(!user){
 
             window.location.href =
-                "index.html";
-
+            "index.html";
 
             return;
 
@@ -118,63 +138,42 @@ onAuthStateChanged(
 
 
 
+
 /* =========================
-   GESTION DES ONGLETS
+   ONGLET
 ========================= */
 
+
 onglets.forEach(
-    (onglet) => {
+    onglet=>{
 
 
         onglet.addEventListener(
             "click",
-            () => {
+            ()=>{
 
-
-                /*
-                Retire la classe active
-                des autres onglets
-                */
 
                 onglets.forEach(
-                    (autreOnglet) => {
+                    autre=>{
 
-
-                        autreOnglet
-                        .classList
-                        .remove(
+                        autre.classList.remove(
                             "actif"
                         );
-
 
                     }
                 );
 
 
-                /*
-                Active l'onglet cliqué
-                */
-
-                onglet
-                .classList
-                .add(
+                onglet.classList.add(
                     "actif"
                 );
 
-
-                /*
-                Récupère le filtre
-                */
 
                 filtreActuel =
                     onglet.dataset.filtre;
 
 
-                /*
-                Recharge les membres
-                */
-
-                chargerMembres();
+                afficherMembres();
 
 
             }
@@ -186,365 +185,109 @@ onglets.forEach(
 
 
 
+
 /* =========================
-   CHARGEMENT DES MEMBRES
+   CHARGEMENT FIRESTORE
 ========================= */
 
-async function chargerMembres() {
+
+async function chargerMembres(){
 
 
-    listeMembres.innerHTML =
-        "Chargement des membres...";
+    listeMembres.innerHTML = `
+
+    <tr>
+    <td colspan="9">
+    Chargement...
+    </td>
+    </tr>
+
+    `;
 
 
     try {
 
 
-        let resultat;
+        const resultat =
+            await getDocs(
+                collection(
+                    db,
+                    "membres"
+                )
+            );
 
 
 
-        /*
-        ONGLET TOUS
+        tousLesMembres = [];
 
-        Aucun filtre :
-        tous les membres sont affichés.
-        */
 
-        if (
-            filtreActuel ===
-            "tous"
-        ) {
 
+        resultat.forEach(
+            doc=>{
 
-            resultat =
-                await getDocs(
-                    collection(
-                        db,
-                        "membres"
-                    )
-                );
 
+                tousLesMembres.push({
 
-        }
+                    id:
+                    doc.id,
 
+                    ...doc.data()
 
+                });
 
-        /*
-        EN ATTENTE DE PAIEMENT
-        */
 
-        else if (
-            filtreActuel ===
-            "en_attente_paiement"
-        ) {
-
-
-            const requete =
-
-                query(
-
-                    collection(
-                        db,
-                        "membres"
-                    ),
-
-                    where(
-
-                        "statutPaiement",
-
-                        "==",
-
-                        "en_attente"
-
-                    )
-
-                );
-
-
-            resultat =
-                await getDocs(
-                    requete
-                );
-
-
-        }
-
-
-
-        /*
-        ADHÉSIONS ACTIVES
-        */
-
-        else if (
-            filtreActuel ===
-            "active"
-        ) {
-
-
-            const requete =
-
-                query(
-
-                    collection(
-                        db,
-                        "membres"
-                    ),
-
-                    where(
-
-                        "statutAdhesion",
-
-                        "==",
-
-                        "active"
-
-                    )
-
-                );
-
-
-            resultat =
-                await getDocs(
-                    requete
-                );
-
-
-        }
-
-
-
-        /*
-        ADHÉSIONS EXPIRÉES
-        */
-
-        else if (
-            filtreActuel ===
-            "expiree"
-        ) {
-
-
-            const requete =
-
-                query(
-
-                    collection(
-                        db,
-                        "membres"
-                    ),
-
-                    where(
-
-                        "statutAdhesion",
-
-                        "==",
-
-                        "expiree"
-
-                    )
-
-                );
-
-
-            resultat =
-                await getDocs(
-                    requete
-                );
-
-
-        }
-
-
-
-        /*
-        Vide la liste avant
-        le nouvel affichage
-        */
-
-        listeMembres.innerHTML =
-            "";
-
-
-
-        /*
-        Aucun résultat
-        */
-
-        if (
-            resultat.empty
-        ) {
-
-
-            listeMembres.innerHTML =
-
-                "<p>Aucun membre dans cette catégorie.</p>";
-
-
-            return;
-
-
-        }
-
-
-
-        /*
-        Création d'une fiche
-        pour chaque membre
-        */
-
-        listeCompleteMembres = [];
-
-
-resultat.forEach(
-    (documentMembre) => {
-
-
-        listeCompleteMembres.push({
-
-            id:
-                documentMembre.id,
-
-            ...documentMembre.data()
-
-        });
-
-
-                const membre =
-
-                    documentMembre.data();
-
-
-
-                const ligne = document.createElement("tr");
-
-
-ligne.innerHTML = `
-
-
-<td>
-${membre.numeroMembre || "-"}
-</td>
-
-
-<td>
-${membre.nom || "-"}
-</td>
-
-
-<td>
-${membre.prenom || "-"}
-</td>
-
-
-<td>
-${membre.ville || "-"}
-</td>
-
-
-<td>
-
-${membre.statutMembre || "-"}
-
-</td>
-
-
-
-<td>
-
-${
-membre.statutPaiement === "paye"
-?
-"✅ Payé"
-:
-"❌ En attente"
-}
-
-</td>
-
-
-
-<td>
-${membre.dateFinAdhesion || "-"}
-</td>
-
-
-<td>
-
-<button
-class="voir-membre"
-data-id="${documentMembre.id}"
->
-
-👤 Voir
-
-</button>
-
-</td>
-
-
-`;
-
-
-
-listeMembres.appendChild(
-    ligne
-);
-
-
-
-ligne.querySelector(
-".voir-membre"
-)
-.addEventListener(
-"click",
-()=>{
-
-window.location.href =
-"fiche-membre.html?id="
-+
-documentMembre.id;
-
-}
-);
-
-                const bouton =
-    fiche.querySelector(
-        ".voir-membre"
-    );
-
-
-bouton.addEventListener(
-    "click",
-    ()=>{
-
-        window.location.href =
-        "fiche-membre.html?id="
-        +
-        documentMembre.id;
-
-    }
-);
             }
         );
 
-    
-}
 
-    catch (error) {
+
+        /*
+        Tri par numéro membre
+        */
+
+
+        tousLesMembres.sort(
+            (a,b)=>{
+
+
+                return (
+                    a.numeroMembre || ""
+                )
+                .localeCompare(
+                    b.numeroMembre || ""
+                );
+
+
+            }
+        );
+
+
+
+        afficherMembres();
+
+
+
+    }
+
+
+    catch(error){
 
 
         console.error(
-
-            "Erreur lors du chargement des membres :",
-
+            "Erreur chargement membres :",
             error
-
         );
 
 
-        listeMembres.innerHTML =
+        listeMembres.innerHTML = `
 
-            "<p>Impossible de charger les membres.</p>";
+        <tr>
+        <td colspan="9">
+        Impossible de charger les membres.
+        </td>
+        </tr>
+
+        `;
 
 
     }
@@ -553,33 +296,63 @@ bouton.addEventListener(
 }
 
 
+
+
+
+
 /* =========================
-   DÉCONNEXION
+   AFFICHAGE TABLEAU
 ========================= */
 
-logout.addEventListener(
 
-    "click",
-
-    async () => {
+function afficherMembres(){
 
 
-        await signOut(
-            auth
+    listeMembres.innerHTML = "";
+
+
+
+    let listeFiltre =
+
+        tousLesMembres.filter(
+            membre=>{
+
+
+                if(
+                    filtreActuel === "active"
+                ){
+
+                    return (
+                        membre.statutAdhesion
+                        ===
+                        "active"
+                    );
+
+                }
+
+
+
+                if(
+                    filtreActuel === "expiree"
+                ){
+
+                    return (
+                        membre.statutAdhesion
+                        ===
+                        "expiree"
+                    );
+
+                }
+
+
+
+                return true;
+
+
+            }
         );
 
 
-        window.location.href =
-
-            "index.html";
-
-
-    }
-
-);
-
-
-function rechercherMembres(){
 
 
     const recherche =
@@ -590,42 +363,239 @@ function rechercherMembres(){
 
 
 
-    const fiches =
 
-        document.querySelectorAll(
-            ".membre"
-        );
+    if(recherche){
 
 
-
-    fiches.forEach(
-        (fiche)=>{
-
-
-            const texte =
-
-                fiche.textContent
-                .toLowerCase();
+        listeFiltre =
+            listeFiltre.filter(
+                membre=>{
 
 
+                    const texte =
 
-            if(
-                texte.includes(
-                    recherche
-                )
-            ){
+                    (
 
-                fiche.style.display =
-                    "block";
+                        membre.numeroMembre
+                        +
 
-            }
+                        membre.nom
+                        +
 
-            else {
+                        membre.prenom
+                        +
 
-                fiche.style.display =
-                    "none";
+                        membre.discord
+                        +
 
-            }
+                        membre.ville
+
+                    )
+
+                    .toLowerCase();
+
+
+
+                    return texte.includes(
+                        recherche
+                    );
+
+
+                }
+            );
+
+
+    }
+
+
+
+
+
+    if(
+        listeFiltre.length === 0
+    ){
+
+
+        listeMembres.innerHTML = `
+
+        <tr>
+        <td colspan="9">
+        Aucun membre trouvé.
+        </td>
+        </tr>
+
+        `;
+
+
+        return;
+
+    }
+
+
+
+
+
+    listeFiltre.forEach(
+        membre=>{
+
+
+            const ligne =
+                document.createElement(
+                    "tr"
+                );
+
+
+
+            ligne.innerHTML = `
+
+
+
+<td>
+
+${membre.numeroMembre || "-"}
+
+</td>
+
+
+
+<td>
+
+${membre.nom || "-"}
+
+</td>
+
+
+
+<td>
+
+${membre.prenom || "-"}
+
+</td>
+
+
+
+
+<td>
+
+${membre.discord || "-"}
+
+</td>
+
+
+
+
+<td>
+
+${membre.ville || "-"}
+
+</td>
+
+
+
+
+<td>
+
+<span class="badge statut">
+
+${membre.statutMembre || "-"}
+
+</span>
+
+</td>
+
+
+
+
+<td>
+
+<span class="badge paiement">
+
+${
+membre.statutPaiement === "paye"
+
+?
+"✅ Payé"
+
+:
+
+"❌ Non payé"
+
+}
+
+</span>
+
+
+</td>
+
+
+
+
+<td>
+
+${
+membre.dateFinAdhesion
+||
+"-"
+}
+
+</td>
+
+
+
+
+<td>
+
+
+<button
+
+class="voir-membre"
+
+data-id="${membre.id}"
+
+>
+
+👤 Voir
+
+</button>
+
+
+</td>
+
+
+
+
+`;
+
+
+
+
+            listeMembres.appendChild(
+                ligne
+            );
+
+
+
+
+
+            ligne
+            .querySelector(
+                ".voir-membre"
+            )
+            .addEventListener(
+                "click",
+                ()=>{
+
+
+                    window.location.href =
+
+                    "fiche-membre.html?id="
+                    +
+                    membre.id;
+
+
+                }
+            );
+
 
 
         }
@@ -634,7 +604,49 @@ function rechercherMembres(){
 
 }
 
+
+
+
+
+
+/* =========================
+   RECHERCHE
+========================= */
+
+
 rechercheMembre.addEventListener(
     "input",
-    rechercherMembres
+    ()=>{
+
+
+        afficherMembres();
+
+
+    }
+);
+
+
+
+
+
+/* =========================
+   LOGOUT
+========================= */
+
+
+logout.addEventListener(
+    "click",
+    async ()=>{
+
+
+        await signOut(
+            auth
+        );
+
+
+        window.location.href =
+        "index.html";
+
+
+    }
 );
