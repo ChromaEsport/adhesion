@@ -4,17 +4,18 @@
 
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-    <title>
-        Ajouter un membre - Chroma Esport
-    </title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-    <link rel="stylesheet" href="style.css">
+<title>
+Ajouter un membre - Chroma Esport
+</title>
+
+
+<link rel="stylesheet" href="style.css">
+
 
 </head>
 
@@ -22,36 +23,55 @@
 <body>
 
 
+
 <header class="admin-header">
 
 
-    <h1>
-        CHROMA ESPORT
-    </h1>
+<div>
+
+<h1>
+CHROMA ESPORT
+</h1>
 
 
-    <div class="navigation-admin">
+<p>
+Ajouter un membre manuellement
+</p>
+
+</div>
 
 
-        <a
-            href="membres.html"
-            class="bouton-navigation"
-        >
-            👥 Membres
-        </a>
+
+<div class="navigation-admin">
 
 
-        <button id="logout">
+<a
+href="membres.html"
+class="bouton-navigation"
+>
+👥 Membres
+</a>
 
-            Déconnexion
 
-        </button>
+<a
+href="dashboard.html"
+class="bouton-navigation"
+>
+📋 Demandes
+</a>
 
 
-    </div>
+<button id="logout">
+Déconnexion
+</button>
+
+
+</div>
 
 
 </header>
+
+
 
 
 
@@ -59,322 +79,151 @@
 
 
 <h2>
-    Ajouter un membre manuellement
+Nouvel adhérent
 </h2>
 
 
 
-<form
-id="formAjoutMembre"
-class="demande"
->
+<div class="formulaire-admin">
+
+
+<form id="formAjoutMembre">
 
 
 
 <h3>
-Informations personnelles
+Identité
 </h3>
 
 
-
-<div class="information">
-
-<label>
-Nom
-</label>
+<div class="ligne-form">
 
 
 <input
-type="text"
-id="nom"
-required
->
-
-</div>
-
-
-
-<div class="information">
-
-<label>
-Prénom
-</label>
-
-
-<input
-type="text"
 id="prenom"
+type="text"
+placeholder="Prénom"
 required
 >
+
+
+<input
+id="nom"
+type="text"
+placeholder="Nom"
+required
+>
+
 
 </div>
 
 
 
-<div class="information">
-
-<label>
-Date de naissance
-</label>
-
-
 <input
-type="date"
 id="dateNaissance"
-required
+type="date"
 >
 
-</div>
 
 
+<h3>
+Contact
+</h3>
 
-<div class="information">
-
-<label>
-Adresse e-mail
-</label>
 
 
 <input
-type="email"
 id="email"
+type="email"
+placeholder="Email"
+required
 >
-
-</div>
-
-
-
-<div class="information">
-
-<label>
-Discord
-</label>
 
 
 <input
-type="text"
 id="discord"
->
-
-</div>
-
-
-
-
-<h3>
-Informations adhésion
-</h3>
-
-
-
-<div class="information">
-
-<label>
-Numéro membre
-</label>
-
-
-<input
 type="text"
-id="numeroMembre"
-readonly
-placeholder="Génération automatique"
+placeholder="Discord"
 >
-
-</div>
-
-
-
-<div class="information">
-
-<label>
-Année d’adhésion
-</label>
-
-
-<input
-type="number"
-id="annee"
-value="2026"
-required
->
-
-</div>
-
-
-
-<div class="information">
-
-<label>
-Début adhésion
-</label>
-
-
-<input
-type="date"
-id="dateDebutAdhesion"
-required
->
-
-</div>
-
-
-
-<div class="information">
-
-<label>
-Fin d’adhésion
-</label>
-
-<input
-type="date"
-id="dateFinAdhesion"
-readonly
->
-
-</div>
 
 
 
 
 <h3>
-Informations paiement
+Adresse
 </h3>
 
 
 
-<div class="information">
+<input
+id="adresse"
+type="text"
+placeholder="Adresse"
+>
 
-<label>
+
+<input
+id="complementAdresse"
+type="text"
+placeholder="Complément d'adresse"
+>
+
+
+<div class="ligne-form">
+
+
+<input
+id="codePostal"
+type="text"
+placeholder="Code postal"
+>
+
+
+<input
+id="ville"
+type="text"
+placeholder="Ville"
+>
+
+
+</div>
+
+
+
+<input
+id="pays"
+type="text"
+placeholder="Pays"
+value="France"
+>
+
+
+
+
+<h3>
 Cotisation
-</label>
-
-
-<input
-type="number"
-id="cotisation"
-value="50"
-required
->
-
-</div>
-
-
-
-<div class="information">
-
-<label>
-Don
-</label>
-
-
-<input
-type="number"
-id="don"
-value="0"
->
-
-</div>
-
-
-
-<div class="information">
-
-<label>
-Total
-</label>
-
-
-<input
-type="number"
-id="total"
-readonly
->
-
-</div>
-
-
-
-
-<h3>
-Statuts
 </h3>
 
 
 
-<div class="information">
-
-<label>
-Statut membre
-</label>
+<div class="ligne-form">
 
 
-<select id="statutMembre">
+<input
+id="cotisation"
+type="number"
+value="50"
+placeholder="Cotisation"
+>
 
 
-<option value="adherent">
-Membre adhérent
-</option>
+<input
+id="don"
+type="number"
+value="0"
+placeholder="Don"
+>
 
-
-<option value="actif">
-Membre actif
-</option>
-
-
-</select>
-
-</div>
-
-
-
-<div class="information">
-
-<label>
-Statut paiement
-</label>
-
-
-<select id="statutPaiement">
-
-
-<option value="paye">
-Payé
-</option>
-
-
-<option value="en_attente">
-En attente
-</option>
-
-
-</select>
-
-</div>
-
-
-
-<div class="information">
-
-<label>
-Statut adhésion
-</label>
-
-
-<select id="statutAdhesion">
-
-
-<option value="active">
-Active
-</option>
-
-
-<option value="expiree">
-Expirée
-</option>
-
-
-</select>
 
 </div>
 
@@ -383,22 +232,33 @@ Expirée
 
 <button
 type="submit"
-class="bouton-navigation"
+class="bouton-validation"
 >
 
-Créer le membre
+➕ Créer le membre
 
 </button>
+
+
+
+<p
+id="message"
+>
+
+</p>
+
 
 
 </form>
 
 
 
-<p id="message"></p>
+</div>
+
 
 
 </main>
+
 
 
 
