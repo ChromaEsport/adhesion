@@ -1,0 +1,650 @@
+/* ==================================
+   CHROMA ESPORT - STYLE ADMIN
+   Pages connectées
+================================== */
+
+
+/* ==============================
+   RESET
+============================== */
+
+* {
+
+    box-sizing: border-box;
+
+}
+
+
+
+body {
+
+    margin: 0;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background:
+        #010c2c;
+
+    color:
+        #ffffff;
+
+}
+
+
+
+/* ==============================
+   HEADER
+============================== */
+
+
+.admin-header {
+
+
+    background:
+        linear-gradient(
+            135deg,
+            #010c2c,
+            #3c9195
+        );
+
+
+    padding:
+        25px 40px;
+
+
+    display:
+        flex;
+
+
+    justify-content:
+        space-between;
+
+
+    align-items:
+        center;
+
+
+    flex-wrap:
+        wrap;
+
+
+}
+
+
+
+.admin-header h1 {
+
+
+    margin:
+        0;
+
+
+    font-size:
+        32px;
+
+
+    letter-spacing:
+        2px;
+
+
+}
+
+
+
+.admin-header p {
+
+
+    margin-top:
+        8px;
+
+
+    opacity:
+        0.8;
+
+
+}
+
+
+
+/* ==============================
+   NAVIGATION
+============================== */
+
+
+.navigation-admin {
+
+
+    display:
+        flex;
+
+
+    gap:
+        15px;
+
+
+    align-items:
+        center;
+
+
+}
+
+
+
+.bouton-navigation,
+#logout {
+
+
+    border:
+        none;
+
+
+    padding:
+        12px 18px;
+
+
+    border-radius:
+        8px;
+
+
+    cursor:
+        pointer;
+
+
+    text-decoration:
+        none;
+
+
+    color:
+        white;
+
+
+    background:
+        #1875c2;
+
+
+    transition:
+        0.2s;
+
+
+}
+
+
+
+.bouton-navigation:hover,
+#logout:hover {
+
+
+    transform:
+        translateY(-2px);
+
+
+    opacity:
+        0.9;
+
+
+}
+
+
+
+#logout {
+
+
+    background:
+        #c0392b;
+
+
+}
+
+
+
+/* ==============================
+   CONTENU
+============================== */
+
+
+.admin-container {
+
+
+    width:
+        95%;
+
+
+    max-width:
+        1400px;
+
+
+    margin:
+        40px auto;
+
+
+}
+
+
+
+.admin-container h2 {
+
+
+    font-size:
+        28px;
+
+
+}
+
+
+
+.description-dashboard {
+
+
+    opacity:
+        0.8;
+
+
+    margin-bottom:
+        30px;
+
+
+}
+
+
+
+
+
+/* ==============================
+   ONGLETS
+============================== */
+
+
+.onglets {
+
+
+    display:
+        flex;
+
+
+    gap:
+        10px;
+
+
+    flex-wrap:
+        wrap;
+
+
+    margin-bottom:
+        25px;
+
+
+}
+
+
+
+.onglet {
+
+
+    padding:
+        12px 20px;
+
+
+    border:
+        none;
+
+
+    border-radius:
+        8px;
+
+
+    cursor:
+        pointer;
+
+
+    background:
+        #162447;
+
+
+    color:
+        white;
+
+
+}
+
+
+
+.onglet.actif {
+
+
+    background:
+        #3c9195;
+
+
+}
+
+
+
+/* ==============================
+   RECHERCHE
+============================== */
+
+
+.recherche-membres input {
+
+
+    width:
+        100%;
+
+
+    padding:
+        15px;
+
+
+    border-radius:
+        8px;
+
+
+    border:
+        none;
+
+
+    margin-bottom:
+        25px;
+
+
+    font-size:
+        16px;
+
+
+}
+
+
+
+
+
+/* ==============================
+   TABLEAU MEMBRES
+============================== */
+
+
+.table-container {
+
+
+    overflow-x:
+        auto;
+
+
+    background:
+        #081638;
+
+
+    border-radius:
+        12px;
+
+
+}
+
+
+
+.table-membres {
+
+
+    width:
+        100%;
+
+
+    border-collapse:
+        collapse;
+
+
+}
+
+
+
+.table-membres th {
+
+
+    background:
+        #0d1b42;
+
+
+    padding:
+        15px;
+
+
+    text-align:
+        left;
+
+
+}
+
+
+
+.table-membres td {
+
+
+    padding:
+        15px;
+
+
+    border-bottom:
+        1px solid rgba(
+            255,
+            255,
+            255,
+            0.1
+        );
+
+
+}
+
+
+
+.table-membres tr:hover {
+
+
+    background:
+        rgba(
+            60,
+            145,
+            149,
+            0.15
+        );
+
+
+}
+
+
+
+/* ==============================
+   BOUTONS ACTION
+============================== */
+
+
+.bouton-action {
+
+
+    border:
+        none;
+
+
+    background:
+        #3c9195;
+
+
+    color:
+        white;
+
+
+    padding:
+        8px 14px;
+
+
+    border-radius:
+        6px;
+
+
+    cursor:
+        pointer;
+
+
+}
+
+
+
+/* ==============================
+   FICHES
+============================== */
+
+
+.demande {
+
+
+    background:
+        #081638;
+
+
+    padding:
+        25px;
+
+
+    border-radius:
+        12px;
+
+
+}
+
+
+
+.demande h3 {
+
+
+    margin-top:
+        0;
+
+
+    color:
+        #8fecc9;
+
+
+}
+
+
+
+/* ==============================
+   INFORMATIONS
+============================== */
+
+
+.information {
+
+
+    display:
+        flex;
+
+
+    justify-content:
+        space-between;
+
+
+    padding:
+        12px 0;
+
+
+    border-bottom:
+        1px solid rgba(
+            255,
+            255,
+            255,
+            0.1
+        );
+
+
+}
+
+
+
+.information strong {
+
+
+    color:
+        #8fecc9;
+
+
+}
+
+
+
+
+/* ==============================
+   RESPONSIVE
+============================== */
+
+
+@media(max-width:800px){
+
+
+.admin-header {
+
+
+    flex-direction:
+        column;
+
+
+    gap:
+        20px;
+
+
+    align-items:
+        flex-start;
+
+
+}
+
+
+
+.navigation-admin {
+
+
+    width:
+        100%;
+
+
+    flex-direction:
+        column;
+
+
+}
+
+
+
+.bouton-navigation,
+#logout {
+
+
+    width:
+        100%;
+
+
+    text-align:
+        center;
+
+
+}
+
+
+
+.information {
+
+
+    flex-direction:
+        column;
+
+
+    gap:
+        5px;
+
+
+}
+
+
+
+}
