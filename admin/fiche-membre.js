@@ -72,7 +72,22 @@ document.getElementById(
 "logout"
 );
 
+const actionsAdmin =
+document.getElementById(
+"actionsAdmin"
+);
 
+
+const boutonRenouveler =
+document.getElementById(
+"renouvelerMembre"
+);
+
+
+const statutCarte =
+document.getElementById(
+"statutCarte"
+);
 
 
 
@@ -162,7 +177,7 @@ return;
 const membre =
 membreDoc.data();
 
-
+afficherActionsAdmin(membre);
 
 
 
@@ -470,7 +485,61 @@ return date;
 }
 
 
+function afficherActionsAdmin(membre){
 
+
+actionsAdmin.style.display =
+"block";
+
+
+
+/*
+Afficher renouvellement uniquement
+si adhésion expirée
+*/
+
+if(
+membre.statutAdhesion === "expiree"
+){
+
+boutonRenouveler.style.display =
+"block";
+
+}
+
+else{
+
+boutonRenouveler.style.display =
+"none";
+
+}
+
+
+
+/*
+Statut carte membre
+*/
+
+if(
+membre.carteEnvoyee === true
+){
+
+statutCarte.innerHTML =
+
+"🪪 Carte membre : 🟢 Envoyée";
+
+}
+
+else{
+
+statutCarte.innerHTML =
+
+"🪪 Carte membre : 🔴 Non envoyée";
+
+}
+
+
+}
 
 
 
