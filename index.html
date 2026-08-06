@@ -203,6 +203,165 @@
 
 
                 <h2>
+    Adresse postale
+</h2>
+
+
+<div class="form-group">
+
+    <label for="adresse">
+
+        Adresse *
+
+    </label>
+
+    <input
+        type="text"
+        id="adresse"
+        name="adresse"
+        required
+        autocomplete="street-address"
+        placeholder="Exemple : 12 rue Victor Hugo"
+    >
+
+</div>
+
+
+<div class="form-group">
+
+    <label for="complementAdresse">
+
+        Complément d'adresse
+
+    </label>
+
+    <input
+        type="text"
+        id="complementAdresse"
+        name="complementAdresse"
+        autocomplete="address-line2"
+        placeholder="Appartement, bâtiment, étage..."
+    >
+
+</div>
+
+
+<div class="form-row">
+
+    <div class="form-group">
+
+        <label for="codePostal">
+
+            Code postal *
+
+        </label>
+
+        <input
+            type="text"
+            id="codePostal"
+            name="codePostal"
+            required
+            maxlength="10"
+            autocomplete="postal-code"
+        >
+
+    </div>
+
+
+    <div class="form-group">
+
+        <label for="ville">
+
+            Ville *
+
+        </label>
+
+        <input
+            type="text"
+            id="ville"
+            name="ville"
+            required
+            autocomplete="address-level2"
+        >
+
+    </div>
+
+</div>
+
+
+<div class="form-group">
+
+    <label for="pays">
+
+        Pays *
+
+    </label>
+
+    <select
+        id="pays"
+        name="pays"
+        required
+        autocomplete="country-name"
+    >
+
+        <option value="France" selected>
+
+            France
+
+        </option>
+
+        <option value="Belgique">
+
+            Belgique
+
+        </option>
+
+        <option value="Suisse">
+
+            Suisse
+
+        </option>
+
+        <option value="Luxembourg">
+
+            Luxembourg
+
+        </option>
+
+        <option value="Canada">
+
+            Canada
+
+        </option>
+
+        <option value="Autre">
+
+            Autre
+
+        </option>
+
+    </select>
+
+</div>
+
+
+<div class="checkbox-group">
+
+    <label>
+
+        <input
+            type="checkbox"
+            id="adresseAutorisation"
+            required
+        >
+
+        J'autorise Chroma Esport à utiliser cette adresse uniquement pour l'envoi de ma carte de membre et des courriers liés à mon adhésion.
+
+    </label>
+
+</div>
+
+                <h2>
                     Cotisation et soutien
                 </h2>
 
