@@ -251,569 +251,237 @@ async function chargerDemandes() {
         */
 
         result.forEach(
-            (documentFirestore) => {
+(documentFirestore)=>{
 
 
-                const data =
-                    documentFirestore.data();
+const data =
+documentFirestore.data();
 
 
 
-                const bloc =
-                    document.createElement(
-                        "div"
-                    );
+const ligne =
+document.createElement(
+"tr"
+);
 
 
-                bloc.className =
-                    "demande";
 
+const dateEnvoi =
 
+data.dateDemande
 
-                /*
-                DATE D'ENVOI
-                */
+?
 
-                const dateEnvoi =
-                    data.dateDemande
+data.dateDemande
+.toDate()
+.toLocaleDateString(
+"fr-FR"
+)
 
-                    ? data
-                    .dateDemande
-                    .toDate()
-                    .toLocaleString(
-                        "fr-FR",
-                        {
+:
 
-                            dateStyle:
-                                "long",
+"-";
 
-                            timeStyle:
-                                "short"
 
-                        }
-                    )
 
-                    : "Date non disponible";
 
 
+ligne.innerHTML = `
 
-                /*
-                DATE DE DÉCISION
-                */
 
-                const dateDecision =
-                    data.dateDecision
+<td>
 
-                    ? data
-                    .dateDecision
-                    .toDate()
-                    .toLocaleString(
-                        "fr-FR",
-                        {
+${data.prenom || ""}
+${data.nom || ""}
 
-                            dateStyle:
-                                "long",
+</td>
 
-                            timeStyle:
-                                "short"
 
-                        }
-                    )
 
-                    : "Non renseignée";
+<td>
 
+${data.email || "-"}
 
+</td>
 
-                /*
-                BOUTONS
 
-                Affichés uniquement
-                pour les demandes
-                en attente.
-                */
 
-                const boutonsDecision =
+<td>
 
-                    data.statut ===
-                    "en_attente"
+${data.discord || "-"}
 
-                    ? `
+</td>
 
-                    <div class="actions">
 
-                        <button
-                            class="accepter"
-                        >
 
-                            ✅ Accepter
+<td>
 
-                        </button>
+${Number(
+data.total || 0
+).toFixed(2)}
+€
 
+</td>
 
-                        <button
-                            class="refuser"
-                        >
 
-                            ❌ Refuser
 
-                        </button>
+<td>
 
-                    </div>
+${data.statut || "-"}
 
-                    `
+</td>
 
-                    : "";
 
 
+<td>
 
-                /*
-                INFORMATIONS
-                DE LA DÉCISION
-                */
+${dateEnvoi}
 
-                const informationsDecision =
+</td>
 
-                    data.dateDecision
 
-                    ? `
 
-                    <div class="information">
+<td>
 
-                        <strong>
+${
+data.statut === "en_attente"
 
-                            Décision prise le :
+?
 
-                        </strong>
+`
 
+<button
+class="bouton-action accepter"
+>
+✅
+</button>
 
-                        <span>
 
-                            ${dateDecision}
+<button
+class="bouton-refus refuser"
+>
+❌
+</button>
 
-                        </span>
+`
 
-                    </div>
+:
 
+`
 
-                    <div class="information">
+<button
+class="bouton-action voir-demande"
+>
+👁
+</button>
 
-                        <strong>
+`
 
-                            Décision prise par :
+}
 
-                        </strong>
 
+</td>
 
-                        <span>
 
-                            ${
-                                data.decisionParNom
-                                ||
-                                "Non renseigné"
-                            }
+`;
 
-                        </span>
 
-                    </div>
 
-                    `
+listeDemandes.appendChild(
+ligne
+);
 
-                    : "";
 
 
 
-                /*
-                CONTENU DE LA FICHE
-                */
+const boutonAccepter =
+ligne.querySelector(
+".accepter"
+);
 
-                bloc.innerHTML = `
 
-                    <h3>
 
-                        ${
-                            data.prenom
-                            ||
-                            ""
-                        }
+const boutonRefuser =
+ligne.querySelector(
+".refuser"
+);
 
-                        ${
-                            data.nom
-                            ||
-                            ""
-                        }
 
-                    </h3>
 
+if(boutonAccepter){
 
-                    <div class="information">
 
-                        <strong>
+boutonAccepter.addEventListener(
+"click",
+async()=>{
 
-                            Date de naissance :
 
-                        </strong>
+if(
+confirm(
+"Accepter cette demande ?"
+)
+){
 
 
-                        <span>
+await accepterAdhesion(
 
-                            ${
-                                data.dateNaissance
-                                ||
-                                "Non renseignée"
-                            }
+documentFirestore.id,
 
-                        </span>
+auth.currentUser
 
-                    </div>
+);
 
 
-                    <div class="information">
+}
 
-                        <strong>
 
-                            E-mail :
+}
+);
 
-                        </strong>
 
+}
 
-                        <span>
 
-                            ${
-                                data.email
-                                ||
-                                "Non renseigné"
-                            }
 
-                        </span>
+if(boutonRefuser){
 
-                    </div>
 
+boutonRefuser.addEventListener(
+"click",
+async()=>{
 
-                    <div class="information">
 
-                        <strong>
+if(
+confirm(
+"Refuser cette demande ?"
+)
+){
 
-                            Discord :
 
-                        </strong>
+await changerStatut(
 
+documentFirestore.id,
 
-                        <span>
+"refusee",
 
-                            ${
-                                data.discord
-                                ||
-                                "Non renseigné"
-                            }
+auth.currentUser
 
-                        </span>
+);
 
-                    </div>
 
+}
 
-                    <div class="information">
 
-                        <strong>
+}
+);
 
-                            Année d’adhésion :
 
-                        </strong>
+}
 
 
-                        <span>
 
-                            ${
-                                data.annee
-                                ||
-                                "Non renseignée"
-                            }
-
-                        </span>
-
-                    </div>
-
-
-                    <div class="information">
-
-                        <strong>
-
-                            Cotisation :
-
-                        </strong>
-
-
-                        <span>
-
-                            ${
-                                Number(
-                                    data.cotisation
-                                    ||
-                                    0
-                                )
-                                .toFixed(2)
-                            }
-
-                            €
-
-                        </span>
-
-                    </div>
-
-
-                    <div class="information">
-
-                        <strong>
-
-                            Don :
-
-                        </strong>
-
-
-                        <span>
-
-                            ${
-                                Number(
-                                    data.don
-                                    ||
-                                    0
-                                )
-                                .toFixed(2)
-                            }
-
-                            €
-
-                        </span>
-
-                    </div>
-
-
-                    <div class="information total">
-
-                        <strong>
-
-                            Total à payer :
-
-                        </strong>
-
-
-                        <span>
-
-                            ${
-                                Number(
-                                    data.total
-                                    ||
-                                    0
-                                )
-                                .toFixed(2)
-                            }
-
-                            €
-
-                        </span>
-
-                    </div>
-
-
-                    <div class="information">
-
-                        <strong>
-
-                            Statut :
-                            </strong>
-                            <span>
-
-                            ${
-                                data.statut
-                                ||
-                                "Non renseigné"
-                            }
-
-                        </span>
-                        
-     </div>
-                        <div class="information">
-
-                        <strong>
-                           
-                            Paiement :
-                         
-                         </strong>
-
-                         <span>
-                            ${data.statutPaiement || "Non défini"}
-                         </span>
-
-                      </div>
-
-
-                    <div class="information">
-
-                        <strong>
-
-                            Demande envoyée le :
-
-                        </strong>
-
-
-                        <span>
-
-                            ${dateEnvoi}
-
-                        </span>
-
-                    </div>
-
-
-                    ${informationsDecision}
-
-
-                    ${boutonsDecision}
-
-                `;
-
-
-
-                /*
-                AJOUT DE LA FICHE
-                */
-
-                listeDemandes
-                .appendChild(
-                    bloc
-                );
-
-
-
-                /*
-                RÉCUPÉRATION
-                DES BOUTONS
-                */
-
-                const boutonAccepter =
-
-                    bloc.querySelector(
-                        ".accepter"
-                    );
-
-
-                const boutonRefuser =
-
-                    bloc.querySelector(
-                        ".refuser"
-                    );
-
-
-
-                /*
-                ÉVÉNEMENTS
-
-                Seulement si les
-                boutons existent.
-                */
-
-                if (
-
-                    boutonAccepter
-
-                    &&
-
-                    boutonRefuser
-
-                ) {
-
-
-                    boutonAccepter
-                    .addEventListener(
-
-                        "click",
-
-                        async () => {
-
-
-                            const confirmation =
-
-                                confirm(
-
-                                    "Confirmer l’acceptation de cette demande ?"
-
-                                );
-
-
-
-                            if (
-
-                                !confirmation
-
-                            ) {
-
-                                return;
-
-                            }
-
-
-
-                            await accepterAdhesion(
-                            documentFirestore.id,
-                            auth.currentUser
-                              );
-
-
-                        }
-
-                    );
-
-
-
-                    boutonRefuser
-                    .addEventListener(
-
-                        "click",
-
-                        async () => {
-
-
-                            const confirmation =
-
-                                confirm(
-
-                                    "Confirmer le refus de cette demande ?"
-
-                                );
-
-
-
-                            if (
-
-                                !confirmation
-
-                            ) {
-
-                                return;
-
-                            }
-
-
-
-                            await changerStatut(
-
-                                documentFirestore.id,
-
-                                "refusee",
-
-                                auth.currentUser
-
-                            );
-
-
-                        }
-
-                    );
-
-
-                }
-
-
-            }
+}
+);
 
         );
 
