@@ -6,20 +6,16 @@
 
 <meta charset="UTF-8">
 
-<meta 
-name="viewport" 
-content="width=device-width, initial-scale=1.0"
->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
 <title>
 Gestion des membres - Chroma Esport
 </title>
 
 
-<link 
-rel="stylesheet" 
-href="admin.css"
->
+<link rel="stylesheet" href="style.css">
+
 
 </head>
 
@@ -36,11 +32,9 @@ href="admin.css"
 CHROMA ESPORT
 </h1>
 
-
 <p>
 Gestion des membres
 </p>
-
 
 </div>
 
@@ -49,32 +43,24 @@ Gestion des membres
 <div class="navigation-admin">
 
 
-<a 
+<a
 href="dashboard.html"
 class="bouton-navigation"
 >
-
 📋 Demandes
-
 </a>
 
 
-
-<a 
+<a
 href="ajouter-membre.html"
 class="bouton-navigation"
 >
-
 ➕ Ajouter un membre
-
 </a>
 
 
-
 <button id="logout">
-
 Déconnexion
-
 </button>
 
 
@@ -85,9 +71,7 @@ Déconnexion
 
 
 
-
 <main class="admin-container">
-
 
 
 <h2>
@@ -95,56 +79,50 @@ Membres de Chroma Esport
 </h2>
 
 
-
 <p class="description-dashboard">
 
-Gestion des adhérents, cotisations et cartes membres.
+Consultez les adhésions, paiements et informations membres.
 
 </p>
-
 
 
 
 <div class="onglets">
 
 
-
 <button
 class="onglet actif"
-data-filtre="active"
+data-filtre="en_attente_paiement"
 >
-
-🟢 Actifs
-
+En attente paiement
 </button>
 
+
+<button
+class="onglet"
+data-filtre="active"
+>
+Actifs
+</button>
 
 
 <button
 class="onglet"
 data-filtre="expiree"
 >
-
-🔴 Expirés
-
+Expirés
 </button>
-
 
 
 <button
 class="onglet"
 data-filtre="tous"
 >
-
-👥 Tous
-
+Tous
 </button>
 
 
-
 </div>
-
-
 
 
 
@@ -157,15 +135,12 @@ type="text"
 
 id="rechercheMembre"
 
-placeholder="🔎 Rechercher (nom, prénom, numéro membre, Discord)"
+placeholder="🔎 Rechercher un membre..."
 
 >
 
 
 </div>
-
-
-
 
 
 
@@ -177,12 +152,10 @@ placeholder="🔎 Rechercher (nom, prénom, numéro membre, Discord)"
 
 <thead>
 
-
 <tr>
 
-
 <th>
-N° membre
+Numéro
 </th>
 
 
@@ -192,22 +165,7 @@ Nom
 
 
 <th>
-Prénom
-</th>
-
-
-<th>
 Discord
-</th>
-
-
-<th>
-Ville
-</th>
-
-
-<th>
-Statut
 </th>
 
 
@@ -222,15 +180,18 @@ Adhésion
 
 
 <th>
+Statut
+</th>
+
+
+<th>
 Action
 </th>
 
 
 </tr>
 
-
 </thead>
-
 
 
 
@@ -239,7 +200,7 @@ Action
 
 <tr>
 
-<td colspan="9">
+<td colspan="7">
 
 Chargement des membres...
 
@@ -249,7 +210,6 @@ Chargement des membres...
 
 
 </tbody>
-
 
 
 </table>
@@ -264,12 +224,10 @@ Chargement des membres...
 
 
 
-
 <script
 type="module"
 src="membres.js"
 ></script>
-
 
 
 </body>
