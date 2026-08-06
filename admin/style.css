@@ -909,3 +909,56 @@ column;
 
 
 }
+
+.actions-admin button {
+
+
+width:100%;
+
+margin-bottom:10px;
+
+padding:14px;
+
+border:none;
+
+border-radius:8px;
+
+cursor:pointer;
+
+background:#3c9195;
+
+color:white;
+
+font-size:15px;
+
+
+}
+
+
+.actions-admin button:hover {
+
+
+opacity:0.85;
+
+
+}
+
+
+#renouvelerMembre {
+
+
+background:#8fecc9;
+
+color:#010c2c;
+
+
+}
+
+
+#radierMembre {
+
+
+background:#c0392b;
+
+
+}
