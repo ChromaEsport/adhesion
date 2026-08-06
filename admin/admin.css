@@ -1,3 +1,24 @@
+/* ==================================
+   CHROMA ESPORT
+   ADMIN LOGIN ONLY
+================================== */
+
+
+/* ==============================
+   RESET
+============================== */
+
+* {
+
+    box-sizing: border-box;
+
+}
+
+
+
+/* ==============================
+   PAGE CONNEXION
+============================== */
 
 body {
 
@@ -11,14 +32,23 @@ body {
 
     align-items:center;
 
-    font-family:Arial,sans-serif;
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
 
-    background:#010c2c;
+    background:
+        #010c2c;
 
     color:white;
 
 }
 
+
+
+/* ==============================
+   CONTENEUR LOGIN
+============================== */
 
 .admin-page {
 
@@ -29,6 +59,11 @@ body {
 }
 
 
+
+/* ==============================
+   CARTE LOGIN
+============================== */
+
 .admin-card {
 
     max-width:450px;
@@ -37,117 +72,14 @@ body {
 
     padding:40px;
 
-    background:#07163f;
+    background:
+        #07163f;
 
-    border-radius:20px;
-
-    border:1px solid rgba(143,236,201,0.25);
-
-}
-
-
-h1 {
-
-    text-align:center;
-
-    color:#8fecc9;
-
-    letter-spacing:3px;
-
-}
-
-
-h2 {
-
-    text-align:center;
-
-    margin-bottom:30px;
-
-}
-
-
-label {
-
-    display:block;
-
-    margin-bottom:8px;
-
-}
-
-
-input {
-
-    width:100%;
-
-    padding:12px;
-
-    margin-bottom:20px;
-
-    border-radius:8px;
-
-    border:1px solid #3c9195;
-
-    background:#010c2c;
-
-    color:white;
-
-}
-
-
-button {
-
-    width:100%;
-
-    padding:15px;
-
-    border:none;
-
-    border-radius:8px;
-
-    cursor:pointer;
-
-    font-weight:bold;
-
-    background:#8fecc9;
-
-    color:#010c2c;
-
-}
-
-
-#message {
-
-    text-align:center;
-
-    margin-top:20px;
-
-}
-
-.onglets {
-
-    display: flex;
-
-    flex-wrap: wrap;
-
-    gap: 10px;
-
-    margin-bottom: 25px;
-
-}
-
-
-.onglet {
-
-    flex: 1;
-
-    min-width: 120px;
-
-    padding: 12px;
+    border-radius:
+        20px;
 
     border:
-
         1px solid
-
         rgba(
             143,
             236,
@@ -155,44 +87,128 @@ button {
             0.25
         );
 
-    border-radius: 8px;
+}
 
-    background:
 
-        #010c2c;
+
+/* ==============================
+   TITRES
+============================== */
+
+.admin-card h1 {
+
+    text-align:center;
 
     color:
+        #8fecc9;
 
-        white;
-
-    cursor:
-
-        pointer;
-
-    font-weight:
-
-        bold;
+    letter-spacing:
+        3px;
 
 }
 
 
-.onglet:hover {
 
-    border-color:
+.admin-card h2 {
 
-        #8fecc9;
+    text-align:center;
+
+    margin-bottom:
+        30px;
 
 }
 
 
-.onglet.actif {
+
+/* ==============================
+   FORMULAIRE
+============================== */
+
+.admin-card label {
+
+    display:block;
+
+    margin-bottom:
+        8px;
+
+}
+
+
+
+.admin-card input {
+
+    width:100%;
+
+    padding:
+        12px;
+
+    margin-bottom:
+        20px;
+
+    border-radius:
+        8px;
+
+    border:
+        1px solid
+        #3c9195;
 
     background:
+        #010c2c;
 
+    color:white;
+
+}
+
+
+
+/* ==============================
+   BOUTON CONNEXION
+============================== */
+
+.admin-card button {
+
+    width:100%;
+
+    padding:
+        15px;
+
+    border:none;
+
+    border-radius:
+        8px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+    background:
         #8fecc9;
 
     color:
-
         #010c2c;
+
+}
+
+
+
+.admin-card button:hover {
+
+    opacity:
+        0.9;
+
+}
+
+
+
+/* ==============================
+   MESSAGE ERREUR / SUCCES
+============================== */
+
+#message {
+
+    text-align:center;
+
+    margin-top:
+        20px;
 
 }
