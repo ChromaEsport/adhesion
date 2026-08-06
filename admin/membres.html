@@ -4,23 +4,22 @@
 
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+<meta 
+name="viewport" 
+content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+Gestion des membres - Chroma Esport
+</title>
 
 
-    <title>
-        Gestion des membres - Chroma Esport
-    </title>
-
-
-    <link
-        rel="stylesheet"
-        href="admin.css"
-    >
+<link 
+rel="stylesheet" 
+href="admin.css"
+>
 
 </head>
 
@@ -28,198 +27,252 @@
 <body>
 
 
-    <header class="admin-header">
+<header class="admin-header">
 
 
-        <div>
+<div>
 
-            <h1>
-
-                CHROMA ESPORT
-
-            </h1>
+<h1>
+CHROMA ESPORT
+</h1>
 
 
-            <p>
-
-                Gestion des membres
-
-            </p>
-
-        </div>
+<p>
+Gestion des membres
+</p>
 
 
-        <div class="navigation-admin">
-
-
-            <a
-                href="dashboard.html"
-                class="bouton-navigation"
-            >
-
-                📋 Demandes
-
-            </a>
-            
-            <a
-              href="ajouter-membre.html"
-              class="bouton-navigation"
-              >
-             ➕ Ajouter un membre
-              </a>
-
-            <button
-                id="logout"
-            >
-
-                Déconnexion
-
-            </button>
-
-        </div>
-
-
-    </header>
+</div>
 
 
 
-    <main class="admin-container">
+<div class="navigation-admin">
 
 
-        <h2>
+<a 
+href="dashboard.html"
+class="bouton-navigation"
+>
 
-            Membres de Chroma Esport
+📋 Demandes
 
-        </h2>
-
-
-        <p class="description-dashboard">
-
-            Consultez les adhésions, les paiements
-            et le statut des membres.
-
-        </p>
+</a>
 
 
 
-        <div class="onglets">
+<a 
+href="ajouter-membre.html"
+class="bouton-navigation"
+>
+
+➕ Ajouter un membre
+
+</a>
 
 
-            <button
-                class="onglet actif"
-                data-filtre="en_attente_paiement"
-            >
 
-                En attente de paiement
+<button id="logout">
 
-            </button>
+Déconnexion
+
+</button>
 
 
-            <button
-                class="onglet"
-                data-filtre="active"
-            >
-
-                Adhésions actives
-
-            </button>
+</div>
 
 
-            <button
-                class="onglet"
-                data-filtre="expiree"
-            >
-
-                Expirées
-
-            </button>
+</header>
 
 
-            <button
-                class="onglet"
-                data-filtre="tous"
-            >
-
-                Tous
-
-            </button>
 
 
-        </div>
-
-         <div class="recherche-membres">
+<main class="admin-container">
 
 
-          <input
-        type="text"
-        id="rechercheMembre"
-        placeholder="🔎 Rechercher un membre (nom, prénom, numéro CHRO, Discord)"
-              >
+
+<h2>
+Membres de Chroma Esport
+</h2>
 
 
-            </div>
 
-       <table class="table-membres">
+<p class="description-dashboard">
+
+Gestion des adhérents, cotisations et cartes membres.
+
+</p>
+
+
+
+
+<div class="onglets">
+
+
+
+<button
+class="onglet actif"
+data-filtre="active"
+>
+
+🟢 Actifs
+
+</button>
+
+
+
+<button
+class="onglet"
+data-filtre="expiree"
+>
+
+🔴 Expirés
+
+</button>
+
+
+
+<button
+class="onglet"
+data-filtre="tous"
+>
+
+👥 Tous
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+<div class="recherche-membres">
+
+
+<input
+
+type="text"
+
+id="rechercheMembre"
+
+placeholder="🔎 Rechercher (nom, prénom, numéro membre, Discord)"
+
+>
+
+
+</div>
+
+
+
+
+
+
+<div class="table-container">
+
+
+<table class="table-membres">
+
 
 <thead>
 
+
 <tr>
+
 
 <th>
 N° membre
 </th>
 
+
 <th>
 Nom
 </th>
+
 
 <th>
 Prénom
 </th>
 
+
+<th>
+Discord
+</th>
+
+
 <th>
 Ville
 </th>
+
 
 <th>
 Statut
 </th>
 
+
 <th>
 Paiement
 </th>
 
+
 <th>
-Fin adhésion
+Adhésion
 </th>
+
 
 <th>
 Action
 </th>
 
+
 </tr>
+
 
 </thead>
 
 
+
+
 <tbody id="listeMembres">
 
+
+<tr>
+
+<td colspan="9">
+
+Chargement des membres...
+
+</td>
+
+</tr>
+
+
 </tbody>
+
 
 
 </table>
 
 
-    </main>
+</div>
 
 
 
-    <script
-        type="module"
-        src="membres.js"
-    ></script>
+</main>
+
+
+
+
+
+<script
+type="module"
+src="membres.js"
+></script>
+
 
 
 </body>
+
 
 </html>
