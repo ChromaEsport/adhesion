@@ -385,11 +385,20 @@ ${membre.statutMembre || "-"}
 <td>
 
 <button
-class="bouton-action"
+class="voir"
 data-id="${membre.id}"
 >
 
 👤 Voir
+
+</button>
+
+<button
+class="modifier"
+data-id="${membre.id}"
+>
+
+✏️ Modifier
 
 </button>
 
@@ -408,20 +417,32 @@ ligne
 
 ligne
 .querySelector(
-".bouton-action"
+".voir"
 )
 .addEventListener(
 "click",
 ()=>{
 
-
 window.location.href =
-
 "fiche-membre.html?id="
 +
 membre.id;
 
+}
+);
 
+ligne
+.querySelector(
+".modifier"
+)
+.addEventListener(
+"click",
+()=>{
+
+window.location.href =
+"modifier-membre.html?id="
++
+membre.id;
 
 }
 );
