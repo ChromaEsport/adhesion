@@ -1,296 +1,288 @@
 import {
-    initializeApp
+initializeApp
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
 
 
 import {
-    getAuth,
-    onAuthStateChanged,
-    signOut
+getAuth,
+onAuthStateChanged,
+signOut
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 
 
 import {
-    getFirestore,
-    collection,
-    getDocs,
-    query,
-    where
+getFirestore,
+collection,
+getDocs,
+query,
+where
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
 
 
-/* =========================
-   CONFIGURATION FIREBASE
-========================= */
-
-
 const firebaseConfig = {
 
-    apiKey:
-        "AIzaSyAedIKW_LRWLpa9V_t7PcTTbrDmQOj4HAo",
+apiKey:
+"AIzaSyAedIKW_LRWLpa9V_t7PcTTbrDmQOj4HAo",
 
-    authDomain:
-        "chroma-adhesion.firebaseapp.com",
+authDomain:
+"chroma-adhesion.firebaseapp.com",
 
-    projectId:
-        "chroma-adhesion",
+projectId:
+"chroma-adhesion",
 
-    storageBucket:
-        "chroma-adhesion.firebasestorage.app",
+storageBucket:
+"chroma-adhesion.firebasestorage.app",
 
-    messagingSenderId:
-        "892582501197",
+messagingSenderId:
+"892582501197",
 
-    appId:
-        "1:892582501197:web:2483ffc9c98e47a3d17504"
+appId:
+"1:892582501197:web:2483ffc9c98e47a3d17504"
 
 };
 
 
 
 const app =
-    initializeApp(firebaseConfig);
-
+initializeApp(firebaseConfig);
 
 
 const auth =
-    getAuth(app);
-
+getAuth(app);
 
 
 const db =
-    getFirestore(app);
+getFirestore(app);
 
-
-
-
-/* =========================
-   ELEMENTS HTML
-========================= */
 
 
 const listeMembres =
-    document.getElementById(
-        "listeMembres"
-    );
+document.getElementById(
+"listeMembres"
+);
 
 
-const rechercheMembre =
-    document.getElementById(
-        "rechercheMembre"
-    );
+const recherche =
+document.getElementById(
+"rechercheMembre"
+);
 
 
 const logout =
-    document.getElementById(
-        "logout"
-    );
+document.getElementById(
+"logout"
+);
 
 
 const onglets =
-    document.querySelectorAll(
-        ".onglet"
-    );
+document.querySelectorAll(
+".onglet"
+);
 
-
-
-
-/* =========================
-   VARIABLES
-========================= */
 
 
 let filtreActuel =
-    "active";
+"en_attente_paiement";
 
 
-let tousLesMembres = [];
+let membres = [];
 
 
 
-
-/* =========================
-   AUTHENTIFICATION
-========================= */
 
 
 onAuthStateChanged(
-    auth,
-    (user)=>{
+auth,
+(user)=>{
 
 
-        if(!user){
+if(!user){
 
-            window.location.href =
-            "index.html";
+window.location.href =
+"index.html";
 
-            return;
+return;
 
-        }
-
-
-        chargerMembres();
+}
 
 
-    }
+chargerMembres();
+
+
+}
 );
 
 
 
-
-/* =========================
-   ONGLET
-========================= */
 
 
 onglets.forEach(
-    onglet=>{
+onglet=>{
 
 
-        onglet.addEventListener(
-            "click",
-            ()=>{
+onglet.addEventListener(
+"click",
+()=>{
 
 
-                onglets.forEach(
-                    autre=>{
-
-                        autre.classList.remove(
-                            "actif"
-                        );
-
-                    }
-                );
+onglets.forEach(
+o=>o.classList.remove(
+"actif"
+)
+);
 
 
-                onglet.classList.add(
-                    "actif"
-                );
-
-
-                filtreActuel =
-                    onglet.dataset.filtre;
-
-
-                afficherMembres();
-
-
-            }
-        );
-
-
-    }
+onglet.classList.add(
+"actif"
 );
 
 
 
+filtreActuel =
+onglet.dataset.filtre;
 
-/* =========================
-   CHARGEMENT FIRESTORE
-========================= */
+
+
+chargerMembres();
+
+
+
+}
+);
+
+
+}
+);
+
+
+
 
 
 async function chargerMembres(){
 
 
-    listeMembres.innerHTML = `
+listeMembres.innerHTML =
 
-    <tr>
-    <td colspan="9">
-    Chargement...
-    </td>
-    </tr>
-
-    `;
-
-
-    try {
-
-
-        const resultat =
-            await getDocs(
-                collection(
-                    db,
-                    "membres"
-                )
-            );
+`
+<tr>
+<td colspan="7">
+Chargement...
+</td>
+</tr>
+`;
 
 
 
-        tousLesMembres = [];
+let resultat;
 
 
 
-        resultat.forEach(
-            doc=>{
+if(filtreActuel==="tous"){
 
 
-                tousLesMembres.push({
-
-                    id:
-                    doc.id,
-
-                    ...doc.data()
-
-                });
-
-
-            }
-        );
+resultat =
+await getDocs(
+collection(
+db,
+"membres"
+)
+);
 
 
+}
 
-        /*
-        Tri par numéro membre
-        */
-
-
-        tousLesMembres.sort(
-            (a,b)=>{
+else {
 
 
-                return (
-                    a.numeroMembre || ""
-                )
-                .localeCompare(
-                    b.numeroMembre || ""
-                );
-
-
-            }
-        );
+let champ;
+let valeur;
 
 
 
-        afficherMembres();
+if(
+filtreActuel==="en_attente_paiement"
+){
+
+champ="statutPaiement";
+valeur="en_attente";
+
+
+}
+
+else if(
+filtreActuel==="active"
+){
+
+champ="statutAdhesion";
+valeur="active";
+
+
+}
+
+else if(
+filtreActuel==="expiree"
+){
+
+champ="statutAdhesion";
+valeur="expiree";
+
+
+}
 
 
 
-    }
+const q =
+query(
+
+collection(
+db,
+"membres"
+),
+
+where(
+champ,
+"==",
+valeur
+)
+
+);
 
 
-    catch(error){
+
+resultat =
+await getDocs(q);
 
 
-        console.error(
-            "Erreur chargement membres :",
-            error
-        );
+}
 
 
-        listeMembres.innerHTML = `
-
-        <tr>
-        <td colspan="9">
-        Impossible de charger les membres.
-        </td>
-        </tr>
-
-        `;
 
 
-    }
+membres=[];
+
+
+resultat.forEach(
+doc=>{
+
+
+membres.push({
+
+id:
+doc.id,
+
+...doc.data()
+
+});
+
+
+});
+
+
+afficherMembres(
+membres
+);
+
 
 
 }
@@ -300,155 +292,51 @@ async function chargerMembres(){
 
 
 
-/* =========================
-   AFFICHAGE TABLEAU
-========================= */
 
+function afficherMembres(
+liste
+){
 
-function afficherMembres(){
 
+listeMembres.innerHTML="";
 
-    listeMembres.innerHTML = "";
 
 
+if(
+liste.length===0
+){
 
-    let listeFiltre =
+listeMembres.innerHTML=
 
-        tousLesMembres.filter(
-            membre=>{
+`
+<tr>
+<td colspan="7">
+Aucun membre trouvé.
+</td>
+</tr>
+`;
 
+return;
 
-                if(
-                    filtreActuel === "active"
-                ){
+}
 
-                    return (
-                        membre.statutAdhesion
-                        ===
-                        "active"
-                    );
 
-                }
 
 
+liste.forEach(
+membre=>{
 
-                if(
-                    filtreActuel === "expiree"
-                ){
 
-                    return (
-                        membre.statutAdhesion
-                        ===
-                        "expiree"
-                    );
+const ligne =
+document.createElement(
+"tr"
+);
 
-                }
 
 
+ligne.innerHTML=
 
-                return true;
-
-
-            }
-        );
-
-
-
-
-    const recherche =
-
-        rechercheMembre.value
-        .toLowerCase()
-        .trim();
-
-
-
-
-    if(recherche){
-
-
-        listeFiltre =
-            listeFiltre.filter(
-                membre=>{
-
-
-                    const texte =
-
-                    (
-
-                        membre.numeroMembre
-                        +
-
-                        membre.nom
-                        +
-
-                        membre.prenom
-                        +
-
-                        membre.discord
-                        +
-
-                        membre.ville
-
-                    )
-
-                    .toLowerCase();
-
-
-
-                    return texte.includes(
-                        recherche
-                    );
-
-
-                }
-            );
-
-
-    }
-
-
-
-
-
-    if(
-        listeFiltre.length === 0
-    ){
-
-
-        listeMembres.innerHTML = `
-
-        <tr>
-        <td colspan="9">
-        Aucun membre trouvé.
-        </td>
-        </tr>
-
-        `;
-
-
-        return;
-
-    }
-
-
-
-
-
-    listeFiltre.forEach(
-        membre=>{
-
-
-            const ligne =
-                document.createElement(
-                    "tr"
-                );
-
-
-
-            ligne.innerHTML = `
-
-
+`
 
 <td>
 
@@ -457,22 +345,12 @@ ${membre.numeroMembre || "-"}
 </td>
 
 
-
 <td>
 
-${membre.nom || "-"}
+${membre.prenom || ""}
+${membre.nom || ""}
 
 </td>
-
-
-
-<td>
-
-${membre.prenom || "-"}
-
-</td>
-
-
 
 
 <td>
@@ -482,125 +360,79 @@ ${membre.discord || "-"}
 </td>
 
 
-
-
 <td>
 
-${membre.ville || "-"}
+${membre.statutPaiement || "-"}
 
 </td>
 
 
+<td>
+
+${membre.statutAdhesion || "-"}
+
+</td>
 
 
 <td>
-
-<span class="badge statut">
 
 ${membre.statutMembre || "-"}
 
-</span>
-
 </td>
 
 
 
-
 <td>
-
-<span class="badge paiement">
-
-${
-membre.statutPaiement === "paye"
-
-?
-"✅ Payé"
-
-:
-
-"❌ Non payé"
-
-}
-
-</span>
-
-
-</td>
-
-
-
-
-<td>
-
-${
-membre.dateFinAdhesion
-||
-"-"
-}
-
-</td>
-
-
-
-
-<td>
-
 
 <button
-
-class="voir-membre"
-
+class="bouton-action"
 data-id="${membre.id}"
-
 >
 
 👤 Voir
 
 </button>
 
-
 </td>
-
-
 
 
 `;
 
 
 
-
-            listeMembres.appendChild(
-                ligne
-            );
-
+listeMembres.appendChild(
+ligne
+);
 
 
 
-
-            ligne
-            .querySelector(
-                ".voir-membre"
-            )
-            .addEventListener(
-                "click",
-                ()=>{
-
-
-                    window.location.href =
-
-                    "fiche-membre.html?id="
-                    +
-                    membre.id;
+ligne
+.querySelector(
+".bouton-action"
+)
+.addEventListener(
+"click",
+()=>{
 
 
-                }
-            );
+window.location.href =
+
+"fiche-membre.html?id="
++
+membre.id;
 
 
 
-        }
-    );
+}
+);
 
+
+
+}
+
+
+
+);
 
 }
 
@@ -608,45 +440,77 @@ data-id="${membre.id}"
 
 
 
-
-/* =========================
-   RECHERCHE
-========================= */
-
-
-rechercheMembre.addEventListener(
-    "input",
-    ()=>{
+recherche.addEventListener(
+"input",
+()=>{
 
 
-        afficherMembres();
+const texte =
+recherche.value
+.toLowerCase();
 
 
-    }
+
+const resultat =
+membres.filter(
+m=>{
+
+
+return (
+
+(m.nom || "")
+.toLowerCase()
+.includes(texte)
+
+||
+
+(m.prenom || "")
+.toLowerCase()
+.includes(texte)
+
+||
+
+(m.discord || "")
+.toLowerCase()
+.includes(texte)
+
+||
+
+(m.numeroMembre || "")
+.toLowerCase()
+.includes(texte)
+
+);
+
+
+}
+);
+
+
+
+afficherMembres(
+resultat
+);
+
+
+}
 );
 
 
 
 
 
-/* =========================
-   LOGOUT
-========================= */
-
-
 logout.addEventListener(
-    "click",
-    async ()=>{
+"click",
+async()=>{
 
 
-        await signOut(
-            auth
-        );
+await signOut(auth);
 
 
-        window.location.href =
-        "index.html";
+window.location.href =
+"index.html";
 
 
-    }
+}
 );
