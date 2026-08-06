@@ -253,6 +253,34 @@ const cotisation = 50;
 const montantTotal =
     cotisation + montantDon;
 
+const adresse =
+    document.getElementById("adresse")
+    .value
+    .trim();
+
+
+const complementAdresse =
+    document.getElementById("complementAdresse")
+    .value
+    .trim();
+
+
+const codePostal =
+    document.getElementById("codePostal")
+    .value
+    .trim();
+
+
+const ville =
+    document.getElementById("ville")
+    .value
+    .trim();
+
+
+const pays =
+    document.getElementById("pays")
+    .value;
+
         
        try {
 
@@ -273,11 +301,31 @@ const montantTotal =
                 email.value,
 
             discord:
-                document.getElementById("discord").value,
+    document.getElementById("discord").value,
 
 
-            annee:
-                2026,
+adresse:
+    adresse,
+
+
+complementAdresse:
+    complementAdresse,
+
+
+codePostal:
+    codePostal,
+
+
+ville:
+    ville,
+
+
+pays:
+    pays,
+
+
+annee:
+    2026,
 
 
             cotisation:
