@@ -397,32 +397,6 @@ function adhesionEstExpiree(membre){
 
 }
 
-function adhesionEstExpiree(membre){
-
-    if(!membre.dateFinAdhesion){
-        return false;
-    }
-
-
-    const dateFin = new Date(
-        membre.dateFinAdhesion
-    );
-
-
-    const aujourdHui = new Date();
-
-
-    aujourdHui.setHours(
-        0,
-        0,
-        0,
-        0
-    );
-
-
-    return dateFin < aujourdHui;
-
-}
 
 function afficherMembres(
 liste
