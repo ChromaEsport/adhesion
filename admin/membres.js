@@ -96,7 +96,7 @@ let membres = [];
 
 onAuthStateChanged(
 auth,
-(user)=>{
+async(user)=>{
 
 
 if(!user){
@@ -108,6 +108,8 @@ return;
 
 }
 
+
+await verifierExpirationMembres();
 
 chargerMembres();
 
