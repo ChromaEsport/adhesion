@@ -424,7 +424,7 @@ ${membre.dateFinAdhesion || "-"}
 
 <strong>Statut adhésion :</strong>
 
-${membre.statutAdhesion || "-"}
+${statutAdhesionAffiche || "-"}
 
 </p>
 
@@ -434,7 +434,7 @@ ${membre.statutAdhesion || "-"}
 
 <strong>Paiement :</strong>
 
-${membre.statutPaiement || "-"}
+${statutPaiementAffiche || "-"}
 
 </p>
 
