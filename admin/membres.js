@@ -475,7 +475,13 @@ ${membre.statutPaiement || "-"}
 
 <td>
 
-${membre.statutAdhesion || "-"}
+${
+    adhesionEstExpiree(membre)
+    ?
+    "expiree"
+    :
+    "active"
+}
 
 </td>
 
