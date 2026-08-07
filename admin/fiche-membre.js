@@ -540,22 +540,30 @@ Afficher renouvellement uniquement
 si adhésion expirée
 */
 
+const aujourdHui =
+new Date();
+
+
+const dateFin =
+new Date(
+    membre.dateFinAdhesion
+);
+
+
 if(
-membre.statutAdhesion === "expiree"
+    dateFin < aujourdHui
 ){
 
-boutonRenouveler.style.display =
-"block";
+    boutonRenouveler.style.display =
+    "block";
 
 }
-
 else{
 
-boutonRenouveler.style.display =
-"none";
+    boutonRenouveler.style.display =
+    "none";
 
 }
-
 
 
 /*
