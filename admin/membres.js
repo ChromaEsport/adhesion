@@ -397,7 +397,32 @@ function adhesionEstExpiree(membre){
 
 }
 
+function adhesionEstExpiree(membre){
 
+    if(!membre.dateFinAdhesion){
+        return false;
+    }
+
+
+    const dateFin = new Date(
+        membre.dateFinAdhesion
+    );
+
+
+    const aujourdHui = new Date();
+
+
+    aujourdHui.setHours(
+        0,
+        0,
+        0,
+        0
+    );
+
+
+    return dateFin < aujourdHui;
+
+}
 
 function afficherMembres(
 liste
@@ -432,6 +457,17 @@ return;
 liste.forEach(
 membre=>{
 
+const statutAdhesionAffiche =
+    adhesionEstExpiree(membre)
+        ? "expiree"
+        : membre.statutAdhesion;
+
+
+const statutPaiementAffiche =
+    adhesionEstExpiree(membre)
+        ? "en_attente"
+        : membre.statutPaiement;
+    
 
 const ligne =
 document.createElement(
@@ -468,20 +504,13 @@ ${membre.discord || "-"}
 
 <td>
 
-${membre.statutPaiement || "-"}
-
+${statutPaiementAffiche || "-"}
 </td>
 
 
 <td>
 
-${
-    adhesionEstExpiree(membre)
-    ?
-    "expiree"
-    :
-    "active"
-}
+${statutAdhesionAffiche || "-"}
 
 </td>
 
