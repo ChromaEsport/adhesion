@@ -187,6 +187,15 @@ membreDoc.data();
 
 afficherActionsAdmin(membre);
 
+boutonRenouveler.onclick = () => {
+
+    genererLienRenouvellement(
+        id,
+        membre
+    );
+
+};
+
 boutonModifier.onclick =
 ()=>{
 
@@ -669,7 +678,7 @@ headers:{
 body:JSON.stringify({
 
 montant:
-membre.cotisation,
+membre.cotisation || 50,
 
 email:
 membre.email,
