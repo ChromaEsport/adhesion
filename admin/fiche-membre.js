@@ -244,7 +244,16 @@ membre.numeroMembre
 "Fiche membre";
 
 
+const statutAdhesionAffiche =
+    adhesionEstExpiree(membre)
+        ? "expiree"
+        : membre.statutAdhesion;
 
+
+const statutPaiementAffiche =
+    adhesionEstExpiree(membre)
+        ? "en_attente"
+        : membre.statutPaiement;
 
 
 fiche.innerHTML = `
