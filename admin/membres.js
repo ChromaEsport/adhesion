@@ -214,19 +214,100 @@ else if(
 filtreActuel==="active"
 ){
 
-champ="statutAdhesion";
-valeur="active";
+resultat =
+await getDocs(
+collection(
+db,
+"membres"
+)
+);
 
+
+membres=[];
+
+
+resultat.forEach(
+doc=>{
+
+const membre={
+
+id:
+doc.id,
+
+...doc.data()
+
+};
+
+
+if(
+!adhesionEstExpiree(membre)
+){
+
+membres.push(membre);
 
 }
+
+
+});
+
+afficherMembres(
+membres
+);
+
+
+return;
+
+}
+
+
 
 else if(
 filtreActuel==="expiree"
 ){
 
-champ="statutAdhesion";
-valeur="expiree";
+resultat =
+await getDocs(
+collection(
+db,
+"membres"
+)
+);
 
+
+membres=[];
+
+
+resultat.forEach(
+doc=>{
+
+const membre={
+
+id:
+doc.id,
+
+...doc.data()
+
+};
+
+
+if(
+adhesionEstExpiree(membre)
+){
+
+membres.push(membre);
+
+}
+
+
+});
+
+
+afficherMembres(
+membres
+);
+
+
+return;
 
 }
 
