@@ -11,9 +11,10 @@ signOut
 
 
 import {
-getFirestore,
-doc,
-getDoc
+    getFirestore,
+    doc,
+    getDoc,
+    updateDoc
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
 
@@ -184,6 +185,24 @@ return;
 
 const membre =
 membreDoc.data();
+
+if (
+    adhesionEstExpiree(membre) &&
+    membre.statutAdhesion !== "expiree"
+) {
+
+    await updateDoc(
+        doc(db, "membres", id),
+        {
+            statutAdhesion: "expiree",
+            statutPaiement: "en_attente"
+        }
+    );
+
+    membre.statutAdhesion = "expiree";
+    membre.statutPaiement = "en_attente";
+}
+    
 
 afficherActionsAdmin(membre);
 
