@@ -573,7 +573,7 @@ new Date(
 
 
 if(
-    dateFin < aujourdHui
+adhesionEstExpiree(membre)
 ){
 
     boutonRenouveler.style.display =
@@ -586,7 +586,6 @@ else{
     "none";
 
 }
-
 
 /*
 Statut carte membre
