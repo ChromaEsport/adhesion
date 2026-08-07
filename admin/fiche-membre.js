@@ -581,14 +581,6 @@ Afficher renouvellement uniquement
 si adhésion expirée
 */
 
-const aujourdHui =
-new Date();
-
-
-const dateFin =
-new Date(
-    membre.dateFinAdhesion
-);
 
 
 if(
