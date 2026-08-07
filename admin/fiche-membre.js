@@ -94,6 +94,11 @@ document.getElementById(
 "modifierMembre"
 );
 
+const boutonPaiement =
+document.getElementById(
+"paiementMembre"
+);
+
 onAuthStateChanged(
 auth,
 (user)=>{
@@ -192,6 +197,15 @@ window.location.href =
 id;
 
 };
+
+boutonPaiement.onclick = ()=>{
+
+genererLienPaiement(
+id,
+membre
+);
+
+}; 
 
 titre.textContent =
 
@@ -553,7 +567,80 @@ statutCarte.innerHTML =
 
 }
 
+async function genererLienPaiement(
+id,
+membre
+){
 
+try{
+
+const reponse =
+await fetch(
+
+"https://chroma-stripe.max2501.workers.dev",
+
+{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+
+montant:
+membre.total,
+
+email:
+membre.email,
+
+membreId:
+id,
+
+type:
+"paiement_membre"
+
+})
+
+}
+
+);
+
+
+const stripe =
+await reponse.json();
+
+
+if(!stripe.url){
+
+alert(
+"Impossible de créer le paiement."
+);
+
+return;
+
+}
+
+
+window.open(
+stripe.url,
+"_blank"
+);
+
+
+}
+catch(error){
+
+console.error(error);
+
+alert(
+"Erreur Stripe."
+);
+
+}
+
+}
 
 logout.addEventListener(
 "click",
