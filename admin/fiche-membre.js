@@ -89,7 +89,10 @@ document.getElementById(
 "statutCarte"
 );
 
-
+const boutonModifier =
+document.getElementById(
+"modifierMembre"
+);
 
 onAuthStateChanged(
 auth,
@@ -179,7 +182,16 @@ membreDoc.data();
 
 afficherActionsAdmin(membre);
 
+boutonModifier.onclick =
+()=>{
 
+window.location.href =
+
+"modifier-membre.html?id="
++
+id;
+
+};
 
 titre.textContent =
 
