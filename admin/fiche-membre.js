@@ -206,7 +206,14 @@ membre
 );
 
 }; 
+boutonRenouveler.onclick = ()=>{
+genererLienRenouvellement(
+id,
+membre
+);
+};
 
+  
 titre.textContent =
 
 membre.numeroMembre
@@ -636,6 +643,81 @@ console.error(error);
 
 alert(
 "Erreur Stripe."
+);
+
+}
+
+}
+
+async function genererLienRenouvellement(
+id,
+membre
+){
+
+try{
+
+const reponse =
+await fetch(
+"https://chroma-stripe.max2501.workers.dev",
+{
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+
+montant:
+membre.cotisation,
+
+email:
+membre.email,
+
+membreId:
+id,
+
+numeroMembre:
+membre.numeroMembre,
+
+type:
+"renouvellement"
+
+})
+
+}
+);
+
+
+const stripe =
+await reponse.json();
+
+
+if(!stripe.url){
+
+alert(
+"Impossible de créer le renouvellement."
+);
+
+return;
+
+}
+
+
+window.open(
+stripe.url,
+"_blank"
+);
+
+
+}
+
+catch(error){
+
+console.error(error);
+
+alert(
+"Erreur Stripe renouvellement."
 );
 
 }
