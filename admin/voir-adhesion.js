@@ -35,7 +35,7 @@ messagingSenderId:
 
 appId:
     "1:892582501197:web:2483ffc9c98e47a3d17504"
-```
+
 
 };
 
@@ -121,7 +121,7 @@ onAuthStateChanged(
 auth,
 async (user) => {
 
-```
+
     if (!user) {
 
         window.location.href =
@@ -721,7 +721,7 @@ catch (error) {
     }
 
 }
-```
+
 
 }
 
@@ -731,7 +731,7 @@ REFUSER LA DEMANDE
 
 async function refuserDemande() {
 
-```
+
 const utilisateur =
     auth.currentUser;
 
