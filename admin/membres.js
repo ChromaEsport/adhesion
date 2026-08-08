@@ -107,7 +107,7 @@ onAuthStateChanged(
 
         }
 
-        await verifierExpirationMembres();
+      
 
         filtreActuel =
             "en_attente_paiement";
