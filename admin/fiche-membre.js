@@ -209,7 +209,7 @@ afficherActionsAdmin(membre);
 boutonRenouveler.onclick = () => {
 
     window.location.href =
-        "renouvellement.html?id="
+         "../renouvellement.html?id="
         +
         id;
 
