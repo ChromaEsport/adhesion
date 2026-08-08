@@ -208,13 +208,14 @@ afficherActionsAdmin(membre);
 
 boutonRenouveler.onclick = () => {
 
-    genererLienRenouvellement(
-        id,
-        membre
-    );
+    window.location.href =
+        "renouvellement.html?id="
+        +
+        id;
 
 };
 
+    
 boutonModifier.onclick =
 ()=>{
 
