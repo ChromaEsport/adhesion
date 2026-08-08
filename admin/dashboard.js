@@ -840,19 +840,27 @@ async function chargerDemandes() {
 
         let result;
 
-        if (
-            statutActuel === "toutes"
-        ) {
+       if (
+    statutActuel === "toutes"
+) {
 
-            result =
-                await getDocs(
-                    collection(
-                        db,
-                        "adhesions"
-                    )
-                );
+    const q =
+        query(
+            collection(
+                db,
+                "adhesions"
+            ),
+            where(
+                "statut",
+                "!=",
+                "acceptee"
+            )
+        );
 
-        }
+    result =
+        await getDocs(q);
+
+}
         else {
 
             const q =
