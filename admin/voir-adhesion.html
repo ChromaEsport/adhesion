@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Voir la demande - Chroma Esport</title>
+
+    <link
+        rel="stylesheet"
+        href="dashboard.css"
+    >
+
+</head>
+
+<body>
+
+    <div class="dashboard-container">
+
+        <header class="dashboard-header">
+
+            <div>
+
+                <h1>
+                    Demande d'adhésion
+                </h1>
+
+                <p>
+                    Consultation complète de la demande
+                </p>
+
+            </div>
+
+            <button
+                id="retour"
+                class="bouton-action"
+            >
+                ← Retour
+            </button>
+
+        </header>
+
+
+        <main>
+
+            <div
+                id="chargement"
+                class="card"
+            >
+                Chargement de la demande...
+            </div>
+
+
+            <div
+                id="contenuDemande"
+                style="display:none;"
+            >
+
+
+                <!-- =========================
+                     IDENTITÉ
+                ========================== -->
+
+                <section class="card">
+
+                    <h2>
+                        👤 Identité
+                    </h2>
+
+                    <div class="infos-grid">
+
+                        <div>
+                            <strong>Prénom</strong>
+                            <span id="prenom">-</span>
+                        </div>
+
+                        <div>
+                            <strong>Nom</strong>
+                            <span id="nom">-</span>
+                        </div>
+
+                        <div>
+                            <strong>Date de naissance</strong>
+                            <span id="dateNaissance">-</span>
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =========================
+                     CONTACT
+                ========================== -->
+
+                <section class="card">
+
+                    <h2>
+                        📞 Contact
+                    </h2>
+
+                    <div class="infos-grid">
+
+                        <div>
+                            <strong>Email</strong>
+                            <span id="email">-</span>
+                        </div>
+
+                        <div>
+                            <strong>Discord</strong>
+                            <span id="discord">-</span>
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =========================
+                     ADRESSE
+                ========================== -->
+
+                <section class="card">
+
+                    <h2>
+                        🏠 Adresse
+                    </h2>
+
+                    <div class="infos-grid">
+
+                        <div>
+                            <strong>Adresse</strong>
+                            <span id="adresse">-</span>
+                        </div>
+
+                        <div>
+                            <strong>Complément</strong>
+                            <span id="complementAdresse">-</span>
+                        </div>
+
+                        <div>
+                            <strong>Code postal</strong>
+                            <span id="codePostal">-</span>
+                        </div>
+
+                        <div>
+                            <strong>Ville</strong>
+                            <span id="ville">-</span>
+                        </div>
+
+                        <div>
+                            <strong>Pays</strong>
+                            <span id="pays">-</span>
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =========================
+                     ADHÉSION
+                ========================== -->
+
+                <section class="card">
+
+                    <h2>
+                        🎮 Adhésion
+                    </h2>
+
+                    <div class="infos-grid">
+
+                        <div>
+                            <strong>Année</strong>
+                            <span id="annee">-</span>
+                        </div>
+
+                        <div>
+                            <strong>Cotisation</strong>
+                            <span id="cotisation">-</span>
+                        </div>
+
+                        <div>
+                            <strong>Don</strong>
+                            <span id="don">-</span>
+                        </div>
+
+                        <div>
+                            <strong>Total</strong>
+                            <span id="total">-</span>
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =========================
+                     DEMANDE
+                ========================== -->
+
+                <section class="card">
+
+                    <h2>
+                        📋 Informations de la demande
+                    </h2>
+
+                    <div class="infos-grid">
+
+                        <div>
+                            <strong>Date de demande</strong>
+                            <span id="dateDemande">-</span>
+                        </div>
+
+                        <div>
+                            <strong>Statut</strong>
+                            <span id="statut">-</span>
+                        </div>
+
+                        <div>
+                            <strong>Statut paiement</strong>
+                            <span id="statutPaiement">-</span>
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =========================
+                     ACTIONS
+                ========================== -->
+
+                <section class="card actions-demande">
+
+                    <button
+                        id="accepter"
+                        class="bouton-action accepter"
+                    >
+                        ✅ Accepter la demande
+                    </button>
+
+                    <button
+                        id="refuser"
+                        class="bouton-refus"
+                    >
+                        ❌ Refuser la demande
+                    </button>
+
+                </section>
+
+            </div>
+
+
+            <div
+                id="erreur"
+                class="card"
+                style="display:none;"
+            >
+                Impossible de charger cette demande.
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <script
+        type="module"
+        src="voir-adhesion.js"
+    ></script>
+
+</body>
+
+</html>
