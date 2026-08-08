@@ -1060,34 +1060,42 @@ else {
         <td>
 
             ${
-                data.statut === "en_attente"
+    data.statut === "en_attente"
 
-                ?
+    ?
 
-                `
-                <button
-                    class="bouton-action accepter"
-                >
-                    ✅
-                </button>
+    `
+    <button
+        class="bouton-action accepter"
+    >
+        ✅
+    </button>
 
-                <button
-                    class="bouton-refus refuser"
-                >
-                    ❌
-                </button>
-                `
+    <button
+        class="bouton-refus refuser"
+    >
+        ❌
+    </button>
 
-                :
+    <button
+        class="bouton-action voir-demande"
+        data-id="${documentFirestore.id}"
+    >
+        👁 Voir
+    </button>
+    `
 
-                `
-                <button
-                    class="bouton-action voir-demande"
-                >
-                    👁
-                </button>
-                `
-            }
+    :
+
+    `
+    <button
+        class="bouton-action voir-demande"
+        data-id="${documentFirestore.id}"
+    >
+        👁 Voir
+    </button>
+    `
+}
 
         </td>
 
@@ -1113,7 +1121,11 @@ listeDemandes.appendChild(
                     ligne.querySelector(
                         ".refuser"
                     );
-
+                 
+                const boutonVoir =
+                    ligne.querySelector(
+                        ".voir-demande"
+                    );
 
                 if (
                     boutonAccepter
@@ -1165,6 +1177,25 @@ listeDemandes.appendChild(
                             }
 
                         }
+                      
+                        if (
+    boutonVoir
+) {
+
+    boutonVoir.addEventListener(
+        "click",
+        () => {
+
+            window.location.href =
+                `voir-adhesion.html?id=${documentFirestore.id}`;
+
+        }
+    );
+
+}
+
+
+                        
                     );
 
                 }
