@@ -97,6 +97,8 @@ onAuthStateChanged(
 
         chargerDemandes();
 
+        calculerFinances();
+        
         chargerStatistiques();
 
     }
