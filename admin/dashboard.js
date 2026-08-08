@@ -1172,11 +1172,14 @@ listeDemandes.appendChild(
                                     documentFirestore.id,
                                     "refusee",
                                     auth.currentUser
-                                );
+                               );
 
                             }
 
-                        })}
+                        }
+                    );
+
+                }
                       
                         if (
     boutonVoir
