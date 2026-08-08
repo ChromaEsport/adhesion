@@ -1176,7 +1176,7 @@ listeDemandes.appendChild(
 
                             }
 
-                        }
+                        })}
                       
                         if (
     boutonVoir
