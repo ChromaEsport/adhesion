@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Renouvellement d'adhésion - Chroma Esport
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<header class="admin-header">
+
+    <div>
+
+        <h1>
+            CHROMA ESPORT
+        </h1>
+
+        <p>
+            Renouvellement d'adhésion
+        </p>
+
+    </div>
+
+</header>
+
+
+
+<main class="admin-container">
+
+
+    <div class="formulaire-adhesion">
+
+
+        <h2>
+            🔄 Renouvellement d'adhésion
+        </h2>
+
+
+        <p class="texte-introduction">
+
+            Vérifiez et mettez à jour vos informations
+            avant de renouveler votre adhésion.
+
+        </p>
+
+
+
+        <!-- =========================
+             INFORMATIONS PERSONNELLES
+        ========================== -->
+
+        <section class="bloc-formulaire">
+
+            <h3>
+                👤 Informations personnelles
+            </h3>
+
+
+            <div class="ligne-formulaire">
+
+
+                <div class="champ">
+
+                    <label for="prenom">
+                        Prénom
+                    </label>
+
+                    <input
+                        type="text"
+                        id="prenom"
+                        name="prenom"
+                        required
+                    >
+
+                </div>
+
+
+
+                <div class="champ">
+
+                    <label for="nom">
+                        Nom
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nom"
+                        name="nom"
+                        required
+                    >
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="champ">
+
+                <label for="dateNaissance">
+                    Date de naissance
+                </label>
+
+                <input
+                    type="date"
+                    id="dateNaissance"
+                    name="dateNaissance"
+                    required
+                >
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =========================
+             DISCORD
+        ========================== -->
+
+        <section class="bloc-formulaire">
+
+            <h3>
+                💬 Discord
+            </h3>
+
+
+            <div class="champ">
+
+                <label for="discord">
+                    Pseudo Discord
+                </label>
+
+                <input
+                    type="text"
+                    id="discord"
+                    name="discord"
+                    required
+                >
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             ADRESSE
+        ========================== -->
+
+        <section class="bloc-formulaire">
+
+            <h3>
+                🏠 Adresse
+            </h3>
+
+
+            <div class="champ">
+
+                <label for="adresse">
+                    Adresse
+                </label>
+
+                <input
+                    type="text"
+                    id="adresse"
+                    name="adresse"
+                    required
+                >
+
+            </div>
+
+
+
+            <div class="champ">
+
+                <label for="complementAdresse">
+                    Complément d'adresse
+                </label>
+
+                <input
+                    type="text"
+                    id="complementAdresse"
+                    name="complementAdresse"
+                >
+
+            </div>
+
+
+
+            <div class="ligne-formulaire">
+
+
+                <div class="champ">
+
+                    <label for="codePostal">
+                        Code postal
+                    </label>
+
+                    <input
+                        type="text"
+                        id="codePostal"
+                        name="codePostal"
+                        required
+                    >
+
+                </div>
+
+
+
+                <div class="champ">
+
+                    <label for="ville">
+                        Ville
+                    </label>
+
+                    <input
+                        type="text"
+                        id="ville"
+                        name="ville"
+                        required
+                    >
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="champ">
+
+                <label for="pays">
+                    Pays
+                </label>
+
+                <input
+                    type="text"
+                    id="pays"
+                    name="pays"
+                    required
+                >
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =========================
+             COTISATION
+        ========================== -->
+
+        <section class="bloc-formulaire">
+
+            <h3>
+                💳 Renouvellement
+            </h3>
+
+
+            <div class="resume-cotisation">
+
+
+                <div class="ligne-resume">
+
+                    <span>
+                        Cotisation annuelle
+                    </span>
+
+                    <strong>
+                        50,00 €
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =========================
+             DON
+        ========================== -->
+
+        <section class="bloc-formulaire">
+
+            <h3>
+                ❤️ Soutenir Chroma Esport
+            </h3>
+
+
+            <p>
+
+                Vous pouvez soutenir davantage
+                l'association en ajoutant un don
+                à votre cotisation.
+
+            </p>
+
+
+
+            <div class="choix-don">
+
+
+                <button
+                    type="button"
+                    class="bouton-don actif"
+                    data-don="0"
+                >
+                    Aucun don
+                </button>
+
+
+                <button
+                    type="button"
+                    class="bouton-don"
+                    data-don="5"
+                >
+                    5 €
+                </button>
+
+
+                <button
+                    type="button"
+                    class="bouton-don"
+                    data-don="10"
+                >
+                    10 €
+                </button>
+
+
+                <button
+                    type="button"
+                    class="bouton-don"
+                    data-don="20"
+                >
+                    20 €
+                </button>
+
+
+                <button
+                    type="button"
+                    class="bouton-don"
+                    data-don="30"
+                >
+                    30 €
+                </button>
+
+
+            </div>
+
+
+
+            <div class="champ">
+
+                <label for="autreDon">
+                    Autre montant
+                </label>
+
+                <input
+                    type="number"
+                    id="autreDon"
+                    name="autreDon"
+                    min="0"
+                    step="1"
+                    placeholder="0"
+                >
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =========================
+             TOTAL
+        ========================== -->
+
+        <section class="bloc-total">
+
+
+            <div class="ligne-total">
+
+                <span>
+                    Cotisation
+                </span>
+
+                <span>
+                    50,00 €
+                </span>
+
+            </div>
+
+
+
+            <div class="ligne-total">
+
+                <span>
+                    Don
+                </span>
+
+                <span id="affichageDon">
+                    0,00 €
+                </span>
+
+            </div>
+
+
+
+            <div class="ligne-total total-final">
+
+                <strong>
+                    Total à payer
+                </strong>
+
+                <strong id="affichageTotal">
+                    50,00 €
+                </strong>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =========================
+             VALIDATION
+        ========================== -->
+
+        <div class="actions-formulaire">
+
+
+            <button
+                type="button"
+                id="boutonRenouvellement"
+                class="bouton-principal"
+            >
+
+                Continuer vers le paiement
+
+            </button>
+
+
+        </div>
+
+
+        <p
+            id="message"
+            class="message"
+        ></p>
+
+
+    </div>
+
+
+</main>
+
+
+
+<script
+    type="module"
+    src="renouvellement.js"
+></script>
+
+
+</body>
+
+</html>
