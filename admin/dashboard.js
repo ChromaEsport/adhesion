@@ -1102,10 +1102,6 @@ listeDemandes.appendChild(
 );
 
 
-                listeDemandes.appendChild(
-                    ligne
-                );
-
 
                 const boutonAccepter =
                     ligne.querySelector(
