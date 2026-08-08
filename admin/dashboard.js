@@ -1206,7 +1206,7 @@ listeDemandes.appendChild(
             }
         );
 
-    }
+  
     catch (error) {
 
         console.error(
