@@ -491,6 +491,203 @@ if (
 }
 
 
+async function calculerFinances() {
+
+    try {
+
+        const snapshot =
+            await getDocs(
+                collection(
+                    db,
+                    "paiements"
+                )
+            );
+
+
+        let cotisations =
+            0;
+
+        let dons =
+            0;
+
+        let total =
+            0;
+
+
+        const anneeActuelle =
+            new Date()
+            .getFullYear();
+
+
+        snapshot.forEach(
+            (documentFirestore) => {
+
+                const paiement =
+                    documentFirestore.data();
+
+
+                // =========================
+                // ANNÉE DU PAIEMENT
+                // =========================
+
+                const annee =
+                    Number(
+                        paiement.annee
+                    );
+
+
+                // On ne prend que
+                // les paiements de l'année
+                // en cours
+
+                if (
+                    annee !==
+                    anneeActuelle
+                ) {
+
+                    return;
+
+                }
+
+
+                // =========================
+                // PAIEMENT CONFIRMÉ
+                // =========================
+
+                if (
+                    paiement.stripePaymentStatus
+                    &&
+                    paiement.stripePaymentStatus
+                    !==
+                    "paid"
+                ) {
+
+                    return;
+
+                }
+
+
+                // =========================
+                // COTISATION
+                // =========================
+
+                cotisations +=
+                    Number(
+                        paiement.cotisation
+                        ||
+                        0
+                    );
+
+
+                // =========================
+                // DON
+                // =========================
+
+                dons +=
+                    Number(
+                        paiement.don
+                        ||
+                        0
+                    );
+
+
+                // =========================
+                // TOTAL
+                // =========================
+
+                total +=
+                    Number(
+                        paiement.total
+                        ||
+                        0
+                    );
+
+            }
+        );
+
+
+        // =========================
+        // AFFICHAGE
+        // =========================
+
+        const elementCotisations =
+            document.getElementById(
+                "statsCotisations"
+            );
+
+        const elementDons =
+            document.getElementById(
+                "statsDons"
+            );
+
+        const elementTotal =
+            document.getElementById(
+                "statsTotal"
+            );
+
+
+        if (
+            elementCotisations
+        ) {
+
+            elementCotisations.textContent =
+                cotisations.toFixed(2)
+                +
+                " €";
+
+        }
+
+
+        if (
+            elementDons
+        ) {
+
+            elementDons.textContent =
+                dons.toFixed(2)
+                +
+                " €";
+
+        }
+
+
+        if (
+            elementTotal
+        ) {
+
+            elementTotal.textContent =
+                total.toFixed(2)
+                +
+                " €";
+
+        }
+
+
+        console.log(
+            "Finances "
+            +
+            anneeActuelle
+            +
+            ":",
+            {
+                cotisations,
+                dons,
+                total
+            }
+        );
+
+
+    }
+    catch (error) {
+
+        console.error(
+            "Erreur calcul finances :",
+            error
+        );
+
+    }
+
+}
+
 
 /* =====================================================
    AFFICHAGE D'UNE STATISTIQUE
