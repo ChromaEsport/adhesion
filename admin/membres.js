@@ -204,14 +204,30 @@ let valeur;
 
 
 
-if(
-filtreActuel==="en_attente_paiement"
-){
+if(filtreActuel === "en_attente_paiement") {
 
-champ="statutPaiement";
-valeur="en_attente";
+    const q = query(
+        collection(db, "adhesions"),
+        where("statut", "==", "acceptee"),
+        where("statutPaiement", "==", "en_attente")
+    );
 
+    resultat = await getDocs(q);
 
+    membres = [];
+
+    resultat.forEach(documentFirestore => {
+
+        membres.push({
+            id: documentFirestore.id,
+            ...documentFirestore.data()
+        });
+
+    });
+
+    afficherMembres(membres);
+
+    return;
 }
 
 else if(
