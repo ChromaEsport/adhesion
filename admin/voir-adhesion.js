@@ -17,7 +17,7 @@ serverTimestamp
 
 const firebaseConfig = {
 
-```
+
 apiKey:
     "AIzaSyAedIKW_LRWLpa9V_t7PcTTbrDmQOj4HAo",
 
@@ -146,7 +146,7 @@ async (user) => {
     await chargerDemande();
 
 }
-```
+
 
 );
 
@@ -156,7 +156,7 @@ CHARGER LA DEMANDE
 
 async function chargerDemande() {
 
-```
+
 try {
 
     const adhesionRef =
@@ -217,7 +217,7 @@ catch (error) {
     );
 
 }
-```
+
 
 }
 
@@ -229,7 +229,7 @@ function afficherDonnees(
 data
 ) {
 
-```
+
 afficher(
     "prenom",
     data.prenom
@@ -334,7 +334,7 @@ afficher(
     "statutPaiement",
     data.statutPaiement
 );
-```
+
 
 }
 
@@ -347,7 +347,7 @@ id,
 valeur
 ) {
 
-```
+
 const element =
     document.getElementById(
         id
@@ -362,7 +362,7 @@ if (!element) {
 element.textContent =
     valeur ||
     "-";
-```
+
 
 }
 
@@ -375,7 +375,7 @@ id,
 valeur
 ) {
 
-```
+
 const element =
     document.getElementById(
         id
@@ -396,7 +396,7 @@ const montant =
 element.textContent =
     montant.toFixed(2) +
     " €";
-```
+
 
 }
 
@@ -408,7 +408,7 @@ function formaterDate(
 valeur
 ) {
 
-```
+
 if (!valeur) {
 
     return "-";
@@ -459,7 +459,7 @@ catch {
     return "-";
 
 }
-```
+
 
 }
 
@@ -471,7 +471,7 @@ function afficherErreur(
 message
 ) {
 
-```
+
 chargement.style.display =
     "none";
 
@@ -486,7 +486,7 @@ erreur.textContent =
 
 erreur.style.display =
     "block";
-```
+
 
 }
 
@@ -496,7 +496,7 @@ ACCEPTER LA DEMANDE
 
 async function accepterDemande() {
 
-```
+
 const utilisateur =
     auth.currentUser;
 
@@ -867,7 +867,7 @@ catch (error) {
     }
 
 }
-```
+
 
 }
 
@@ -877,41 +877,41 @@ catch (error) {
 
 if (boutonAccepter) {
 
-```
+
 boutonAccepter.addEventListener(
     "click",
     accepterDemande
 );
-```
+
 
 }
 else {
 
-```
+
 console.warn(
     "Bouton accepter introuvable."
 );
-```
+
 
 }
 
 if (boutonRefuser) {
 
-```
+
 boutonRefuser.addEventListener(
     "click",
     refuserDemande
 );
-```
+
 
 }
 else {
 
-```
+
 console.warn(
     "Bouton refuser introuvable."
 );
-```
+
 
 }
 
@@ -921,7 +921,7 @@ RETOUR
 
 if (retour) {
 
-```
+
 retour.addEventListener(
     "click",
     () => {
