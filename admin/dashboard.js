@@ -2,13 +2,11 @@ import {
     initializeApp
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
 
-
 import {
     getAuth,
     onAuthStateChanged,
     signOut
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
-
 
 import {
     getFirestore,
@@ -26,7 +24,8 @@ import {
 
 const firebaseConfig = {
 
-    apiKey: "AIzaSyAedIKW_LRWLpa9V_t7PcTTbrDmQOj4HAo",
+    apiKey:
+        "AIzaSyAedIKW_LRWLpa9V_t7PcTTbrDmQOj4HAo",
 
     authDomain:
         "chroma-adhesion.firebaseapp.com",
@@ -46,20 +45,16 @@ const firebaseConfig = {
 };
 
 
-
 const app =
     initializeApp(
         firebaseConfig
     );
 
-
 const auth =
     getAuth(app);
 
-
 const db =
     getFirestore(app);
-
 
 
 const listeDemandes =
@@ -67,12 +62,10 @@ const listeDemandes =
         "listeDemandes"
     );
 
-
 const logout =
     document.getElementById(
         "logout"
     );
-
 
 const onglets =
     document.querySelectorAll(
@@ -80,15 +73,14 @@ const onglets =
     );
 
 
-
 let statutActuel =
     "en_attente";
 
 
 
-/* =========================
+/* =====================================================
    VÉRIFICATION CONNEXION
-========================= */
+===================================================== */
 
 onAuthStateChanged(
     auth,
@@ -103,43 +95,456 @@ onAuthStateChanged(
 
         }
 
-
         chargerDemandes();
+
+        chargerStatistiques();
 
     }
 );
 
 
 
-/* =========================
+/* =====================================================
+   STATISTIQUES
+===================================================== */
+
+async function chargerStatistiques() {
+
+    try {
+
+        const snapshot =
+            await getDocs(
+                collection(
+                    db,
+                    "membres"
+                )
+            );
+
+
+        const membres =
+            [];
+
+
+        snapshot.forEach(
+            documentFirestore => {
+
+                membres.push({
+
+                    id:
+                        documentFirestore.id,
+
+                    ...documentFirestore.data()
+
+                });
+
+            }
+        );
+
+
+        const aujourdHui =
+            new Date();
+
+
+        aujourdHui.setHours(
+            0,
+            0,
+            0,
+            0
+        );
+
+
+        let membresActifs = 0;
+
+        let membresExpires = 0;
+
+        let membresAttentePaiement = 0;
+
+        let cotisationsEncaissees = 0;
+
+        let donsEncaisses = 0;
+
+        let nouvellesAdhesions = 0;
+
+        let renouvellements = 0;
+
+
+        membres.forEach(
+            membre => {
+
+
+                /* =========================================
+                   DATE DE FIN
+                ========================================= */
+
+                let adhesionExpiree =
+                    false;
+
+
+                if (
+                    membre.dateFinAdhesion
+                ) {
+
+                    const dateFin =
+                        new Date(
+                            membre.dateFinAdhesion
+                        );
+
+
+                    dateFin.setHours(
+                        0,
+                        0,
+                        0,
+                        0
+                    );
+
+
+                    adhesionExpiree =
+                        dateFin < aujourdHui;
+
+                }
+
+
+                /* =========================================
+                   MEMBRES ACTIFS
+                ========================================= */
+
+                if (
+                    !adhesionExpiree &&
+                    membre.statutPaiement === "paye"
+                ) {
+
+                    membresActifs++;
+
+                }
+
+
+                /* =========================================
+                   MEMBRES EXPIRÉS
+                ========================================= */
+
+                if (
+                    adhesionExpiree
+                ) {
+
+                    membresExpires++;
+
+                }
+
+
+                /* =========================================
+                   EN ATTENTE DE PAIEMENT
+                ========================================= */
+
+                if (
+                    membre.statutPaiement ===
+                    "en_attente"
+                ) {
+
+                    membresAttentePaiement++;
+
+                }
+
+
+                /* =========================================
+                   FINANCES
+                ========================================= */
+
+                if (
+                    membre.statutPaiement ===
+                    "paye"
+                ) {
+
+                    cotisationsEncaissees +=
+                        Number(
+                            membre.cotisation || 0
+                        );
+
+                    donsEncaisses +=
+                        Number(
+                            membre.don || 0
+                        );
+
+                }
+
+
+                /* =========================================
+                   ADHÉSIONS DE L'ANNÉE
+                ========================================= */
+
+                const anneeActuelle =
+                    new Date()
+                    .getFullYear();
+
+
+                if (
+                    Number(membre.annee) ===
+                    anneeActuelle
+                ) {
+
+                    nouvellesAdhesions++;
+
+                }
+
+
+                /* =========================================
+                   RENOUVELLEMENTS
+                ========================================= */
+
+                if (
+                    membre.dateRenouvellement
+                ) {
+
+                    let dateRenouvellement;
+
+
+                    if (
+                        typeof membre.dateRenouvellement.toDate ===
+                        "function"
+                    ) {
+
+                        dateRenouvellement =
+                            membre.dateRenouvellement.toDate();
+
+                    }
+                    else {
+
+                        dateRenouvellement =
+                            new Date(
+                                membre.dateRenouvellement
+                            );
+
+                    }
+
+
+                    if (
+                        dateRenouvellement.getFullYear() ===
+                        anneeActuelle
+                    ) {
+
+                        renouvellements++;
+
+                    }
+
+                }
+
+            }
+        );
+
+
+        /* =========================================
+           TOTAL DES MEMBRES
+        ========================================= */
+
+        const totalMembres =
+            membresActifs +
+            membresExpires;
+
+
+        /* =========================================
+           TOTAL ENCAISSÉ
+        ========================================= */
+
+        const totalEncaisse =
+            cotisationsEncaissees +
+            donsEncaisses;
+
+
+        /* =========================================
+           MOYENNE PAR MEMBRE
+        ========================================= */
+
+        const moyenneParMembre =
+            membresActifs > 0
+                ? totalEncaisse / membresActifs
+                : 0;
+
+
+        /* =========================================
+           AFFICHAGE
+        ========================================= */
+
+        afficherStatistique(
+            "statMembresActifs",
+            membresActifs
+        );
+
+
+        afficherStatistique(
+            "statMembresExpires",
+            membresExpires
+        );
+
+
+        afficherStatistique(
+            "statAttentePaiement",
+            membresAttentePaiement
+        );
+
+
+        afficherStatistique(
+            "statTotalMembres",
+            totalMembres
+        );
+
+
+        afficherStatistique(
+            "statCotisations",
+            formatEuro(
+                cotisationsEncaissees
+            )
+        );
+
+
+        afficherStatistique(
+            "statDons",
+            formatEuro(
+                donsEncaisses
+            )
+        );
+
+
+        afficherStatistique(
+            "statTotalEncaisse",
+            formatEuro(
+                totalEncaisse
+            )
+        );
+
+
+        afficherStatistique(
+            "statMoyenne",
+            formatEuro(
+                moyenneParMembre
+            )
+        );
+
+
+        afficherStatistique(
+            "statNouvellesAdhesions",
+            nouvellesAdhesions
+        );
+
+
+        afficherStatistique(
+            "statRenouvellements",
+            renouvellements
+        );
+
+
+        console.log(
+            "Statistiques association :",
+            {
+                membresActifs,
+                membresExpires,
+                membresAttentePaiement,
+                totalMembres,
+                cotisationsEncaissees,
+                donsEncaisses,
+                totalEncaisse,
+                moyenneParMembre,
+                nouvellesAdhesions,
+                renouvellements
+            }
+        );
+
+    }
+    catch (error) {
+
+        console.error(
+            "Erreur statistiques :",
+            error
+        );
+
+    }
+
+}
+
+
+
+/* =====================================================
+   AFFICHAGE D'UNE STATISTIQUE
+===================================================== */
+
+function afficherStatistique(
+    id,
+    valeur
+) {
+
+    const element =
+        document.getElementById(
+            id
+        );
+
+
+    if (!element) {
+
+        console.warn(
+            `Élément #${id} introuvable`
+        );
+
+        return;
+
+    }
+
+
+    element.textContent =
+        valeur;
+
+}
+
+
+
+/* =====================================================
+   FORMAT EURO
+===================================================== */
+
+function formatEuro(
+    montant
+) {
+
+    return Number(
+        montant
+    ).toLocaleString(
+        "fr-FR",
+        {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        }
+    ) + " €";
+
+}
+
+
+
+/* =====================================================
    GESTION DES ONGLETS
-========================= */
+===================================================== */
 
 onglets.forEach(
-    (onglet) => {
+    onglet => {
 
         onglet.addEventListener(
             "click",
             () => {
 
                 onglets.forEach(
-                    (autreOnglet) => {
+                    autreOnglet => {
 
                         autreOnglet
-                        .classList
-                        .remove(
-                            "actif"
-                        );
+                            .classList
+                            .remove(
+                                "actif"
+                            );
 
                     }
                 );
 
 
                 onglet
-                .classList
-                .add(
-                    "actif"
-                );
+                    .classList
+                    .add(
+                        "actif"
+                    );
 
 
                 statutActuel =
@@ -156,12 +561,11 @@ onglets.forEach(
 
 
 
-/* =========================
+/* =====================================================
    CHARGEMENT DES DEMANDES
-========================= */
+===================================================== */
 
 async function chargerDemandes() {
-
 
     listeDemandes.innerHTML =
         "Chargement des demandes...";
@@ -169,17 +573,8 @@ async function chargerDemandes() {
 
     try {
 
-
         let result;
 
-
-        /*
-        ONGLET TOUTES
-
-        Aucun filtre :
-        tous les documents de la
-        collection sont récupérés.
-        */
 
         if (
             statutActuel ===
@@ -195,14 +590,6 @@ async function chargerDemandes() {
                 );
 
         }
-
-
-        /*
-        AUTRES ONGLETS
-
-        Filtrage selon le statut.
-        */
-
         else {
 
             const q =
@@ -226,10 +613,8 @@ async function chargerDemandes() {
         }
 
 
-
         listeDemandes.innerHTML =
             "";
-
 
 
         if (
@@ -239,288 +624,199 @@ async function chargerDemandes() {
             listeDemandes.innerHTML =
                 "<p>Aucune demande dans cette catégorie.</p>";
 
-
             return;
 
         }
 
 
-
-        /*
-        AFFICHAGE DES DEMANDES
-        */
-
         result.forEach(
-(documentFirestore)=>{
+            documentFirestore => {
 
+                const data =
+                    documentFirestore.data();
 
-const data =
-documentFirestore.data();
 
+                const dateEnvoi =
+                    data.dateDemande
+                        ? data.dateDemande
+                            .toDate()
+                            .toLocaleDateString(
+                                "fr-FR"
+                            )
+                        : "-";
 
 
-const ligne =
-document.createElement(
-"tr"
-);
+                const ligne =
+                    document.createElement(
+                        "tr"
+                    );
 
 
+                ligne.innerHTML = `
 
-const dateEnvoi =
+                    <td>
+                        ${data.prenom || ""}
+                        ${data.nom || ""}
+                    </td>
 
-data.dateDemande
+                    <td>
+                        ${data.email || "-"}
+                    </td>
 
-?
+                    <td>
+                        ${data.discord || "-"}
+                    </td>
 
-data.dateDemande
-.toDate()
-.toLocaleDateString(
-"fr-FR"
-)
+                    <td>
+                        ${Number(
+                            data.total || 0
+                        ).toFixed(2)} €
+                    </td>
 
-:
+                    <td>
+                        ${data.statut || "-"}
+                    </td>
 
-"-";
+                    <td>
+                        ${dateEnvoi}
+                    </td>
 
+                    <td>
 
+                        ${
+                            data.statut === "en_attente"
 
+                            ?
 
+                            `
+                            <button
+                                class="bouton-action accepter"
+                            >
+                                ✅
+                            </button>
 
-ligne.innerHTML = `
+                            <button
+                                class="bouton-refus refuser"
+                            >
+                                ❌
+                            </button>
+                            `
 
+                            :
 
-<td>
+                            `
+                            <button
+                                class="bouton-action voir-demande"
+                            >
+                                👁
+                            </button>
+                            `
+                        }
 
-${data.prenom || ""}
-${data.nom || ""}
+                    </td>
 
-</td>
+                `;
 
 
+                listeDemandes.appendChild(
+                    ligne
+                );
 
-<td>
 
-${data.email || "-"}
+                const boutonAccepter =
+                    ligne.querySelector(
+                        ".accepter"
+                    );
 
-</td>
 
+                const boutonRefuser =
+                    ligne.querySelector(
+                        ".refuser"
+                    );
 
 
-<td>
+                if (
+                    boutonAccepter
+                ) {
 
-${data.discord || "-"}
+                    boutonAccepter.addEventListener(
+                        "click",
+                        async () => {
 
-</td>
+                            if (
+                                confirm(
+                                    "Accepter cette demande ?"
+                                )
+                            ) {
 
+                                await accepterAdhesion(
+                                    documentFirestore.id,
+                                    auth.currentUser
+                                );
 
+                            }
 
-<td>
+                        }
+                    );
 
-${Number(
-data.total || 0
-).toFixed(2)}
-€
+                }
 
-</td>
 
+                if (
+                    boutonRefuser
+                ) {
 
+                    boutonRefuser.addEventListener(
+                        "click",
+                        async () => {
 
-<td>
+                            if (
+                                confirm(
+                                    "Refuser cette demande ?"
+                                )
+                            ) {
 
-${data.statut || "-"}
+                                await changerStatut(
+                                    documentFirestore.id,
+                                    "refusee",
+                                    auth.currentUser
+                                );
 
-</td>
+                            }
 
+                        }
+                    );
 
+                }
 
-<td>
-
-${dateEnvoi}
-
-</td>
-
-
-
-<td>
-
-${
-data.statut === "en_attente"
-
-?
-
-`
-
-<button
-class="bouton-action accepter"
->
-✅
-</button>
-
-
-<button
-class="bouton-refus refuser"
->
-❌
-</button>
-
-`
-
-:
-
-`
-
-<button
-class="bouton-action voir-demande"
->
-👁
-</button>
-
-`
-
-}
-
-
-</td>
-
-
-`;
-
-
-
-listeDemandes.appendChild(
-ligne
-);
-
-
-
-
-const boutonAccepter =
-ligne.querySelector(
-".accepter"
-);
-
-
-
-const boutonRefuser =
-ligne.querySelector(
-".refuser"
-);
-
-
-
-if(boutonAccepter){
-
-
-boutonAccepter.addEventListener(
-"click",
-async()=>{
-
-
-if(
-confirm(
-"Accepter cette demande ?"
-)
-){
-
-
-await accepterAdhesion(
-
-documentFirestore.id,
-
-auth.currentUser
-
-);
-
-
-}
-
-
-}
-);
-
-
-}
-
-
-
-if(boutonRefuser){
-
-
-boutonRefuser.addEventListener(
-"click",
-async()=>{
-
-
-if(
-confirm(
-"Refuser cette demande ?"
-)
-){
-
-
-await changerStatut(
-
-documentFirestore.id,
-
-"refusee",
-
-auth.currentUser
-
-);
-
-
-}
-
-
-}
-);
-
-
-}
-
-
-
-}
-);
-
-    
-
+            }
+        );
 
     }
     catch (error) {
 
-
         console.error(
-
             "Erreur lors du chargement des demandes :",
-
             error
-
         );
 
 
         listeDemandes.innerHTML =
-
             "<p>Impossible de charger les demandes.</p>";
 
-
     }
-
 
 }
 
 
 
-/* =========================
+/* =====================================================
    DÉCONNEXION
-========================= */
+===================================================== */
 
 logout.addEventListener(
-
     "click",
-
     async () => {
-
 
         await signOut(
             auth
@@ -528,19 +824,16 @@ logout.addEventListener(
 
 
         window.location.href =
-
             "index.html";
 
-
     }
-
 );
 
 
 
-/* =========================
-   ACCEPTATION / REFUS
-========================= */
+/* =====================================================
+   NUMÉRO MEMBRE
+===================================================== */
 
 async function obtenirProchainNumeroMembre() {
 
@@ -565,31 +858,31 @@ function genererNumeroMembre(
 ) {
 
     return (
-
-        "CHRO-"
-        +
-        annee
-        +
-        "-"
-        +
+        "CHRO-" +
+        annee +
+        "-" +
         numero
-        .toString()
-        .padStart(
-            4,
-            "0"
-        )
-
+            .toString()
+            .padStart(
+                4,
+                "0"
+            )
     );
 
 }
 
+
+
+/* =====================================================
+   ACCEPTER UNE ADHÉSION
+===================================================== */
+
 async function accepterAdhesion(
     id,
     utilisateur
-){
+) {
 
     try {
-
 
         const adhesionRef =
             doc(
@@ -605,9 +898,9 @@ async function accepterAdhesion(
             );
 
 
-        if(
+        if (
             !adhesionSnap.exists()
-        ){
+        ) {
 
             alert(
                 "Demande introuvable."
@@ -622,59 +915,49 @@ async function accepterAdhesion(
             adhesionSnap.data();
 
 
-
         const reponse =
             await fetch(
-
                 "https://chroma-stripe.max2501.workers.dev",
-
                 {
 
                     method:
                         "POST",
 
-
                     headers:
                     {
-
                         "Content-Type":
                             "application/json"
-
                     },
 
+                    body:
+                        JSON.stringify({
 
-                     body:
+                            montant:
+                                data.total,
 
-            JSON.stringify({
+                            email:
+                                data.email,
 
-                montant:
-                    data.total,
+                            adhesionId:
+                                id
 
-                email:
-                    data.email,
-
-                adhesionId:
-                    id
-
-                    })
+                        })
 
                 }
-
             );
-
 
 
         const stripe =
             await reponse.json();
 
 
-
-        if(
+        if (
             !stripe.url
-        ){
+        ) {
 
             console.error(
-               "Réponse Stripe :", stripe
+                "Réponse Stripe :",
+                stripe
             );
 
 
@@ -682,74 +965,51 @@ async function accepterAdhesion(
                 "Impossible de créer le paiement Stripe."
             );
 
-
             return;
 
         }
 
 
-
         await updateDoc(
-
             adhesionRef,
-
             {
 
                 statut:
                     "acceptee",
 
-
                 statutPaiement:
                     "en_attente",
-
 
                 stripeSessionId:
                     stripe.sessionId,
 
-
                 lienPaiement:
                     stripe.url,
-
 
                 dateDecision:
                     serverTimestamp(),
 
-
                 decisionParNom:
-
                     utilisateur.displayName
                     ||
                     utilisateur.email
                     ||
                     "Administrateur",
 
-
                 decisionParEmail:
-
                     utilisateur.email
                     ||
                     ""
 
             }
-
         );
 
-/*
- Redirection immédiate
- vers la page Stripe
-*/
 
-window.location.href =
-    stripe.url;
-
-        await chargerDemandes();
-
-
+        window.location.href =
+            stripe.url;
 
     }
-
-
-    catch(error){
+    catch (error) {
 
         console.error(
             "Erreur acceptation :",
@@ -766,6 +1026,10 @@ window.location.href =
 }
 
 
+
+/* =====================================================
+   CHANGER STATUT
+===================================================== */
 
 async function changerStatut(
     id,
@@ -791,11 +1055,6 @@ async function changerStatut(
             "Administrateur non identifié";
 
 
-        /*
-        Mise à jour de la demande
-        dans la collection adhesions
-        */
-
         await updateDoc(
             demande,
             {
@@ -803,28 +1062,20 @@ async function changerStatut(
                 statut:
                     nouveauStatut,
 
-
                 statutPaiement:
-
                     nouveauStatut === "acceptee"
-
-                    ? "en_attente"
-
-                    : "non_concerne",
-
+                        ? "en_attente"
+                        : "non_concerne",
 
                 dateDecision:
                     serverTimestamp(),
 
-
                 decisionParNom:
                     nomDecisionnaire,
-
 
                 decisionParEmail:
                     utilisateur.email
                     || "",
-
 
                 decisionParUid:
                     utilisateur.uid
@@ -833,30 +1084,21 @@ async function changerStatut(
         );
 
 
-        /*
-        Création de la fiche membre
-        uniquement si la demande
-        est acceptée
-        */
-
         if (
             nouveauStatut ===
             "acceptee"
         ) {
-           const prochainNumero =
-              await obtenirProchainNumeroMembre();
+
+            const prochainNumero =
+                await obtenirProchainNumeroMembre();
 
 
-           const numeroMembre =
-               genererNumeroMembre(
-                 new Date().getFullYear(),
-                 prochainNumero
-                   );
-            /*
-            Récupération de toutes
-            les informations de
-            la demande d’adhésion
-            */
+            const numeroMembre =
+                genererNumeroMembre(
+                    new Date().getFullYear(),
+                    prochainNumero
+                );
+
 
             const demandeRecuperee =
                 await getDocs(
@@ -880,15 +1122,9 @@ async function changerStatut(
 
                 const informationsAdhesion =
                     demandeRecuperee
-                    .docs[0]
-                    .data();
+                        .docs[0]
+                        .data();
 
-
-                /*
-                Création du membre
-                dans la collection
-                membres
-                */
 
                 await setDoc(
                     doc(
@@ -898,140 +1134,76 @@ async function changerStatut(
                     ),
                     {
 
+                        numeroMembre,
 
-                       numeroMembre:
-
-                          numeroMembre,
-
-                         nom:
-
+                        nom:
                             informationsAdhesion.nom
                             || "",
 
-
                         prenom:
-
                             informationsAdhesion.prenom
                             || "",
 
-
                         email:
-
                             informationsAdhesion.email
                             || "",
 
-
                         discord:
-
                             informationsAdhesion.discord
                             || "",
 
-
                         dateNaissance:
-
                             informationsAdhesion.dateNaissance
                             || "",
 
-
                         annee:
-
                             informationsAdhesion.annee
                             || "",
 
-
                         cotisation:
-
                             Number(
                                 informationsAdhesion.cotisation
                                 || 0
                             ),
 
-
                         don:
-
                             Number(
                                 informationsAdhesion.don
                                 || 0
                             ),
 
-
                         total:
-
                             Number(
                                 informationsAdhesion.total
                                 || 0
                             ),
 
-
-                        /*
-                        Le membre est accepté,
-                        mais il n’a pas encore
-                        payé.
-                        */
-
                         statutMembre:
-
                             "en_attente_paiement",
 
-
                         statutPaiement:
-
                             "en_attente",
 
-
-                        /*
-                        L’adhésion n’est pas
-                        encore active.
-                        */
-
                         statutAdhesion:
-
                             "non_active",
 
-
-                        /*
-                        Lien avec la demande
-                        d’origine.
-                        */
-
                         adhesionId:
-
                             id,
 
-
-                        /*
-                        Informations sur
-                        la décision.
-                        */
-
                         dateAcceptation:
-
                             serverTimestamp(),
 
-
                         accepteParNom:
-
                             nomDecisionnaire,
 
-
                         accepteParEmail:
-
                             utilisateur.email
                             || "",
 
-
                         accepteParUid:
-
                             utilisateur.uid,
 
-
-                        /*
-                        Date de création
-                        de la fiche membre.
-                        */
-
                         dateCreation:
-
                             serverTimestamp()
 
                     }
@@ -1042,12 +1214,7 @@ async function changerStatut(
         }
 
 
-        /*
-        Actualisation du dashboard
-        */
-
         await chargerDemandes();
-
 
     }
     catch (error) {
