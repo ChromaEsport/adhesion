@@ -790,12 +790,93 @@ onglets.forEach(
 );
 
 
+function mettreAJourEnteteDemandes() {
+
+    const entete =
+        document.getElementById(
+            "enteteDemandes"
+        );
+
+    if (!entete) {
+        return;
+    }
+
+
+    /*
+    =========================================
+    ONGLET ACCEPTÉES
+    =========================================
+    */
+
+    if (
+        statutActuel === "acceptee"
+    ) {
+
+        entete.innerHTML = `
+
+            <tr>
+
+                <th>Nom</th>
+
+                <th>Email</th>
+
+                <th>Discord</th>
+
+                <th>Date de demande</th>
+
+                <th>Date d'acceptation</th>
+
+                <th>Action</th>
+
+            </tr>
+
+        `;
+
+    }
+
+    /*
+    =========================================
+    AUTRES ONGLET
+    =========================================
+    */
+
+    else {
+
+        entete.innerHTML = `
+
+            <tr>
+
+                <th>Nom</th>
+
+                <th>Email</th>
+
+                <th>Discord</th>
+
+                <th>Total</th>
+
+                <th>Statut</th>
+
+                <th>Date de demande</th>
+
+                <th>Action</th>
+
+            </tr>
+
+        `;
+
+    }
+
+}
+
+
 
 /* =====================================================
    CHARGEMENT DES DEMANDES
 ===================================================== */
 
 async function chargerDemandes() {
+
+    mettreAJourEnteteDemandes();
 
     listeDemandes.innerHTML =
         "Chargement des demandes...";
