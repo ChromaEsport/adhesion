@@ -184,228 +184,152 @@ chargerMembres();
 
 
 
-async function chargerMembres(){
+async function chargerMembres() {
 
+    listeMembres.innerHTML = "Chargement...";
 
-listeMembres.innerHTML =
+    try {
 
-`
-<tr>
-<td colspan="7">
-Chargement...
-</td>
-</tr>
-`;
+        /* =========================================
+           EN ATTENTE DE PAIEMENT
+           → COLLECTION adhesions
+        ========================================= */
 
+        if (filtreActuel === "en_attente_paiement") {
 
+            const q = query(
+                collection(db, "adhesions"),
+                where("statut", "==", "acceptee"),
+                where("statutPaiement", "==", "en_attente")
+            );
 
-let resultat;
+            const resultat = await getDocs(q);
 
+            membres = [];
 
+            resultat.forEach(documentFirestore => {
 
-if(filtreActuel==="tous"){
+                membres.push({
+                    id: documentFirestore.id,
+                    ...documentFirestore.data()
+                });
 
+            });
 
-resultat =
-await getDocs(
-collection(
-db,
-"membres"
-)
-);
+            afficherMembres(membres);
 
+            return;
+        }
 
-}
 
-else {
+        /* =========================================
+           TOUS
+           → COLLECTION membres
+        ========================================= */
 
+        if (filtreActuel === "tous") {
 
-let champ;
-let valeur;
+            const resultat = await getDocs(
+                collection(db, "membres")
+            );
 
+            membres = [];
 
+            resultat.forEach(documentFirestore => {
 
-if(filtreActuel === "en_attente_paiement") {
+                membres.push({
+                    id: documentFirestore.id,
+                    ...documentFirestore.data()
+                });
 
-    const q = query(
-        collection(db, "adhesions"),
-        where("statut", "==", "acceptee"),
-        where("statutPaiement", "==", "en_attente")
-    );
+            });
 
-    resultat = await getDocs(q);
+            afficherMembres(membres);
 
-    membres = [];
+            return;
+        }
 
-    resultat.forEach(documentFirestore => {
 
-        membres.push({
-            id: documentFirestore.id,
-            ...documentFirestore.data()
-        });
+        /* =========================================
+           MEMBRES ACTIFS
+           → COLLECTION membres
+        ========================================= */
 
-    });
+        if (filtreActuel === "active") {
 
-    afficherMembres(membres);
+            const resultat = await getDocs(
+                collection(db, "membres")
+            );
 
-    return;
-}
+            membres = [];
 
-else if(
-filtreActuel==="active"
-){
+            resultat.forEach(documentFirestore => {
 
-resultat =
-await getDocs(
-collection(
-db,
-"membres"
-)
-);
+                const membre = {
+                    id: documentFirestore.id,
+                    ...documentFirestore.data()
+                };
 
+                if (!adhesionEstExpiree(membre)) {
 
-membres=[];
+                    membres.push(membre);
 
+                }
 
-resultat.forEach(
-doc=>{
+            });
 
-const membre={
+            afficherMembres(membres);
 
-id:
-doc.id,
+            return;
+        }
 
-...doc.data()
 
-};
+        /* =========================================
+           MEMBRES EXPIRÉS
+           → COLLECTION membres
+        ========================================= */
 
+        if (filtreActuel === "expiree") {
 
-if(
-!adhesionEstExpiree(membre)
-){
+            const resultat = await getDocs(
+                collection(db, "membres")
+            );
 
-membres.push(membre);
+            membres = [];
 
-}
+            resultat.forEach(documentFirestore => {
 
+                const membre = {
+                    id: documentFirestore.id,
+                    ...documentFirestore.data()
+                };
 
-});
+                if (adhesionEstExpiree(membre)) {
 
-afficherMembres(
-membres
-);
+                    membres.push(membre);
 
+                }
 
-return;
+            });
 
-}
+            afficherMembres(membres);
 
+            return;
+        }
 
 
-else if(
-filtreActuel==="expiree"
-){
+    }
+    catch (error) {
 
-resultat =
-await getDocs(
-collection(
-db,
-"membres"
-)
-);
+        console.error(
+            "Erreur chargement membres :",
+            error
+        );
 
+        listeMembres.innerHTML =
+            "<p>Impossible de charger les membres.</p>";
 
-membres=[];
-
-
-resultat.forEach(
-doc=>{
-
-const membre={
-
-id:
-doc.id,
-
-...doc.data()
-
-};
-
-
-if(
-adhesionEstExpiree(membre)
-){
-
-membres.push(membre);
-
-}
-
-
-});
-
-
-afficherMembres(
-membres
-);
-
-
-return;
-
-}
-
-
-
-const q =
-query(
-
-collection(
-db,
-"membres"
-),
-
-where(
-champ,
-"==",
-valeur
-)
-
-);
-
-
-
-resultat =
-await getDocs(q);
-
-
-}
-
-
-
-
-membres=[];
-
-
-resultat.forEach(
-doc=>{
-
-
-membres.push({
-
-id:
-doc.id,
-
-...doc.data()
-
-});
-
-
-});
-
-
-afficherMembres(
-membres
-);
-
-
+    }
 
 }
 
