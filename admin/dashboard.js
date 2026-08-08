@@ -272,60 +272,91 @@ async function chargerStatistiques() {
                 ========================================= */
 
                 const anneeActuelle =
-                    new Date()
-                    .getFullYear();
+    new Date().getFullYear();
 
 
-                if (
-                    Number(membre.annee) ===
-                    anneeActuelle
-                ) {
+/* =========================================
+   NOUVELLE ADHÉSION
+========================================= */
 
-                    nouvellesAdhesions++;
+if (
+    membre.dateCreation
+) {
 
-                }
-
-
-                /* =========================================
-                   RENOUVELLEMENTS
-                ========================================= */
-
-                if (
-                    membre.dateRenouvellement
-                ) {
-
-                    let dateRenouvellement;
+    let dateCreation;
 
 
-                    if (
-                        typeof membre.dateRenouvellement.toDate ===
-                        "function"
-                    ) {
+    if (
+        typeof membre.dateCreation.toDate ===
+        "function"
+    ) {
 
-                        dateRenouvellement =
-                            membre.dateRenouvellement.toDate();
+        dateCreation =
+            membre.dateCreation.toDate();
 
-                    }
-                    else {
+    }
+    else {
 
-                        dateRenouvellement =
-                            new Date(
-                                membre.dateRenouvellement
-                            );
+        dateCreation =
+            new Date(
+                membre.dateCreation
+            );
 
-                    }
+    }
 
 
-                    if (
-                        dateRenouvellement.getFullYear() ===
-                        anneeActuelle
-                    ) {
+    if (
+        dateCreation.getFullYear() ===
+        anneeActuelle
+    ) {
 
-                        renouvellements++;
+        nouvellesAdhesions++;
 
-                    }
+    }
 
-                }
+}
+
+
+/* =========================================
+   RENOUVELLEMENT
+========================================= */
+
+if (
+    membre.dateRenouvellement
+) {
+
+    let dateRenouvellement;
+
+
+    if (
+        typeof membre.dateRenouvellement.toDate ===
+        "function"
+    ) {
+
+        dateRenouvellement =
+            membre.dateRenouvellement.toDate();
+
+    }
+    else {
+
+        dateRenouvellement =
+            new Date(
+                membre.dateRenouvellement
+            );
+
+    }
+
+
+    if (
+        dateRenouvellement.getFullYear() ===
+        anneeActuelle
+    ) {
+
+        renouvellements++;
+
+    }
+
+}
 
             }
         );
