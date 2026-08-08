@@ -712,80 +712,95 @@ async function genererLienRenouvellement(
     membre
 ){
 
-    try {
+    try{
 
-        const cotisation =
-            Number(membre.cotisation || 50);
+        /*
+        Demande du don lors du renouvellement
+        */
 
-        const donSaisi =
-            prompt(
-                "Souhaitez-vous faire un don en plus de votre cotisation de " +
-                cotisation +
-                " € ?\n\n" +
-                "Indiquez le montant du don en euros.\n" +
-                "Laissez vide ou indiquez 0 si vous ne souhaitez pas faire de don.",
-                "0"
-            );
+        const reponseDon = prompt(
+            "Souhaitez-vous faire un don en plus de votre cotisation de 50 € ?\n\n" +
+            "Indiquez le montant du don en euros.\n" +
+            "Laissez vide ou indiquez 0 si vous ne souhaitez pas faire de don."
+        );
 
-        if (donSaisi === null) {
+        /*
+        Annulation de la fenêtre
+        */
+
+        if(reponseDon === null){
             return;
         }
 
-        const don =
-            Number(donSaisi.replace(",", "."));
+        /*
+        Conversion du montant
+        */
 
-        if (
-            isNaN(don) ||
-            don < 0
-        ) {
+        const montantDon =
+            Number(
+                reponseDon.replace(",", ".")
+            ) || 0;
+
+
+        /*
+        Vérification
+        */
+
+        if(montantDon < 0){
 
             alert(
-                "Le montant du don doit être un nombre positif."
+                "Le montant du don ne peut pas être négatif."
             );
 
             return;
         }
+
+
+        /*
+        Cotisation fixe
+        */
+
+        const cotisation = 50;
+
+
+        /*
+        Total à payer
+        */
 
         const total =
-            cotisation + don;
+            cotisation +
+            montantDon;
 
 
-        const confirmation =
-            confirm(
-                "Récapitulatif du renouvellement\n\n" +
+        console.log(
+            "Renouvellement :",
+            {
+                cotisation,
+                don: montantDon,
+                total
+            }
+        );
 
-                "Cotisation : " +
-                cotisation.toFixed(2) +
-                " €\n" +
 
-                "Don : " +
-                don.toFixed(2) +
-                " €\n\n" +
-
-                "TOTAL : " +
-                total.toFixed(2) +
-                " €\n\n" +
-
-                "Continuer vers le paiement ?"
-            );
-
-        if (!confirmation) {
-            return;
-        }
-
+        /*
+        Création de la session Stripe
+        */
 
         const reponse =
             await fetch(
-                "https://chroma-stripe.max2501.workers.dev",
-                {
-                    method: "POST",
 
-                    headers: {
+                "https://chroma-stripe.max2501.workers.dev",
+
+                {
+
+                    method:"POST",
+
+                    headers:{
                         "Content-Type":
                             "application/json"
                     },
 
-                    body: JSON.stringify({
+                    body:JSON.stringify({
 
                         montant:
                             total,
@@ -794,7 +809,7 @@ async function genererLienRenouvellement(
                             cotisation,
 
                         don:
-                            don,
+                            montantDon,
 
                         email:
                             membre.email,
@@ -809,7 +824,9 @@ async function genererLienRenouvellement(
                             "renouvellement"
 
                     })
+
                 }
+
             );
 
 
@@ -817,7 +834,7 @@ async function genererLienRenouvellement(
             await reponse.json();
 
 
-        if (!stripe.url) {
+        if(!stripe.url){
 
             console.error(
                 "Réponse Stripe :",
@@ -832,6 +849,10 @@ async function genererLienRenouvellement(
         }
 
 
+        /*
+        Ouverture de Stripe
+        */
+
         window.open(
             stripe.url,
             "_blank"
@@ -839,10 +860,10 @@ async function genererLienRenouvellement(
 
     }
 
-    catch(error) {
+    catch(error){
 
         console.error(
-            "Erreur Stripe renouvellement :",
+            "Erreur renouvellement :",
             error
         );
 
