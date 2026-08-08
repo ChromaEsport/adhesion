@@ -75,110 +75,232 @@ Déconnexion
 
 <main class="admin-container">
 
+<!-- =====================================================
+     RÉSUMÉ DES STATISTIQUES
+===================================================== -->
+
+<div class="stats-resume">
+
+
 <!-- =========================
-     STATISTIQUES ASSOCIATION
-========================= -->
+     MEMBRES
+========================== -->
 
-<section class="statistiques-association">
+<div class="stats-colonne">
 
-<h2>📊 Vue d’ensemble</h2>
+    <div class="stats-colonne-header">
+        <span>👥</span>
+        <h3>Membres</h3>
+    </div>
 
-<!-- Membres -->
-<div class="stats-section">
 
-    <h3>👥 Membres</h3>
+    <div class="stat-ligne">
 
-    <div class="stats-grid">
+        <span class="stat-ligne-label">
+            Membres actifs
+        </span>
 
-        <div class="stat-card">
-            <div class="stat-icon">👥</div>
-            <div class="stat-label">Membres actifs</div>
-            <div class="stat-value" id="statMembresActifs">—</div>
-        </div>
+        <span
+            class="stat-ligne-valeur stat-actif"
+            id="statMembresActifs"
+        >
+            0
+        </span>
 
-        <div class="stat-card">
-            <div class="stat-icon">⏳</div>
-            <div class="stat-label">Membres expirés</div>
-            <div class="stat-value" id="statMembresExpires">—</div>
-        </div>
+    </div>
 
-        <div class="stat-card">
-            <div class="stat-icon">💳</div>
-            <div class="stat-label">En attente de paiement</div>
-            <div class="stat-value" id="statPaiementsAttente">—</div>
-        </div>
 
-        <div class="stat-card">
-            <div class="stat-icon">👤</div>
-            <div class="stat-label">Total des membres</div>
-            <div class="stat-value" id="statTotalMembres">—</div>
-        </div>
+    <div class="stat-ligne">
+
+        <span class="stat-ligne-label">
+            Membres expirés
+        </span>
+
+        <span
+            class="stat-ligne-valeur stat-expire"
+            id="statMembresExpires"
+        >
+            0
+        </span>
+
+    </div>
+
+
+    <div class="stat-ligne">
+
+        <span class="stat-ligne-label">
+            En attente de paiement
+        </span>
+
+        <span
+            class="stat-ligne-valeur stat-attente"
+            id="statPaiementsAttente"
+        >
+            0
+        </span>
+
+    </div>
+
+
+    <div class="stat-ligne stat-ligne-importante">
+
+        <span class="stat-ligne-label">
+            Total des membres
+        </span>
+
+        <span
+            class="stat-ligne-valeur"
+            id="statTotalMembres"
+        >
+            0
+        </span>
 
     </div>
 
 </div>
 
 
-<!-- Finances -->
-<div class="stats-section">
+<!-- =========================
+     FINANCES
+========================== -->
 
-    <h3>💰 Finances</h3>
+<div class="stats-colonne">
 
-    <div class="stats-grid">
+    <div class="stats-colonne-header">
+        <span>💰</span>
+        <h3>Finances</h3>
+    </div>
 
-        <div class="stat-card">
-            <div class="stat-icon">💰</div>
-            <div class="stat-label">Cotisations encaissées</div>
-            <div class="stat-value" id="statCotisations">—</div>
-        </div>
 
-        <div class="stat-card">
-            <div class="stat-icon">🎁</div>
-            <div class="stat-label">Dons encaissés</div>
-            <div class="stat-value" id="statDons">—</div>
-        </div>
+    <div class="stat-ligne">
 
-        <div class="stat-card">
-            <div class="stat-icon">💶</div>
-            <div class="stat-label">Total encaissé</div>
-            <div class="stat-value" id="statTotalEncaisse">—</div>
-        </div>
+        <span class="stat-ligne-label">
+            Cotisations encaissées
+        </span>
 
-        <div class="stat-card">
-            <div class="stat-icon">📊</div>
-            <div class="stat-label">Moyenne par membre</div>
-            <div class="stat-value" id="statMoyenneMembre">—</div>
-        </div>
+        <span
+            class="stat-ligne-valeur stat-finance"
+            id="statCotisations"
+        >
+            0,00 €
+        </span>
+
+    </div>
+
+
+    <div class="stat-ligne">
+
+        <span class="stat-ligne-label">
+            Dons encaissés
+        </span>
+
+        <span
+            class="stat-ligne-valeur stat-don"
+            id="statDons"
+        >
+            0,00 €
+        </span>
+
+    </div>
+
+
+    <div class="stat-ligne stat-ligne-importante">
+
+        <span class="stat-ligne-label">
+            Total encaissé
+        </span>
+
+        <span
+            class="stat-ligne-valeur stat-total"
+            id="statTotalEncaisse"
+        >
+            0,00 €
+        </span>
+
+    </div>
+
+
+    <div class="stat-ligne">
+
+        <span class="stat-ligne-label">
+            Moyenne par membre
+        </span>
+
+        <span
+            class="stat-ligne-valeur"
+            id="statMoyenneMembre"
+        >
+            0,00 €
+        </span>
 
     </div>
 
 </div>
 
 
-<!-- Adhésions -->
-<div class="stats-section">
+<!-- =========================
+     ADHÉSIONS
+========================== -->
 
-    <h3>📈 Adhésions</h3>
+<div class="stats-colonne">
 
-    <div class="stats-grid">
+    <div class="stats-colonne-header">
+        <span>📈</span>
+        <h3>Adhésions</h3>
+    </div>
 
-        <div class="stat-card">
-            <div class="stat-icon">🆕</div>
-            <div class="stat-label">Nouvelles adhésions cette année</div>
-            <div class="stat-value" id="statNouvellesAdhesions">—</div>
-        </div>
 
-        <div class="stat-card">
-            <div class="stat-icon">🔄</div>
-            <div class="stat-label">Renouvellements cette année</div>
-            <div class="stat-value" id="statRenouvellements">—</div>
-        </div>
+    <div class="stat-ligne">
+
+        <span class="stat-ligne-label">
+            Nouvelles adhésions
+        </span>
+
+        <span
+            class="stat-ligne-valeur stat-total"
+            id="statNouvellesAdhesions"
+        >
+            0
+        </span>
+
+    </div>
+
+
+    <div class="stat-ligne">
+
+        <span class="stat-ligne-label">
+            Renouvellements
+        </span>
+
+        <span
+            class="stat-ligne-valeur stat-renouvellement"
+            id="statRenouvellements"
+        >
+            0
+        </span>
+
+    </div>
+
+
+    <div class="stat-ligne">
+
+        <span class="stat-ligne-label">
+            Taux de renouvellement
+        </span>
+
+        <span
+            class="stat-ligne-valeur"
+            id="statTauxRenouvellement"
+        >
+            —
+        </span>
 
     </div>
 
 </div>
 
-</section>
+
+</div>
 
 
   
