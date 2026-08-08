@@ -800,71 +800,27 @@ function mettreAJourEnteteDemandes() {
         return;
     }
 
+    entete.innerHTML = `
 
-    /*
-    =========================================
-    ONGLET ACCEPTÉES
-    =========================================
-    */
+        <tr>
 
-    if (
-        statutActuel === "acceptee"
-    ) {
+            <th>Nom</th>
 
-        entete.innerHTML = `
+            <th>Email</th>
 
-            <tr>
+            <th>Discord</th>
 
-                <th>Nom</th>
+            <th>Total</th>
 
-                <th>Email</th>
+            <th>Statut</th>
 
-                <th>Discord</th>
+            <th>Date de demande</th>
 
-                <th>Date de demande</th>
+            <th>Action</th>
 
-                <th>Date d'acceptation</th>
+        </tr>
 
-                <th>Action</th>
-
-            </tr>
-
-        `;
-
-    }
-
-    /*
-    =========================================
-    AUTRES ONGLET
-    =========================================
-    */
-
-    else {
-
-        entete.innerHTML = `
-
-            <tr>
-
-                <th>Nom</th>
-
-                <th>Email</th>
-
-                <th>Discord</th>
-
-                <th>Total</th>
-
-                <th>Statut</th>
-
-                <th>Date de demande</th>
-
-                <th>Action</th>
-
-            </tr>
-
-        `;
-
-    }
-
+    `;
 }
 
 
