@@ -95,26 +95,47 @@ let membres = [];
 
 
 onAuthStateChanged(
-auth,
-async(user)=>{
+    auth,
+    async (user) => {
 
+        if (!user) {
 
-if(!user){
+            window.location.href =
+                "index.html";
 
-window.location.href =
-"index.html";
+            return;
 
-return;
+        }
 
-}
+        await verifierExpirationMembres();
 
+        filtreActuel =
+            "en_attente_paiement";
 
-await verifierExpirationMembres();
+        onglets.forEach(
+            onglet => {
 
-chargerMembres();
+                onglet.classList.remove(
+                    "actif"
+                );
 
+                if (
+                    onglet.dataset.filtre ===
+                    "en_attente_paiement"
+                ) {
 
-}
+                    onglet.classList.add(
+                        "actif"
+                    );
+
+                }
+
+            }
+        );
+
+        await chargerMembres();
+
+    }
 );
 
 
