@@ -714,85 +714,10 @@ async function genererLienRenouvellement(
 
     try{
 
-        /*
-        Demande du don lors du renouvellement
-        */
-
-        const reponseDon = prompt(
-            "Souhaitez-vous faire un don en plus de votre cotisation de 50 € ?\n\n" +
-            "Indiquez le montant du don en euros.\n" +
-            "Laissez vide ou indiquez 0 si vous ne souhaitez pas faire de don."
-        );
-
-        /*
-        Annulation de la fenêtre
-        */
-
-        if(reponseDon === null){
-            return;
-        }
-
-        /*
-        Conversion du montant
-        */
-
-        const montantDon =
-            Number(
-                reponseDon.replace(",", ".")
-            ) || 0;
-
-
-        /*
-        Vérification
-        */
-
-        if(montantDon < 0){
-
-            alert(
-                "Le montant du don ne peut pas être négatif."
-            );
-
-            return;
-        }
-
-
-        /*
-        Cotisation fixe
-        */
-
-        const cotisation = 50;
-
-
-        /*
-        Total à payer
-        */
-
-        const total =
-            cotisation +
-            montantDon;
-
-
-        console.log(
-            "Renouvellement :",
-            {
-                cotisation,
-                don: montantDon,
-                total
-            }
-        );
-
-
-        /*
-        Création de la session Stripe
-        */
-
         const reponse =
             await fetch(
-
                 "https://chroma-stripe.max2501.workers.dev",
-
                 {
-
                     method:"POST",
 
                     headers:{
@@ -803,13 +728,7 @@ async function genererLienRenouvellement(
                     body:JSON.stringify({
 
                         montant:
-                            total,
-
-                        cotisation:
-                            cotisation,
-
-                        don:
-                            montantDon,
+                            membre.cotisation || 50,
 
                         email:
                             membre.email,
@@ -824,9 +743,7 @@ async function genererLienRenouvellement(
                             "renouvellement"
 
                     })
-
                 }
-
             );
 
 
@@ -836,22 +753,14 @@ async function genererLienRenouvellement(
 
         if(!stripe.url){
 
-            console.error(
-                "Réponse Stripe :",
-                stripe
-            );
-
             alert(
                 "Impossible de créer le renouvellement."
             );
 
             return;
+
         }
 
-
-        /*
-        Ouverture de Stripe
-        */
 
         window.open(
             stripe.url,
@@ -862,10 +771,7 @@ async function genererLienRenouvellement(
 
     catch(error){
 
-        console.error(
-            "Erreur renouvellement :",
-            error
-        );
+        console.error(error);
 
         alert(
             "Erreur Stripe renouvellement."
