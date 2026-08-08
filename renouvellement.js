@@ -5,9 +5,9 @@ import {
 import {
     getFirestore,
     doc,
-    getDoc
+    getDoc,
+    updateDoc
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
-
 
 // =========================
 // CONFIGURATION FIREBASE
@@ -353,49 +353,179 @@ const boutonRenouvellement =
 
 boutonRenouvellement.addEventListener(
     "click",
-    () => {
+    async () => {
 
         const total =
             cotisation +
             don;
 
 
-        console.log(
-            "Renouvellement :",
-            {
-                membreId,
-                cotisation,
-                don,
-                total
-            }
-        );
+        // =========================
+        // RÉCUPÉRATION DES DONNÉES
+        // =========================
+
+        const nouvellesInformations = {
+
+            prenom:
+                document.getElementById(
+                    "prenom"
+                ).value.trim(),
+
+            nom:
+                document.getElementById(
+                    "nom"
+                ).value.trim(),
+
+            dateNaissance:
+                document.getElementById(
+                    "dateNaissance"
+                ).value,
+
+            discord:
+                document.getElementById(
+                    "discord"
+                ).value.trim(),
+
+            adresse:
+                document.getElementById(
+                    "adresse"
+                ).value.trim(),
+
+            complementAdresse:
+                document.getElementById(
+                    "complementAdresse"
+                ).value.trim(),
+
+            codePostal:
+                document.getElementById(
+                    "codePostal"
+                ).value.trim(),
+
+            ville:
+                document.getElementById(
+                    "ville"
+                ).value.trim(),
+
+            pays:
+                document.getElementById(
+                    "pays"
+                ).value.trim()
+
+        };
 
 
-        /*
-        Pour l'instant nous ne lançons
-        pas encore Stripe.
+        // =========================
+        // VÉRIFICATION DES CHAMPS
+        // =========================
 
-        La prochaine étape sera :
+        if (
+            !nouvellesInformations.prenom ||
+            !nouvellesInformations.nom ||
+            !nouvellesInformations.dateNaissance ||
+            !nouvellesInformations.discord ||
+            !nouvellesInformations.adresse ||
+            !nouvellesInformations.codePostal ||
+            !nouvellesInformations.ville ||
+            !nouvellesInformations.pays
+        ) {
 
-        - enregistrer les informations
-          modifiées ;
-        - créer la demande de renouvellement ;
-        - envoyer cotisation + don + total
-          au Worker ;
-        - ouvrir Stripe.
-        */
+            alert(
+                "Merci de remplir tous les champs obligatoires."
+            );
+
+            return;
+
+        }
 
 
-        alert(
-            "Étape suivante : paiement de "
-            +
-            total.toFixed(2)
-            +
-            " €"
-        );
+        // =========================
+        // DÉSACTIVATION DU BOUTON
+        // =========================
+
+        boutonRenouvellement.disabled =
+            true;
+
+        boutonRenouvellement.textContent =
+            "Enregistrement...";
+
+
+        try {
+
+            // =========================
+            // MISE À JOUR FIRESTORE
+            // =========================
+
+            await updateDoc(
+
+                doc(
+                    db,
+                    "membres",
+                    membreId
+                ),
+
+                nouvellesInformations
+
+            );
+
+
+            console.log(
+                "Informations du membre mises à jour :",
+                membreId
+            );
+
+
+            // =========================
+            // POUR L'INSTANT :
+            // AFFICHAGE DU TOTAL
+            // =========================
+
+            console.log(
+                "Renouvellement :",
+                {
+                    membreId,
+                    cotisation,
+                    don,
+                    total
+                }
+            );
+
+
+            alert(
+                "Vos informations ont été mises à jour.\n\n"
+                +
+                "Montant à payer : "
+                +
+                total.toFixed(2)
+                +
+                " €"
+            );
+
+
+        }
+        catch (error) {
+
+            console.error(
+                "Erreur mise à jour membre :",
+                error
+            );
+
+
+            alert(
+                "Impossible d'enregistrer vos informations."
+            );
+
+
+            boutonRenouvellement.disabled =
+                false;
+
+            boutonRenouvellement.textContent =
+                "Continuer vers le paiement";
+
+        }
 
     }
 );
+
 
 
 // =========================
