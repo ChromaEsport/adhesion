@@ -963,4 +963,182 @@ background:#c0392b;
 
 
 }
+/* =========================================================
+STATISTIQUES DU DASHBOARD
+========================================================= */
+
+.stats-dashboard {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 18px;
+margin: 25px 0 35px;
+}
+
+/* Carte statistique */
+
+.stat-card {
+background: #ffffff;
+border-radius: 12px;
+padding: 20px;
+box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+border: 1px solid #e8e8e8;
+transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stat-card:hover {
+transform: translateY(-3px);
+box-shadow: 0 7px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* En-tête de la carte */
+
+.stat-card-header {
+display: flex;
+align-items: center;
+justify-content: space-between;
+margin-bottom: 12px;
+}
+
+.stat-card-titre {
+font-size: 14px;
+font-weight: 600;
+color: #666;
+}
+
+/* Icône */
+
+.stat-card-icon {
+font-size: 25px;
+}
+
+/* Valeur */
+
+.stat-card-valeur {
+font-size: 30px;
+font-weight: 700;
+color: #111827;
+line-height: 1.2;
+}
+
+/* Sous-information */
+
+.stat-card-info {
+margin-top: 7px;
+font-size: 12px;
+color: #888;
+}
+
+/* =========================================================
+TITRES DES SECTIONS
+========================================================= */
+
+.stats-section-titre {
+display: flex;
+align-items: center;
+gap: 10px;
+margin: 30px 0 15px;
+}
+
+.stats-section-titre h3 {
+margin: 0;
+font-size: 18px;
+color: #1f2937;
+}
+
+.stats-section-titre span {
+font-size: 20px;
+}
+
+/* =========================================================
+COULEURS DES STATISTIQUES
+========================================================= */
+
+.stat-actifs {
+border-left: 4px solid #22c55e;
+}
+
+.stat-expirees {
+border-left: 4px solid #ef4444;
+}
+
+.stat-attente {
+border-left: 4px solid #f59e0b;
+}
+
+.stat-total {
+border-left: 4px solid #3b82f6;
+}
+
+.stat-cotisations {
+border-left: 4px solid #8b5cf6;
+}
+
+.stat-dons {
+border-left: 4px solid #ec4899;
+}
+
+.stat-total-encaisse {
+border-left: 4px solid #14b8a6;
+}
+
+.stat-moyenne {
+border-left: 4px solid #6366f1;
+}
+
+.stat-nouvelles {
+border-left: 4px solid #06b6d4;
+}
+
+.stat-renouvellements {
+border-left: 4px solid #f97316;
+}
+
+/* =========================================================
+BLOC ÉVOLUTION
+========================================================= */
+
+.evolution-section {
+margin-top: 35px;
+}
+
+.evolution-card {
+background: #ffffff;
+border-radius: 12px;
+padding: 25px;
+box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+border: 1px solid #e8e8e8;
+}
+
+/* =========================================================
+RESPONSIVE
+========================================================= */
+
+@media (max-width: 1100px) {
+
+```
+.stats-dashboard {
+    grid-template-columns: repeat(2, 1fr);
+}
+```
+
+}
+
+@media (max-width: 600px) {
+
+```
+.stats-dashboard {
+    grid-template-columns: 1fr;
+    gap: 12px;
+}
+
+.stat-card {
+    padding: 16px;
+}
+
+.stat-card-valeur {
+    font-size: 26px;
+}
+```
+
+}
 
