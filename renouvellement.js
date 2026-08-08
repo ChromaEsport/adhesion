@@ -113,6 +113,8 @@ async function chargerMembre() {
         const membre =
             membreSnap.data();
 
+            window.membreActuel = membre;
+        
 
         remplirFormulaire(
             membre
@@ -490,15 +492,91 @@ boutonRenouvellement.addEventListener(
             );
 
 
-            alert(
-                "Vos informations ont été mises à jour.\n\n"
-                +
-                "Montant à payer : "
-                +
-                total.toFixed(2)
-                +
-                " €"
-            );
+// =========================
+// CRÉATION DU PAIEMENT
+// =========================
+
+boutonRenouvellement.textContent =
+    "Création du paiement...";
+
+
+const reponse =
+    await fetch(
+        "https://chroma-stripe.max2501.workers.dev",
+        {
+
+            method: "POST",
+
+            headers: {
+                "Content-Type":
+                    "application/json"
+            },
+
+            body: JSON.stringify({
+
+                // Montants
+                cotisation:
+                    cotisation,
+
+                don:
+                    don,
+
+                montant:
+                    total,
+
+                // Membre
+                membreId:
+                    membreId,
+
+                numeroMembre:
+                    window.membreActuel
+                    ?.numeroMembre || "",
+
+                email:
+                    nouvellesInformations
+                    .email
+                    ||
+                    "",
+
+                // Type de paiement
+                type:
+                    "renouvellement"
+
+            })
+
+        }
+    );
+
+
+const stripe =
+    await reponse.json();
+
+
+if (
+    !reponse.ok ||
+    !stripe.url
+) {
+
+    console.error(
+        "Réponse Worker :",
+        stripe
+    );
+
+
+    throw new Error(
+        "Impossible de créer le paiement Stripe."
+    );
+
+}
+
+
+// =========================
+// REDIRECTION STRIPE
+// =========================
+
+window.location.href =
+    stripe.url;
+
 
 
         }
