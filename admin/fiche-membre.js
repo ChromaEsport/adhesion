@@ -708,77 +708,149 @@ alert(
 }
 
 async function genererLienRenouvellement(
-id,
-membre
+    id,
+    membre
 ){
 
-try{
+    try {
 
-const reponse =
-await fetch(
-"https://chroma-stripe.max2501.workers.dev",
-{
-method:"POST",
+        const cotisation =
+            Number(membre.cotisation || 50);
 
-headers:{
-"Content-Type":"application/json"
-},
+        const donSaisi =
+            prompt(
+                "Souhaitez-vous faire un don en plus de votre cotisation de " +
+                cotisation +
+                " € ?\n\n" +
+                "Indiquez le montant du don en euros.\n" +
+                "Laissez vide ou indiquez 0 si vous ne souhaitez pas faire de don.",
+                "0"
+            );
 
-body:JSON.stringify({
+        if (donSaisi === null) {
+            return;
+        }
 
-montant:
-membre.cotisation || 50,
+        const don =
+            Number(donSaisi.replace(",", "."));
 
-email:
-membre.email,
+        if (
+            isNaN(don) ||
+            don < 0
+        ) {
 
-membreId:
-id,
+            alert(
+                "Le montant du don doit être un nombre positif."
+            );
 
-numeroMembre:
-membre.numeroMembre,
+            return;
+        }
 
-type:
-"renouvellement"
-
-})
-
-}
-);
-
-
-const stripe =
-await reponse.json();
-
-
-if(!stripe.url){
-
-alert(
-"Impossible de créer le renouvellement."
-);
-
-return;
-
-}
+        const total =
+            cotisation + don;
 
 
-window.open(
-stripe.url,
-"_blank"
-);
+        const confirmation =
+            confirm(
+                "Récapitulatif du renouvellement\n\n" +
+
+                "Cotisation : " +
+                cotisation.toFixed(2) +
+                " €\n" +
+
+                "Don : " +
+                don.toFixed(2) +
+                " €\n\n" +
+
+                "TOTAL : " +
+                total.toFixed(2) +
+                " €\n\n" +
+
+                "Continuer vers le paiement ?"
+            );
+
+        if (!confirmation) {
+            return;
+        }
 
 
-}
+        const reponse =
+            await fetch(
+                "https://chroma-stripe.max2501.workers.dev",
+                {
+                    method: "POST",
 
-catch(error){
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
 
-console.error(error);
+                    body: JSON.stringify({
 
-alert(
-"Erreur Stripe renouvellement."
-);
+                        montant:
+                            total,
 
-}
+                        cotisation:
+                            cotisation,
+
+                        don:
+                            don,
+
+                        email:
+                            membre.email,
+
+                        membreId:
+                            id,
+
+                        numeroMembre:
+                            membre.numeroMembre,
+
+                        type:
+                            "renouvellement"
+
+                    })
+                }
+            );
+
+
+        const stripe =
+            await reponse.json();
+
+
+        if (!stripe.url) {
+
+            console.error(
+                "Réponse Stripe :",
+                stripe
+            );
+
+            alert(
+                "Impossible de créer le renouvellement."
+            );
+
+            return;
+        }
+
+
+        window.open(
+            stripe.url,
+            "_blank"
+        );
+
+    }
+
+    catch(error) {
+
+        console.error(
+            "Erreur Stripe renouvellement :",
+            error
+        );
+
+        alert(
+            "Erreur Stripe renouvellement."
+        );
+
+    }
 
 }
 
