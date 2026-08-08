@@ -964,45 +964,23 @@ async function chargerDemandes() {
 
 /*
 =========================================
-DATE DE DEMANDE
-=========================================
-*/
-
-const dateEnvoi =
-    data.dateDemande
-        ? data.dateDemande
-            .toDate()
-            .toLocaleDateString(
-                "fr-FR"
-            )
-        : "-";
-
-
-/*
-=========================================
-DATE D'ACCEPTATION
-=========================================
-*/
-
-const dateAcceptation =
-    data.dateDecision
-        ? data.dateDecision
-            .toDate()
-            .toLocaleDateString(
-                "fr-FR"
-            )
-        : "-";
-
-
-/*
-=========================================
-AFFICHAGE
+ONGLET ACCEPTÉES
 =========================================
 */
 
 if (
     statutActuel === "acceptee"
 ) {
+
+    const dateAcceptation =
+        data.dateDecision
+            ? data.dateDecision
+                .toDate()
+                .toLocaleDateString(
+                    "fr-FR"
+                )
+            : "-";
+
 
     ligne.innerHTML = `
 
@@ -1034,6 +1012,82 @@ if (
             >
                 👁
             </button>
+
+        </td>
+
+    `;
+
+}
+
+
+/*
+=========================================
+AUTRES ONGLET
+=========================================
+*/
+
+else {
+
+    ligne.innerHTML = `
+
+        <td>
+            ${data.prenom || ""}
+            ${data.nom || ""}
+        </td>
+
+        <td>
+            ${data.email || "-"}
+        </td>
+
+        <td>
+            ${data.discord || "-"}
+        </td>
+
+        <td>
+            ${Number(
+                data.total || 0
+            ).toFixed(2)} €
+        </td>
+
+        <td>
+            ${data.statut || "-"}
+        </td>
+
+        <td>
+            ${dateEnvoi}
+        </td>
+
+        <td>
+
+            ${
+                data.statut === "en_attente"
+
+                ?
+
+                `
+                <button
+                    class="bouton-action accepter"
+                >
+                    ✅
+                </button>
+
+                <button
+                    class="bouton-refus refuser"
+                >
+                    ❌
+                </button>
+                `
+
+                :
+
+                `
+                <button
+                    class="bouton-action voir-demande"
+                >
+                    👁
+                </button>
+                `
+            }
 
         </td>
 
