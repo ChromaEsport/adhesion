@@ -533,10 +533,7 @@ const reponse =
                     ?.numeroMembre || "",
 
                 email:
-                    nouvellesInformations
-                    .email
-                    ||
-                    "",
+                    window.membreActuel?.email || "",
 
                 // Type de paiement
                 type:
