@@ -877,75 +877,162 @@ async function chargerDemandes() {
 
 
                 const ligne =
-                    document.createElement(
-                        "tr"
-                    );
+    document.createElement(
+        "tr"
+    );
 
 
-                ligne.innerHTML = `
+/*
+=========================================
+DATE DE DEMANDE
+=========================================
+*/
 
-                    <td>
-                        ${data.prenom || ""}
-                        ${data.nom || ""}
-                    </td>
+const dateEnvoi =
+    data.dateDemande
+        ? data.dateDemande
+            .toDate()
+            .toLocaleDateString(
+                "fr-FR"
+            )
+        : "-";
 
-                    <td>
-                        ${data.email || "-"}
-                    </td>
 
-                    <td>
-                        ${data.discord || "-"}
-                    </td>
+/*
+=========================================
+DATE D'ACCEPTATION
+=========================================
+*/
 
-                    <td>
-                        ${Number(
-                            data.total || 0
-                        ).toFixed(2)} €
-                    </td>
+const dateAcceptation =
+    data.dateDecision
+        ? data.dateDecision
+            .toDate()
+            .toLocaleDateString(
+                "fr-FR"
+            )
+        : "-";
 
-                    <td>
-                        ${data.statut || "-"}
-                    </td>
 
-                    <td>
-                        ${dateEnvoi}
-                    </td>
+/*
+=========================================
+AFFICHAGE
+=========================================
+*/
 
-                    <td>
+if (
+    statutActuel === "acceptee"
+) {
 
-                        ${
-                            data.statut === "en_attente"
+    ligne.innerHTML = `
 
-                            ?
+        <td>
+            ${data.prenom || ""}
+            ${data.nom || ""}
+        </td>
 
-                            `
-                            <button
-                                class="bouton-action accepter"
-                            >
-                                ✅
-                            </button>
+        <td>
+            ${data.email || "-"}
+        </td>
 
-                            <button
-                                class="bouton-refus refuser"
-                            >
-                                ❌
-                            </button>
-                            `
+        <td>
+            ${data.discord || "-"}
+        </td>
 
-                            :
+        <td>
+            ${dateEnvoi}
+        </td>
 
-                            `
-                            <button
-                                class="bouton-action voir-demande"
-                            >
-                                👁
-                            </button>
-                            `
-                        }
+        <td>
+            ${dateAcceptation}
+        </td>
 
-                    </td>
+        <td>
 
-                `;
+            <button
+                class="bouton-action voir-demande"
+            >
+                👁
+            </button>
+
+        </td>
+
+    `;
+
+}
+else {
+
+    ligne.innerHTML = `
+
+        <td>
+            ${data.prenom || ""}
+            ${data.nom || ""}
+        </td>
+
+        <td>
+            ${data.email || "-"}
+        </td>
+
+        <td>
+            ${data.discord || "-"}
+        </td>
+
+        <td>
+            ${Number(
+                data.total || 0
+            ).toFixed(2)} €
+        </td>
+
+        <td>
+            ${data.statut || "-"}
+        </td>
+
+        <td>
+            ${dateEnvoi}
+        </td>
+
+        <td>
+
+            ${
+                data.statut === "en_attente"
+
+                ?
+
+                `
+                <button
+                    class="bouton-action accepter"
+                >
+                    ✅
+                </button>
+
+                <button
+                    class="bouton-refus refuser"
+                >
+                    ❌
+                </button>
+                `
+
+                :
+
+                `
+                <button
+                    class="bouton-action voir-demande"
+                >
+                    👁
+                </button>
+                `
+            }
+
+        </td>
+
+    `;
+
+}
+
+
+listeDemandes.appendChild(
+    ligne
+);
 
 
                 listeDemandes.appendChild(
