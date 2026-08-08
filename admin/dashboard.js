@@ -880,15 +880,12 @@ async function chargerDemandes() {
     listeDemandes.innerHTML =
         "Chargement des demandes...";
 
-
     try {
 
         let result;
 
-
         if (
-            statutActuel ===
-            "toutes"
+            statutActuel === "toutes"
         ) {
 
             result =
@@ -908,7 +905,6 @@ async function chargerDemandes() {
                         db,
                         "adhesions"
                     ),
-
                     where(
                         "statut",
                         "==",
@@ -916,15 +912,13 @@ async function chargerDemandes() {
                     )
                 );
 
-
             result =
                 await getDocs(q);
 
         }
 
 
-        listeDemandes.innerHTML =
-            "";
+        listeDemandes.innerHTML = "";
 
 
         if (
@@ -957,175 +951,168 @@ async function chargerDemandes() {
 
 
                 const ligne =
-    document.createElement(
-        "tr"
-    );
+                    document.createElement(
+                        "tr"
+                    );
 
 
-/*
-=========================================
-ONGLET ACCEPTÉES
-=========================================
-*/
+                /* =========================================
+                   ONGLET ACCEPTÉES
+                ========================================= */
 
-if (
-    statutActuel === "acceptee"
-) {
+                if (
+                    statutActuel === "acceptee"
+                ) {
 
-    const dateAcceptation =
-        data.dateDecision
-            ? data.dateDecision
-                .toDate()
-                .toLocaleDateString(
-                    "fr-FR"
-                )
-            : "-";
+                    const dateAcceptation =
+                        data.dateDecision
+                            ? data.dateDecision
+                                .toDate()
+                                .toLocaleDateString(
+                                    "fr-FR"
+                                )
+                            : "-";
 
 
-    ligne.innerHTML = `
+                    ligne.innerHTML = `
 
-        <td>
-            ${data.prenom || ""}
-            ${data.nom || ""}
-        </td>
+                        <td>
+                            ${data.prenom || ""}
+                            ${data.nom || ""}
+                        </td>
 
-        <td>
-            ${data.email || "-"}
-        </td>
+                        <td>
+                            ${data.email || "-"}
+                        </td>
 
-        <td>
-            ${data.discord || "-"}
-        </td>
+                        <td>
+                            ${data.discord || "-"}
+                        </td>
 
-        <td>
-            ${dateEnvoi}
-        </td>
+                        <td>
+                            ${dateEnvoi}
+                        </td>
 
-        <td>
-            ${dateAcceptation}
-        </td>
+                        <td>
+                            ${dateAcceptation}
+                        </td>
 
-        <td>
+                        <td>
 
-            <button
-                class="bouton-action voir-demande"
-            >
-                👁
-            </button>
+                            <button
+                                class="bouton-action voir-demande"
+                                data-id="${documentFirestore.id}"
+                            >
+                                👁 Voir
+                            </button>
 
-        </td>
+                        </td>
 
-    `;
+                    `;
 
-}
-
-
-/*
-=========================================
-AUTRES ONGLET
-=========================================
-*/
-
-else {
-
-    ligne.innerHTML = `
-
-        <td>
-            ${data.prenom || ""}
-            ${data.nom || ""}
-        </td>
-
-        <td>
-            ${data.email || "-"}
-        </td>
-
-        <td>
-            ${data.discord || "-"}
-        </td>
-
-        <td>
-            ${Number(
-                data.total || 0
-            ).toFixed(2)} €
-        </td>
-
-        <td>
-            ${data.statut || "-"}
-        </td>
-
-        <td>
-            ${dateEnvoi}
-        </td>
-
-        <td>
-
-            ${
-    data.statut === "en_attente"
-
-    ?
-
-    `
-    <button
-        class="bouton-action accepter"
-    >
-        ✅
-    </button>
-
-    <button
-        class="bouton-refus refuser"
-    >
-        ❌
-    </button>
-
-    <button
-        class="bouton-action voir-demande"
-        data-id="${documentFirestore.id}"
-    >
-        👁 Voir
-    </button>
-    `
-
-    :
-
-    `
-    <button
-        class="bouton-action voir-demande"
-        data-id="${documentFirestore.id}"
-    >
-        👁 Voir
-    </button>
-    `
-}
-
-        </td>
-
-    `;
-
-}
+                }
 
 
+                /* =========================================
+                   AUTRES ONGLET
+                ========================================= */
 
-listeDemandes.appendChild(
-    ligne
-);
+                else {
+
+                    ligne.innerHTML = `
+
+                        <td>
+                            ${data.prenom || ""}
+                            ${data.nom || ""}
+                        </td>
+
+                        <td>
+                            ${data.email || "-"}
+                        </td>
+
+                        <td>
+                            ${data.discord || "-"}
+                        </td>
+
+                        <td>
+                            ${Number(
+                                data.total || 0
+                            ).toFixed(2)} €
+                        </td>
+
+                        <td>
+                            ${data.statut || "-"}
+                        </td>
+
+                        <td>
+                            ${dateEnvoi}
+                        </td>
+
+                        <td>
+
+                            ${
+                                data.statut === "en_attente"
+
+                                ?
+
+                                `
+                                <button
+                                    class="bouton-action accepter"
+                                >
+                                    ✅
+                                </button>
+
+                                <button
+                                    class="bouton-refus refuser"
+                                >
+                                    ❌
+                                </button>
+
+                                <button
+                                    class="bouton-action voir-demande"
+                                    data-id="${documentFirestore.id}"
+                                >
+                                    👁 Voir
+                                </button>
+                                `
+
+                                :
+
+                                `
+                                <button
+                                    class="bouton-action voir-demande"
+                                    data-id="${documentFirestore.id}"
+                                >
+                                    👁 Voir
+                                </button>
+                                `
+                            }
+
+                        </td>
+
+                    `;
+
+                }
 
 
+                /* =========================================
+                   AJOUT DE LA LIGNE
+                ========================================= */
+
+                listeDemandes.appendChild(
+                    ligne
+                );
+
+
+                /* =========================================
+                   BOUTON ACCEPTER
+                ========================================= */
 
                 const boutonAccepter =
                     ligne.querySelector(
                         ".accepter"
                     );
 
-
-                const boutonRefuser =
-                    ligne.querySelector(
-                        ".refuser"
-                    );
-                 
-                const boutonVoir =
-                    ligne.querySelector(
-                        ".voir-demande"
-                    );
 
                 if (
                     boutonAccepter
@@ -1154,6 +1141,16 @@ listeDemandes.appendChild(
                 }
 
 
+                /* =========================================
+                   BOUTON REFUSER
+                ========================================= */
+
+                const boutonRefuser =
+                    ligne.querySelector(
+                        ".refuser"
+                    );
+
+
                 if (
                     boutonRefuser
                 ) {
@@ -1172,7 +1169,7 @@ listeDemandes.appendChild(
                                     documentFirestore.id,
                                     "refusee",
                                     auth.currentUser
-                               );
+                                );
 
                             }
 
@@ -1180,33 +1177,38 @@ listeDemandes.appendChild(
                     );
 
                 }
-                      
-                        if (
-    boutonVoir
-) {
-
-    boutonVoir.addEventListener(
-        "click",
-        () => {
-
-            window.location.href =
-                `voir-adhesion.html?id=${documentFirestore.id}`;
-
-        }
-    );
-
-}
 
 
-                        
-                
+                /* =========================================
+                   BOUTON VOIR LA DEMANDE
+                ========================================= */
+
+                const boutonVoir =
+                    ligne.querySelector(
+                        ".voir-demande"
+                    );
+
+
+                if (
+                    boutonVoir
+                ) {
+
+                    boutonVoir.addEventListener(
+                        "click",
+                        () => {
+
+                            window.location.href =
+                                `voir-adhesion.html?id=${documentFirestore.id}`;
+
+                        }
+                    );
 
                 }
 
             }
         );
 
-  
+    }
     catch (error) {
 
         console.error(
