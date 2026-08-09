@@ -1001,3 +1001,23 @@ RESPONSIVE
 }
 
 }
+
+/* ==============================
+   BOUTONS COLONNE ACTION
+============================== */
+
+.voir,
+.modifier,
+.voir-demande,
+.renvoyer-paiement {
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.voir:hover,
+.modifier:hover,
+.voir-demande:hover,
+.renvoyer-paiement:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
