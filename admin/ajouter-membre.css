@@ -310,13 +310,7 @@ body {
 }
 
 .formulaire-admin input::placeholder {
-    color:
-        rgba(
-            255,
-            255,
-            255,
-            0.45
-        );
+    color: black;
 }
 
 .formulaire-admin input:focus {
