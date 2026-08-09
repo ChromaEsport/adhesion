@@ -31,22 +31,12 @@ body {
     color: #ffffff;
 }
 
-
-/* ==============================
-   CONTENEUR PRINCIPAL
-============================== */
-
-.dashboard-container {
+main {
     width: 95%;
-
-    max-width: 1400px;
-
     margin: 0 auto;
-
+    max-width: 1400px;
     padding-bottom: 40px;
 }
-
-
 /* ==============================
    HEADER
 ============================== */
