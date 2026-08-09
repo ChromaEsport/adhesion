@@ -74,102 +74,208 @@ Déconnexion
 <main class="admin-container">
 
 <!-- =====================================================
-     STATISTIQUES MEMBRES
+     RÉSUMÉ DES STATISTIQUES
 ===================================================== -->
+<div class="stats-resume">
 
-<div class="statistiques-membres">
+    <!-- =========================
+         MEMBRES
+    ========================== -->
+    <div class="stats-colonne">
 
-    <div class="statistique">
-        <span class="statistique-icone">👥</span>
-        <div>
-            <span class="statistique-label">Membres actifs</span>
-            <strong id="statMembresActifs">0</strong>
+        <div class="stats-colonne-header">
+            <span>👥</span>
+            <h3>Membres</h3>
         </div>
+
+        <div class="stat-ligne">
+            <span class="stat-ligne-label">
+                Membres actifs
+            </span>
+
+            <span
+                class="stat-ligne-valeur stat-actif"
+                id="statMembresActifs"
+            >
+                0
+            </span>
+        </div>
+
+        <div class="stat-ligne">
+            <span class="stat-ligne-label">
+                Membres expirés
+            </span>
+
+            <span
+                class="stat-ligne-valeur stat-expire"
+                id="statMembresExpires"
+            >
+                0
+            </span>
+        </div>
+
+        <div class="stat-ligne">
+            <span class="stat-ligne-label">
+                En attente de paiement
+            </span>
+
+            <span
+                class="stat-ligne-valeur stat-attente"
+                id="statPaiementsAttente"
+            >
+                0
+            </span>
+        </div>
+
+        <div class="stat-ligne stat-ligne-importante">
+
+            <span class="stat-ligne-label">
+                Total des membres
+            </span>
+
+            <span
+                class="stat-ligne-valeur"
+                id="statTotalMembres"
+            >
+                0
+            </span>
+
+        </div>
+
     </div>
 
 
-    <div class="statistique">
-        <span class="statistique-icone">⏳</span>
-        <div>
-            <span class="statistique-label">En attente de paiement</span>
-            <strong id="statAttentePaiement">0</strong>
+    <!-- =========================
+         FINANCES
+    ========================== -->
+    <div class="stats-colonne">
+
+        <div class="stats-colonne-header">
+            <span>💰</span>
+            <h3>Finances</h3>
         </div>
+
+        <div class="stat-ligne">
+
+            <span class="stat-ligne-label">
+                Cotisations encaissées
+            </span>
+
+            <span
+                class="stat-ligne-valeur stat-finance"
+                id="statCotisations"
+            >
+                0,00 €
+            </span>
+
+        </div>
+
+        <div class="stat-ligne">
+
+            <span class="stat-ligne-label">
+                Dons encaissés
+            </span>
+
+            <span
+                class="stat-ligne-valeur stat-don"
+                id="statDons"
+            >
+                0,00 €
+            </span>
+
+        </div>
+
+        <div class="stat-ligne stat-ligne-importante">
+
+            <span class="stat-ligne-label">
+                Total encaissé
+            </span>
+
+            <span
+                class="stat-ligne-valeur stat-total"
+                id="statTotalEncaisse"
+            >
+                0,00 €
+            </span>
+
+        </div>
+
+        <div class="stat-ligne">
+
+            <span class="stat-ligne-label">
+                Moyenne par membre
+            </span>
+
+            <span
+                class="stat-ligne-valeur"
+                id="statMoyenneMembre"
+            >
+                0,00 €
+            </span>
+
+        </div>
+
     </div>
 
 
-    <div class="statistique">
-        <span class="statistique-icone">❌</span>
-        <div>
-            <span class="statistique-label">Membres expirés</span>
-            <strong id="statMembresExpires">0</strong>
+    <!-- =========================
+         ADHÉSIONS
+    ========================== -->
+    <div class="stats-colonne">
+
+        <div class="stats-colonne-header">
+            <span>📈</span>
+            <h3>Adhésions</h3>
         </div>
-    </div>
 
+        <div class="stat-ligne">
 
-    <div class="statistique">
-        <span class="statistique-icone">👤</span>
-        <div>
-            <span class="statistique-label">Total membres</span>
-            <strong id="statTotalMembres">0</strong>
+            <span class="stat-ligne-label">
+                Nouvelles adhésions
+            </span>
+
+            <span
+                class="stat-ligne-valeur stat-total"
+                id="statNouvellesAdhesions"
+            >
+                0
+            </span>
+
         </div>
-    </div>
 
+        <div class="stat-ligne">
 
-    <div class="statistique">
-        <span class="statistique-icone">💰</span>
-        <div>
-            <span class="statistique-label">Cotisations</span>
-            <strong id="statCotisations">0,00 €</strong>
+            <span class="stat-ligne-label">
+                Renouvellements
+            </span>
+
+            <span
+                class="stat-ligne-valeur stat-renouvellement"
+                id="statRenouvellements"
+            >
+                0
+            </span>
+
         </div>
-    </div>
 
+        <div class="stat-ligne">
 
-    <div class="statistique">
-        <span class="statistique-icone">🎁</span>
-        <div>
-            <span class="statistique-label">Dons</span>
-            <strong id="statDons">0,00 €</strong>
+            <span class="stat-ligne-label">
+                Taux de renouvellement
+            </span>
+
+            <span
+                class="stat-ligne-valeur"
+                id="statTauxRenouvellement"
+            >
+                —
+            </span>
+
         </div>
-    </div>
 
-
-    <div class="statistique">
-        <span class="statistique-icone">💶</span>
-        <div>
-            <span class="statistique-label">Total encaissé</span>
-            <strong id="statTotalEncaisse">0,00 €</strong>
-        </div>
-    </div>
-
-
-    <div class="statistique">
-        <span class="statistique-icone">📊</span>
-        <div>
-            <span class="statistique-label">Moyenne / membre</span>
-            <strong id="statMoyenne">0,00 €</strong>
-        </div>
-    </div>
-
-
-    <div class="statistique">
-        <span class="statistique-icone">🆕</span>
-        <div>
-            <span class="statistique-label">Nouvelles adhésions</span>
-            <strong id="statNouvellesAdhesions">0</strong>
-        </div>
-    </div>
-
-
-    <div class="statistique">
-        <span class="statistique-icone">🔄</span>
-        <div>
-            <span class="statistique-label">Renouvellements</span>
-            <strong id="statRenouvellements">0</strong>
-        </div>
     </div>
 
 </div>
-
   
 <h2>
 Membres de Chroma Esport
