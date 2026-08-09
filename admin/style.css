@@ -996,12 +996,12 @@ display: flex;
 align-items: center;
 gap: 10px;
 
-```
+
 padding: 14px 18px;
 
 background: #f8fafc;
 border-bottom: 1px solid #e5e7eb;
-```
+
 
 }
 
@@ -1012,12 +1012,12 @@ font-size: 20px;
 .stats-colonne-header h3 {
 margin: 0;
 
-```
+
 font-size: 15px;
 font-weight: 700;
 
 color: #1f2937;
-```
+
 
 }
 
@@ -1030,11 +1030,11 @@ display: flex;
 align-items: center;
 justify-content: space-between;
 
-```
+
 padding: 11px 18px;
 
 border-bottom: 1px solid #f1f5f9;
-```
+
 
 }
 
@@ -1104,18 +1104,18 @@ RESPONSIVE
 
 @media (max-width: 900px) {
 
-```
+
 .stats-resume {
     grid-template-columns: 1fr;
     gap: 15px;
 }
-```
+
 
 }
 
 @media (max-width: 600px) {
 
-```
+
 .stats-resume {
     margin-top: 20px;
 }
@@ -1123,6 +1123,5 @@ RESPONSIVE
 .stat-ligne {
     padding: 10px 14px;
 }
-```
 
 }
