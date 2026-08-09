@@ -1211,46 +1211,6 @@ logout.addEventListener(
 
 
 
-/* =====================================================
-   NUMÉRO MEMBRE
-===================================================== */
-
-async function obtenirProchainNumeroMembre() {
-
-    const membres =
-        await getDocs(
-            collection(
-                db,
-                "membres"
-            )
-        );
-
-
-    return membres.size + 1;
-
-}
-
-
-
-function genererNumeroMembre(
-    annee,
-    numero
-) {
-
-    return (
-        "CHRO-" +
-        annee +
-        "-" +
-        numero
-            .toString()
-            .padStart(
-                4,
-                "0"
-            )
-    );
-
-}
-
 
 
 /* =====================================================
