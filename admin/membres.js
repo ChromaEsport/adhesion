@@ -474,7 +474,7 @@ async function chargerStatistiques() {
         const totalMembres =
             membresActifs +
             membresExpires +
-            membresAttentePaiement;
+        
 
 
         // =====================================================
