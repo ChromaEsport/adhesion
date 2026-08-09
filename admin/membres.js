@@ -363,177 +363,243 @@ function adhesionEstExpiree(membre){
 }
 
 
-function afficherMembres(
-liste
-){
+function afficherMembres(liste) {
 
+    listeMembres.innerHTML = "";
 
-listeMembres.innerHTML="";
+    if (liste.length === 0) {
 
+        listeMembres.innerHTML =
+            `<tr>
+                <td colspan="8">
+                    Aucun membre trouvé.
+                </td>
+            </tr>`;
 
+        return;
+    }
 
-if(
-liste.length===0
-){
 
-listeMembres.innerHTML=
+    liste.forEach(membre => {
 
-`
-<tr>
-<td colspan="7">
-Aucun membre trouvé.
-</td>
-</tr>
-`;
+        const estEnAttentePaiement =
+            filtreActuel === "en_attente_paiement";
 
-return;
 
-}
+        const statutAdhesionAffiche =
+            adhesionEstExpiree(membre)
+                ? "expiree"
+                : membre.statutAdhesion;
 
 
+        const statutPaiementAffiche =
+            adhesionEstExpiree(membre)
+                ? "en_attente"
+                : membre.statutPaiement;
 
 
-liste.forEach(
-membre=>{
+        const ligne =
+            document.createElement("tr");
 
-const statutAdhesionAffiche =
-    adhesionEstExpiree(membre)
-        ? "expiree"
-        : membre.statutAdhesion;
 
+        let actions = "";
 
-const statutPaiementAffiche =
-    adhesionEstExpiree(membre)
-        ? "en_attente"
-        : membre.statutPaiement;
-    
 
-const ligne =
-document.createElement(
-"tr"
-);
+        /* =========================================
+           EN ATTENTE DE PAIEMENT
+        ========================================= */
 
+        if (estEnAttentePaiement) {
 
+            actions = `
 
-ligne.innerHTML=
+                <button
+                    class="voir-demande"
+                    data-id="${membre.id}"
+                >
+                    Voir demande
+                </button>
 
-`
+                <button
+                    class="renvoyer-paiement"
+                    data-id="${membre.id}"
+                >
+                    Renvoyer le lien du paiement
+                </button>
 
-<td>
+            `;
 
-${membre.numeroMembre || "-"}
+        }
 
-</td>
 
+        /* =========================================
+           MEMBRES
+        ========================================= */
 
-<td>
+        else {
 
-${membre.prenom || ""}
-${membre.nom || ""}
+            actions = `
 
-</td>
+                <button
+                    class="voir"
+                    data-id="${membre.id}"
+                >
+                    👤 Voir
+                </button>
 
+                <button
+                    class="modifier"
+                    data-id="${membre.id}"
+                >
+                    ✏️ Modifier
+                </button>
 
-<td>
+            `;
 
-${membre.discord || "-"}
+        }
 
-</td>
 
+        ligne.innerHTML = `
 
-<td>
+            <td>
+                ${membre.numeroMembre || "-"}
+            </td>
 
-${statutPaiementAffiche || "-"}
-</td>
+            <td>
+                ${membre.prenom || ""}
+            </td>
 
+            <td>
+                ${membre.nom || ""}
+            </td>
 
-<td>
+            <td>
+                ${membre.discord || "-"}
+            </td>
 
-${statutAdhesionAffiche || "-"}
+            <td>
+                ${statutPaiementAffiche || "-"}
+            </td>
 
-</td>
+            <td>
+                ${statutAdhesionAffiche || "-"}
+            </td>
 
+            <td>
+                ${membre.statutMembre || "-"}
+            </td>
 
-<td>
+            <td>
+                ${actions}
+            </td>
 
-${membre.statutMembre || "-"}
+        `;
 
-</td>
 
+        listeMembres.appendChild(ligne);
 
 
-<td>
+        /* =========================================
+           VOIR DEMANDE
+        ========================================= */
 
-<button
-class="voir"
-data-id="${membre.id}"
->
+        const boutonVoirDemande =
+            ligne.querySelector(".voir-demande");
 
-👤 Voir
 
-</button>
+        if (boutonVoirDemande) {
 
-<button
-class="modifier"
-data-id="${membre.id}"
->
+            boutonVoirDemande.addEventListener(
+                "click",
+                () => {
 
-✏️ Modifier
+                    window.location.href =
+                        "voir-adhesion.html?id="
+                        +
+                        membre.id;
 
-</button>
+                }
+            );
 
-</td>
+        }
 
 
-`;
+        /* =========================================
+           RENVOYER PAIEMENT
+           → sera branché à Stripe ensuite
+        ========================================= */
 
+        const boutonRenvoyerPaiement =
+            ligne.querySelector(".renvoyer-paiement");
 
 
-listeMembres.appendChild(
-ligne
-);
+        if (boutonRenvoyerPaiement) {
 
+            boutonRenvoyerPaiement.addEventListener(
+                "click",
+                () => {
 
+                    console.log(
+                        "Renvoyer le paiement :",
+                        membre.id
+                    );
 
-ligne
-.querySelector(
-".voir"
-)
-.addEventListener(
-"click",
-()=>{
+                }
+            );
 
-window.location.href =
-"fiche-membre.html?id="
-+
-membre.id;
+        }
 
-}
-);
 
-ligne
-.querySelector(
-".modifier"
-)
-.addEventListener(
-"click",
-()=>{
+        /* =========================================
+           VOIR MEMBRE
+        ========================================= */
 
-window.location.href =
-"modifier-membre.html?id="
-+
-membre.id;
+        const boutonVoir =
+            ligne.querySelector(".voir");
 
-}
-);
 
+        if (boutonVoir) {
 
+            boutonVoir.addEventListener(
+                "click",
+                () => {
 
-}
+                    window.location.href =
+                        "fiche-membre.html?id="
+                        +
+                        membre.id;
 
+                }
+            );
 
+        }
 
-);
+
+        /* =========================================
+           MODIFIER MEMBRE
+        ========================================= */
+
+        const boutonModifier =
+            ligne.querySelector(".modifier");
+
+
+        if (boutonModifier) {
+
+            boutonModifier.addEventListener(
+                "click",
+                () => {
+
+                    window.location.href =
+                        "modifier-membre.html?id="
+                        +
+                        membre.id;
+
+                }
+            );
+
+        }
+
+    });
 
 }
 
