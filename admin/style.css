@@ -454,43 +454,6 @@ body {
 }
 
 
-
-/* ==============================
-   BOUTONS ACTION
-============================== */
-
-
-.bouton-action {
-
-
-    border:
-        none;
-
-
-    background:
-        #3c9195;
-
-
-    color:
-        white;
-
-
-    padding:
-        8px 14px;
-
-
-    border-radius:
-        6px;
-
-
-    cursor:
-        pointer;
-
-
-}
-
-
-
 /* ==============================
    FICHES
 ============================== */
@@ -645,36 +608,6 @@ body {
 
 
 }
-}
-
-.bouton-refus {
-
-
-background:
-#c0392b;
-
-
-color:white;
-
-
-border:none;
-
-
-padding:
-8px 14px;
-
-
-border-radius:
-6px;
-
-
-cursor:pointer;
-
-
-margin-left:
-5px;
-
-
 }
 
 .formulaire-admin {
