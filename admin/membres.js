@@ -875,14 +875,14 @@ function afficherMembres(liste) {
                     class="voir-demande"
                     data-id="${membre.id}"
                 >
-                    Voir demande
+                   👤 Voir demande
                 </button>
 
                 <button
                     class="renvoyer-paiement"
                     data-id="${membre.id}"
                 >
-                    Renvoyer le lien du paiement
+                  🔄 Renvoyer le lien du paiement
                 </button>
 
             `;
