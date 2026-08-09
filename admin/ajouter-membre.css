@@ -1,0 +1,560 @@
+/* =========================================================
+   CHROMA ESPORT
+   AJOUTER UN MEMBRE
+========================================================= */
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background:
+        #010c2c;
+
+    color:
+        #ffffff;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.admin-header {
+    background:
+        linear-gradient(
+            135deg,
+            #010c2c,
+            #3c9195
+        );
+
+    padding:
+        25px 40px;
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    align-items:
+        center;
+
+    gap:
+        25px;
+
+    flex-wrap:
+        wrap;
+}
+
+.admin-header h1 {
+    margin:
+        0;
+
+    font-size:
+        32px;
+
+    letter-spacing:
+        2px;
+}
+
+.admin-header p {
+    margin:
+        8px 0 0;
+
+    opacity:
+        0.8;
+
+    font-size:
+        15px;
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.navigation-admin {
+    display:
+        flex;
+
+    gap:
+        10px;
+
+    align-items:
+        center;
+
+    flex-wrap:
+        wrap;
+}
+
+.bouton-navigation,
+#logout {
+    border:
+        none;
+
+    padding:
+        11px 17px;
+
+    border-radius:
+        8px;
+
+    cursor:
+        pointer;
+
+    text-decoration:
+        none;
+
+    color:
+        #ffffff;
+
+    background:
+        #1875c2;
+
+    font-size:
+        14px;
+
+    transition:
+        0.2s;
+}
+
+.bouton-navigation:hover,
+#logout:hover {
+    transform:
+        translateY(-2px);
+
+    opacity:
+        0.9;
+}
+
+#logout {
+    background:
+        #c0392b;
+}
+
+
+/* =========================================================
+   CONTENU
+========================================================= */
+
+.admin-container {
+    width:
+        92%;
+
+    max-width:
+        1100px;
+
+    margin:
+        40px auto 60px;
+}
+
+.admin-container h2 {
+    margin:
+        0 0 25px;
+
+    font-size:
+        28px;
+
+    letter-spacing:
+        0.5px;
+}
+
+
+/* =========================================================
+   FORMULAIRE PRINCIPAL
+========================================================= */
+
+.formulaire-admin {
+    background:
+        #081638;
+
+    padding:
+        30px;
+
+    border-radius:
+        15px;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.08
+        );
+
+    box-shadow:
+        0 10px 30px
+        rgba(
+            0,
+            0,
+            0,
+            0.20
+        );
+}
+
+
+/* =========================================================
+   SECTIONS DU FORMULAIRE
+========================================================= */
+
+.formulaire-admin h3 {
+    margin:
+        0 0 18px;
+
+    padding-bottom:
+        10px;
+
+    color:
+        #8fecc9;
+
+    font-size:
+        18px;
+
+    border-bottom:
+        1px solid
+        rgba(
+            143,
+            236,
+            201,
+            0.15
+        );
+}
+
+.formulaire-admin h3:not(:first-child) {
+    margin-top:
+        30px;
+}
+
+
+/* =========================================================
+   LIGNES DE CHAMPS
+========================================================= */
+
+.ligne-form {
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            minmax(
+                0,
+                1fr
+            )
+        );
+
+    gap:
+        15px;
+
+    margin-bottom:
+        15px;
+}
+
+
+/* =========================================================
+   CHAMPS
+========================================================= */
+
+.formulaire-admin input {
+    width:
+        100%;
+
+    padding:
+        14px 15px;
+
+    margin-bottom:
+        15px;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.10
+        );
+
+    border-radius:
+        8px;
+
+    background:
+        #0d1b42;
+
+    color:
+        #ffffff;
+
+    font-size:
+        15px;
+
+    outline:
+        none;
+
+    transition:
+        0.2s;
+}
+
+.ligne-form input {
+    margin-bottom:
+        0;
+}
+
+.formulaire-admin input::placeholder {
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.45
+        );
+}
+
+.formulaire-admin input:focus {
+    border-color:
+        #3c9195;
+
+    background:
+        #101f49;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(
+            60,
+            145,
+            149,
+            0.15
+        );
+}
+
+
+/* =========================================================
+   INPUT DATE
+========================================================= */
+
+.formulaire-admin input[type="date"] {
+    color-scheme:
+        dark;
+}
+
+
+/* =========================================================
+   INPUT NOMBRE
+========================================================= */
+
+.formulaire-admin input[type="number"] {
+    appearance:
+        textfield;
+}
+
+.formulaire-admin input[type="number"]::-webkit-inner-spin-button,
+.formulaire-admin input[type="number"]::-webkit-outer-spin-button {
+    opacity:
+        1;
+}
+
+
+/* =========================================================
+   BOUTON VALIDATION
+========================================================= */
+
+.bouton-validation {
+    width:
+        100%;
+
+    margin-top:
+        15px;
+
+    padding:
+        15px 25px;
+
+    border:
+        none;
+
+    border-radius:
+        9px;
+
+    background:
+        #3c9195;
+
+    color:
+        #ffffff;
+
+    font-size:
+        16px;
+
+    font-weight:
+        700;
+
+    cursor:
+        pointer;
+
+    transition:
+        0.2s;
+}
+
+.bouton-validation:hover {
+    background:
+        #4ba9ad;
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 6px 15px
+        rgba(
+            0,
+            0,
+            0,
+            0.25
+        );
+}
+
+.bouton-validation:active {
+    transform:
+        translateY(0);
+}
+
+.bouton-validation:disabled {
+    opacity:
+        0.6;
+
+    cursor:
+        not-allowed;
+
+    transform:
+        none;
+}
+
+
+/* =========================================================
+   MESSAGE
+========================================================= */
+
+#message {
+    margin:
+        18px 0 0;
+
+    padding:
+        12px 15px;
+
+    border-radius:
+        8px;
+
+    text-align:
+        center;
+
+    font-size:
+        14px;
+}
+
+
+/* =========================================================
+   RESPONSIVE TABLETTE
+========================================================= */
+
+@media (max-width: 800px) {
+
+    .admin-header {
+        padding:
+            22px 25px;
+
+        align-items:
+            flex-start;
+    }
+
+    .navigation-admin {
+        width:
+            100%;
+    }
+
+    .bouton-navigation,
+    #logout {
+        flex:
+            1;
+
+        text-align:
+            center;
+    }
+
+    .admin-container {
+        width:
+            94%;
+
+        margin-top:
+            30px;
+    }
+
+    .formulaire-admin {
+        padding:
+            25px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .admin-header h1 {
+        font-size:
+            26px;
+    }
+
+    .admin-header p {
+        font-size:
+            14px;
+    }
+
+    .navigation-admin {
+        flex-direction:
+            column;
+    }
+
+    .bouton-navigation,
+    #logout {
+        width:
+            100%;
+
+        flex:
+            none;
+    }
+
+    .admin-container h2 {
+        font-size:
+            24px;
+    }
+
+    .formulaire-admin {
+        padding:
+            20px;
+
+        border-radius:
+            12px;
+    }
+
+    .ligne-form {
+        grid-template-columns:
+            1fr;
+
+        gap:
+            0;
+    }
+
+    .ligne-form input {
+        margin-bottom:
+            15px;
+    }
+
+}
