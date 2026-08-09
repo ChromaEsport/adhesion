@@ -3,6 +3,7 @@
    VOIR ADHÉSION
 ================================== */
 
+
 /* ==============================
    RESET
 ============================== */
@@ -11,15 +12,37 @@
     box-sizing: border-box;
 }
 
+
+/* ==============================
+   BODY
+============================== */
+
 body {
     margin: 0;
+
     font-family:
         Arial,
         Helvetica,
         sans-serif;
 
     background: #010c2c;
+
     color: #ffffff;
+}
+
+
+/* ==============================
+   CONTENEUR PRINCIPAL
+============================== */
+
+.dashboard-container {
+    width: 95%;
+
+    max-width: 1400px;
+
+    margin: 0 auto;
+
+    padding-bottom: 40px;
 }
 
 
@@ -27,7 +50,7 @@ body {
    HEADER
 ============================== */
 
-.admin-header {
+.dashboard-header {
     background:
         linear-gradient(
             135deg,
@@ -37,111 +60,75 @@ body {
 
     padding: 25px 40px;
 
+    margin-bottom: 30px;
+
     display: flex;
+
     justify-content: space-between;
+
     align-items: center;
 
-    flex-wrap: wrap;
+    gap: 20px;
+
+    border-radius:
+        0 0 15px 15px;
 }
 
-.admin-header h1 {
+.dashboard-header h1 {
     margin: 0;
 
-    font-size: 32px;
+    font-size: 30px;
 
-    letter-spacing: 2px;
+    letter-spacing: 1px;
 }
 
-.admin-header p {
-    margin-top: 8px;
+.dashboard-header p {
+    margin: 8px 0 0;
 
-    opacity: 0.8;
+    opacity: 0.75;
+
+    font-size: 14px;
 }
 
 
 /* ==============================
-   NAVIGATION
+   BOUTON RETOUR
 ============================== */
 
-.navigation-admin {
-    display: flex;
-
-    gap: 15px;
-
-    align-items: center;
-}
-
-.bouton-navigation,
-#logout {
+.bouton-action {
     border: none;
 
-    padding: 12px 18px;
+    padding: 12px 20px;
 
     border-radius: 8px;
 
     cursor: pointer;
 
-    text-decoration: none;
-
-    color: white;
-
     background: #1875c2;
+
+    color: #ffffff;
+
+    font-size: 14px;
 
     transition: 0.2s;
 }
 
-.bouton-navigation:hover,
-#logout:hover {
+.bouton-action:hover {
     transform: translateY(-2px);
 
     opacity: 0.9;
 }
 
-#logout {
-    background: #c0392b;
-}
-
 
 /* ==============================
-   CONTENU
+   CHARGEMENT / ERREUR
 ============================== */
 
-.admin-container {
-    width: 95%;
-
-    max-width: 1400px;
-
-    margin: 40px auto;
-}
-
-.admin-container h2 {
-    font-size: 28px;
-
-    margin-bottom: 8px;
-}
-
-.description-dashboard {
-    opacity: 0.8;
-
-    margin-bottom: 30px;
-}
-
-
-/* ==============================
-   CONTENEUR ADHÉSION
-============================== */
-
-.adhesion-container {
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 20px;
-
+#chargement,
+#erreur {
     background: #081638;
 
-    padding: 25px;
+    padding: 30px;
 
     border-radius: 15px;
 
@@ -153,21 +140,37 @@ body {
             255,
             0.08
         );
+
+    text-align: center;
+
+    color: #cbd5e1;
 }
 
 
 /* ==============================
-   BLOCS D'INFORMATIONS
+   CONTENU DEMANDE
 ============================== */
 
-.bloc-adhesion {
-    background:
-        rgba(
-            255,
-            255,
-            255,
-            0.04
-        );
+#contenuDemande {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+
+/* ==============================
+   CARTES
+============================== */
+
+.card {
+    background: #081638;
+
+    padding: 22px;
+
+    border-radius: 15px;
 
     border:
         1px solid
@@ -178,38 +181,18 @@ body {
             0.08
         );
 
-    border-radius: 12px;
-
-    padding: 20px;
-
     min-width: 0;
-}
-
-.bloc-adhesion h3 {
-    margin-top: 0;
-
-    margin-bottom: 20px;
-
-    color: #8fecc9;
-
-    font-size: 18px;
 }
 
 
 /* ==============================
-   LIGNES D'INFORMATIONS
+   TITRES DES CARTES
 ============================== */
 
-.information-adhesion {
-    display: flex;
+.card h2 {
+    margin: 0 0 20px;
 
-    justify-content: space-between;
-
-    align-items: center;
-
-    gap: 15px;
-
-    padding: 11px 0;
+    padding-bottom: 12px;
 
     border-bottom:
         1px solid
@@ -219,114 +202,145 @@ body {
             255,
             0.08
         );
-}
 
-.information-adhesion:last-child {
-    border-bottom: none;
-}
+    font-size: 18px;
 
-.information-adhesion strong {
     color: #8fecc9;
-
-    font-size: 14px;
 }
 
-.information-adhesion span {
-    text-align: right;
+
+/* ==============================
+   GRILLE INFORMATIONS
+============================== */
+
+.infos-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 14px;
+}
+
+
+/* ==============================
+   INFORMATION
+============================== */
+
+.infos-grid > div {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+
+    padding: 10px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.035
+        );
+
+    border-radius: 8px;
+
+    min-width: 0;
+}
+
+
+/* ==============================
+   LABEL
+============================== */
+
+.infos-grid strong {
+    font-size: 12px;
+
+    color: #8fa3bf;
+
+    font-weight: 600;
+}
+
+
+/* ==============================
+   VALEUR
+============================== */
+
+.infos-grid span {
+    font-size: 14px;
 
     color: #ffffff;
-
-    font-size: 14px;
 
     word-break: break-word;
 }
 
 
 /* ==============================
-   STATUT
+   IDENTITÉ
 ============================== */
 
-.statut-adhesion {
-    display: inline-block;
-
-    padding: 7px 13px;
-
-    border-radius: 20px;
-
-    font-size: 13px;
-
-    font-weight: bold;
-
-    background: #3c9195;
-
-    color: white;
-}
-
-.statut-paye {
-    background: #16a34a;
-}
-
-.statut-attente {
-    background: #d97706;
-}
-
-.statut-refuse {
-    background: #c0392b;
+.card:first-child {
+    grid-column: span 1;
 }
 
 
 /* ==============================
-   TOTAL
+   CONTACT
 ============================== */
 
-.total-adhesion {
-    margin-top: 20px;
-
-    padding: 15px;
-
-    background:
-        rgba(
-            143,
-            236,
-            201,
-            0.08
-        );
-
-    border:
-        1px solid
-        rgba(
-            143,
-            236,
-            201,
-            0.2
-        );
-
-    border-radius: 10px;
-
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-}
-
-.total-adhesion strong {
-    color: #8fecc9;
-}
-
-.total-adhesion span {
-    font-size: 20px;
-
-    font-weight: bold;
+.card:nth-child(2) {
+    grid-column: span 1;
 }
 
 
 /* ==============================
-   BLOC PRINCIPAL
+   ADRESSE
 ============================== */
 
-.bloc-principal {
+.card:nth-child(3) {
+    grid-column: span 1;
+}
+
+
+/* ==============================
+   ADHÉSION
+============================== */
+
+.card:nth-child(4) {
     grid-column: span 2;
+}
+
+
+/* ==============================
+   DEMANDE
+============================== */
+
+.card:nth-child(5) {
+    grid-column: span 1;
+}
+
+
+/* ==============================
+   MISE EN AVANT DU TOTAL
+============================== */
+
+#total {
+    color: #8fecc9;
+
+    font-size: 17px;
+
+    font-weight: bold;
+}
+
+
+/* ==============================
+   STATUTS
+============================== */
+
+#statut,
+#statutPaiement {
+    font-weight: 600;
 }
 
 
@@ -334,91 +348,73 @@ body {
    ACTIONS
 ============================== */
 
-.actions-adhesion {
+.actions-demande {
+    grid-column: 1 / -1;
+
     display: flex;
 
-    gap: 12px;
+    align-items: center;
 
-    flex-wrap: wrap;
+    justify-content: center;
 
-    margin-top: 25px;
+    gap: 15px;
+
+    padding: 20px;
 }
 
-.actions-adhesion button {
+
+/* ==============================
+   BOUTON ACCEPTER
+============================== */
+
+.accepter {
+    background: #16a34a;
+}
+
+.accepter:hover {
+    background: #15803d;
+}
+
+
+/* ==============================
+   BOUTON REFUSER
+============================== */
+
+.bouton-refus {
     border: none;
 
-    padding: 12px 18px;
+    padding: 12px 20px;
 
     border-radius: 8px;
 
     cursor: pointer;
 
-    color: white;
+    background: #c0392b;
 
-    background: #3c9195;
-
-    transition: 0.2s;
+    color: #ffffff;
 
     font-size: 14px;
+
+    transition: 0.2s;
 }
 
-.actions-adhesion button:hover {
+.bouton-refus:hover {
+    background: #a93226;
+
     transform: translateY(-2px);
-
-    opacity: 0.9;
-}
-
-.actions-adhesion .valider {
-    background: #16a34a;
-}
-
-.actions-adhesion .refuser {
-    background: #c0392b;
 }
 
 
 /* ==============================
-   MESSAGE
+   BOUTONS DÉSACTIVÉS
 ============================== */
 
-.message-adhesion {
-    padding: 18px;
+button:disabled {
+    opacity: 0.5;
 
-    margin-top: 20px;
+    cursor: not-allowed;
 
-    border-radius: 10px;
-
-    background:
-        rgba(
-            255,
-            255,
-            255,
-            0.05
-        );
-
-    border:
-        1px solid
-        rgba(
-            255,
-            255,
-            255,
-            0.08
-        );
-
-    color: #dbeafe;
-}
-
-
-/* ==============================
-   CHARGEMENT
-============================== */
-
-.chargement {
-    text-align: center;
-
-    padding: 50px;
-
-    opacity: 0.7;
+    transform: none !important;
 }
 
 
@@ -428,69 +424,66 @@ body {
 
 @media (max-width: 1000px) {
 
-    .adhesion-container {
-        grid-template-columns: repeat(
-            2,
-            1fr
-        );
+    #contenuDemande {
+        grid-template-columns:
+            repeat(2, 1fr);
     }
 
-    .bloc-principal {
+    .card:nth-child(4) {
         grid-column: span 2;
+    }
+
+    .card:nth-child(5) {
+        grid-column: span 2;
+    }
+
+    .actions-demande {
+        grid-column: 1 / -1;
     }
 }
 
 
+/* ==============================
+   TABLETTE / MOBILE
+============================== */
+
 @media (max-width: 700px) {
 
-    .admin-header {
-        flex-direction: column;
+    .dashboard-container {
+        width: 94%;
+    }
 
-        gap: 20px;
+    .dashboard-header {
+        padding: 20px;
+
+        flex-direction: column;
 
         align-items: flex-start;
     }
 
-    .navigation-admin {
-        width: 100%;
-
-        flex-direction: column;
+    .dashboard-header h1 {
+        font-size: 25px;
     }
 
-    .bouton-navigation,
-    #logout {
-        width: 100%;
-
-        text-align: center;
-    }
-
-    .adhesion-container {
+    #contenuDemande {
         grid-template-columns: 1fr;
-
-        padding: 15px;
     }
 
-    .bloc-principal {
+    .card,
+    .card:nth-child(4),
+    .card:nth-child(5) {
         grid-column: span 1;
     }
 
-    .information-adhesion {
-        flex-direction: column;
-
-        align-items: flex-start;
-
-        gap: 5px;
+    .infos-grid {
+        grid-template-columns: 1fr;
     }
 
-    .information-adhesion span {
-        text-align: left;
-    }
-
-    .actions-adhesion {
+    .actions-demande {
         flex-direction: column;
     }
 
-    .actions-adhesion button {
+    .actions-demande button {
         width: 100%;
     }
 }
