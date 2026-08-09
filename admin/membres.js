@@ -530,24 +530,33 @@ function afficherMembres(liste) {
         ========================================= */
 
         const boutonRenvoyerPaiement =
-            ligne.querySelector(".renvoyer-paiement");
+    ligne.querySelector(".renvoyer-paiement");
 
 
-        if (boutonRenvoyerPaiement) {
+if (boutonRenvoyerPaiement) {
 
-            boutonRenvoyerPaiement.addEventListener(
-                "click",
-                () => {
+    boutonRenvoyerPaiement.addEventListener(
+        "click",
+        () => {
 
-                    console.log(
-                        "Renvoyer le paiement :",
-                        membre.id
-                    );
+            if (!membre.lienPaiement) {
 
-                }
-            );
+                alert(
+                    "Aucun lien de paiement disponible pour cette demande."
+                );
+
+                return;
+
+            }
+
+
+            window.location.href =
+                membre.lienPaiement;
 
         }
+    );
+
+}
 
 
         /* =========================================
