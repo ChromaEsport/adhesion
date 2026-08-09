@@ -1,368 +1,516 @@
 /* =========================================================
-CHROMA ESPORT
-FICHE MEMBRE
-Vue administrative - lecture rapide
+   CHROMA ESPORT
+   FICHE MEMBRE - STYLE DÉDIÉ
 ========================================================= */
 
+/* ==============================
+   RESET
+============================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #010c2c;
+    color: #ffffff;
+}
+
+
+/* ==============================
+   HEADER
+============================== */
+
+.admin-header {
+    background:
+        linear-gradient(
+            135deg,
+            #010c2c,
+            #3c9195
+        );
+
+    padding: 25px 40px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    flex-wrap: wrap;
+}
+
+.admin-header h1 {
+    margin: 0;
+    font-size: 32px;
+    letter-spacing: 2px;
+}
+
+.admin-header p {
+    margin-top: 8px;
+    opacity: 0.8;
+}
+
+
+/* ==============================
+   NAVIGATION
+============================== */
+
+.navigation-admin {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.bouton-navigation,
+#logout {
+    border: none;
+
+    padding: 12px 18px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    text-decoration: none;
+
+    color: white;
+
+    background: #1875c2;
+
+    transition: 0.2s;
+}
+
+.bouton-navigation:hover,
+#logout:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+#logout {
+    background: #c0392b;
+}
+
+
+/* ==============================
+   CONTENU
+============================== */
+
+.admin-container {
+    width: 95%;
+    max-width: 1400px;
+
+    margin: 40px auto;
+}
+
+.admin-container h2 {
+    font-size: 28px;
+    margin-bottom: 25px;
+}
+
+
 /* =========================================================
-CONTENEUR PRINCIPAL DU MEMBRE
+   CONTENEUR PRINCIPAL DU MEMBRE
 ========================================================= */
 
 .fiche-membre {
+    display: grid;
 
+    grid-template-columns:
+        minmax(0, 2fr)
+        minmax(280px, 1fr);
 
-margin-top: 25px;
+    gap: 20px;
 
-background: #081638;
+    background: #081638;
 
-border-radius: 14px;
+    padding: 25px;
 
-padding: 25px;
+    border-radius: 15px;
 
-border: 1px solid rgba(
-    255,
-    255,
-    255,
-    0.08
-);
-
-
+    border: 1px solid rgba(
+        255,
+        255,
+        255,
+        0.08
+    );
 }
+
 
 /* =========================================================
-IDENTITÉ
-========================================================= */
-
-.carte-identite {
-
-
-display: flex;
-
-align-items: center;
-
-justify-content: space-between;
-
-gap: 25px;
-
-padding-bottom: 22px;
-
-border-bottom: 1px solid rgba(
-    255,
-    255,
-    255,
-    0.12
-);
-
-
-}
-
-.carte-identite h3 {
-
-
-margin: 0 0 8px 0;
-
-font-size: 25px;
-
-font-weight: 700;
-
-
-}
-
-.numero-membre {
-
-
-font-size: 14px;
-
-font-weight: 700;
-
-color: #8fecc9;
-
-letter-spacing: 0.5px;
-
-
-}
-
-.badge {
-
-
-display: inline-flex;
-
-align-items: center;
-
-justify-content: center;
-
-padding: 7px 15px;
-
-border-radius: 20px;
-
-background: #3c9195;
-
-color: #ffffff;
-
-font-size: 13px;
-
-font-weight: 700;
-
-white-space: nowrap;
-
-
-}
-
-/* =========================================================
-BLOCS D'INFORMATIONS
+   BLOCS D'INFORMATIONS
 ========================================================= */
 
 .bloc-fiche {
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.05
+        );
 
+    border-radius: 12px;
 
-margin-top: 22px;
+    padding: 20px;
 
-padding: 0;
-
-background: transparent;
-
-border-radius: 0;
-
-
+    border: 1px solid rgba(
+        255,
+        255,
+        255,
+        0.06
+    );
 }
 
 .bloc-fiche h3 {
+    margin-top: 0;
+    margin-bottom: 18px;
 
+    color: #8fecc9;
 
-margin: 0 0 10px 0;
-
-padding-bottom: 10px;
-
-color: #8fecc9;
-
-font-size: 16px;
-
-font-weight: 700;
-
-border-bottom: 1px solid rgba(
-    255,
-    255,
-    255,
-    0.08
-);
-
+    font-size: 18px;
 }
+
 
 /* =========================================================
-LIGNES D'INFORMATIONS
+   IDENTITÉ
 ========================================================= */
-
-.information {
-
-
-display: grid;
-
-grid-template-columns:
-    190px
-    1fr;
-
-align-items: center;
-
-min-height: 42px;
-
-padding: 8px 0;
-
-border-bottom: 1px solid rgba(
-    255,
-    255,
-    255,
-    0.06
-);
-
-
-}
-
-.information:last-child {
-
-
-border-bottom: none;
-
-
-}
-
-.information strong {
-
-
-color: #94a3b8;
-
-font-size: 13px;
-
-font-weight: 600;
-
-
-}
-
-.information span,
-.information div {
-
-
-color: #ffffff;
-
-font-size: 14px;
-
-
-}
-
-/* =========================================================
-ACTIONS ADMINISTRATEUR
-========================================================= */
-
-.actions-admin {
-
-margin-top: 25px;
-
-padding: 20px;
-
-background: #0d1b42;
-
-border-radius: 12px;
-
-border: 1px solid rgba(
-    255,
-    255,
-    255,
-    0.08
-);
-
-
-}
-
-.actions-admin h3 {
-
-
-margin: 0 0 15px 0;
-
-color: #8fecc9;
-
-
-}
-
-/* =========================================================
-BOUTONS
-========================================================= */
-
-.actions-admin button {
-
-
-width: 100%;
-
-margin-bottom: 10px;
-
-padding: 13px 16px;
-
-border: none;
-
-border-radius: 8px;
-
-cursor: pointer;
-
-background: #3c9195;
-
-color: #ffffff;
-
-font-size: 14px;
-
-font-weight: 600;
-
-transition:
-    transform 0.15s,
-    opacity 0.15s;
-
-
-}
-
-.actions-admin button:hover {
-
-
-transform:
-    translateY(-1px);
-
-opacity: 0.9;
-
-
-}
-
-#renouvelerMembre {
-
-
-background: #8fecc9;
-
-color: #010c2c;
-
-
-}
-
-#radierMembre {
-
-
-background: #c0392b;
-
-
-}
-
-/* =========================================================
-STATUT CARTE
-========================================================= */
-
-#statutCarte {
-
-
-margin: 12px 0 0;
-
-text-align: center;
-
-color: #94a3b8;
-
-font-size: 13px;
-
-}
-
-/* =========================================================
-MOBILE
-========================================================= */
-
-@media (max-width: 700px) {
-
-
-.fiche-membre {
-
-    padding: 18px;
-
-}
-
 
 .carte-identite {
+    grid-column: 1 / -1;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(60,145,149,0.25),
+            rgba(8,22,56,0.8)
+        );
+
+    border-radius: 12px;
+
+    border: 1px solid rgba(
+        143,
+        236,
+        201,
+        0.15
+    );
+}
+
+.identite-principale {
+    display: flex;
 
     flex-direction: column;
 
-    align-items: flex-start;
+    gap: 6px;
+}
+
+.identite-nom {
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.identite-discord {
+    color: #b8c7df;
+    font-size: 14px;
+}
+
+.numero-membre {
+    font-size: 18px;
+
+    font-weight: bold;
+
+    color: #8fecc9;
+}
+
+
+/* =========================================================
+   BADGES
+========================================================= */
+
+.badge {
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 8px 14px;
+
+    border-radius: 20px;
+
+    background: #3c9195;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   INFORMATIONS RAPIDES
+========================================================= */
+
+.informations-rapides {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
 
     gap: 12px;
-
 }
 
+.information-rapide {
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.04
+        );
 
-.information {
+    padding: 14px;
 
-    grid-template-columns: 1fr;
-
-    gap: 4px;
-
-    padding: 10px 0;
-
+    border-radius: 8px;
 }
 
-
-.information strong {
+.information-rapide-label {
+    display: block;
 
     font-size: 12px;
 
+    color: #8fa3c4;
+
+    margin-bottom: 5px;
 }
 
+.information-rapide-valeur {
+    font-size: 15px;
+
+    font-weight: bold;
+
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   INFORMATIONS CLASSIQUES
+========================================================= */
+
+.information {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 11px 0;
+
+    border-bottom:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.08
+        );
+}
+
+.information:last-child {
+    border-bottom: none;
+}
+
+.information strong {
+    color: #8fecc9;
+
+    font-size: 13px;
+}
+
+.information span {
+    text-align: right;
+
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   STATUTS
+========================================================= */
+
+.statut-actif {
+    color: #16a34a !important;
+    font-weight: bold;
+}
+
+.statut-expire {
+    color: #dc2626 !important;
+    font-weight: bold;
+}
+
+.statut-attente {
+    color: #d97706 !important;
+    font-weight: bold;
+}
+
+.statut-paye {
+    color: #16a34a !important;
+    font-weight: bold;
+}
+
+
+/* =========================================================
+   ACTIONS ADMINISTRATEUR
+========================================================= */
+
+.actions-admin {
+    margin-top: 20px;
+
+    background: #081638;
+
+    padding: 20px;
+
+    border-radius: 12px;
+}
+
+.actions-admin h3 {
+    margin-top: 0;
+
+    color: #8fecc9;
+}
+
+.actions-admin button {
+    width: 100%;
+
+    margin-bottom: 10px;
+
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    background: #3c9195;
+
+    color: white;
+
+    font-size: 15px;
+
+    transition: 0.2s;
+}
+
+.actions-admin button:hover {
+    transform: translateY(-1px);
+    opacity: 0.9;
+}
+
+#renouvelerMembre {
+    background: #8fecc9;
+
+    color: #010c2c;
+}
+
+#radierMembre {
+    background: #c0392b;
+}
+
+#carteMembre {
+    background: #1875c2;
+}
+
+
+/* =========================================================
+   STATUT CARTE
+========================================================= */
+
+#statutCarte {
+    margin: 10px 0 0;
+
+    font-size: 13px;
+
+    color: #8fa3c4;
+}
+
+
+/* =========================================================
+   CHARGEMENT
+========================================================= */
+
+#ficheMembre {
+    min-height: 100px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .fiche-membre {
+        grid-template-columns: 1fr;
+    }
+
+    .carte-identite {
+        grid-column: auto;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .admin-header {
+        flex-direction: column;
+
+        gap: 20px;
+
+        align-items: flex-start;
+    }
+
+    .navigation-admin {
+        width: 100%;
+
+        flex-direction: column;
+    }
+
+    .bouton-navigation,
+    #logout {
+        width: 100%;
+
+        text-align: center;
+    }
+
+    .informations-rapides {
+        grid-template-columns: 1fr;
+    }
+
+    .information {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 5px;
+    }
+
+    .information span {
+        text-align: left;
+    }
 
 }
