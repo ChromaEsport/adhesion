@@ -49,7 +49,7 @@ main {
             #3c9195
         );
 
-    padding: 25px 40px;
+    padding: 35px 40px;
 
     margin-bottom: 30px;
 
@@ -61,8 +61,6 @@ main {
 
     gap: 20px;
 
-    border-radius:
-        0 0 15px 15px;
 }
 
 .dashboard-header h1 {
