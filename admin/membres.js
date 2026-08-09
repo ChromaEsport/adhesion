@@ -924,13 +924,9 @@ function afficherMembres(liste) {
             </td>
 
             <td>
-                ${membre.prenom || ""}
-            </td>
-
-            <td>
-                ${membre.nom || ""}
-            </td>
-
+    ${membre.prenom || ""}
+    ${membre.nom || ""}
+</td>
             <td>
                 ${membre.discord || "-"}
             </td>
