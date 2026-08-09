@@ -132,7 +132,8 @@ onAuthStateChanged(
 
             }
         );
-
+        
+        await chargerStatistiques();
         await chargerMembres();
 
     }
