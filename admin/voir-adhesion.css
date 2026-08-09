@@ -1,0 +1,496 @@
+/* ==================================
+   CHROMA ESPORT
+   VOIR ADHÉSION
+================================== */
+
+/* ==============================
+   RESET
+============================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background: #010c2c;
+    color: #ffffff;
+}
+
+
+/* ==============================
+   HEADER
+============================== */
+
+.admin-header {
+    background:
+        linear-gradient(
+            135deg,
+            #010c2c,
+            #3c9195
+        );
+
+    padding: 25px 40px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    flex-wrap: wrap;
+}
+
+.admin-header h1 {
+    margin: 0;
+
+    font-size: 32px;
+
+    letter-spacing: 2px;
+}
+
+.admin-header p {
+    margin-top: 8px;
+
+    opacity: 0.8;
+}
+
+
+/* ==============================
+   NAVIGATION
+============================== */
+
+.navigation-admin {
+    display: flex;
+
+    gap: 15px;
+
+    align-items: center;
+}
+
+.bouton-navigation,
+#logout {
+    border: none;
+
+    padding: 12px 18px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    text-decoration: none;
+
+    color: white;
+
+    background: #1875c2;
+
+    transition: 0.2s;
+}
+
+.bouton-navigation:hover,
+#logout:hover {
+    transform: translateY(-2px);
+
+    opacity: 0.9;
+}
+
+#logout {
+    background: #c0392b;
+}
+
+
+/* ==============================
+   CONTENU
+============================== */
+
+.admin-container {
+    width: 95%;
+
+    max-width: 1400px;
+
+    margin: 40px auto;
+}
+
+.admin-container h2 {
+    font-size: 28px;
+
+    margin-bottom: 8px;
+}
+
+.description-dashboard {
+    opacity: 0.8;
+
+    margin-bottom: 30px;
+}
+
+
+/* ==============================
+   CONTENEUR ADHÉSION
+============================== */
+
+.adhesion-container {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+
+    background: #081638;
+
+    padding: 25px;
+
+    border-radius: 15px;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.08
+        );
+}
+
+
+/* ==============================
+   BLOCS D'INFORMATIONS
+============================== */
+
+.bloc-adhesion {
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.04
+        );
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.08
+        );
+
+    border-radius: 12px;
+
+    padding: 20px;
+
+    min-width: 0;
+}
+
+.bloc-adhesion h3 {
+    margin-top: 0;
+
+    margin-bottom: 20px;
+
+    color: #8fecc9;
+
+    font-size: 18px;
+}
+
+
+/* ==============================
+   LIGNES D'INFORMATIONS
+============================== */
+
+.information-adhesion {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 11px 0;
+
+    border-bottom:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.08
+        );
+}
+
+.information-adhesion:last-child {
+    border-bottom: none;
+}
+
+.information-adhesion strong {
+    color: #8fecc9;
+
+    font-size: 14px;
+}
+
+.information-adhesion span {
+    text-align: right;
+
+    color: #ffffff;
+
+    font-size: 14px;
+
+    word-break: break-word;
+}
+
+
+/* ==============================
+   STATUT
+============================== */
+
+.statut-adhesion {
+    display: inline-block;
+
+    padding: 7px 13px;
+
+    border-radius: 20px;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    background: #3c9195;
+
+    color: white;
+}
+
+.statut-paye {
+    background: #16a34a;
+}
+
+.statut-attente {
+    background: #d97706;
+}
+
+.statut-refuse {
+    background: #c0392b;
+}
+
+
+/* ==============================
+   TOTAL
+============================== */
+
+.total-adhesion {
+    margin-top: 20px;
+
+    padding: 15px;
+
+    background:
+        rgba(
+            143,
+            236,
+            201,
+            0.08
+        );
+
+    border:
+        1px solid
+        rgba(
+            143,
+            236,
+            201,
+            0.2
+        );
+
+    border-radius: 10px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+.total-adhesion strong {
+    color: #8fecc9;
+}
+
+.total-adhesion span {
+    font-size: 20px;
+
+    font-weight: bold;
+}
+
+
+/* ==============================
+   BLOC PRINCIPAL
+============================== */
+
+.bloc-principal {
+    grid-column: span 2;
+}
+
+
+/* ==============================
+   ACTIONS
+============================== */
+
+.actions-adhesion {
+    display: flex;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+
+    margin-top: 25px;
+}
+
+.actions-adhesion button {
+    border: none;
+
+    padding: 12px 18px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    color: white;
+
+    background: #3c9195;
+
+    transition: 0.2s;
+
+    font-size: 14px;
+}
+
+.actions-adhesion button:hover {
+    transform: translateY(-2px);
+
+    opacity: 0.9;
+}
+
+.actions-adhesion .valider {
+    background: #16a34a;
+}
+
+.actions-adhesion .refuser {
+    background: #c0392b;
+}
+
+
+/* ==============================
+   MESSAGE
+============================== */
+
+.message-adhesion {
+    padding: 18px;
+
+    margin-top: 20px;
+
+    border-radius: 10px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.05
+        );
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.08
+        );
+
+    color: #dbeafe;
+}
+
+
+/* ==============================
+   CHARGEMENT
+============================== */
+
+.chargement {
+    text-align: center;
+
+    padding: 50px;
+
+    opacity: 0.7;
+}
+
+
+/* ==============================
+   RESPONSIVE
+============================== */
+
+@media (max-width: 1000px) {
+
+    .adhesion-container {
+        grid-template-columns: repeat(
+            2,
+            1fr
+        );
+    }
+
+    .bloc-principal {
+        grid-column: span 2;
+    }
+}
+
+
+@media (max-width: 700px) {
+
+    .admin-header {
+        flex-direction: column;
+
+        gap: 20px;
+
+        align-items: flex-start;
+    }
+
+    .navigation-admin {
+        width: 100%;
+
+        flex-direction: column;
+    }
+
+    .bouton-navigation,
+    #logout {
+        width: 100%;
+
+        text-align: center;
+    }
+
+    .adhesion-container {
+        grid-template-columns: 1fr;
+
+        padding: 15px;
+    }
+
+    .bloc-principal {
+        grid-column: span 1;
+    }
+
+    .information-adhesion {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 5px;
+    }
+
+    .information-adhesion span {
+        text-align: left;
+    }
+
+    .actions-adhesion {
+        flex-direction: column;
+    }
+
+    .actions-adhesion button {
+        width: 100%;
+    }
+}
