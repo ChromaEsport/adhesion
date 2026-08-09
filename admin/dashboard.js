@@ -122,7 +122,31 @@ async function chargerStatistiques() {
                 )
             );
 
+const requeteAdhesions =
+    query(
+        collection(
+            db,
+            "adhesions"
+        ),
+        where(
+            "statut",
+            "==",
+            "acceptee"
+        ),
+        where(
+            "statutPaiement",
+            "==",
+            "en_attente"
+        )
+    );
 
+
+const snapshotAdhesions =
+    await getDocs(
+        requeteAdhesions
+    );
+
+        
         const membres =
             [];
 
@@ -159,7 +183,8 @@ async function chargerStatistiques() {
 
         let membresExpires = 0;
 
-        let membresAttentePaiement = 0;
+        let membresAttentePaiement =
+    snapshotAdhesions.size;
 
         let cotisationsEncaissees = 0;
 
@@ -229,20 +254,6 @@ async function chargerStatistiques() {
                 ) {
 
                     membresExpires++;
-
-                }
-
-
-                /* =========================================
-                   EN ATTENTE DE PAIEMENT
-                ========================================= */
-
-                if (
-                    membre.statutPaiement ===
-                    "en_attente"
-                ) {
-
-                    membresAttentePaiement++;
 
                 }
 
@@ -409,9 +420,9 @@ if (
 
 
         afficherStatistique(
-            "statAttentePaiement",
-            membresAttentePaiement
-        );
+    "statPaiementsAttente",
+    membresAttentePaiement
+);
 
 
         afficherStatistique(
