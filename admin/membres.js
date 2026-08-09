@@ -473,7 +473,7 @@ async function chargerStatistiques() {
 
         const totalMembres =
             membresActifs +
-            membresExpires +;
+            membresExpires;
         
 
 
