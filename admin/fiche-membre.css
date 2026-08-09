@@ -356,6 +356,15 @@ font-size: 0px;
     padding: 20px;
 
     border-radius: 12px;
+
+
+   display: grid;
+    gap: 15px;
+    grid-template-columns: repeat(2, 1fr);
+    border-bottom-right-radius: 12px;
+    border-bottom-left-radius: 12px;
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
 }
 
 .actions-admin h3 {
@@ -404,7 +413,21 @@ font-size: 0px;
 #carteMembre {
     background: #1875c2;
 }
-
+.titreactionadmin {
+    
+   font-size: 20px;
+    text-align: center;
+    margin-top: 20px;
+    background: #081638;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-weight: bold;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    color: #8fecc9;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+   
+}
 
 /* =========================================================
    STATUT CARTE
@@ -416,6 +439,12 @@ font-size: 0px;
     font-size: 13px;
 
     color: #8fa3c4;
+}
+
+.cartemembre {
+
+
+
 }
 
 
