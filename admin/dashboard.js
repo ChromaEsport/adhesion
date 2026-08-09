@@ -1034,20 +1034,20 @@ async function chargerDemandes() {
                                 <button
                                     class="bouton-action accepter"
                                 >
-                                    ✅
+                                    ✅ Accepter
                                 </button>
 
                                 <button
                                     class="bouton-refus refuser"
                                 >
-                                    ❌
+                                    ❌ Refuser
                                 </button>
 
                                 <button
                                     class="bouton-action voir-demande"
                                     data-id="${documentFirestore.id}"
                                 >
-                                    👁 Voir
+                                    👤 Voir demande
                                 </button>
                                 `
 
@@ -1058,7 +1058,7 @@ async function chargerDemandes() {
                                     class="bouton-action voir-demande"
                                     data-id="${documentFirestore.id}"
                                 >
-                                    👁 Voir
+                                    👤 Voir demande
                                 </button>
                                 `
                             }
