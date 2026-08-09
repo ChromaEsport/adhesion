@@ -182,7 +182,464 @@ chargerMembres();
 );
 
 
+async function chargerStatistiques() {
 
+    try {
+
+        // =====================================================
+        // RÉCUPÉRATION DES MEMBRES
+        // =====================================================
+
+        const snapshotMembres =
+            await getDocs(
+                collection(
+                    db,
+                    "membres"
+                )
+            );
+
+
+        const membresFirestore = [];
+
+
+        snapshotMembres.forEach(
+            documentFirestore => {
+
+                membresFirestore.push({
+
+                    id:
+                        documentFirestore.id,
+
+                    ...documentFirestore.data()
+
+                });
+
+            }
+        );
+
+
+        // =====================================================
+        // RÉCUPÉRATION DES ADHÉSIONS EN ATTENTE DE PAIEMENT
+        // =====================================================
+
+        const requeteAdhesions =
+            query(
+                collection(
+                    db,
+                    "adhesions"
+                ),
+                where(
+                    "statut",
+                    "==",
+                    "acceptee"
+                ),
+                where(
+                    "statutPaiement",
+                    "==",
+                    "en_attente"
+                )
+            );
+
+
+        const snapshotAdhesions =
+            await getDocs(
+                requeteAdhesions
+            );
+
+
+        // =====================================================
+        // DATE ACTUELLE
+        // =====================================================
+
+        const aujourdHui =
+            new Date();
+
+
+        aujourdHui.setHours(
+            0,
+            0,
+            0,
+            0
+        );
+
+
+        const anneeActuelle =
+            new Date().getFullYear();
+
+
+        // =====================================================
+        // COMPTEURS
+        // =====================================================
+
+        let membresActifs = 0;
+
+        let membresExpires = 0;
+
+        let membresAttentePaiement =
+            snapshotAdhesions.size;
+
+        let cotisationsEncaissees = 0;
+
+        let donsEncaisses = 0;
+
+        let nouvellesAdhesions = 0;
+
+        let renouvellements = 0;
+
+
+        // =====================================================
+        // ANALYSE DES MEMBRES
+        // =====================================================
+
+        membresFirestore.forEach(
+            membre => {
+
+
+                // =================================================
+                // DATE DE FIN D'ADHÉSION
+                // =================================================
+
+                let adhesionExpiree =
+                    false;
+
+
+                if (
+                    membre.dateFinAdhesion
+                ) {
+
+                    const dateFin =
+                        new Date(
+                            membre.dateFinAdhesion
+                        );
+
+
+                    dateFin.setHours(
+                        0,
+                        0,
+                        0,
+                        0
+                    );
+
+
+                    adhesionExpiree =
+                        dateFin < aujourdHui;
+
+                }
+
+
+                // =================================================
+                // MEMBRE ACTIF
+                // =================================================
+
+                if (
+                    !adhesionExpiree &&
+                    membre.statutPaiement ===
+                    "paye"
+                ) {
+
+                    membresActifs++;
+
+                }
+
+
+                // =================================================
+                // MEMBRE EXPIRÉ
+                // =================================================
+
+                if (
+                    adhesionExpiree
+                ) {
+
+                    membresExpires++;
+
+                }
+
+
+                // =================================================
+                // FINANCES
+                // =================================================
+
+                if (
+                    membre.statutPaiement ===
+                    "paye"
+                ) {
+
+                    cotisationsEncaissees +=
+                        Number(
+                            membre.cotisation ||
+                            0
+                        );
+
+
+                    donsEncaisses +=
+                        Number(
+                            membre.don ||
+                            0
+                        );
+
+                }
+
+
+                // =================================================
+                // NOUVELLE ADHÉSION
+                // =================================================
+
+                if (
+                    membre.dateCreation
+                ) {
+
+                    let dateCreation;
+
+
+                    if (
+                        typeof membre.dateCreation.toDate ===
+                        "function"
+                    ) {
+
+                        dateCreation =
+                            membre.dateCreation.toDate();
+
+                    }
+                    else {
+
+                        dateCreation =
+                            new Date(
+                                membre.dateCreation
+                            );
+
+                    }
+
+
+                    if (
+                        dateCreation.getFullYear() ===
+                        anneeActuelle
+                    ) {
+
+                        nouvellesAdhesions++;
+
+                    }
+
+                }
+
+
+                // =================================================
+                // RENOUVELLEMENT
+                // =================================================
+
+                if (
+                    membre.dateRenouvellement
+                ) {
+
+                    let dateRenouvellement;
+
+
+                    if (
+                        typeof membre.dateRenouvellement.toDate ===
+                        "function"
+                    ) {
+
+                        dateRenouvellement =
+                            membre.dateRenouvellement.toDate();
+
+                    }
+                    else {
+
+                        dateRenouvellement =
+                            new Date(
+                                membre.dateRenouvellement
+                            );
+
+                    }
+
+
+                    if (
+                        dateRenouvellement.getFullYear() ===
+                        anneeActuelle
+                    ) {
+
+                        renouvellements++;
+
+                    }
+
+                }
+
+            }
+        );
+
+
+        // =====================================================
+        // TOTAL DES MEMBRES
+        // =====================================================
+
+        const totalMembres =
+            membresActifs +
+            membresExpires +
+            membresAttentePaiement;
+
+
+        // =====================================================
+        // TOTAL ENCAISSÉ
+        // =====================================================
+
+        const totalEncaisse =
+            cotisationsEncaissees +
+            donsEncaisses;
+
+
+        // =====================================================
+        // MOYENNE PAR MEMBRE
+        // =====================================================
+
+        const moyenneParMembre =
+            membresActifs > 0
+                ? totalEncaisse /
+                  membresActifs
+                : 0;
+
+
+        // =====================================================
+        // AFFICHAGE
+        // =====================================================
+
+        afficherStatistique(
+            "statMembresActifs",
+            membresActifs
+        );
+
+
+        afficherStatistique(
+            "statMembresExpires",
+            membresExpires
+        );
+
+
+        afficherStatistique(
+            "statPaiementsAttente",
+            membresAttentePaiement
+        );
+
+
+        afficherStatistique(
+            "statTotalMembres",
+            totalMembres
+        );
+
+
+        afficherStatistique(
+            "statCotisations",
+            formatEuro(
+                cotisationsEncaissees
+            )
+        );
+
+
+        afficherStatistique(
+            "statDons",
+            formatEuro(
+                donsEncaisses
+            )
+        );
+
+
+        afficherStatistique(
+            "statTotalEncaisse",
+            formatEuro(
+                totalEncaisse
+            )
+        );
+
+
+        afficherStatistique(
+            "statMoyenneMembre",
+            formatEuro(
+                moyenneParMembre
+            )
+        );
+
+
+        afficherStatistique(
+            "statNouvellesAdhesions",
+            nouvellesAdhesions
+        );
+
+
+        afficherStatistique(
+            "statRenouvellements",
+            renouvellements
+        );
+
+
+        console.log(
+            "Statistiques membres :",
+            {
+                membresActifs,
+                membresExpires,
+                membresAttentePaiement,
+                totalMembres,
+                cotisationsEncaissees,
+                donsEncaisses,
+                totalEncaisse,
+                moyenneParMembre,
+                nouvellesAdhesions,
+                renouvellements
+            }
+        );
+
+    }
+    catch (error) {
+
+        console.error(
+            "Erreur chargement statistiques :",
+            error
+        );
+
+    }
+
+}
+
+function afficherStatistique(
+    id,
+    valeur
+) {
+
+    const element =
+        document.getElementById(
+            id
+        );
+
+
+    if (!element) {
+
+        console.warn(
+            `Élément #${id} introuvable`
+        );
+
+        return;
+
+    }
+
+
+    element.textContent =
+        valeur;
+
+}
+
+
+function formatEuro(
+    montant
+) {
+
+    return Number(
+        montant
+    ).toLocaleString(
+        "fr-FR",
+        {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        }
+    ) + " €";
+
+}
 
 
 async function chargerMembres() {
