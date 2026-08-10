@@ -915,6 +915,51 @@ contenuDemandeMembreActif.innerHTML = `
 
 }
 
+function calculerDateEligibiliteMembreActif(
+dateDebutAdhesion
+) {
+
+
+if (!dateDebutAdhesion) {
+    return null;
+}
+
+let date;
+
+if (
+    typeof dateDebutAdhesion.toDate ===
+    "function"
+) {
+    date =
+        dateDebutAdhesion.toDate();
+}
+else {
+    date =
+        new Date(
+            dateDebutAdhesion
+        );
+}
+
+if (
+    isNaN(
+        date.getTime()
+    )
+) {
+    return null;
+}
+
+date.setMonth(
+    date.getMonth() + 6
+);
+
+return date;
+
+
+}
+
+
+
+
 function configurerActionsDemandeMembreActif(
 membre,
 id
