@@ -726,32 +726,126 @@ function afficherEspaceMembreActif(
     =========================================
     */
 
-    blocMembreActif.style.display =
-        "block";
+   /*
+=========================================
+ÉLIGIBLE
+=========================================
+*/
 
-    contenuMembreActif.innerHTML = `
+blocMembreActif.style.display =
+    "block";
 
-        <div class="message-membre-actif">
+const cotisationAJour =
+    membre.statutPaiement ===
+    "paye";
 
-            <div class="icone-membre-actif">
-                ⭐
+const adhesionActive =
+    membre.statutAdhesion ===
+    "active";
+
+const critereCotisation =
+    cotisationAJour &&
+    adhesionActive;
+
+contenuMembreActif.innerHTML = `
+
+    <div class="message-membre-actif">
+
+        <div class="icone-membre-actif">
+            ⭐
+        </div>
+
+        <h4>
+            Vous pouvez demander à devenir membre actif
+        </h4>
+
+        <p>
+            Vous avez atteint les 6 mois d'ancienneté
+            requis pour déposer une demande.
+        </p>
+
+        <div class="criteres-membre-actif">
+
+            <h5>
+                🔎 Conditions examinées
+            </h5>
+
+            <div class="critere-membre-actif">
+
+                <span class="icone">
+                    ✅
+                </span>
+
+                <span class="texte">
+                    Ancienneté minimale de 6 mois
+                </span>
+
             </div>
 
-            <h4>
-                Vous pouvez demander à devenir
-                membre actif
-            </h4>
+            <div class="critere-membre-actif">
 
-            <p>
-                Vous avez atteint les 6 mois
-                d'ancienneté requis.
-            </p>
+                <span class="icone">
+                    ${
+                        critereCotisation
+                        ? "✅"
+                        : "❌"
+                    }
+                </span>
 
-            <p>
-                Votre demande sera examinée
-                par l'administration de
-                Chroma Esport conformément
-                au règlement intérieur.
+                <span class="texte">
+                    Cotisation à jour
+                </span>
+
+            </div>
+
+            <div class="critere-membre-actif">
+
+                <span class="icone">
+                    📋
+                </span>
+
+                <span class="texte">
+                    Participation régulière aux activités
+                </span>
+
+            </div>
+
+            <div class="critere-membre-actif">
+
+                <span class="icone">
+                    📋
+                </span>
+
+                <span class="texte">
+                    Implication dans la vie de l'association
+                </span>
+
+            </div>
+
+            <div class="critere-membre-actif">
+
+                <span class="icone">
+                    📋
+                </span>
+
+                <span class="texte">
+                    Respect du règlement intérieur
+                </span>
+
+            </div>
+
+        </div>
+
+        ${
+            critereCotisation
+            ?
+
+            `
+            <p class="information-demande-actif">
+
+                Votre cotisation est à jour.
+                Vous pouvez déposer votre demande.
+
             </p>
 
             <button
@@ -760,31 +854,46 @@ function afficherEspaceMembreActif(
             >
                 ⭐ Demander à devenir membre actif
             </button>
+            `
 
-        </div>
+            :
 
-    `;
+            `
+            <p class="information-demande-actif">
+
+                ⚠️ Votre cotisation n'est pas à jour.
+                Vous devez régulariser votre adhésion
+                avant de pouvoir déposer une demande.
+
+            </p>
+            `
+        }
+
+    </div>
+
+`;
 
 
-    const bouton =
-        document.getElementById(
-            "demanderMembreActif"
-        );
+const bouton =
+    document.getElementById(
+        "demanderMembreActif"
+    );
 
-    if (bouton) {
 
-        bouton.addEventListener(
-            "click",
-            () => {
+if (bouton) {
 
-                demanderPassageMembreActif(
-                    membre
-                );
+    bouton.addEventListener(
+        "click",
+        () => {
 
-            }
-        );
+            demanderPassageMembreActif(
+                membre
+            );
 
-    }
+        }
+    );
+
+}
 
 }
 
