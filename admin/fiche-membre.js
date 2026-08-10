@@ -893,7 +893,10 @@ contenuDemandeMembreActif.innerHTML = `
 </div>
 
 
-        <div class="critere-membre-actif">
+    <div
+    class="critere-membre-actif"
+    id="blocCritereParticipation"
+>
     <input
         type="checkbox"
         id="critereParticipation"
@@ -907,7 +910,10 @@ contenuDemandeMembreActif.innerHTML = `
 
 </div>
 
-<div class="critere-membre-actif">
+<div
+    class="critere-membre-actif"
+    id="blocCritereImplication"
+>
     <input
         type="checkbox"
         id="critereImplication"
@@ -921,7 +927,10 @@ contenuDemandeMembreActif.innerHTML = `
 
 </div>
 
-<div class="critere-membre-actif">
+<div
+    class="critere-membre-actif"
+    id="blocCritereReglement"
+>
     <input
         type="checkbox"
         id="critereReglement"
@@ -934,6 +943,7 @@ contenuDemandeMembreActif.innerHTML = `
 
 
 </div>
+
 
 
     </div>
