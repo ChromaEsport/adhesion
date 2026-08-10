@@ -197,12 +197,7 @@ return;
 const membre =
 membreDoc.data();
 
-    afficherDemandeMembreActif(membre);
-
-    configurerActionsDemandeMembreActif(
-membre,
-id
-);
+    
 
 
 if (
@@ -222,7 +217,14 @@ if (
     membre.statutPaiement = "en_attente";
 }
     
+afficherDemandeMembreActif(membre);
 
+    configurerActionsDemandeMembreActif(
+membre,
+id
+);
+
+    
 afficherActionsAdmin(membre);
 
 boutonRenouveler.onclick = () => {
