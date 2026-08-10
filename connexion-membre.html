@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>Connexion membre - Chroma Esport</title>
+
+<link rel="stylesheet" href="espace-membre.css">
+
+
+</head>
+
+<body>
+
+<header class="membre-header">
+
+
+<div class="membre-header-logo">
+
+    <h1>
+        CHROMA ESPORT
+    </h1>
+
+    <p>
+        Espace membre
+    </p>
+
+</div>
+
+
+</header>
+
+<main class="membre-container">
+
+
+<section class="bloc-membre">
+
+    <div class="titre-bloc">
+
+        <span>🔐</span>
+
+        <h2>
+            Connexion membre
+        </h2>
+
+    </div>
+
+
+    <p>
+        Connectez-vous à votre espace membre Chroma Esport.
+    </p>
+
+
+    <form id="formConnexion">
+
+        <div class="information">
+
+            <label
+                for="email"
+                class="information-label"
+            >
+                Adresse email
+            </label>
+
+            <input
+                type="email"
+                id="email"
+                required
+                autocomplete="email"
+                placeholder="votre@email.fr"
+            >
+
+        </div>
+
+
+        <div class="information">
+
+            <label
+                for="password"
+                class="information-label"
+            >
+                Mot de passe
+            </label>
+
+            <input
+                type="password"
+                id="password"
+                required
+                autocomplete="current-password"
+                placeholder="Votre mot de passe"
+            >
+
+        </div>
+
+
+        <button
+            type="submit"
+            id="boutonConnexion"
+        >
+            🔐 Se connecter
+        </button>
+
+
+        <p id="messageConnexion"></p>
+
+    </form>
+
+
+    <div class="liens-connexion">
+
+        <a href="creer-mot-de-passe.html">
+            🔑 Première connexion / Mot de passe oublié ?
+        </a>
+
+    </div>
+
+</section>
+
+
+</main>
+
+<footer class="membre-footer">
+
+
+<p>
+    © 2026 Chroma Esport — Tous droits réservés.
+</p>
+
+
+</footer>
+
+<script
+    type="module"
+    src="connexion-membre.js"
+></script>
+
+</body>
+
+</html>
