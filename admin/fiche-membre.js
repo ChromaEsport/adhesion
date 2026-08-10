@@ -731,7 +731,15 @@ alert(
 
 function afficherDemandeMembreActif(membre) {
 
+const cotisationAJour =
+    membre.statutPaiement ===
+    "paye";
 
+const adhesionActive =
+    membre.statutAdhesion ===
+    "active";
+
+    
 // Aucun bloc si aucune demande n'existe
 if (
     membre.statutDemandeMembreActif !==
@@ -829,6 +837,24 @@ contenuDemandeMembreActif.innerHTML = `
             </span>
         </div>
 
+<div class="information-demande-actif">
+
+    <span class="information-demande-actif-label">
+        Compte Firebase
+    </span>
+
+    <span class="information-demande-actif-valeur">
+
+        ${
+            membre.firebaseUid
+            || "-"
+        }
+
+    </span>
+
+</div>
+
+
     </div>
 
     <div class="informations-demande-actif">
@@ -881,12 +907,16 @@ contenuDemandeMembreActif.innerHTML = `
 
         <div class="critere-membre-actif">
     <span class="icone">
-        ${cotisationAJour ? "🟢" : "🔴"}
-    </span>
-
+    ${
+        cotisationAJour &&
+        adhesionActive
+        ? "✅"
+        : "❌"
+    }
+</span>
 
 <span class="texte">
-    Cotisation à jour
+    Cotisation et adhésion à jour
 </span>
 
 
