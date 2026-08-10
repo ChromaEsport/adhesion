@@ -515,3 +515,134 @@ font-size: 0px;
     }
 
 }
+
+/* =========================================================
+DEMANDE MEMBRE ACTIF
+========================================================= */
+
+.bloc-demande-membre-actif {
+margin-top: 20px;
+padding: 25px;
+background: #081638;
+border-radius: 12px;
+border: 1px solid rgba(143, 236, 201, 0.20);
+}
+
+.bloc-demande-membre-actif h3 {
+margin-top: 0;
+margin-bottom: 25px;
+text-align: center;
+color: #8fecc9;
+font-size: 24px;
+}
+
+.informations-demande-actif {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 15px;
+margin-bottom: 25px;
+}
+
+.information-demande-actif {
+padding: 15px;
+background: rgba(255, 255, 255, 0.04);
+border-radius: 8px;
+text-align: center;
+}
+
+.information-demande-actif-label {
+display: block;
+margin-bottom: 7px;
+color: #8fa3c4;
+font-size: 13px;
+}
+
+.information-demande-actif-valeur {
+color: #ffffff;
+font-size: 16px;
+font-weight: bold;
+}
+
+.criteres-membre-actif {
+margin-top: 20px;
+}
+
+.criteres-membre-actif h4 {
+margin-bottom: 15px;
+color: #8fecc9;
+font-size: 18px;
+}
+
+.critere-membre-actif {
+display: flex;
+align-items: center;
+gap: 10px;
+padding: 12px 15px;
+margin-bottom: 8px;
+background: rgba(255, 255, 255, 0.04);
+border-radius: 8px;
+}
+
+.critere-membre-actif .icone {
+font-size: 18px;
+}
+
+.critere-membre-actif .texte {
+color: #ffffff;
+}
+
+.actions-demande-membre-actif {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 15px;
+margin-top: 25px;
+}
+
+.actions-demande-membre-actif button {
+padding: 15px;
+border: none;
+border-radius: 8px;
+cursor: pointer;
+font-size: 16px;
+font-weight: bold;
+transition: 0.2s;
+}
+
+.actions-demande-membre-actif button:hover {
+transform: translateY(-2px);
+opacity: 0.9;
+}
+
+#accepterDemandeMembreActif {
+background: #16a34a;
+color: #ffffff;
+}
+
+#refuserDemandeMembreActif {
+background: #c0392b;
+color: #ffffff;
+}
+
+.badge-demande-en-attente {
+display: inline-block;
+padding: 8px 15px;
+border-radius: 8px;
+background: rgba(217, 119, 6, 0.15);
+color: #f59e0b;
+font-weight: bold;
+}
+
+@media (max-width: 800px) {
+
+```
+.informations-demande-actif {
+    grid-template-columns: 1fr;
+}
+
+.actions-demande-membre-actif {
+    grid-template-columns: 1fr;
+}
+```
+
+}
+
