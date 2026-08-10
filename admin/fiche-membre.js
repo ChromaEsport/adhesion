@@ -196,6 +196,8 @@ return;
 const membre =
 membreDoc.data();
 
+    afficherDemandeMembreActif(membre);
+
 if (
     adhesionEstExpiree(membre) &&
     membre.statutAdhesion !== "expiree"
@@ -717,6 +719,193 @@ alert(
 }
 
 }
+
+function afficherDemandeMembreActif(membre) {
+
+
+// Aucun bloc si aucune demande n'existe
+if (
+    membre.statutDemandeMembreActif !==
+    "en_attente"
+) {
+    blocDemandeMembreActif.style.display =
+        "none";
+
+    return;
+}
+
+blocDemandeMembreActif.style.display =
+    "block";
+
+const dateDebut =
+    afficherDate(
+        membre.dateDebutAdhesion
+    );
+
+const dateDemande =
+    afficherDate(
+        membre.dateDemandeMembreActif
+    );
+
+let dateEligibilite = "-";
+
+if (membre.dateDebutAdhesion) {
+
+    let date;
+
+    if (
+        typeof membre.dateDebutAdhesion.toDate ===
+        "function"
+    ) {
+        date =
+            membre.dateDebutAdhesion.toDate();
+    }
+    else {
+        date =
+            new Date(
+                membre.dateDebutAdhesion
+            );
+    }
+
+    date.setMonth(
+        date.getMonth() + 6
+    );
+
+    dateEligibilite =
+        date.toLocaleDateString(
+            "fr-FR"
+        );
+}
+
+contenuDemandeMembreActif.innerHTML = `
+
+    <div class="informations-demande-actif">
+
+        <div class="information-demande-actif">
+            <span class="information-demande-actif-label">
+                Statut actuel
+            </span>
+
+            <span class="information-demande-actif-valeur">
+                👤 Membre adhérent
+            </span>
+        </div>
+
+        <div class="information-demande-actif">
+            <span class="information-demande-actif-label">
+                Adhérent depuis
+            </span>
+
+            <span class="information-demande-actif-valeur">
+                ${dateDebut}
+            </span>
+        </div>
+
+        <div class="information-demande-actif">
+            <span class="information-demande-actif-label">
+                Demande effectuée le
+            </span>
+
+            <span class="information-demande-actif-valeur">
+                ${dateDemande}
+            </span>
+        </div>
+
+    </div>
+
+    <div class="informations-demande-actif">
+
+        <div class="information-demande-actif">
+
+            <span class="information-demande-actif-label">
+                Éligible depuis
+            </span>
+
+            <span class="information-demande-actif-valeur">
+                ${dateEligibilite}
+            </span>
+
+        </div>
+
+        <div class="information-demande-actif">
+
+            <span class="information-demande-actif-label">
+                Statut de la demande
+            </span>
+
+            <span class="badge-demande-en-attente">
+                ⏳ En attente
+            </span>
+
+        </div>
+
+    </div>
+
+    <div class="criteres-membre-actif">
+
+        <h4>
+            🔎 Vérification des critères
+        </h4>
+
+        <div class="critere-membre-actif">
+            <span class="icone">✅</span>
+            <span class="texte">
+                Ancienneté minimale de 6 mois
+            </span>
+        </div>
+
+        <div class="critere-membre-actif">
+            <span class="icone">⬜</span>
+            <span class="texte">
+                Cotisation à jour
+            </span>
+        </div>
+
+        <div class="critere-membre-actif">
+            <span class="icone">⬜</span>
+            <span class="texte">
+                Participation régulière aux activités
+            </span>
+        </div>
+
+        <div class="critere-membre-actif">
+            <span class="icone">⬜</span>
+            <span class="texte">
+                Implication dans la vie de l'association
+            </span>
+        </div>
+
+        <div class="critere-membre-actif">
+            <span class="icone">⬜</span>
+            <span class="texte">
+                Respect du règlement intérieur
+            </span>
+        </div>
+
+    </div>
+
+    <div class="actions-demande-membre-actif">
+
+        <button
+            id="accepterDemandeMembreActif"
+            type="button"
+        >
+            ✅ Accepter la demande
+        </button>
+
+        <button
+            id="refuserDemandeMembreActif"
+            type="button"
+        >
+            ❌ Refuser la demande
+        </button>
+
+    </div>
+`;
+
+
+}
+
 
 
 logout.addEventListener(
