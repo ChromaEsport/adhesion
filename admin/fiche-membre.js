@@ -199,6 +199,12 @@ membreDoc.data();
 
     afficherDemandeMembreActif(membre);
 
+    configurerActionsDemandeMembreActif(
+membre,
+id
+);
+
+
 if (
     adhesionEstExpiree(membre) &&
     membre.statutAdhesion !== "expiree"
@@ -907,6 +913,205 @@ contenuDemandeMembreActif.innerHTML = `
 
 }
 
+function configurerActionsDemandeMembreActif(
+membre,
+id
+) {
+
+
+if (
+    membre.statutDemandeMembreActif !==
+    "en_attente"
+) {
+    return;
+}
+
+const boutonAccepter =
+    document.getElementById(
+        "accepterDemandeMembreActif"
+    );
+
+const boutonRefuser =
+    document.getElementById(
+        "refuserDemandeMembreActif"
+    );
+
+if (boutonAccepter) {
+
+    boutonAccepter.addEventListener(
+        "click",
+        async () => {
+
+            const confirmation =
+                confirm(
+                    "Confirmer l'acceptation de cette demande de passage en membre actif ?"
+                );
+
+            if (!confirmation) {
+                return;
+            }
+
+            const user =
+                auth.currentUser;
+
+            if (!user) {
+                alert(
+                    "Administrateur non identifié."
+                );
+                return;
+            }
+
+            try {
+
+                await updateDoc(
+                    doc(
+                        db,
+                        "membres",
+                        id
+                    ),
+                    {
+                        statutMembre:
+                            "actif",
+
+                        statutDemandeMembreActif:
+                            "acceptee",
+
+                        demandeMembreActif:
+                            false,
+
+                        dateDecisionMembreActif:
+                            Timestamp.now(),
+
+                        decisionMembreActifParNom:
+                            user.displayName ||
+                            "Administrateur",
+
+                        decisionMembreActifParEmail:
+                            user.email || ""
+                    }
+                );
+
+                alert(
+                    "La demande a été acceptée. Le membre est maintenant membre actif."
+                );
+
+                window.location.reload();
+
+            }
+            catch (error) {
+
+                console.error(
+                    "Erreur lors de l'acceptation :",
+                    error
+                );
+
+                alert(
+                    "Impossible d'accepter la demande."
+                );
+            }
+        }
+    );
+}
+
+if (boutonRefuser) {
+
+    boutonRefuser.addEventListener(
+        "click",
+        async () => {
+
+            const motif =
+                prompt(
+                    "Pourquoi cette demande est-elle refusée ?"
+                );
+
+            if (
+                motif === null
+            ) {
+                return;
+            }
+
+            if (
+                motif.trim() === ""
+            ) {
+                alert(
+                    "Un motif de refus est obligatoire."
+                );
+                return;
+            }
+
+            const confirmation =
+                confirm(
+                    "Confirmer le refus de cette demande ?"
+                );
+
+            if (!confirmation) {
+                return;
+            }
+
+            const user =
+                auth.currentUser;
+
+            if (!user) {
+                alert(
+                    "Administrateur non identifié."
+                );
+                return;
+            }
+
+            try {
+
+                await updateDoc(
+                    doc(
+                        db,
+                        "membres",
+                        id
+                    ),
+                    {
+                        statutDemandeMembreActif:
+                            "refusee",
+
+                        demandeMembreActif:
+                            false,
+
+                        dateDecisionMembreActif:
+                            Timestamp.now(),
+
+                        decisionMembreActifParNom:
+                            user.displayName ||
+                            "Administrateur",
+
+                        decisionMembreActifParEmail:
+                            user.email || "",
+
+                        motifRefusMembreActif:
+                            motif.trim()
+                    }
+                );
+
+                alert(
+                    "La demande a été refusée."
+                );
+
+                window.location.reload();
+
+            }
+            catch (error) {
+
+                console.error(
+                    "Erreur lors du refus :",
+                    error
+                );
+
+                alert(
+                    "Impossible de refuser la demande."
+                );
+            }
+        }
+    );
+}
+
+
+}
 
 
 logout.addEventListener(
