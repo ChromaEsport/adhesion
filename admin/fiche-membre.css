@@ -634,7 +634,7 @@ font-weight: bold;
 
 @media (max-width: 800px) {
 
-```
+
 .informations-demande-actif {
     grid-template-columns: 1fr;
 }
@@ -642,7 +642,12 @@ font-weight: bold;
 .actions-demande-membre-actif {
     grid-template-columns: 1fr;
 }
-```
 
+
+}
+.actions-demande-membre-actif button:disabled {
+opacity: 0.45;
+cursor: not-allowed;
+transform: none !important;
 }
 
