@@ -1050,6 +1050,187 @@ const boutonRefuser =
         "refuserDemandeMembreActif"
     );
 
+const critereParticipation =
+document.getElementById(
+"critereParticipation"
+);
+
+const critereImplication =
+document.getElementById(
+"critereImplication"
+);
+
+const critereReglement =
+document.getElementById(
+"critereReglement"
+);
+
+const blocCritereParticipation =
+document.getElementById(
+"blocCritereParticipation"
+);
+
+const blocCritereImplication =
+document.getElementById(
+"blocCritereImplication"
+);
+
+const blocCritereReglement =
+document.getElementById(
+"blocCritereReglement"
+);
+
+const cotisationAJour =
+membre.statutPaiement ===
+"paye";
+
+const dateEligibilite =
+calculerDateEligibiliteMembreActif(
+membre.dateDebutAdhesion
+);
+
+let sixMoisAtteints =
+false;
+
+if (dateEligibilite) {
+
+
+const aujourdHui =
+    new Date();
+
+aujourdHui.setHours(
+    0,
+    0,
+    0,
+    0
+);
+
+sixMoisAtteints =
+    dateEligibilite <=
+    aujourdHui;
+
+
+}
+
+function verifierCriteres() {
+
+
+const participationValidee =
+    critereParticipation &&
+    critereParticipation.checked;
+
+const implicationValidee =
+    critereImplication &&
+    critereImplication.checked;
+
+const reglementValide =
+    critereReglement &&
+    critereReglement.checked;
+
+const tousLesCriteres =
+    sixMoisAtteints &&
+    cotisationAJour &&
+    participationValidee &&
+    implicationValidee &&
+    reglementValide;
+
+if (boutonAccepter) {
+
+    boutonAccepter.disabled =
+        !tousLesCriteres;
+
+    if (tousLesCriteres) {
+
+        boutonAccepter.textContent =
+            "✅ Accepter la demande";
+
+    }
+    else {
+
+        boutonAccepter.textContent =
+            "🔒 Accepter la demande";
+    }
+}
+
+if (blocCritereParticipation) {
+
+    blocCritereParticipation.classList.toggle(
+        "critere-manuel-valide",
+        participationValidee
+    );
+
+    blocCritereParticipation.classList.toggle(
+        "critere-manuel-invalide",
+        !participationValidee
+    );
+}
+
+if (blocCritereImplication) {
+
+    blocCritereImplication.classList.toggle(
+        "critere-manuel-valide",
+        implicationValidee
+    );
+
+    blocCritereImplication.classList.toggle(
+        "critere-manuel-invalide",
+        !implicationValidee
+    );
+}
+
+if (blocCritereReglement) {
+
+    blocCritereReglement.classList.toggle(
+        "critere-manuel-valide",
+        reglementValide
+    );
+
+    blocCritereReglement.classList.toggle(
+        "critere-manuel-invalide",
+        !reglementValide
+    );
+}
+
+
+}
+
+if (critereParticipation) {
+
+
+critereParticipation.addEventListener(
+    "change",
+    verifierCriteres
+);
+
+
+}
+
+if (critereImplication) {
+
+
+critereImplication.addEventListener(
+    "change",
+    verifierCriteres
+);
+
+
+}
+
+if (critereReglement) {
+
+
+critereReglement.addEventListener(
+    "change",
+    verifierCriteres
+);
+
+
+}
+
+verifierCriteres();
+
+
+    
 if (boutonAccepter) {
 
     boutonAccepter.addEventListener(
