@@ -172,9 +172,19 @@ async (user) => {
     );
 
 
-    await chargerMembre(
-        user.email
-    );
+    console.log(
+    "Utilisateur connecté :",
+    user.email
+);
+
+console.log(
+    "UID Firebase :",
+    user.uid
+);
+
+await chargerMembre(
+    user.uid
+);
 
 }
 
@@ -186,89 +196,98 @@ CHARGER LE MEMBRE
 ========================================================= */
 
 async function chargerMembre(
-email
+    firebaseUid
 ) {
 
+    try {
 
-try {
+        if (!firebaseUid) {
 
-    if (!email) {
+            afficherErreur(
+                "Identifiant Firebase introuvable."
+            );
 
-        afficherErreur(
-            "Adresse e-mail introuvable."
-        );
-
-        return;
-    }
-
-
-    const requete =
-        query(
-            collection(
-                db,
-                "membres"
-            ),
-            where(
-                "email",
-                "==",
-                email
-            )
-        );
-
-
-    const resultat =
-        await getDocs(
-            requete
-        );
-
-
-    if (
-        resultat.empty
-    ) {
-
-        afficherErreur(
-            "Aucun membre correspondant à ce compte n'a été trouvé."
-        );
-
-        return;
-    }
-
-
-    let membre = null;
-
-
-    resultat.forEach(
-        documentFirestore => {
-
-            membre = {
-                id:
-                    documentFirestore.id,
-
-                ...documentFirestore.data()
-            };
-
+            return;
         }
-    );
 
+        console.log(
+            "Recherche du membre avec le UID Firebase :",
+            firebaseUid
+        );
 
-    afficherMembre(
-        membre
-    );
+        const requete =
+            query(
+                collection(
+                    db,
+                    "membres"
+                ),
+                where(
+                    "firebaseUid",
+                    "==",
+                    firebaseUid
+                )
+            );
 
-}
-catch (error) {
+        const resultat =
+            await getDocs(
+                requete
+            );
 
-    console.error(
-        "Erreur lors du chargement du membre :",
-        error
-    );
+        console.log(
+            "Nombre de membres trouvés :",
+            resultat.size
+        );
 
-    afficherErreur(
-        "Impossible de charger vos informations."
-    );
+        if (
+            resultat.empty
+        ) {
 
-}
+            afficherErreur(
+                "Aucun membre correspondant à ce compte n'a été trouvé."
+            );
 
+            return;
+        }
+
+        let membre = null;
+
+        resultat.forEach(
+            documentFirestore => {
+
+                membre = {
+
+                    id:
+                        documentFirestore.id,
+
+                    ...documentFirestore.data()
+
+                };
+
+            }
+        );
+
+        console.log(
+            "Membre correspondant trouvé :",
+            membre
+        );
+
+        afficherMembre(
+            membre
+        );
+
+    }
+    catch (error) {
+
+        console.error(
+            "Erreur lors du chargement du membre :",
+            error
+        );
+
+        afficherErreur(
+            "Impossible de charger vos informations."
+        );
+
+    }
 
 }
 
