@@ -651,3 +651,49 @@ cursor: not-allowed;
 transform: none !important;
 }
 
+/* =========================================================
+CRITÈRES MEMBRE ACTIF - CASES À COCHER
+========================================================= */
+
+.critere-membre-actif {
+display: flex;
+align-items: center;
+gap: 12px;
+padding: 12px 15px;
+margin-bottom: 8px;
+background: rgba(255, 255, 255, 0.04);
+border-radius: 8px;
+}
+
+.critere-membre-actif input[type="checkbox"] {
+width: 20px;
+height: 20px;
+cursor: pointer;
+accent-color: #8fecc9;
+}
+
+.critere-membre-actif label {
+color: #ffffff;
+cursor: pointer;
+font-size: 15px;
+}
+
+.critere-manuel-valide {
+border: 1px solid rgba(22, 163, 74, 0.4);
+background: rgba(22, 163, 74, 0.08);
+}
+
+.critere-manuel-invalide {
+border: 1px solid rgba(220, 38, 38, 0.4);
+background: rgba(220, 38, 38, 0.08);
+}
+
+.message-acceptation-bloquee {
+margin-top: 15px;
+padding: 12px 15px;
+border-radius: 8px;
+background: rgba(217, 119, 6, 0.12);
+color: #f59e0b;
+text-align: center;
+font-weight: bold;
+}
