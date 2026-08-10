@@ -322,7 +322,7 @@ body {
 }
 
 .formulaire-admin input::placeholder {
-    color:red;
+    color:#898989;
 }
 
 .formulaire-admin input:focus,
@@ -364,7 +364,7 @@ body {
         #ffffff;
 }
 
-.formulaire-admin select option.hover {
+.formulaire-admin select option:hover {
     background:
         #3c9195;
 
