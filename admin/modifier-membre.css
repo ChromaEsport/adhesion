@@ -38,7 +38,7 @@ body {
         );
 
     padding:
-        25px 40px;
+        35px 40px;
 
     display:
         flex;
@@ -162,10 +162,10 @@ body {
 
 .admin-container {
     width:
-        92%;
+        95%;
 
     max-width:
-        1000px;
+        1400px;
 
     margin:
         40px auto 60px;
@@ -180,6 +180,7 @@ body {
 
     letter-spacing:
         0.5px;
+   text-align:center;
 }
 
 
@@ -306,10 +307,10 @@ body {
         none;
 
     background:
-        #0d1b42;
+        #ffffff;
 
     color:
-        #ffffff;
+        #000000;
 
     font-size:
         15px;
