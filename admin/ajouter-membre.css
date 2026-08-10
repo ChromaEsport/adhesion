@@ -342,6 +342,16 @@ padding-bottom: 0px;
         dark;
 }
 
+.formulaire-admin input[type="date"]::placeholder {
+    color: #cbc8d0;
+}
+
+.formulaire-admin input::placeholder[type="date"] {
+    color: #cbc8d0;
+}
+
+
+
 
 /* =========================================================
    INPUT NOMBRE
