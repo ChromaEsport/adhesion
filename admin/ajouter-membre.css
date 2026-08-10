@@ -338,7 +338,7 @@ padding-bottom: 0px;
 ========================================================= */
 
 .formulaire-admin input[type="date"] {
-    color:#cbc8d0;
+    color:#000000;
    color-scheme:
         auto;
 }
@@ -353,13 +353,6 @@ padding-bottom: 0px;
     appearance:
         textfield;
 }
-
-.formulaire-admin input[type="number"]::-webkit-inner-spin-button,
-.formulaire-admin input[type="number"]::-webkit-outer-spin-button {
-    opacity:
-        1;
-}
-
 
 /* =========================================================
    BOUTON VALIDATION
