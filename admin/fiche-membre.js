@@ -788,6 +788,9 @@ sixMoisAtteints =
     dateEligibiliteObjet <=
     aujourdHui;
 
+const cotisationAJour =
+membre.statutPaiement ===
+"paye";
 
 }
 
@@ -877,32 +880,61 @@ contenuDemandeMembreActif.innerHTML = `
 
 
         <div class="critere-membre-actif">
-            <span class="icone">⬜</span>
-            <span class="texte">
-                Cotisation à jour
-            </span>
-        </div>
+    <span class="icone">
+        ${cotisationAJour ? "🟢" : "🔴"}
+    </span>
+
+
+<span class="texte">
+    Cotisation à jour
+</span>
+
+
+</div>
+
 
         <div class="critere-membre-actif">
-            <span class="icone">⬜</span>
-            <span class="texte">
-                Participation régulière aux activités
-            </span>
-        </div>
+    <input
+        type="checkbox"
+        id="critereParticipation"
+    >
 
-        <div class="critere-membre-actif">
-            <span class="icone">⬜</span>
-            <span class="texte">
-                Implication dans la vie de l'association
-            </span>
-        </div>
 
-        <div class="critere-membre-actif">
-            <span class="icone">⬜</span>
-            <span class="texte">
-                Respect du règlement intérieur
-            </span>
-        </div>
+<label for="critereParticipation">
+    Participation régulière aux activités
+</label>
+
+
+</div>
+
+<div class="critere-membre-actif">
+    <input
+        type="checkbox"
+        id="critereImplication"
+    >
+
+
+<label for="critereImplication">
+    Implication dans la vie de l'association
+</label>
+
+
+</div>
+
+<div class="critere-membre-actif">
+    <input
+        type="checkbox"
+        id="critereReglement"
+    >
+
+
+<label for="critereReglement">
+    Respect du règlement intérieur
+</label>
+
+
+</div>
+
 
     </div>
 
