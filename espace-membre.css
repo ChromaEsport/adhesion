@@ -1,0 +1,888 @@
+/* =========================================================
+CHROMA ESPORT
+ESPACE MEMBRE - STYLE
+========================================================= */
+
+/* ==============================
+RESET
+============================== */
+
+* {
+  box-sizing: border-box;
+  }
+
+body {
+margin: 0;
+font-family: Arial, Helvetica, sans-serif;
+background: #010c2c;
+color: #ffffff;
+}
+
+/* ==============================
+HEADER
+============================== */
+
+.membre-header {
+background:
+linear-gradient(
+135deg,
+#010c2c,
+#3c9195
+);
+
+
+padding: 25px 40px;
+
+display: flex;
+justify-content: space-between;
+align-items: center;
+
+flex-wrap: wrap;
+
+
+}
+
+.membre-header-logo h1 {
+margin: 0;
+
+
+font-size: 32px;
+
+letter-spacing: 2px;
+
+
+}
+
+.membre-header-logo p {
+margin-top: 8px;
+
+
+opacity: 0.8;
+
+
+}
+
+/* ==============================
+NAVIGATION
+============================== */
+
+.navigation-membre {
+display: flex;
+
+
+align-items: center;
+
+gap: 15px;
+
+
+}
+
+#numeroMembreHeader {
+padding: 10px 15px;
+
+
+border-radius: 8px;
+
+background:
+    rgba(
+        255,
+        255,
+        255,
+        0.08
+    );
+
+color: #8fecc9;
+
+font-weight: bold;
+
+
+}
+
+#logout {
+border: none;
+
+
+padding: 12px 18px;
+
+border-radius: 8px;
+
+cursor: pointer;
+
+color: white;
+
+background: #c0392b;
+
+transition: 0.2s;
+
+
+}
+
+#logout:hover {
+transform: translateY(-2px);
+
+
+opacity: 0.9;
+
+
+}
+
+/* ==============================
+CONTENEUR
+============================== */
+
+.membre-container {
+width: 95%;
+
+
+max-width: 1200px;
+
+margin: 40px auto;
+
+
+}
+
+/* ==============================
+BIENVENUE
+============================== */
+
+.bloc-bienvenue {
+background:
+linear-gradient(
+135deg,
+rgba(60, 145, 149, 0.35),
+rgba(8, 22, 56, 0.9)
+);
+
+
+border: 1px solid
+    rgba(
+        143,
+        236,
+        201,
+        0.15
+    );
+
+border-radius: 15px;
+
+padding: 30px;
+
+display: flex;
+
+justify-content: space-between;
+
+align-items: center;
+
+gap: 30px;
+
+margin-bottom: 25px;
+
+
+}
+
+.petit-titre {
+color: #8fecc9;
+
+
+font-size: 13px;
+
+font-weight: bold;
+
+letter-spacing: 2px;
+
+margin: 0 0 8px 0;
+
+
+}
+
+.bloc-bienvenue h2 {
+margin: 0 0 10px 0;
+
+
+font-size: 30px;
+
+
+}
+
+.bloc-bienvenue p:not(.petit-titre) {
+margin: 0;
+
+
+color: #b8c7df;
+
+
+}
+
+/* ==============================
+STATUT PRINCIPAL
+============================== */
+
+.statut-principal {
+min-width: 180px;
+
+
+text-align: center;
+
+padding: 20px;
+
+background:
+    rgba(
+        0,
+        0,
+        0,
+        0.2
+    );
+
+border-radius: 12px;
+
+
+}
+
+.statut-label {
+display: block;
+
+
+color: #8fa3c4;
+
+font-size: 13px;
+
+margin-bottom: 10px;
+
+
+}
+
+.badge-statut {
+display: inline-flex;
+
+
+align-items: center;
+
+justify-content: center;
+
+padding: 9px 16px;
+
+border-radius: 8px;
+
+background: #3c9195;
+
+font-size: 16px;
+
+font-weight: bold;
+
+
+}
+
+/* ==============================
+BLOCS PRINCIPAUX
+============================== */
+
+.bloc-membre {
+background: #081638;
+
+
+border-radius: 15px;
+
+padding: 25px;
+
+margin-bottom: 25px;
+
+border: 1px solid
+    rgba(
+        255,
+        255,
+        255,
+        0.06
+    );
+
+
+}
+
+.titre-bloc {
+display: flex;
+
+
+align-items: center;
+
+gap: 10px;
+
+margin-bottom: 22px;
+
+
+}
+
+.titre-bloc span {
+font-size: 24px;
+}
+
+.titre-bloc h3 {
+margin: 0;
+
+
+color: #8fecc9;
+
+font-size: 22px;
+
+
+}
+
+/* ==============================
+GRILLE INFORMATIONS
+============================== */
+
+.grille-informations {
+display: grid;
+
+grid-template-columns:
+    repeat(2, 1fr);
+
+gap: 12px;
+
+
+}
+
+.information {
+background:
+rgba(
+255,
+255,
+255,
+0.04
+);
+
+
+padding: 15px;
+
+border-radius: 9px;
+
+display: flex;
+
+justify-content: space-between;
+
+align-items: center;
+
+gap: 20px;
+
+
+}
+
+.information-label {
+color: #8fa3c4;
+
+
+font-size: 13px;
+
+
+}
+
+.information-valeur {
+font-size: 15px;
+
+
+font-weight: bold;
+
+text-align: right;
+
+color: #ffffff;
+
+word-break: break-word;
+
+
+}
+
+.numero-membre {
+color: #8fecc9;
+}
+
+/* ==============================
+BLOC MEMBRE ACTIF
+============================== */
+
+.bloc-membre-actif {
+border:
+1px solid
+rgba(
+143,
+236,
+201,
+0.25
+);
+}
+
+.contenu-membre-actif {
+color: #ffffff;
+}
+
+.chargement {
+color: #8fa3c4;
+
+text-align: center;
+
+padding: 20px;
+
+
+}
+
+/* ==============================
+ÉTAT ÉLIGIBLE
+============================== */
+
+.eligibilite-membre-actif {
+background:
+rgba(
+22,
+163,
+74,
+0.12
+);
+
+
+border:
+    1px solid
+    rgba(
+        22,
+        163,
+        74,
+        0.35
+    );
+
+border-radius: 12px;
+
+padding: 20px;
+
+
+}
+
+.eligibilite-membre-actif h4 {
+margin-top: 0;
+
+
+color: #8fecc9;
+
+font-size: 18px;
+
+
+}
+
+.eligibilite-membre-actif p {
+color: #b8c7df;
+
+
+line-height: 1.5;
+
+
+}
+
+/* ==============================
+BOUTON DEMANDE MEMBRE ACTIF
+============================== */
+
+#demanderMembreActif {
+width: 100%;
+
+margin-top: 15px;
+
+padding: 14px 20px;
+
+border: none;
+
+border-radius: 8px;
+
+cursor: pointer;
+
+background: #8fecc9;
+
+color: #010c2c;
+
+font-size: 16px;
+
+font-weight: bold;
+
+transition: 0.2s;
+
+
+}
+
+#demanderMembreActif:hover {
+transform: translateY(-2px);
+
+
+opacity: 0.9;
+
+
+}
+
+/* ==============================
+DEMANDE EN ATTENTE
+============================== */
+
+.demande-membre-actif {
+background:
+rgba(
+217,
+119,
+6,
+0.12
+);
+
+
+border:
+    1px solid
+    rgba(
+        217,
+        119,
+        6,
+        0.35
+    );
+
+border-radius: 12px;
+
+padding: 20px;
+
+
+}
+
+.demande-membre-actif h4 {
+margin-top: 0;
+
+
+color: #f59e0b;
+
+font-size: 18px;
+
+
+}
+
+.demande-membre-actif p {
+color: #b8c7df;
+
+
+line-height: 1.5;
+
+
+}
+
+/* ==============================
+DEMANDE REFUSÉE
+============================== */
+
+.demande-refusee {
+background:
+rgba(
+192,
+57,
+43,
+0.12
+);
+
+
+border:
+    1px solid
+    rgba(
+        192,
+        57,
+        43,
+        0.35
+    );
+
+border-radius: 12px;
+
+padding: 20px;
+
+
+}
+
+.demande-refusee h4 {
+margin-top: 0;
+
+
+color: #ef4444;
+
+font-size: 18px;
+
+
+}
+
+.demande-refusee p {
+color: #b8c7df;
+
+
+line-height: 1.5;
+
+
+}
+
+/* ==============================
+MEMBRE ACTIF
+============================== */
+
+.membre-actif-confirme {
+background:
+rgba(
+22,
+163,
+74,
+0.12
+);
+
+
+border:
+    1px solid
+    rgba(
+        22,
+        163,
+        74,
+        0.35
+    );
+
+border-radius: 12px;
+
+padding: 20px;
+
+
+}
+
+.membre-actif-confirme h4 {
+margin-top: 0;
+
+
+color: #8fecc9;
+
+font-size: 20px;
+
+
+}
+
+/* ==============================
+CARTE MEMBRE
+============================== */
+
+.carte-membre {
+background:
+linear-gradient(
+135deg,
+#081638,
+#3c9195
+);
+
+
+border:
+    1px solid
+    rgba(
+        143,
+        236,
+        201,
+        0.2
+    );
+
+border-radius: 15px;
+
+padding: 25px;
+
+display: flex;
+
+justify-content: space-between;
+
+align-items: center;
+
+gap: 20px;
+
+
+}
+
+.carte-numero span,
+.carte-statut span {
+display: block;
+
+color: #b8c7df;
+
+font-size: 11px;
+
+letter-spacing: 1px;
+
+margin-bottom: 6px;
+
+
+}
+
+.carte-numero strong {
+font-size: 26px;
+
+
+color: #8fecc9;
+
+
+}
+
+.carte-statut {
+text-align: right;
+}
+
+.carte-statut strong {
+font-size: 16px;
+}
+
+/* ==============================
+INFORMATION ASSOCIATION
+============================== */
+
+.bloc-information-association {
+background:
+rgba(
+255,
+255,
+255,
+0.04
+);
+
+
+border:
+    1px solid
+    rgba(
+        255,
+        255,
+        255,
+        0.06
+    );
+
+border-radius: 12px;
+
+padding: 20px;
+
+margin-bottom: 30px;
+
+
+}
+
+.bloc-information-association h3 {
+margin-top: 0;
+
+
+color: #8fecc9;
+
+
+}
+
+.bloc-information-association p {
+color: #8fa3c4;
+
+
+line-height: 1.5;
+
+
+}
+
+/* ==============================
+FOOTER
+============================== */
+
+.membre-footer {
+text-align: center;
+
+
+padding: 25px;
+
+color: #6f82a5;
+
+font-size: 13px;
+
+
+}
+
+/* ==============================
+RESPONSIVE
+============================== */
+
+@media (max-width: 800px) {
+
+
+.membre-header {
+    padding: 20px;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 20px;
+}
+
+.navigation-membre {
+    width: 100%;
+
+    flex-direction: column;
+
+    align-items: stretch;
+}
+
+#numeroMembreHeader,
+#logout {
+    width: 100%;
+
+    text-align: center;
+}
+
+.bloc-bienvenue {
+    flex-direction: column;
+
+    align-items: stretch;
+}
+
+.statut-principal {
+    width: 100%;
+}
+
+.grille-informations {
+    grid-template-columns: 1fr;
+}
+
+.information {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 7px;
+}
+
+.information-valeur {
+    text-align: left;
+}
+
+.carte-membre {
+    flex-direction: column;
+
+    align-items: flex-start;
+}
+
+.carte-statut {
+    text-align: left;
+}
+
+
+}
+
+@media (max-width: 500px) {
+
+
+.membre-container {
+    width: 92%;
+
+    margin: 25px auto;
+}
+
+.bloc-bienvenue,
+.bloc-membre {
+    padding: 20px;
+}
+
+.bloc-bienvenue h2 {
+    font-size: 24px;
+}
+
+.titre-bloc h3 {
+    font-size: 19px;
+}
+
+.carte-numero strong {
+    font-size: 21px;
+}
+
+
+}
