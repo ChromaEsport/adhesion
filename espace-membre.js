@@ -9,13 +9,15 @@ signOut
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 
 import {
-getFirestore,
-collection,
-query,
-where,
-getDocs
+    getFirestore,
+    collection,
+    query,
+    where,
+    getDocs,
+    doc,
+    updateDoc,
+    Timestamp
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
-
 /* =========================================================
 FIREBASE
 ========================================================= */
@@ -146,6 +148,16 @@ document.getElementById(
 const logout =
 document.getElementById(
 "logout"
+);
+
+const blocMembreActif =
+document.getElementById(
+"blocMembreActif"
+);
+
+const contenuMembreActif =
+document.getElementById(
+"contenuMembreActif"
 );
 
 /* =========================================================
@@ -380,6 +392,602 @@ console.log(
     membre
 );
 
+afficherEspaceMembreActif(
+    membre
+);
+}
+
+function afficherEspaceMembreActif(
+    membre
+) {
+
+    if (
+        !blocMembreActif ||
+        !contenuMembreActif
+    ) {
+        return;
+    }
+
+    /*
+    =========================================
+    DÉJÀ MEMBRE ACTIF
+    =========================================
+    */
+
+    if (
+        membre.statutMembre ===
+        "actif"
+    ) {
+
+        blocMembreActif.style.display =
+            "block";
+
+        contenuMembreActif.innerHTML = `
+
+            <div class="message-membre-actif">
+
+                <div class="icone-membre-actif">
+                    ⭐
+                </div>
+
+                <h4>
+                    Vous êtes membre actif
+                </h4>
+
+                <p>
+                    Votre statut de membre actif
+                    est actuellement actif au sein
+                    de Chroma Esport.
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+    }
+
+
+    /*
+    =========================================
+    DEMANDE EN ATTENTE
+    =========================================
+    */
+
+    if (
+        membre.statutDemandeMembreActif ===
+        "en_attente"
+    ) {
+
+        blocMembreActif.style.display =
+            "block";
+
+        contenuMembreActif.innerHTML = `
+
+            <div class="message-membre-actif">
+
+                <div class="icone-membre-actif">
+                    ⏳
+                </div>
+
+                <h4>
+                    Demande en cours d'examen
+                </h4>
+
+                <p>
+                    Votre demande pour devenir
+                    membre actif a bien été enregistrée.
+                </p>
+
+                <p>
+                    L'administration de Chroma Esport
+                    doit maintenant examiner votre demande.
+                </p>
+
+                <span class="badge-demande-en-attente">
+                    ⏳ En attente
+                </span>
+
+            </div>
+
+        `;
+
+        return;
+    }
+
+
+    /*
+    =========================================
+    DEMANDE REFUSÉE
+    =========================================
+    */
+
+    if (
+        membre.statutDemandeMembreActif ===
+        "refusee"
+    ) {
+
+        blocMembreActif.style.display =
+            "block";
+
+        const motif =
+            membre.motifRefusMembreActif
+            ||
+            "Aucun motif communiqué.";
+
+        contenuMembreActif.innerHTML = `
+
+            <div class="message-membre-actif">
+
+                <div class="icone-membre-actif">
+                    ❌
+                </div>
+
+                <h4>
+                    Demande refusée
+                </h4>
+
+                <p>
+                    Votre précédente demande
+                    de passage en membre actif
+                    a été refusée.
+                </p>
+
+                <div class="motif-refus">
+
+                    <strong>
+                        Motif :
+                    </strong>
+
+                    <p>
+                        ${motif}
+                    </p>
+
+                </div>
+
+                <button
+                    id="nouvelleDemandeMembreActif"
+                    type="button"
+                >
+                    ⭐ Déposer une nouvelle demande
+                </button>
+
+            </div>
+
+        `;
+
+        const bouton =
+            document.getElementById(
+                "nouvelleDemandeMembreActif"
+            );
+
+        if (bouton) {
+
+            bouton.addEventListener(
+                "click",
+                () => {
+
+                    demanderPassageMembreActif(
+                        membre
+                    );
+
+                }
+            );
+
+        }
+
+        return;
+    }
+
+
+    /*
+    =========================================
+    VÉRIFICATION DE L'ANCIENNETÉ
+    =========================================
+    */
+
+    if (
+        !membre.dateDebutAdhesion
+    ) {
+
+        blocMembreActif.style.display =
+            "block";
+
+        contenuMembreActif.innerHTML = `
+
+            <div class="message-membre-actif">
+
+                <div class="icone-membre-actif">
+                    ℹ️
+                </div>
+
+                <h4>
+                    Ancienneté indisponible
+                </h4>
+
+                <p>
+                    Votre date de début d'adhésion
+                    n'est pas disponible.
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+    }
+
+
+    const dateDebut =
+        convertirDate(
+            membre.dateDebutAdhesion
+        );
+
+    const dateEligibilite =
+        new Date(
+            dateDebut
+        );
+
+    dateEligibilite.setMonth(
+        dateEligibilite.getMonth() + 6
+    );
+
+    const aujourdHui =
+        new Date();
+
+    aujourdHui.setHours(
+        0,
+        0,
+        0,
+        0
+    );
+
+
+    /*
+    =========================================
+    PAS ENCORE ÉLIGIBLE
+    =========================================
+    */
+
+    if (
+        aujourdHui <
+        dateEligibilite
+    ) {
+
+        const difference =
+            dateEligibilite -
+            aujourdHui;
+
+        const joursRestants =
+            Math.ceil(
+                difference /
+                (
+                    1000 *
+                    60 *
+                    60 *
+                    24
+                )
+            );
+
+        blocMembreActif.style.display =
+            "block";
+
+        contenuMembreActif.innerHTML = `
+
+            <div class="message-membre-actif">
+
+                <div class="icone-membre-actif">
+                    🔒
+                </div>
+
+                <h4>
+                    Vous n'êtes pas encore éligible
+                </h4>
+
+                <p>
+                    Pour devenir membre actif,
+                    vous devez avoir au minimum
+                    6 mois d'ancienneté en tant
+                    que membre adhérent.
+                </p>
+
+                <div class="date-eligibilite">
+
+                    <strong>
+                        Vous serez éligible le :
+                    </strong>
+
+                    <span>
+                        ${dateEligibilite.toLocaleDateString("fr-FR")}
+                    </span>
+
+                </div>
+
+                <p>
+                    Il vous reste environ
+                    <strong>
+                        ${joursRestants} jour(s)
+                    </strong>
+                    avant de pouvoir déposer
+                    votre demande.
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+    }
+
+
+    /*
+    =========================================
+    ÉLIGIBLE
+    =========================================
+    */
+
+    blocMembreActif.style.display =
+        "block";
+
+    contenuMembreActif.innerHTML = `
+
+        <div class="message-membre-actif">
+
+            <div class="icone-membre-actif">
+                ⭐
+            </div>
+
+            <h4>
+                Vous pouvez demander à devenir
+                membre actif
+            </h4>
+
+            <p>
+                Vous avez atteint les 6 mois
+                d'ancienneté requis.
+            </p>
+
+            <p>
+                Votre demande sera examinée
+                par l'administration de
+                Chroma Esport conformément
+                au règlement intérieur.
+            </p>
+
+            <button
+                id="demanderMembreActif"
+                type="button"
+            >
+                ⭐ Demander à devenir membre actif
+            </button>
+
+        </div>
+
+    `;
+
+
+    const bouton =
+        document.getElementById(
+            "demanderMembreActif"
+        );
+
+    if (bouton) {
+
+        bouton.addEventListener(
+            "click",
+            () => {
+
+                demanderPassageMembreActif(
+                    membre
+                );
+
+            }
+        );
+
+    }
+
+}
+
+function convertirDate(
+    date
+) {
+
+    if (
+        !date
+    ) {
+        return null;
+    }
+
+    if (
+        typeof date.toDate ===
+        "function"
+    ) {
+
+        return date.toDate();
+
+    }
+
+    const resultat =
+        new Date(
+            date
+        );
+
+    if (
+        isNaN(
+            resultat.getTime()
+        )
+    ) {
+
+        return null;
+
+    }
+
+    return resultat;
+
+}
+
+async function demanderPassageMembreActif(
+    membre
+) {
+
+    const confirmation =
+        confirm(
+            "Confirmez-vous votre demande pour devenir membre actif de Chroma Esport ?"
+        );
+
+    if (
+        !confirmation
+    ) {
+        return;
+    }
+
+
+    const user =
+        auth.currentUser;
+
+
+    if (
+        !user
+    ) {
+
+        alert(
+            "Votre session a expiré. Veuillez vous reconnecter."
+        );
+
+        window.location.href =
+            "index.html";
+
+        return;
+
+    }
+
+
+    try {
+
+        /*
+        =====================================
+        VÉRIFICATION DE L'ANCIENNETÉ
+        =====================================
+        */
+
+        const dateDebut =
+            convertirDate(
+                membre.dateDebutAdhesion
+            );
+
+        if (
+            !dateDebut
+        ) {
+
+            alert(
+                "Impossible de vérifier votre ancienneté."
+            );
+
+            return;
+
+        }
+
+
+        const dateEligibilite =
+            new Date(
+                dateDebut
+            );
+
+        dateEligibilite.setMonth(
+            dateEligibilite.getMonth() + 6
+        );
+
+
+        const aujourdHui =
+            new Date();
+
+        aujourdHui.setHours(
+            0,
+            0,
+            0,
+            0
+        );
+
+
+        if (
+            aujourdHui <
+            dateEligibilite
+        ) {
+
+            alert(
+                "Vous n'avez pas encore atteint les 6 mois d'ancienneté requis."
+            );
+
+            return;
+
+        }
+
+
+        /*
+        =====================================
+        ENVOI DE LA DEMANDE
+        =====================================
+        */
+
+        const demandeData = {
+
+            statutDemandeMembreActif:
+                "en_attente",
+
+            demandeMembreActif:
+                true,
+
+            dateDemandeMembreActif:
+                new Date(),
+
+            firebaseUid:
+                user.uid
+
+        };
+
+
+        /*
+        =====================================
+        MISE À JOUR FIRESTORE
+        =====================================
+        */
+
+
+        await updateDoc(
+
+            doc(
+                db,
+                "membres",
+                membre.id
+            ),
+
+            demandeData
+
+        );
+
+
+        alert(
+            "Votre demande de passage en membre actif a bien été envoyée."
+        );
+
+
+        window.location.reload();
+
+    }
+    catch (
+        error
+    ) {
+
+        console.error(
+            "Erreur lors de la demande de membre actif :",
+            error
+        );
+
+        alert(
+            "Impossible d'envoyer votre demande. Veuillez réessayer."
+        );
+
+    }
 
 }
 
