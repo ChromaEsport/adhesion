@@ -338,18 +338,10 @@ padding-bottom: 0px;
 ========================================================= */
 
 .formulaire-admin input[type="date"] {
-    color-scheme:
-        dark;
+    color:#cbc8d0;
+   color-scheme:
+        auto;
 }
-
-.formulaire-admin input[type="date"]::placeholder {
-    color: #cbc8d0;
-}
-
-.formulaire-admin input::placeholder[type="date"] {
-    color: #cbc8d0;
-}
-
 
 
 
