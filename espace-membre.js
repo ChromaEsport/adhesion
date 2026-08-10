@@ -153,42 +153,26 @@ AUTHENTIFICATION
 ========================================================= */
 
 onAuthStateChanged(
-auth,
-async (user) => {
+    auth,
+    async (user) => {
 
+        if (!user) {
 
-    if (!user) {
+            window.location.href =
+                "connexion-membre.html";
 
-        window.location.href =
-            "index.html";
+            return;
+        }
 
-        return;
+        console.log(
+            "Utilisateur Firebase connecté :",
+            user.uid
+        );
+
+        await chargerMembre(
+            user.uid
+        );
     }
-
-
-    console.log(
-        "Utilisateur connecté :",
-        user.email
-    );
-
-
-    console.log(
-    "Utilisateur connecté :",
-    user.email
-);
-
-console.log(
-    "UID Firebase :",
-    user.uid
-);
-
-await chargerMembre(
-    user.uid
-);
-
-}
-
-
 );
 
 /* =========================================================
@@ -210,11 +194,6 @@ async function chargerMembre(
             return;
         }
 
-        console.log(
-            "Recherche du membre avec le UID Firebase :",
-            firebaseUid
-        );
-
         const requete =
             query(
                 collection(
@@ -233,14 +212,14 @@ async function chargerMembre(
                 requete
             );
 
-        console.log(
-            "Nombre de membres trouvés :",
-            resultat.size
-        );
-
         if (
             resultat.empty
         ) {
+
+            console.error(
+                "Aucun membre trouvé avec le firebaseUid :",
+                firebaseUid
+            );
 
             afficherErreur(
                 "Aucun membre correspondant à ce compte n'a été trouvé."
@@ -267,7 +246,7 @@ async function chargerMembre(
         );
 
         console.log(
-            "Membre correspondant trouvé :",
+            "Membre trouvé avec firebaseUid :",
             membre
         );
 
@@ -288,7 +267,6 @@ async function chargerMembre(
         );
 
     }
-
 }
 
 /* =========================================================
