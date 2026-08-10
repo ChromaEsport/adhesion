@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>Espace membre - Chroma Esport</title>
+
+<link rel="stylesheet" href="espace-membre.css">
+
+
+</head>
+
+<body>
+
+<header class="membre-header">
+
+
+<div class="membre-header-logo">
+    <h1>CHROMA ESPORT</h1>
+    <p>Espace membre</p>
+</div>
+
+<div class="navigation-membre">
+
+    <span id="numeroMembreHeader">
+        CHRO-0000-0000
+    </span>
+
+    <button id="logout">
+        Déconnexion
+    </button>
+
+</div>
+
+
+</header>
+
+<main class="membre-container">
+
+
+<!-- =====================================================
+     BIENVENUE
+====================================================== -->
+
+<section class="bloc-bienvenue">
+
+    <div>
+
+        <p class="petit-titre">
+            ESPACE ADHÉRENT
+        </p>
+
+        <h2>
+            Bonjour
+            <span id="prenomMembre">
+                ...
+            </span> 👋
+        </h2>
+
+        <p>
+            Bienvenue dans votre espace membre
+            Chroma Esport.
+        </p>
+
+    </div>
+
+    <div class="statut-principal">
+
+        <span class="statut-label">
+            Votre statut
+        </span>
+
+        <span
+            id="statutMembre"
+            class="badge-statut"
+        >
+            Chargement...
+        </span>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     INFORMATIONS PERSONNELLES
+====================================================== -->
+
+<section class="bloc-membre">
+
+    <div class="titre-bloc">
+
+        <span>👤</span>
+
+        <h3>
+            Mes informations
+        </h3>
+
+    </div>
+
+
+    <div class="grille-informations">
+
+        <div class="information">
+
+            <span class="information-label">
+                Nom
+            </span>
+
+            <span
+                id="nomMembre"
+                class="information-valeur"
+            >
+                -
+            </span>
+
+        </div>
+
+
+        <div class="information">
+
+            <span class="information-label">
+                Prénom
+            </span>
+
+            <span
+                id="prenomInformation"
+                class="information-valeur"
+            >
+                -
+            </span>
+
+        </div>
+
+
+        <div class="information">
+
+            <span class="information-label">
+                Email
+            </span>
+
+            <span
+                id="emailMembre"
+                class="information-valeur"
+            >
+                -
+            </span>
+
+        </div>
+
+
+        <div class="information">
+
+            <span class="information-label">
+                Discord
+            </span>
+
+            <span
+                id="discordMembre"
+                class="information-valeur"
+            >
+                -
+            </span>
+
+        </div>
+
+
+        <div class="information">
+
+            <span class="information-label">
+                Numéro de membre
+            </span>
+
+            <span
+                id="numeroMembre"
+                class="information-valeur numero-membre"
+            >
+                -
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     ADHÉSION
+====================================================== -->
+
+<section class="bloc-membre">
+
+    <div class="titre-bloc">
+
+        <span>📋</span>
+
+        <h3>
+            Mon adhésion
+        </h3>
+
+    </div>
+
+
+    <div class="grille-informations">
+
+        <div class="information">
+
+            <span class="information-label">
+                Statut
+            </span>
+
+            <span
+                id="statutAdhesion"
+                class="information-valeur"
+            >
+                -
+            </span>
+
+        </div>
+
+
+        <div class="information">
+
+            <span class="information-label">
+                Année
+            </span>
+
+            <span
+                id="anneeAdhesion"
+                class="information-valeur"
+            >
+                -
+            </span>
+
+        </div>
+
+
+        <div class="information">
+
+            <span class="information-label">
+                Début de l'adhésion
+            </span>
+
+            <span
+                id="dateDebutAdhesion"
+                class="information-valeur"
+            >
+                -
+            </span>
+
+        </div>
+
+
+        <div class="information">
+
+            <span class="information-label">
+                Fin de l'adhésion
+            </span>
+
+            <span
+                id="dateFinAdhesion"
+                class="information-valeur"
+            >
+                -
+            </span>
+
+        </div>
+
+
+        <div class="information">
+
+            <span class="information-label">
+                Paiement
+            </span>
+
+            <span
+                id="statutPaiement"
+                class="information-valeur"
+            >
+                -
+            </span>
+
+        </div>
+
+
+        <div class="information">
+
+            <span class="information-label">
+                Cotisation
+            </span>
+
+            <span
+                id="cotisation"
+                class="information-valeur"
+            >
+                -
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     PASSAGE MEMBRE ACTIF
+====================================================== -->
+
+<section
+    id="blocMembreActif"
+    class="bloc-membre bloc-membre-actif"
+>
+
+    <div class="titre-bloc">
+
+        <span>⭐</span>
+
+        <h3>
+            Devenir membre actif
+        </h3>
+
+    </div>
+
+
+    <div
+        id="contenuMembreActif"
+        class="contenu-membre-actif"
+    >
+
+        <div class="chargement">
+            Vérification de votre éligibilité...
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     CARTE MEMBRE
+====================================================== -->
+
+<section class="bloc-membre">
+
+    <div class="titre-bloc">
+
+        <span>🪪</span>
+
+        <h3>
+            Ma carte membre
+        </h3>
+
+    </div>
+
+
+    <div
+        id="carteMembre"
+        class="carte-membre"
+    >
+
+        <div class="carte-numero">
+
+            <span>
+                NUMÉRO DE MEMBRE
+            </span>
+
+            <strong id="numeroCarte">
+                -
+            </strong>
+
+        </div>
+
+
+        <div class="carte-statut">
+
+            <span>
+                Statut
+            </span>
+
+            <strong id="statutCarte">
+                -
+            </strong>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     INFORMATIONS ASSOCIATION
+====================================================== -->
+
+<section class="bloc-information-association">
+
+    <h3>
+        ℹ️ Chroma Esport
+    </h3>
+
+    <p>
+        Cet espace vous permet de consulter
+        vos informations d'adhésion et de suivre
+        votre statut au sein de l'association.
+    </p>
+
+    <p>
+        Pour toute question concernant votre
+        adhésion, contactez l'administration
+        de Chroma Esport.
+    </p>
+
+</section>
+
+
+</main>
+
+<footer class="membre-footer">
+
+
+<p>
+    © 2026 Chroma Esport — Tous droits réservés.
+</p>
+
+
+</footer>
+
+<script
+    type="module"
+    src="espace-membre.js"
+></script>
+
+</body>
+</html>
