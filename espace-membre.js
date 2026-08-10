@@ -617,7 +617,7 @@ async () => {
         );
 
         window.location.href =
-            "index.html";
+            "connexion-membre.html";
 
     }
     catch (error) {
