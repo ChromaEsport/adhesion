@@ -1,1 +1,561 @@
+/* =========================================================
+   CHROMA ESPORT
+   MODIFICATION MEMBRE
+========================================================= */
 
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background:
+        #010c2c;
+
+    color:
+        #ffffff;
+
+    min-height:
+        100vh;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.admin-header {
+    background:
+        linear-gradient(
+            135deg,
+            #010c2c,
+            #3c9195
+        );
+
+    padding:
+        25px 40px;
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    align-items:
+        center;
+
+    gap:
+        25px;
+
+    flex-wrap:
+        wrap;
+}
+
+.admin-header h1 {
+    margin:
+        0;
+
+    font-size:
+        32px;
+
+    letter-spacing:
+        2px;
+}
+
+.admin-header p {
+    margin:
+        8px 0 0;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.75
+        );
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.navigation-admin {
+    display:
+        flex;
+
+    gap:
+        10px;
+
+    align-items:
+        center;
+
+    flex-wrap:
+        wrap;
+}
+
+.bouton-navigation,
+#logout {
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    min-height:
+        42px;
+
+    padding:
+        11px 17px;
+
+    border:
+        none;
+
+    border-radius:
+        8px;
+
+    text-decoration:
+        none;
+
+    color:
+        #ffffff;
+
+    background:
+        #1875c2;
+
+    cursor:
+        pointer;
+
+    font-size:
+        14px;
+
+    transition:
+        0.2s ease;
+}
+
+.bouton-navigation:hover,
+#logout:hover {
+    transform:
+        translateY(-2px);
+
+    opacity:
+        0.9;
+}
+
+#logout {
+    background:
+        #c0392b;
+}
+
+
+/* =========================================================
+   CONTENU
+========================================================= */
+
+.admin-container {
+    width:
+        92%;
+
+    max-width:
+        1000px;
+
+    margin:
+        40px auto 60px;
+}
+
+.admin-container > h2 {
+    margin:
+        0 0 25px;
+
+    font-size:
+        28px;
+
+    letter-spacing:
+        0.5px;
+}
+
+
+/* =========================================================
+   FORMULAIRE
+========================================================= */
+
+.formulaire-admin {
+    background:
+        #081638;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.08
+        );
+
+    border-radius:
+        15px;
+
+    padding:
+        30px;
+
+    box-shadow:
+        0 10px 30px
+        rgba(
+            0,
+            0,
+            0,
+            0.20
+        );
+}
+
+
+/* =========================================================
+   TITRES DES BLOCS
+========================================================= */
+
+.formulaire-admin h3 {
+    margin:
+        28px 0 15px;
+
+    padding-bottom:
+        10px;
+
+    border-bottom:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.10
+        );
+
+    color:
+        #8fecc9;
+
+    font-size:
+        17px;
+}
+
+.formulaire-admin h3:first-child {
+    margin-top:
+        0;
+}
+
+
+/* =========================================================
+   LIGNES DE CHAMPS
+========================================================= */
+
+.ligne-form {
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            minmax(
+                0,
+                1fr
+            )
+        );
+
+    gap:
+        15px;
+}
+
+
+/* =========================================================
+   CHAMPS
+========================================================= */
+
+.formulaire-admin input,
+.formulaire-admin select {
+    width:
+        100%;
+
+    min-height:
+        48px;
+
+    margin-bottom:
+        15px;
+
+    padding:
+        13px 15px;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.10
+        );
+
+    border-radius:
+        8px;
+
+    outline:
+        none;
+
+    background:
+        #0d1b42;
+
+    color:
+        #ffffff;
+
+    font-size:
+        15px;
+
+    transition:
+        border-color 0.2s,
+        box-shadow 0.2s,
+        background 0.2s;
+}
+
+.formulaire-admin input::placeholder {
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.45
+        );
+}
+
+.formulaire-admin input:focus,
+.formulaire-admin select:focus {
+    border-color:
+        #3c9195;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(
+            60,
+            145,
+            149,
+            0.18
+        );
+
+    background:
+        #101f49;
+}
+
+
+/* =========================================================
+   SELECT
+========================================================= */
+
+.formulaire-admin select {
+    cursor:
+        pointer;
+
+    appearance:
+        auto;
+}
+
+.formulaire-admin select option {
+    background:
+        #081638;
+
+    color:
+        #ffffff;
+}
+
+
+/* =========================================================
+   BLOC STATUTS
+========================================================= */
+
+#statutMembre,
+#statutPaiement,
+#statutAdhesion {
+    margin-bottom:
+        15px;
+}
+
+
+/* =========================================================
+   BOUTON ENREGISTRER
+========================================================= */
+
+.bouton-validation {
+    width:
+        100%;
+
+    min-height:
+        50px;
+
+    margin-top:
+        15px;
+
+    padding:
+        14px 25px;
+
+    border:
+        none;
+
+    border-radius:
+        9px;
+
+    background:
+        #3c9195;
+
+    color:
+        #ffffff;
+
+    cursor:
+        pointer;
+
+    font-size:
+        16px;
+
+    font-weight:
+        700;
+
+    transition:
+        0.2s ease;
+}
+
+.bouton-validation:hover {
+    transform:
+        translateY(-2px);
+
+    background:
+        #4aa9ad;
+
+    box-shadow:
+        0 6px 18px
+        rgba(
+            60,
+            145,
+            149,
+            0.25
+        );
+}
+
+.bouton-validation:active {
+    transform:
+        translateY(0);
+}
+
+
+/* =========================================================
+   MESSAGE
+========================================================= */
+
+#message {
+    min-height:
+        22px;
+
+    margin:
+        18px 0 0;
+
+    text-align:
+        center;
+
+    font-size:
+        14px;
+
+    font-weight:
+        600;
+}
+
+
+/* =========================================================
+   RESPONSIVE TABLETTE
+========================================================= */
+
+@media (max-width: 800px) {
+
+    .admin-header {
+        padding:
+            22px 25px;
+    }
+
+    .navigation-admin {
+        width:
+            100%;
+    }
+
+    .bouton-navigation,
+    #logout {
+        flex:
+            1;
+    }
+
+    .admin-container {
+        width:
+            94%;
+
+        margin-top:
+            30px;
+    }
+
+    .formulaire-admin {
+        padding:
+            25px;
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .admin-header {
+        align-items:
+            flex-start;
+    }
+
+    .admin-header h1 {
+        font-size:
+            26px;
+    }
+
+    .navigation-admin {
+        flex-direction:
+            column;
+    }
+
+    .bouton-navigation,
+    #logout {
+        width:
+            100%;
+    }
+
+    .admin-container > h2 {
+        font-size:
+            23px;
+    }
+
+    .formulaire-admin {
+        padding:
+            20px;
+    }
+
+    .ligne-form {
+        grid-template-columns:
+            1fr;
+
+        gap:
+            0;
+    }
+
+    .formulaire-admin input,
+    .formulaire-admin select {
+        min-height:
+            46px;
+    }
+
+}
