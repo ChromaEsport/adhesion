@@ -90,6 +90,16 @@ document.getElementById(
 "statutCarte"
 );
 
+const blocDemandeMembreActif =
+    document.getElementById(
+        "blocDemandeMembreActif"
+    );
+
+const contenuDemandeMembreActif =
+    document.getElementById(
+        "contenuDemandeMembreActif"
+    );
+
 const boutonModifier =
 document.getElementById(
 "modifierMembre"
