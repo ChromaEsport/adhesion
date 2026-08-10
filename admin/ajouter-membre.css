@@ -312,7 +312,7 @@ padding-bottom: 0px;
 }
 
 .formulaire-admin input::placeholder {
-    color: black;
+    color: #cbc8d0;
 }
 
 .formulaire-admin input:focus {
