@@ -756,35 +756,41 @@ const dateDemande =
         membre.dateDemandeMembreActif
     );
 
+const dateEligibiliteObjet =
+calculerDateEligibiliteMembreActif(
+membre.dateDebutAdhesion
+);
+
 let dateEligibilite = "-";
 
-if (membre.dateDebutAdhesion) {
+let sixMoisAtteints = false;
 
-    let date;
+if (dateEligibiliteObjet) {
 
-    if (
-        typeof membre.dateDebutAdhesion.toDate ===
-        "function"
-    ) {
-        date =
-            membre.dateDebutAdhesion.toDate();
-    }
-    else {
-        date =
-            new Date(
-                membre.dateDebutAdhesion
-            );
-    }
 
-    date.setMonth(
-        date.getMonth() + 6
-    );
-
-    dateEligibilite =
-        date.toLocaleDateString(
+dateEligibilite =
+    dateEligibiliteObjet
+        .toLocaleDateString(
             "fr-FR"
         );
+
+const aujourdHui =
+    new Date();
+
+aujourdHui.setHours(
+    0,
+    0,
+    0,
+    0
+);
+
+sixMoisAtteints =
+    dateEligibiliteObjet <=
+    aujourdHui;
+
+
 }
+
 
 contenuDemandeMembreActif.innerHTML = `
 
@@ -857,11 +863,18 @@ contenuDemandeMembreActif.innerHTML = `
         </h4>
 
         <div class="critere-membre-actif">
-            <span class="icone">✅</span>
-            <span class="texte">
-                Ancienneté minimale de 6 mois
-            </span>
-        </div>
+    <span class="icone">
+        ${sixMoisAtteints ? "🟢" : "🔴"}
+    </span>
+
+
+<span class="texte">
+    Ancienneté minimale de 6 mois
+</span>
+
+
+</div>
+
 
         <div class="critere-membre-actif">
             <span class="icone">⬜</span>
@@ -895,12 +908,24 @@ contenuDemandeMembreActif.innerHTML = `
 
     <div class="actions-demande-membre-actif">
 
-        <button
-            id="accepterDemandeMembreActif"
-            type="button"
-        >
-            ✅ Accepter la demande
-        </button>
+      <button
+id="accepterDemandeMembreActif"
+type="button"
+${sixMoisAtteints ? "" : "disabled"}
+
+>
+
+
+${sixMoisAtteints
+
+
+
+    ? "✅ Accepter la demande"
+    : "🔒 Accepter la demande"}
+
+
+</button>
+
 
         <button
             id="refuserDemandeMembreActif"
