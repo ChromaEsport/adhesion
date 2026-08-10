@@ -854,11 +854,6 @@ contenuDemandeMembreActif.innerHTML = `
 
 </div>
 
-
-    
-
-    <div class="informations-demande-actif">
-
         <div class="information-demande-actif">
 
             <span class="information-demande-actif-label">
