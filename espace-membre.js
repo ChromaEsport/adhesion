@@ -1,0 +1,638 @@
+import {
+initializeApp
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+
+import {
+getAuth,
+onAuthStateChanged,
+signOut
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+
+import {
+getFirestore,
+collection,
+query,
+where,
+getDocs
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+
+/* =========================================================
+FIREBASE
+========================================================= */
+
+const firebaseConfig = {
+
+
+apiKey:
+    "AIzaSyAedIKW_LRWLpa9V_t7PcTTbrDmQOj4HAo",
+
+authDomain:
+    "chroma-adhesion.firebaseapp.com",
+
+projectId:
+    "chroma-adhesion",
+
+storageBucket:
+    "chroma-adhesion.firebasestorage.app",
+
+messagingSenderId:
+    "892582501197",
+
+appId:
+    "1:892582501197:web:2483ffc9c98e47a3d17504"
+
+
+};
+
+const app =
+initializeApp(
+firebaseConfig
+);
+
+const auth =
+getAuth(
+app
+);
+
+const db =
+getFirestore(
+app
+);
+
+/* =========================================================
+ÉLÉMENTS HTML
+========================================================= */
+
+const prenomMembre =
+document.getElementById(
+"prenomMembre"
+);
+
+const prenomInformation =
+document.getElementById(
+"prenomInformation"
+);
+
+const nomMembre =
+document.getElementById(
+"nomMembre"
+);
+
+const emailMembre =
+document.getElementById(
+"emailMembre"
+);
+
+const discordMembre =
+document.getElementById(
+"discordMembre"
+);
+
+const numeroMembre =
+document.getElementById(
+"numeroMembre"
+);
+
+const numeroMembreHeader =
+document.getElementById(
+"numeroMembreHeader"
+);
+
+const statutMembre =
+document.getElementById(
+"statutMembre"
+);
+
+const statutAdhesion =
+document.getElementById(
+"statutAdhesion"
+);
+
+const anneeAdhesion =
+document.getElementById(
+"anneeAdhesion"
+);
+
+const dateDebutAdhesion =
+document.getElementById(
+"dateDebutAdhesion"
+);
+
+const dateFinAdhesion =
+document.getElementById(
+"dateFinAdhesion"
+);
+
+const statutPaiement =
+document.getElementById(
+"statutPaiement"
+);
+
+const cotisation =
+document.getElementById(
+"cotisation"
+);
+
+const numeroCarte =
+document.getElementById(
+"numeroCarte"
+);
+
+const statutCarte =
+document.getElementById(
+"statutCarte"
+);
+
+const logout =
+document.getElementById(
+"logout"
+);
+
+/* =========================================================
+AUTHENTIFICATION
+========================================================= */
+
+onAuthStateChanged(
+auth,
+async (user) => {
+
+
+    if (!user) {
+
+        window.location.href =
+            "index.html";
+
+        return;
+    }
+
+
+    console.log(
+        "Utilisateur connecté :",
+        user.email
+    );
+
+
+    await chargerMembre(
+        user.email
+    );
+
+}
+
+
+);
+
+/* =========================================================
+CHARGER LE MEMBRE
+========================================================= */
+
+async function chargerMembre(
+email
+) {
+
+
+try {
+
+    if (!email) {
+
+        afficherErreur(
+            "Adresse e-mail introuvable."
+        );
+
+        return;
+    }
+
+
+    const requete =
+        query(
+            collection(
+                db,
+                "membres"
+            ),
+            where(
+                "email",
+                "==",
+                email
+            )
+        );
+
+
+    const resultat =
+        await getDocs(
+            requete
+        );
+
+
+    if (
+        resultat.empty
+    ) {
+
+        afficherErreur(
+            "Aucun membre correspondant à ce compte n'a été trouvé."
+        );
+
+        return;
+    }
+
+
+    let membre = null;
+
+
+    resultat.forEach(
+        documentFirestore => {
+
+            membre = {
+                id:
+                    documentFirestore.id,
+
+                ...documentFirestore.data()
+            };
+
+        }
+    );
+
+
+    afficherMembre(
+        membre
+    );
+
+}
+catch (error) {
+
+    console.error(
+        "Erreur lors du chargement du membre :",
+        error
+    );
+
+    afficherErreur(
+        "Impossible de charger vos informations."
+    );
+
+}
+
+
+}
+
+/* =========================================================
+AFFICHER LE MEMBRE
+========================================================= */
+
+function afficherMembre(
+membre
+) {
+
+
+prenomMembre.textContent =
+    membre.prenom ||
+    "-";
+
+
+prenomInformation.textContent =
+    membre.prenom ||
+    "-";
+
+
+nomMembre.textContent =
+    membre.nom ||
+    "-";
+
+
+emailMembre.textContent =
+    membre.email ||
+    "-";
+
+
+discordMembre.textContent =
+    membre.discord ||
+    "-";
+
+
+numeroMembre.textContent =
+    membre.numeroMembre ||
+    "-";
+
+
+numeroMembreHeader.textContent =
+    membre.numeroMembre ||
+    "-";
+
+
+statutMembre.textContent =
+    traduireStatutMembre(
+        membre.statutMembre
+    );
+
+
+statutAdhesion.textContent =
+    traduireStatutAdhesion(
+        membre.statutAdhesion
+    );
+
+
+anneeAdhesion.textContent =
+    membre.annee ||
+    "-";
+
+
+dateDebutAdhesion.textContent =
+    afficherDate(
+        membre.dateDebutAdhesion
+    );
+
+
+dateFinAdhesion.textContent =
+    afficherDate(
+        membre.dateFinAdhesion
+    );
+
+
+statutPaiement.textContent =
+    traduireStatutPaiement(
+        membre.statutPaiement
+    );
+
+
+cotisation.textContent =
+    formatEuro(
+        membre.cotisation
+    );
+
+
+numeroCarte.textContent =
+    membre.numeroMembre ||
+    "-";
+
+
+if (
+    membre.carteEnvoyee === true
+) {
+
+    statutCarte.textContent =
+        "🟢 Carte envoyée";
+
+}
+else {
+
+    statutCarte.textContent =
+        "🔴 Carte non envoyée";
+
+}
+
+
+console.log(
+    "Membre chargé :",
+    membre
+);
+
+
+}
+
+/* =========================================================
+DATES
+========================================================= */
+
+function afficherDate(
+date
+) {
+
+
+if (!date) {
+
+    return "-";
+
+}
+
+
+if (
+    typeof date.toDate ===
+    "function"
+) {
+
+    return date
+        .toDate()
+        .toLocaleDateString(
+            "fr-FR"
+        );
+
+}
+
+
+const dateConvertie =
+    new Date(
+        date
+    );
+
+
+if (
+    isNaN(
+        dateConvertie.getTime()
+    )
+) {
+
+    return "-";
+
+}
+
+
+return dateConvertie
+    .toLocaleDateString(
+        "fr-FR"
+    );
+
+
+}
+
+/* =========================================================
+TRADUCTIONS
+========================================================= */
+
+function traduireStatutMembre(
+statut
+) {
+
+
+switch (
+    statut
+) {
+
+    case "actif":
+        return "⭐ Membre actif";
+
+    case "adherent":
+        return "👤 Membre adhérent";
+
+    case "bienfaiteur":
+        return "💚 Membre bienfaiteur";
+
+    case "honneur":
+        return "🏆 Membre d'honneur";
+
+    default:
+        return statut || "-";
+
+}
+
+
+}
+
+function traduireStatutAdhesion(
+statut
+) {
+
+
+switch (
+    statut
+) {
+
+    case "active":
+        return "🟢 Active";
+
+    case "expiree":
+        return "🔴 Expirée";
+
+    case "en_attente":
+        return "🟠 En attente";
+
+    default:
+        return statut || "-";
+
+}
+
+
+}
+
+function traduireStatutPaiement(
+statut
+) {
+
+
+switch (
+    statut
+) {
+
+    case "paye":
+        return "🟢 Payé";
+
+    case "en_attente":
+        return "🟠 En attente";
+
+    default:
+        return statut || "-";
+
+}
+
+
+}
+
+/* =========================================================
+FORMAT EURO
+========================================================= */
+
+function formatEuro(
+montant
+) {
+
+
+return Number(
+    montant || 0
+).toLocaleString(
+    "fr-FR",
+    {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    }
+) + " €";
+
+
+}
+
+/* =========================================================
+ERREUR
+========================================================= */
+
+function afficherErreur(
+message
+) {
+
+
+document.body.innerHTML = `
+
+    <div style="
+        min-height:100vh;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        background:#010c2c;
+        color:white;
+        font-family:Arial,Helvetica,sans-serif;
+        padding:30px;
+        text-align:center;
+    ">
+
+        <div>
+
+            <h2 style="
+                color:#8fecc9;
+            ">
+                Espace membre
+            </h2>
+
+            <p>
+                ${message}
+            </p>
+
+            <button
+                onclick="window.location.href='index.html'"
+                style="
+                    margin-top:15px;
+                    padding:12px 20px;
+                    border:none;
+                    border-radius:8px;
+                    cursor:pointer;
+                    background:#1875c2;
+                    color:white;
+                "
+            >
+                Retour à la connexion
+            </button>
+
+        </div>
+
+    </div>
+
+`;
+
+
+}
+
+/* =========================================================
+DÉCONNEXION
+========================================================= */
+
+logout.addEventListener(
+"click",
+async () => {
+
+
+    try {
+
+        await signOut(
+            auth
+        );
+
+        window.location.href =
+            "index.html";
+
+    }
+    catch (error) {
+
+        console.error(
+            "Erreur lors de la déconnexion :",
+            error
+        );
+
+    }
+
+}
+
+
+);
