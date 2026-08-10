@@ -707,40 +707,76 @@ async function chargerMembres() {
             return;
         }
 
-
         /* =========================================
-           MEMBRES ACTIFS
-           → COLLECTION membres
-        ========================================= */
+   MEMBRES ADHÉRENTS
+   → statutMembre = adherent
+========================================= */
 
-        if (filtreActuel === "active") {
+if (filtreActuel === "adherents") {
 
-            const resultat = await getDocs(
-                collection(db, "membres")
-            );
+    const resultat = await getDocs(
+        collection(db, "membres")
+    );
 
-            membres = [];
+    membres = [];
 
-            resultat.forEach(documentFirestore => {
+    resultat.forEach(documentFirestore => {
 
-                const membre = {
-                    id: documentFirestore.id,
-                    ...documentFirestore.data()
-                };
+        const membre = {
+            id:
+                documentFirestore.id,
+            ...documentFirestore.data()
+        };
 
-                if (!adhesionEstExpiree(membre)) {
-
-                    membres.push(membre);
-
-                }
-
-            });
-
-            afficherMembres(membres);
-
-            return;
+        if (
+            membre.statutMembre === "adherent"
+            &&
+            !adhesionEstExpiree(membre)
+        ) {
+            membres.push(membre);
         }
 
+    });
+
+    afficherMembres(membres);
+
+    return;
+}
+/* =========================================
+   MEMBRES ACTIFS
+   → statutMembre = actif
+========================================= */
+
+if (filtreActuel === "membres_actifs") {
+
+    const resultat = await getDocs(
+        collection(db, "membres")
+    );
+
+    membres = [];
+
+    resultat.forEach(documentFirestore => {
+
+        const membre = {
+            id:
+                documentFirestore.id,
+            ...documentFirestore.data()
+        };
+
+        if (
+            membre.statutMembre === "actif"
+            &&
+            !adhesionEstExpiree(membre)
+        ) {
+            membres.push(membre);
+        }
+
+    });
+
+    afficherMembres(membres);
+
+    return;
+}
 
         /* =========================================
            MEMBRES EXPIRÉS
