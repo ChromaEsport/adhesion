@@ -322,13 +322,7 @@ body {
 }
 
 .formulaire-admin input::placeholder {
-    color:
-        rgba(
-            255,
-            255,
-            255,
-            0.45
-        );
+    color:red;
 }
 
 .formulaire-admin input:focus,
@@ -346,7 +340,7 @@ body {
         );
 
     background:
-        #101f49;
+        #ffffff;
 }
 
 
@@ -370,7 +364,13 @@ body {
         #ffffff;
 }
 
+.formulaire-admin select option.hover {
+    background:
+        #3c9195;
 
+    color:
+        #ffffff;
+}
 /* =========================================================
    BLOC STATUTS
 ========================================================= */
