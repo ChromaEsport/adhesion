@@ -954,7 +954,59 @@ async function demanderPassageMembreActif(
     const user =
         auth.currentUser;
 
+    if (
+    membre.statutMembre !==
+    "adherent"
+) {
 
+    alert(
+        "Seuls les membres adhérents peuvent demander le passage en membre actif."
+    );
+
+    return;
+
+}
+
+if (
+    membre.statutAdhesion !==
+    "active"
+) {
+
+    alert(
+        "Votre adhésion n'est pas active."
+    );
+
+    return;
+
+}
+
+if (
+    membre.statutPaiement !==
+    "paye"
+) {
+
+    alert(
+        "Votre cotisation doit être à jour pour déposer une demande."
+    );
+
+    return;
+
+}
+
+if (
+    membre.statutDemandeMembreActif ===
+    "en_attente"
+) {
+
+    alert(
+        "Une demande est déjà en cours d'examen."
+    );
+
+    return;
+
+}
+
+    
     if (
         !user
     ) {
