@@ -513,7 +513,7 @@ const motif =
     ||
     "Aucun motif communiqué.";
 
-contenuMembreActif.innerHTML = \`
+contenuMembreActif.innerHTML = `
     <div class="message-membre-actif">
 
         <div class="icone-membre-actif">
@@ -555,7 +555,7 @@ contenuMembreActif.innerHTML = \`
         </p>
 
     </div>
-\`;
+`;
 
 return;
     }
@@ -701,11 +701,6 @@ return;
     }
 
 
-    /*
-    =========================================
-    ÉLIGIBLE
-    =========================================
-    */
 
    /*
 =========================================
@@ -987,6 +982,14 @@ if (
 
 }
 
+    if ( membre.statutDemandeMembreActif === 
+        "refusee" 
+       ) { 
+        
+        alert(
+            "Votre précédente demande a été refusée. Vous ne pouvez pas déposer immédiatement une nouvelle demande." ); 
+                                                          
+        return; }
     
     if (
         !user
