@@ -1189,6 +1189,157 @@ ${sixMoisAtteints
 
 }
 
+function configurerAutorisationNouvelleDemande(
+membre,
+id
+) {
+
+
+if (
+    membre.nouvelleDemandeMembreActifAutorisee !==
+    true
+) {
+    return;
+}
+
+blocDemandeMembreActif.style.display =
+    "block";
+
+contenuDemandeMembreActif.innerHTML = `
+
+    <div class="informations-demande-actif">
+
+        <div class="information-demande-actif">
+
+            <span class="information-demande-actif-label">
+                Statut de la demande
+            </span>
+
+            <span class="information-demande-actif-valeur">
+                🟢 Nouvelle demande autorisée
+            </span>
+
+        </div>
+
+        <div class="information-demande-actif">
+
+            <span class="information-demande-actif-label">
+                Autorisation
+            </span>
+
+            <span class="information-demande-actif-valeur">
+                Le membre peut maintenant déposer
+                une nouvelle demande de passage
+                en membre actif.
+            </span>
+
+        </div>
+
+    </div>
+
+    <div class="actions-demande-membre-actif">
+
+        <button
+            id="retirerAutorisationNouvelleDemande"
+            type="button"
+        >
+            🚫 Retirer l'autorisation
+        </button>
+
+    </div>
+
+`;
+
+const boutonRetirer =
+    document.getElementById(
+        "retirerAutorisationNouvelleDemande"
+    );
+
+if (!boutonRetirer) {
+    return;
+}
+
+boutonRetirer.addEventListener(
+    "click",
+    async () => {
+
+        const confirmation =
+            confirm(
+                "Voulez-vous retirer l'autorisation de déposer une nouvelle demande pour ce membre ?"
+            );
+
+        if (!confirmation) {
+            return;
+        }
+
+        const user =
+            auth.currentUser;
+
+        if (!user) {
+
+            alert(
+                "Administrateur non identifié."
+            );
+
+            return;
+        }
+
+        try {
+
+            await updateDoc(
+                doc(
+                    db,
+                    "membres",
+                    id
+                ),
+                {
+
+                    nouvelleDemandeMembreActifAutorisee:
+                        false,
+
+                    dateDecisionMembreActif:
+                        Timestamp.now(),
+
+                    decisionMembreActifParNom:
+                        user.displayName ||
+                        "Administrateur",
+
+                    decisionMembreActifParEmail:
+                        user.email ||
+                        ""
+
+                }
+            );
+
+            alert(
+                "L'autorisation de nouvelle demande a été retirée."
+            );
+
+            window.location.reload();
+
+        }
+        catch (error) {
+
+            console.error(
+                "Erreur lors du retrait de l'autorisation :",
+                error
+            );
+
+            alert(
+                "Impossible de retirer l'autorisation."
+            );
+
+        }
+
+    }
+);
+
+
+}
+
+
+    
+
 function calculerDateEligibiliteMembreActif(
 dateDebutAdhesion
 ) {
