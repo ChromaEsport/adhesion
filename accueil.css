@@ -90,7 +90,7 @@
        ESPACE MEMBRE
     ================================= */
 
-    .espace-membre {
+    /*.espace-membre {
 
         display: flex;
 
@@ -166,7 +166,7 @@
             translateY(-2px);
 
     }
-
+*/
 
     /* ================================
        PRESENTATION
