@@ -1352,8 +1352,8 @@ switch (
     statut
 ) {
 
-    case "active":
-        return "🟢 Active";
+    case "en_cours":
+        return "🟢 En cours";
 
     case "expiree":
         return "🔴 Expirée";
