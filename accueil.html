@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 
 <html lang="fr">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-<title>Chroma Esport — Accueil</title>
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+    Chroma Esport — Accueil
+</title>
 
 <style>
+
     * {
         box-sizing: border-box;
         margin: 0;
@@ -16,135 +25,514 @@
     }
 
     body {
+
         min-height: 100vh;
-        font-family: Arial, Helvetica, sans-serif;
+
+        font-family:
+            Arial,
+            Helvetica,
+            sans-serif;
+
         background:
             radial-gradient(
                 circle at top,
-                #202040 0%,
-                #0d0d18 45%,
+                #242044 0%,
+                #10101b 45%,
                 #08080f 100%
             );
+
         color: #ffffff;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+
         padding: 30px 20px;
+
     }
+
 
     .container {
+
         width: 100%;
-        max-width: 1100px;
-        text-align: center;
+
+        max-width: 1150px;
+
+        margin: 0 auto;
+
     }
+
+
+    /* ================================
+       HEADER
+    ================================= */
+
+    header {
+
+        text-align: center;
+
+        padding:
+            35px
+            20px
+            25px;
+
+    }
+
 
     .logo {
-        font-size: 42px;
+
+        font-size: 46px;
+
         font-weight: 900;
+
         letter-spacing: 4px;
-        margin-bottom: 12px;
+
     }
+
 
     .logo span {
+
         color: #9b5cff;
+
     }
+
 
     .slogan {
-        font-size: 18px;
+
+        margin-top: 12px;
+
         color: #b8b8c8;
-        margin-bottom: 45px;
+
+        font-size: 18px;
+
     }
+
+
+    /* ================================
+       ESPACE MEMBRE
+    ================================= */
+
+    .espace-membre {
+
+        display: flex;
+
+        justify-content: center;
+
+        margin:
+            15px
+            0
+            45px;
+
+    }
+
+
+    .bouton-espace-membre {
+
+        display: inline-flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        gap: 10px;
+
+        padding:
+            14px
+            26px;
+
+        border-radius: 12px;
+
+        background:
+            rgba(
+                255,
+                255,
+                255,
+                0.06
+            );
+
+        border:
+            1px solid
+            rgba(
+                255,
+                255,
+                255,
+                0.18
+            );
+
+        color: #ffffff;
+
+        text-decoration: none;
+
+        font-weight: 700;
+
+        transition:
+            0.25s ease;
+
+    }
+
+
+    .bouton-espace-membre:hover {
+
+        background:
+            rgba(
+                155,
+                92,
+                255,
+                0.15
+            );
+
+        border-color:
+            #9b5cff;
+
+        transform:
+            translateY(-2px);
+
+    }
+
+
+    /* ================================
+       PRESENTATION
+    ================================= */
+
+    .presentation {
+
+        text-align: center;
+
+        max-width: 800px;
+
+        margin:
+            0 auto
+            55px;
+
+    }
+
+
+    .presentation h1 {
+
+        font-size: 30px;
+
+        margin-bottom: 15px;
+
+    }
+
+
+    .presentation p {
+
+        color: #b8b8c8;
+
+        line-height: 1.7;
+
+        font-size: 16px;
+
+    }
+
+
+    /* ================================
+       CHOIX
+    ================================= */
 
     .question {
-        font-size: 28px;
+
+        text-align: center;
+
+        font-size: 27px;
+
         margin-bottom: 25px;
-        font-weight: 700;
+
     }
+
 
     .choix {
+
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+
+        grid-template-columns:
+            repeat(
+                3,
+                1fr
+            );
+
         gap: 20px;
+
     }
+
 
     .carte {
+
         display: block;
+
         text-decoration: none;
-        color: white;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+
+        color: #ffffff;
+
+        background:
+            rgba(
+                255,
+                255,
+                255,
+                0.05
+            );
+
+        border:
+            1px solid
+            rgba(
+                255,
+                255,
+                255,
+                0.10
+            );
+
         border-radius: 18px;
+
         padding: 30px 25px;
+
+        text-align: center;
+
         transition:
-            transform 0.25s ease,
-            background 0.25s ease,
-            border-color 0.25s ease;
+            0.25s ease;
+
     }
+
 
     .carte:hover {
-        transform: translateY(-6px);
-        background: rgba(155, 92, 255, 0.12);
-        border-color: #9b5cff;
+
+        transform:
+            translateY(-6px);
+
+        background:
+            rgba(
+                155,
+                92,
+                255,
+                0.12
+            );
+
+        border-color:
+            #9b5cff;
+
     }
+
 
     .icone {
+
         font-size: 42px;
+
         margin-bottom: 15px;
+
     }
+
 
     .titre-carte {
-        font-size: 21px;
+
+        font-size: 19px;
+
         font-weight: 800;
+
         margin-bottom: 10px;
+
     }
+
 
     .prix {
-        font-size: 17px;
+
+        color:
+            #9b5cff;
+
         font-weight: 700;
-        color: #9b5cff;
+
         margin-bottom: 12px;
+
     }
+
 
     .description {
-        font-size: 15px;
+
         color: #b8b8c8;
+
         line-height: 1.5;
+
+        font-size: 14px;
+
     }
 
-    .footer {
-        margin-top: 45px;
-        color: #777789;
+
+    /* ================================
+       RESEAUX
+    ================================= */
+
+    .reseaux {
+
+        margin-top: 60px;
+
+        text-align: center;
+
+    }
+
+
+    .reseaux h2 {
+
+        font-size: 25px;
+
+        margin-bottom: 10px;
+
+    }
+
+
+    .reseaux p {
+
+        color: #888899;
+
+        margin-bottom: 25px;
+
+    }
+
+
+    .liens-reseaux {
+
+        display: flex;
+
+        justify-content: center;
+
+        flex-wrap: wrap;
+
+        gap: 12px;
+
+    }
+
+
+    .lien-reseau {
+
+        display: inline-block;
+
+        padding:
+            11px
+            18px;
+
+        border-radius: 10px;
+
+        background:
+            rgba(
+                255,
+                255,
+                255,
+                0.05
+            );
+
+        border:
+            1px solid
+            rgba(
+                255,
+                255,
+                255,
+                0.10
+            );
+
+        color: #ffffff;
+
+        text-decoration: none;
+
+        transition:
+            0.2s ease;
+
+    }
+
+
+    .lien-reseau:hover {
+
+        border-color:
+            #9b5cff;
+
+        background:
+            rgba(
+                155,
+                92,
+                255,
+                0.12
+            );
+
+    }
+
+
+    /* ================================
+       FOOTER
+    ================================= */
+
+    footer {
+
+        text-align: center;
+
+        margin-top: 65px;
+
+        padding:
+            25px
+            10px;
+
+        color: #666677;
+
         font-size: 13px;
+
     }
 
-    @media (max-width: 700px) {
 
-        body {
-            padding: 25px 15px;
-        }
+    /* ================================
+       MOBILE
+    ================================= */
 
-        .logo {
-            font-size: 30px;
-            letter-spacing: 2px;
-        }
-
-        .slogan {
-            font-size: 16px;
-            margin-bottom: 35px;
-        }
-
-        .question {
-            font-size: 23px;
-        }
+    @media (
+        max-width: 850px
+    ) {
 
         .choix {
-            grid-template-columns: 1fr;
+
+            grid-template-columns:
+                1fr;
+
         }
 
-        .carte {
-            padding: 25px 20px;
-        }
     }
+
+
+    @media (
+        max-width: 600px
+    ) {
+
+        body {
+
+            padding:
+                20px
+                12px;
+
+        }
+
+
+        .logo {
+
+            font-size: 31px;
+
+            letter-spacing:
+                2px;
+
+        }
+
+
+        .slogan {
+
+            font-size: 15px;
+
+        }
+
+
+        .presentation h1 {
+
+            font-size: 24px;
+
+        }
+
+
+        .question {
+
+            font-size: 23px;
+
+        }
+
+    }
+
 </style>
 
 
@@ -152,125 +540,283 @@
 
 <body>
 
+<div class="container">
 
-<main class="container">
+
+<!-- ================================
+     HEADER
+================================= -->
+
+<header>
 
     <div class="logo">
-        CHROMA <span>ESPORT</span>
+
+        CHROMA
+        <span>ESPORT</span>
+
     </div>
 
     <p class="slogan">
-        Une association esport, une communauté, des projets.
+
+        Une association esport,
+        une communauté, des projets.
+
     </p>
 
-    <h1 class="question">
-        Que souhaitez-vous faire ?
+</header>
+
+
+<!-- ================================
+     ESPACE MEMBRE
+================================= -->
+
+<div class="espace-membre">
+
+    <a
+        href="espace-membre.html"
+        class="bouton-espace-membre"
+    >
+
+        🔐
+
+        <span>
+            Accéder à mon espace membre
+        </span>
+
+    </a>
+
+</div>
+
+
+<!-- ================================
+     PRESENTATION
+================================= -->
+
+<section class="presentation">
+
+    <h1>
+        Bienvenue chez Chroma Esport
     </h1>
 
+    <p>
+
+        Chroma Esport est une association
+        dédiée au développement de
+        l'esport, à la compétition et à
+        la création d'une communauté
+        autour de nos équipes et de nos projets.
+
+    </p>
+
+</section>
+
+
+<!-- ================================
+     CHOIX
+================================= -->
+
+<section>
+
+    <h2 class="question">
+        Que souhaitez-vous faire ?
+    </h2>
+
+
     <div class="choix">
+
+
+        <!-- ADHERENT -->
 
         <a
             href="index.html"
             class="carte"
         >
+
             <div class="icone">
                 ⭐
             </div>
 
             <div class="titre-carte">
-                JE VEUX ADHÉRER
+
+                DEVENIR MEMBRE ADHÉRENT
+
             </div>
 
             <div class="prix">
+
                 50 €/an
+
             </div>
 
             <div class="description">
-                Devenir membre adhérent
-                de Chroma Esport et participer
-                pleinement à la vie de l'association.
+
+                Soutenez directement
+                Chroma Esport et participez
+                à la vie de l'association
+                en devenant membre adhérent.
+
             </div>
+
         </a>
 
+
+        <!-- COMMUNAUTE -->
 
         <a
             href="devenir-membre-communaute.html"
             class="carte"
         >
+
             <div class="icone">
                 💜
             </div>
 
             <div class="titre-carte">
-                JE VEUX REJOINDRE LA COMMUNAUTÉ
+
+                REJOINDRE LA COMMUNAUTÉ
+
             </div>
 
             <div class="prix">
+
                 Gratuit
+
             </div>
 
             <div class="description">
-                Rejoindre la communauté Chroma Esport
-                sans cotisation et accéder à votre
-                espace membre.
+
+                Rejoignez la communauté
+                Chroma Esport sans cotisation
+                et profitez de votre espace
+                membre communauté.
+
             </div>
+
         </a>
 
+
+        <!-- DON -->
 
         <a
             href="don.html"
             class="carte"
         >
+
             <div class="icone">
                 💝
             </div>
 
             <div class="titre-carte">
-                JE VEUX SOUTENIR CHROMA
+
+                SOUTENIR CHROMA
+
             </div>
 
             <div class="prix">
+
                 Don libre
+
             </div>
 
             <div class="description">
-                Soutenir les projets, les équipes
-                et le développement de Chroma Esport
-                grâce à un don.
+
+                Vous souhaitez soutenir
+                nos équipes et nos projets
+                sans devenir membre ?
+                Vous pouvez faire un don.
+
             </div>
+
+        </a>
+
+
+    </div>
+
+</section>
+
+
+<!-- ================================
+     RESEAUX
+================================= -->
+
+<section
+    class="reseaux"
+    id="reseaux"
+>
+
+    <h2>
+        🌐 Retrouvez Chroma Esport
+    </h2>
+
+    <p>
+        Suivez notre actualité et
+        rejoignez notre communauté.
+    </p>
+
+
+    <div class="liens-reseaux">
+
+
+        <a
+            href="#"
+            class="lien-reseau"
+        >
+            🎥 Twitch
         </a>
 
 
         <a
-            href="#reseaux"
-            class="carte"
+            href="#"
+            class="lien-reseau"
         >
-            <div class="icone">
-                🌐
-            </div>
-
-            <div class="titre-carte">
-                JE VEUX NOUS SUIVRE
-            </div>
-
-            <div class="prix">
-                Rejoignez-nous
-            </div>
-
-            <div class="description">
-                Twitch · YouTube · Instagram ·
-                TikTok · Discord
-            </div>
+            ▶️ YouTube
         </a>
 
+
+        <a
+            href="#"
+            class="lien-reseau"
+        >
+            📸 Instagram
+        </a>
+
+
+        <a
+            href="#"
+            class="lien-reseau"
+        >
+            🎵 TikTok
+        </a>
+
+
+        <a
+            href="#"
+            class="lien-reseau"
+        >
+            💬 Discord
+        </a>
+
+
     </div>
 
-    <div class="footer">
-        © Chroma Esport — Association loi 1901
-    </div>
+</section>
 
-</main>
 
+<!-- ================================
+     FOOTER
+================================= -->
+
+<footer>
+
+    © Chroma Esport
+    —
+    Association loi 1901
+
+</footer>
+
+
+</div>
 
 </body>
+
 </html>
