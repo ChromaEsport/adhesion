@@ -1058,7 +1058,7 @@ if (
 ) {
 
     alert(
-        "Votre adhésion n'est pas active."
+        "Votre statut d'adhésion doit être en cours pour déposer une demande."
     );
 
     return;
