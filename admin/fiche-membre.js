@@ -741,15 +741,188 @@ const adhesionActive =
 
     
 // Aucun bloc si aucune demande n'existe
-if (
-    membre.statutDemandeMembreActif !==
-    "en_attente"
-) {
-    blocDemandeMembreActif.style.display =
-        "none";
+    if 
+( membre.statutDemandeMembreActif !== "en_attente" && membre.statutDemandeMembreActif !== "refusee" )
+    { blocDemandeMembreActif.style.display = "none"; 
+     
+     return; }
 
-    return;
+if (
+membre.statutDemandeMembreActif ===
+"refusee"
+) {    
+
+   blocDemandeMembreActif.style.display =
+    "block";
+
+const motif =
+    membre.motifRefusMembreActif ||
+    "Aucun motif communiqué.";
+
+const dateDecision =
+    afficherDate(
+        membre.dateDecisionMembreActif
+    );
+
+contenuDemandeMembreActif.innerHTML = `
+    <div class="informations-demande-actif">
+
+        <div class="information-demande-actif">
+
+            <span class="information-demande-actif-label">
+                Statut de la demande
+            </span>
+
+            <span class="information-demande-actif-valeur">
+                ❌ Refusée
+            </span>
+
+        </div>
+
+        <div class="information-demande-actif">
+
+            <span class="information-demande-actif-label">
+                Date de décision
+            </span>
+
+            <span class="information-demande-actif-valeur">
+                ${dateDecision}
+            </span>
+
+        </div>
+
+        <div class="information-demande-actif">
+
+            <span class="information-demande-actif-label">
+                Décision prise par
+            </span>
+
+            <span class="information-demande-actif-valeur">
+                ${membre.decisionMembreActifParNom || "Administrateur"}
+            </span>
+
+        </div>
+
+        <div class="information-demande-actif">
+
+            <span class="information-demande-actif-label">
+                Motif du refus
+            </span>
+
+            <span class="information-demande-actif-valeur">
+                ${motif}
+            </span>
+
+        </div>
+
+    </div>
+
+    <div class="actions-demande-membre-actif">
+
+        <button
+            id="reactiverDemandeMembreActif"
+            type="button"
+        >
+            🔄 Autoriser une nouvelle demande
+        </button>
+
+    </div>
+`;
+
+const boutonReactiver =
+    document.getElementById(
+        "reactiverDemandeMembreActif"
+    );
+
+if (boutonReactiver) {
+
+    boutonReactiver.addEventListener(
+        "click",
+        async () => {
+
+            const confirmation =
+                confirm(
+                    "Voulez-vous autoriser ce membre à déposer une nouvelle demande de passage en membre actif ?"
+                );
+
+            if (!confirmation) {
+                return;
+            }
+
+            const user =
+                auth.currentUser;
+
+            if (!user) {
+
+                alert(
+                    "Administrateur non identifié."
+                );
+
+                return;
+            }
+
+            try {
+
+                await updateDoc(
+                    doc(
+                        db,
+                        "membres",
+                        membre.id
+                    ),
+                    {
+
+                        statutDemandeMembreActif:
+                            null,
+
+                        demandeMembreActif:
+                            false,
+
+                        nouvelleDemandeMembreActifAutorisee:
+                            true,
+
+                        dateDecisionMembreActif:
+                            Timestamp.now(),
+
+                        decisionMembreActifParNom:
+                            user.displayName ||
+                            "Administrateur",
+
+                        decisionMembreActifParEmail:
+                            user.email ||
+                            "",
+
+                        motifRefusMembreActif:
+                            null
+
+                    }
+                );
+
+                alert(
+                    "Le membre est maintenant autorisé à déposer une nouvelle demande."
+                );
+
+                window.location.reload();
+
+            }
+            catch (error) {
+
+                console.error(
+                    "Erreur lors de la réautorisation :",
+                    error
+                );
+
+                alert(
+                    "Impossible de réautoriser une nouvelle demande."
+                );
+
+            }
+
+        }
+    );
+
 }
+
+return; 
 
 blocDemandeMembreActif.style.display =
     "block";
