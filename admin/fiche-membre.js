@@ -734,460 +734,535 @@ alert(
 
 function afficherDemandeMembreActif(membre) {
 
-const cotisationAJour =
-    membre.statutPaiement ===
-    "paye";
-
-const adhesionActive =
-    membre.statutAdhesion ===
-    "active";
-
-    
-// Aucun bloc si aucune demande n'existe
-    if 
-( membre.statutDemandeMembreActif !== 
- "en_attente"
- &&
- membre.statutDemandeMembreActif !== 
- "refusee" 
-) { 
-    blocDemandeMembreActif.style.display = 
-        "none"; 
-     
-     return; }
 
 if (
-membre.statutDemandeMembreActif ===
-"refusee"
-) {    
-
-   blocDemandeMembreActif.style.display =
-    "block";
-
-const motif =
-    membre.motifRefusMembreActif ||
-    "Aucun motif communiqué.";
-
-const dateDecision =
-    afficherDate(
-        membre.dateDecisionMembreActif
-    );
-
-contenuDemandeMembreActif.innerHTML = `
-    <div class="informations-demande-actif">
-
-        <div class="information-demande-actif">
-
-            <span class="information-demande-actif-label">
-                Statut de la demande
-            </span>
-
-            <span class="information-demande-actif-valeur">
-                ❌ Refusée
-            </span>
-
-        </div>
-
-        <div class="information-demande-actif">
-
-            <span class="information-demande-actif-label">
-                Date de décision
-            </span>
-
-            <span class="information-demande-actif-valeur">
-                ${dateDecision}
-            </span>
-
-        </div>
-
-        <div class="information-demande-actif">
-
-            <span class="information-demande-actif-label">
-                Décision prise par
-            </span>
-
-            <span class="information-demande-actif-valeur">
-                ${membre.decisionMembreActifParNom || "Administrateur"}
-            </span>
-
-        </div>
-
-        <div class="information-demande-actif">
-
-            <span class="information-demande-actif-label">
-                Motif du refus
-            </span>
-
-            <span class="information-demande-actif-valeur">
-                ${motif}
-            </span>
-
-        </div>
-
-    </div>
-
-    <div class="actions-demande-membre-actif">
-
-        <button
-            id="reactiverDemandeMembreActif"
-            type="button"
-        >
-            🔄 Autoriser une nouvelle demande
-        </button>
-
-    </div>
-`;
-
-const boutonReactiver =
-    document.getElementById(
-        "reactiverDemandeMembreActif"
-    );
-
-if (boutonReactiver) {
-
-    boutonReactiver.addEventListener(
-        "click",
-        async () => {
-
-            const confirmation =
-                confirm(
-                    "Voulez-vous autoriser ce membre à déposer une nouvelle demande de passage en membre actif ?"
-                );
-
-            if (!confirmation) {
-                return;
-            }
-
-            const user =
-                auth.currentUser;
-
-            if (!user) {
-
-                alert(
-                    "Administrateur non identifié."
-                );
-
-                return;
-            }
-
-            try {
-
-                await updateDoc(
-                    doc(
-                        db,
-                        "membres",
-                        membre.id
-                    ),
-                    {
-
-                        statutDemandeMembreActif:
-                            null,
-
-                        demandeMembreActif:
-                            false,
-
-                        nouvelleDemandeMembreActifAutorisee:
-                            true,
-
-                        dateDecisionMembreActif:
-                            Timestamp.now(),
-
-                        decisionMembreActifParNom:
-                            user.displayName ||
-                            "Administrateur",
-
-                        decisionMembreActifParEmail:
-                            user.email ||
-                            "",
-
-                        motifRefusMembreActif:
-                            null
-
-                    }
-                );
-
-                alert(
-                    "Le membre est maintenant autorisé à déposer une nouvelle demande."
-                );
-
-                window.location.reload();
-
-            }
-            catch (error) {
-
-                console.error(
-                    "Erreur lors de la réautorisation :",
-                    error
-                );
-
-                alert(
-                    "Impossible de réautoriser une nouvelle demande."
-                );
-
-            }
-
-        }
-    );
-
+    !blocDemandeMembreActif ||
+    !contenuDemandeMembreActif
+) {
+    return;
 }
 
-return; 
+/*
+=========================================
+AUCUNE DEMANDE
+=========================================
+*/
 
-blocDemandeMembreActif.style.display =
-    "block";
+if (
+    membre.statutDemandeMembreActif !== "en_attente" &&
+    membre.statutDemandeMembreActif !== "refusee"
+) {
 
-const dateDebut =
-    afficherDate(
-        membre.dateDebutAdhesion
-    );
+    blocDemandeMembreActif.style.display = "none";
 
-const dateDemande =
-    afficherDate(
-        membre.dateDemandeMembreActif
-    );
-
-const dateEligibiliteObjet =
-calculerDateEligibiliteMembreActif(
-membre.dateDebutAdhesion
-);
-
-let dateEligibilite = "-";
-
-let sixMoisAtteints = false;
-
-if (dateEligibiliteObjet) {
+    return;
+}
 
 
-dateEligibilite =
-    dateEligibiliteObjet
-        .toLocaleDateString(
-            "fr-FR"
+/*
+=========================================
+DEMANDE REFUSÉE
+=========================================
+*/
+
+if (
+    membre.statutDemandeMembreActif === "refusee"
+) {
+
+    blocDemandeMembreActif.style.display = "block";
+
+    const motif =
+        membre.motifRefusMembreActif ||
+        "Aucun motif communiqué.";
+
+    const dateDecision =
+        afficherDate(
+            membre.dateDecisionMembreActif
         );
 
-const aujourdHui =
-    new Date();
+    contenuDemandeMembreActif.innerHTML = `
 
-aujourdHui.setHours(
-    0,
-    0,
-    0,
-    0
-);
+        <div class="informations-demande-actif">
 
-sixMoisAtteints =
-    dateEligibiliteObjet <=
-    aujourdHui;
+            <div class="information-demande-actif">
 
-const cotisationAJour =
-membre.statutPaiement ===
-"paye";
+                <span class="information-demande-actif-label">
+                    Statut de la demande
+                </span>
 
-}
+                <span class="information-demande-actif-valeur">
+                    ❌ Refusée
+                </span>
+
+            </div>
 
 
-contenuDemandeMembreActif.innerHTML = `
+            <div class="information-demande-actif">
 
-    <div class="informations-demande-actif">
+                <span class="information-demande-actif-label">
+                    Date de décision
+                </span>
 
-        <div class="information-demande-actif">
-            <span class="information-demande-actif-label">
-                Statut actuel
-            </span>
+                <span class="information-demande-actif-valeur">
+                    ${dateDecision}
+                </span>
 
-            <span class="information-demande-actif-valeur">
-                👤 Membre adhérent
-            </span>
-        </div>
+            </div>
 
-        <div class="information-demande-actif">
-            <span class="information-demande-actif-label">
-                Adhérent depuis
-            </span>
 
-            <span class="information-demande-actif-valeur">
-                ${dateDebut}
-            </span>
-        </div>
+            <div class="information-demande-actif">
 
-        <div class="information-demande-actif">
-            <span class="information-demande-actif-label">
-                Demande effectuée le
-            </span>
+                <span class="information-demande-actif-label">
+                    Décision prise par
+                </span>
 
-            <span class="information-demande-actif-valeur">
-                ${dateDemande}
-            </span>
-        </div>
+                <span class="information-demande-actif-valeur">
+                    ${
+                        membre.decisionMembreActifParNom ||
+                        "Administrateur"
+                    }
+                </span>
 
-<div class="information-demande-actif">
+            </div>
 
-    <span class="information-demande-actif-label">
-        Compte Firebase
-    </span>
 
-    <span class="information-demande-actif-valeur">
+            <div class="information-demande-actif">
 
-        ${
-            membre.firebaseUid
-            || "-"
-        }
+                <span class="information-demande-actif-label">
+                    Motif du refus
+                </span>
 
-    </span>
+                <span class="information-demande-actif-valeur">
+                    ${motif}
+                </span>
 
-</div>
-
-        <div class="information-demande-actif">
-
-            <span class="information-demande-actif-label">
-                Éligible depuis
-            </span>
-
-            <span class="information-demande-actif-valeur">
-                ${dateEligibilite}
-            </span>
+            </div>
 
         </div>
 
-        <div class="information-demande-actif">
 
-            <span class="information-demande-actif-label">
-                Statut de la demande
-            </span>
+        <div class="actions-demande-membre-actif">
 
-            <span class="badge-demande-en-attente">
-                ⏳ En attente
-            </span>
+            <button
+                id="reactiverDemandeMembreActif"
+                type="button"
+            >
+                🔄 Autoriser une nouvelle demande
+            </button>
 
         </div>
 
-    </div>
-
-    <div class="criteres-membre-actif">
-
-        <h4>
-            🔎 Vérification des critères
-        </h4>
-
-        <div class="critere-membre-actif">
-    <span class="icone">
-        ${sixMoisAtteints ? "🟢" : "🔴"}
-    </span>
+    `;
 
 
-<span class="texte">
-    Ancienneté minimale de 6 mois
-</span>
+    const boutonReactiver =
+        document.getElementById(
+            "reactiverDemandeMembreActif"
+        );
 
 
-</div>
+    if (boutonReactiver) {
+
+        boutonReactiver.addEventListener(
+            "click",
+            async () => {
+
+                const confirmation =
+                    confirm(
+                        "Voulez-vous autoriser ce membre à déposer une nouvelle demande de passage en membre actif ?"
+                    );
 
 
-        <div class="critere-membre-actif">
-    <span class="icone">
-    ${
-        cotisationAJour &&
-        adhesionActive
-        ? "✅"
-        : "❌"
+                if (!confirmation) {
+                    return;
+                }
+
+
+                const user =
+                    auth.currentUser;
+
+
+                if (!user) {
+
+                    alert(
+                        "Administrateur non identifié."
+                    );
+
+                    return;
+                }
+
+
+                try {
+
+                    await updateDoc(
+
+                        doc(
+                            db,
+                            "membres",
+                            membre.id
+                        ),
+
+                        {
+
+                            statutDemandeMembreActif:
+                                null,
+
+                            demandeMembreActif:
+                                false,
+
+                            nouvelleDemandeMembreActifAutorisee:
+                                true,
+
+                            dateDecisionMembreActif:
+                                Timestamp.now(),
+
+                            decisionMembreActifParNom:
+                                user.displayName ||
+                                "Administrateur",
+
+                            decisionMembreActifParEmail:
+                                user.email ||
+                                "",
+
+                            motifRefusMembreActif:
+                                null
+
+                        }
+
+                    );
+
+
+                    alert(
+                        "Le membre est maintenant autorisé à déposer une nouvelle demande."
+                    );
+
+
+                    window.location.reload();
+
+                }
+                catch (error) {
+
+                    console.error(
+                        "Erreur lors de la réautorisation :",
+                        error
+                    );
+
+                    alert(
+                        "Impossible de réautoriser une nouvelle demande."
+                    );
+
+                }
+
+            }
+        );
+
     }
-</span>
-
-<span class="texte">
-    Cotisation et adhésion à jour
-</span>
 
 
-</div>
+    return;
+}
 
 
-    <div
-    class="critere-membre-actif"
-    id="blocCritereParticipation"
->
-    <input
-        type="checkbox"
-        id="critereParticipation"
-    >
+/*
+=========================================
+DEMANDE EN ATTENTE
+=========================================
+*/
+
+if (
+    membre.statutDemandeMembreActif === "en_attente"
+) {
+
+    blocDemandeMembreActif.style.display = "block";
 
 
-<label for="critereParticipation">
-    Participation régulière aux activités
-</label>
+    const dateDebut =
+        afficherDate(
+            membre.dateDebutAdhesion
+        );
 
 
-</div>
-
-<div
-    class="critere-membre-actif"
-    id="blocCritereImplication"
->
-    <input
-        type="checkbox"
-        id="critereImplication"
-    >
+    const dateDemande =
+        afficherDate(
+            membre.dateDemandeMembreActif
+        );
 
 
-<label for="critereImplication">
-    Implication dans la vie de l'association
-</label>
+    const dateEligibiliteObjet =
+        calculerDateEligibiliteMembreActif(
+            membre.dateDebutAdhesion
+        );
 
 
-</div>
+    let dateEligibilite = "-";
 
-<div
-    class="critere-membre-actif"
-    id="blocCritereReglement"
->
-    <input
-        type="checkbox"
-        id="critereReglement"
-    >
+    let sixMoisAtteints = false;
 
 
-<label for="critereReglement">
-    Respect du règlement intérieur
-</label>
+    if (dateEligibiliteObjet) {
+
+        dateEligibilite =
+            dateEligibiliteObjet.toLocaleDateString(
+                "fr-FR"
+            );
 
 
-</div>
+        const aujourdHui =
+            new Date();
 
 
-
-    </div>
-
-    <div class="actions-demande-membre-actif">
-
-      <button
-id="accepterDemandeMembreActif"
-type="button"
-${sixMoisAtteints ? "" : "disabled"}
-
->
+        aujourdHui.setHours(
+            0,
+            0,
+            0,
+            0
+        );
 
 
-${sixMoisAtteints
+        sixMoisAtteints =
+            dateEligibiliteObjet <=
+            aujourdHui;
+
+    }
 
 
-
-    ? "✅ Accepter la demande"
-    : "🔒 Accepter la demande"}
-
-
-</button>
+    const cotisationAJour =
+        membre.statutPaiement === "paye";
 
 
-        <button
-            id="refuserDemandeMembreActif"
-            type="button"
-        >
-            ❌ Refuser la demande
-        </button>
+    const adhesionActive =
+        membre.statutAdhesion === "active";
 
-    </div>
-`;
 
+    contenuDemandeMembreActif.innerHTML = `
+
+        <div class="informations-demande-actif">
+
+
+            <div class="information-demande-actif">
+
+                <span class="information-demande-actif-label">
+                    Statut actuel
+                </span>
+
+                <span class="information-demande-actif-valeur">
+                    👤 Membre adhérent
+                </span>
+
+            </div>
+
+
+            <div class="information-demande-actif">
+
+                <span class="information-demande-actif-label">
+                    Adhérent depuis
+                </span>
+
+                <span class="information-demande-actif-valeur">
+                    ${dateDebut}
+                </span>
+
+            </div>
+
+
+            <div class="information-demande-actif">
+
+                <span class="information-demande-actif-label">
+                    Demande effectuée le
+                </span>
+
+                <span class="information-demande-actif-valeur">
+                    ${dateDemande}
+                </span>
+
+            </div>
+
+
+            <div class="information-demande-actif">
+
+                <span class="information-demande-actif-label">
+                    Compte Firebase
+                </span>
+
+                <span class="information-demande-actif-valeur">
+                    ${
+                        membre.firebaseUid ||
+                        "-"
+                    }
+                </span>
+
+            </div>
+
+
+            <div class="information-demande-actif">
+
+                <span class="information-demande-actif-label">
+                    Éligible depuis
+                </span>
+
+                <span class="information-demande-actif-valeur">
+                    ${dateEligibilite}
+                </span>
+
+            </div>
+
+
+            <div class="information-demande-actif">
+
+                <span class="information-demande-actif-label">
+                    Statut de la demande
+                </span>
+
+                <span class="badge-demande-en-attente">
+                    ⏳ En attente
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="criteres-membre-actif">
+
+            <h4>
+                🔎 Vérification des critères
+            </h4>
+
+
+            <div class="critere-membre-actif">
+
+                <span class="icone">
+                    ${
+                        sixMoisAtteints
+                            ? "🟢"
+                            : "🔴"
+                    }
+                </span>
+
+                <span class="texte">
+                    Ancienneté minimale de 6 mois
+                </span>
+
+            </div>
+
+
+            <div class="critere-membre-actif">
+
+                <span class="icone">
+                    ${
+                        cotisationAJour &&
+                        adhesionActive
+                            ? "✅"
+                            : "❌"
+                    }
+                </span>
+
+                <span class="texte">
+                    Cotisation et adhésion à jour
+                </span>
+
+            </div>
+
+
+            <div
+                class="critere-membre-actif"
+                id="blocCritereParticipation"
+            >
+
+                <input
+                    type="checkbox"
+                    id="critereParticipation"
+                >
+
+                <label for="critereParticipation">
+                    Participation régulière aux activités
+                </label>
+
+            </div>
+
+
+            <div
+                class="critere-membre-actif"
+                id="blocCritereImplication"
+            >
+
+                <input
+                    type="checkbox"
+                    id="critereImplication"
+                >
+
+                <label for="critereImplication">
+                    Implication dans la vie de l'association
+                </label>
+
+            </div>
+
+
+            <div
+                class="critere-membre-actif"
+                id="blocCritereReglement"
+            >
+
+                <input
+                    type="checkbox"
+                    id="critereReglement"
+                >
+
+                <label for="critereReglement">
+                    Respect du règlement intérieur
+                </label>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="actions-demande-membre-actif">
+
+            <button
+                id="accepterDemandeMembreActif"
+                type="button"
+                ${sixMoisAtteints ? "" : "disabled"}
+            >
+
+                ${
+                    sixMoisAtteints
+                        ? "✅ Accepter la demande"
+                        : "🔒 Accepter la demande"
+                }
+
+            </button>
+
+
+            <button
+                id="refuserDemandeMembreActif"
+                type="button"
+            >
+                ❌ Refuser la demande
+            </button>
+
+        </div>
+
+    `;
+
+
+    /*
+    =========================================
+    CONFIGURATION DES ACTIONS
+    =========================================
+    */
+
+    configurerActionsDemandeMembreActif(
+        membre,
+        membre.id
+    );
 
 }
+
+}
+
 
 function configurerAutorisationNouvelleDemande(
 membre,
