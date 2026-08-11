@@ -1,0 +1,515 @@
+
+ * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+
+        min-height: 100vh;
+
+        font-family:
+            Arial,
+            Helvetica,
+            sans-serif;
+
+        background:
+            radial-gradient(
+                circle at top,
+                #242044 0%,
+                #10101b 45%,
+                #08080f 100%
+            );
+
+        color: #ffffff;
+
+        padding: 30px 20px;
+
+    }
+
+
+    .container {
+
+        width: 100%;
+
+        max-width: 1150px;
+
+        margin: 0 auto;
+
+    }
+
+
+    /* ================================
+       HEADER
+    ================================= */
+
+    header {
+
+        text-align: center;
+
+        padding:
+            35px
+            20px
+            25px;
+
+    }
+
+
+    .logo {
+
+        font-size: 46px;
+
+        font-weight: 900;
+
+        letter-spacing: 4px;
+
+    }
+
+
+    .logo span {
+
+        color: #9b5cff;
+
+    }
+
+
+    .slogan {
+
+        margin-top: 12px;
+
+        color: #b8b8c8;
+
+        font-size: 18px;
+
+    }
+
+
+    /* ================================
+       ESPACE MEMBRE
+    ================================= */
+
+    .espace-membre {
+
+        display: flex;
+
+        justify-content: center;
+
+        margin:
+            15px
+            0
+            45px;
+
+    }
+
+
+    .bouton-espace-membre {
+
+        display: inline-flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        gap: 10px;
+
+        padding:
+            14px
+            26px;
+
+        border-radius: 12px;
+
+        background:
+            rgba(
+                255,
+                255,
+                255,
+                0.06
+            );
+
+        border:
+            1px solid
+            rgba(
+                255,
+                255,
+                255,
+                0.18
+            );
+
+        color: #ffffff;
+
+        text-decoration: none;
+
+        font-weight: 700;
+
+        transition:
+            0.25s ease;
+
+    }
+
+
+    .bouton-espace-membre:hover {
+
+        background:
+            rgba(
+                155,
+                92,
+                255,
+                0.15
+            );
+
+        border-color:
+            #9b5cff;
+
+        transform:
+            translateY(-2px);
+
+    }
+
+
+    /* ================================
+       PRESENTATION
+    ================================= */
+
+    .presentation {
+
+        text-align: center;
+
+        max-width: 800px;
+
+        margin:
+            0 auto
+            55px;
+
+    }
+
+
+    .presentation h1 {
+
+        font-size: 30px;
+
+        margin-bottom: 15px;
+
+    }
+
+
+    .presentation p {
+
+        color: #b8b8c8;
+
+        line-height: 1.7;
+
+        font-size: 16px;
+
+    }
+
+
+    /* ================================
+       CHOIX
+    ================================= */
+
+    .question {
+
+        text-align: center;
+
+        font-size: 27px;
+
+        margin-bottom: 25px;
+
+    }
+
+
+    .choix {
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(
+                3,
+                1fr
+            );
+
+        gap: 20px;
+
+    }
+
+
+    .carte {
+
+        display: block;
+
+        text-decoration: none;
+
+        color: #ffffff;
+
+        background:
+            rgba(
+                255,
+                255,
+                255,
+                0.05
+            );
+
+        border:
+            1px solid
+            rgba(
+                255,
+                255,
+                255,
+                0.10
+            );
+
+        border-radius: 18px;
+
+        padding: 30px 25px;
+
+        text-align: center;
+
+        transition:
+            0.25s ease;
+
+    }
+
+
+    .carte:hover {
+
+        transform:
+            translateY(-6px);
+
+        background:
+            rgba(
+                155,
+                92,
+                255,
+                0.12
+            );
+
+        border-color:
+            #9b5cff;
+
+    }
+
+
+    .icone {
+
+        font-size: 42px;
+
+        margin-bottom: 15px;
+
+    }
+
+
+    .titre-carte {
+
+        font-size: 19px;
+
+        font-weight: 800;
+
+        margin-bottom: 10px;
+
+    }
+
+
+    .prix {
+
+        color:
+            #9b5cff;
+
+        font-weight: 700;
+
+        margin-bottom: 12px;
+
+    }
+
+
+    .description {
+
+        color: #b8b8c8;
+
+        line-height: 1.5;
+
+        font-size: 14px;
+
+    }
+
+
+    /* ================================
+       RESEAUX
+    ================================= */
+
+    .reseaux {
+
+        margin-top: 60px;
+
+        text-align: center;
+
+    }
+
+
+    .reseaux h2 {
+
+        font-size: 25px;
+
+        margin-bottom: 10px;
+
+    }
+
+
+    .reseaux p {
+
+        color: #888899;
+
+        margin-bottom: 25px;
+
+    }
+
+
+    .liens-reseaux {
+
+        display: flex;
+
+        justify-content: center;
+
+        flex-wrap: wrap;
+
+        gap: 12px;
+
+    }
+
+
+    .lien-reseau {
+
+        display: inline-block;
+
+        padding:
+            11px
+            18px;
+
+        border-radius: 10px;
+
+        background:
+            rgba(
+                255,
+                255,
+                255,
+                0.05
+            );
+
+        border:
+            1px solid
+            rgba(
+                255,
+                255,
+                255,
+                0.10
+            );
+
+        color: #ffffff;
+
+        text-decoration: none;
+
+        transition:
+            0.2s ease;
+
+    }
+
+
+    .lien-reseau:hover {
+
+        border-color:
+            #9b5cff;
+
+        background:
+            rgba(
+                155,
+                92,
+                255,
+                0.12
+            );
+
+    }
+
+
+    /* ================================
+       FOOTER
+    ================================= */
+
+    footer {
+
+        text-align: center;
+
+        margin-top: 65px;
+
+        padding:
+            25px
+            10px;
+
+        color: #666677;
+
+        font-size: 13px;
+
+    }
+
+
+    /* ================================
+       MOBILE
+    ================================= */
+
+    @media (
+        max-width: 850px
+    ) {
+
+        .choix {
+
+            grid-template-columns:
+                1fr;
+
+        }
+
+    }
+
+
+    @media (
+        max-width: 600px
+    ) {
+
+        body {
+
+            padding:
+                20px
+                12px;
+
+        }
+
+
+        .logo {
+
+            font-size: 31px;
+
+            letter-spacing:
+                2px;
+
+        }
+
+
+        .slogan {
+
+            font-size: 15px;
+
+        }
+
+
+        .presentation h1 {
+
+            font-size: 24px;
+
+        }
+
+
+        .question {
+
+            font-size: 23px;
+
+        }
+
+    }
