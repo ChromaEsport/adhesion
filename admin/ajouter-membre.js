@@ -262,7 +262,7 @@ statutPaiement:
 
 
 statutAdhesion:
-"active",
+"en_cours",
 
 
 ajoutManuel:
