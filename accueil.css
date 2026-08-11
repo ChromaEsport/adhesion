@@ -600,7 +600,7 @@ filter: brightness(1.08);
 ESPACE MEMBRE
 ========================================= */
 
-.espace-membre-accueil {
+.espace-membre {
 max-width: 700px;
 
 
@@ -620,7 +620,7 @@ background:
 
 }
 
-.espace-membre-accueil .plateforme-icone {
+.espace-membre .plateforme-icone {
 margin: 0 auto 15px;
 
 
@@ -636,11 +636,11 @@ background:
 
 }
 
-.espace-membre-accueil h3 {
+.espace-membre h3 {
 margin-bottom: 10px;
 }
 
-.espace-membre-accueil p {
+.espace-membre p {
 margin-bottom: 20px;
 
 
