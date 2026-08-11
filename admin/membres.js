@@ -83,6 +83,13 @@ document.querySelectorAll(
 );
 
 
+const compteurDemandesMembreActif =
+    document.getElementById(
+        "compteurDemandesMembreActif"
+    );
+
+
+
 
 let filtreActuel =
 "en_attente_paiement";
