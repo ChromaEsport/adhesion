@@ -194,8 +194,7 @@ return;
 
 
 
-const membre =
-membreDoc.data();
+const membre = { id: id, ...membreDoc.data() };
 
     
 
