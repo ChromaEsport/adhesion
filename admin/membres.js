@@ -733,6 +733,60 @@ async function chargerMembres() {
             return;
         }
 
+
+/* =========================================
+   DEMANDES MEMBRE ACTIF
+   → statutDemandeMembreActif = en_attente
+========================================= */
+
+if (
+    filtreActuel ===
+    "demande_membre_actif"
+) {
+
+    const resultat =
+        await getDocs(
+            collection(
+                db,
+                "membres"
+            )
+        );
+
+    membres = [];
+
+    resultat.forEach(
+        documentFirestore => {
+
+            const membre = {
+                id:
+                    documentFirestore.id,
+                ...documentFirestore.data()
+            };
+
+            if (
+                membre.statutDemandeMembreActif ===
+                "en_attente"
+            ) {
+
+                membres.push(
+                    membre
+                );
+
+            }
+
+        }
+    );
+
+    afficherMembres(
+        membres
+    );
+
+    return;
+}
+
+
+        
+
         /* =========================================
    MEMBRES ADHÉRENTS
    → statutMembre = adherent
