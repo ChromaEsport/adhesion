@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>Chroma Esport — Accueil</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        min-height: 100vh;
+        font-family: Arial, Helvetica, sans-serif;
+        background:
+            radial-gradient(
+                circle at top,
+                #202040 0%,
+                #0d0d18 45%,
+                #08080f 100%
+            );
+        color: #ffffff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 30px 20px;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 1100px;
+        text-align: center;
+    }
+
+    .logo {
+        font-size: 42px;
+        font-weight: 900;
+        letter-spacing: 4px;
+        margin-bottom: 12px;
+    }
+
+    .logo span {
+        color: #9b5cff;
+    }
+
+    .slogan {
+        font-size: 18px;
+        color: #b8b8c8;
+        margin-bottom: 45px;
+    }
+
+    .question {
+        font-size: 28px;
+        margin-bottom: 25px;
+        font-weight: 700;
+    }
+
+    .choix {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .carte {
+        display: block;
+        text-decoration: none;
+        color: white;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 18px;
+        padding: 30px 25px;
+        transition:
+            transform 0.25s ease,
+            background 0.25s ease,
+            border-color 0.25s ease;
+    }
+
+    .carte:hover {
+        transform: translateY(-6px);
+        background: rgba(155, 92, 255, 0.12);
+        border-color: #9b5cff;
+    }
+
+    .icone {
+        font-size: 42px;
+        margin-bottom: 15px;
+    }
+
+    .titre-carte {
+        font-size: 21px;
+        font-weight: 800;
+        margin-bottom: 10px;
+    }
+
+    .prix {
+        font-size: 17px;
+        font-weight: 700;
+        color: #9b5cff;
+        margin-bottom: 12px;
+    }
+
+    .description {
+        font-size: 15px;
+        color: #b8b8c8;
+        line-height: 1.5;
+    }
+
+    .footer {
+        margin-top: 45px;
+        color: #777789;
+        font-size: 13px;
+    }
+
+    @media (max-width: 700px) {
+
+        body {
+            padding: 25px 15px;
+        }
+
+        .logo {
+            font-size: 30px;
+            letter-spacing: 2px;
+        }
+
+        .slogan {
+            font-size: 16px;
+            margin-bottom: 35px;
+        }
+
+        .question {
+            font-size: 23px;
+        }
+
+        .choix {
+            grid-template-columns: 1fr;
+        }
+
+        .carte {
+            padding: 25px 20px;
+        }
+    }
+</style>
+```
+
+</head>
+
+<body>
+
+```
+<main class="container">
+
+    <div class="logo">
+        CHROMA <span>ESPORT</span>
+    </div>
+
+    <p class="slogan">
+        Une association esport, une communauté, des projets.
+    </p>
+
+    <h1 class="question">
+        Que souhaitez-vous faire ?
+    </h1>
+
+    <div class="choix">
+
+        <a
+            href="index.html"
+            class="carte"
+        >
+            <div class="icone">
+                ⭐
+            </div>
+
+            <div class="titre-carte">
+                JE VEUX ADHÉRER
+            </div>
+
+            <div class="prix">
+                50 €/an
+            </div>
+
+            <div class="description">
+                Devenir membre adhérent
+                de Chroma Esport et participer
+                pleinement à la vie de l'association.
+            </div>
+        </a>
+
+
+        <a
+            href="devenir-membre-communaute.html"
+            class="carte"
+        >
+            <div class="icone">
+                💜
+            </div>
+
+            <div class="titre-carte">
+                JE VEUX REJOINDRE LA COMMUNAUTÉ
+            </div>
+
+            <div class="prix">
+                Gratuit
+            </div>
+
+            <div class="description">
+                Rejoindre la communauté Chroma Esport
+                sans cotisation et accéder à votre
+                espace membre.
+            </div>
+        </a>
+
+
+        <a
+            href="don.html"
+            class="carte"
+        >
+            <div class="icone">
+                💝
+            </div>
+
+            <div class="titre-carte">
+                JE VEUX SOUTENIR CHROMA
+            </div>
+
+            <div class="prix">
+                Don libre
+            </div>
+
+            <div class="description">
+                Soutenir les projets, les équipes
+                et le développement de Chroma Esport
+                grâce à un don.
+            </div>
+        </a>
+
+
+        <a
+            href="#reseaux"
+            class="carte"
+        >
+            <div class="icone">
+                🌐
+            </div>
+
+            <div class="titre-carte">
+                JE VEUX NOUS SUIVRE
+            </div>
+
+            <div class="prix">
+                Rejoignez-nous
+            </div>
+
+            <div class="description">
+                Twitch · YouTube · Instagram ·
+                TikTok · Discord
+            </div>
+        </a>
+
+    </div>
+
+    <div class="footer">
+        © Chroma Esport — Association loi 1901
+    </div>
+
+</main>
+```
+
+</body>
+</html>
