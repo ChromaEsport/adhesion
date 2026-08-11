@@ -254,6 +254,25 @@ async function chargerStatistiques() {
             );
 
 
+// =====================================================
+// DEMANDES DE MEMBRE ACTIF EN ATTENTE
+// =====================================================
+
+const demandesMembreActifEnAttente =
+    membresFirestore.filter(
+        membre =>
+            membre.statutDemandeMembreActif ===
+            "en_attente"
+    ).length;
+
+if (compteurDemandesMembreActif) {
+
+    compteurDemandesMembreActif.textContent =
+        demandesMembreActifEnAttente;
+
+}
+
+
         // =====================================================
         // DATE ACTUELLE
         // =====================================================
