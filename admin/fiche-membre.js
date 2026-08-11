@@ -1030,7 +1030,7 @@ if (
 
 
     const adhesionActive =
-        membre.statutAdhesion === "active";
+        membre.statutAdhesion === "en_cours";
 
 
     contenuDemandeMembreActif.innerHTML = `
