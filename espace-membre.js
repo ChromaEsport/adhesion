@@ -505,78 +505,59 @@ function afficherEspaceMembreActif(
     if (
         membre.statutDemandeMembreActif ===
         "refusee"
-    ) {
+    ) {blocMembreActif.style.display =
+    "block";
 
-        blocMembreActif.style.display =
-            "block";
+const motif =
+    membre.motifRefusMembreActif
+    ||
+    "Aucun motif communiqué.";
 
-        const motif =
-            membre.motifRefusMembreActif
-            ||
-            "Aucun motif communiqué.";
+contenuMembreActif.innerHTML = \`
+    <div class="message-membre-actif">
 
-        contenuMembreActif.innerHTML = `
+        <div class="icone-membre-actif">
+            ❌
+        </div>
 
-            <div class="message-membre-actif">
+        <h4>
+            Demande refusée
+        </h4>
 
-                <div class="icone-membre-actif">
-                    ❌
-                </div>
+        <p>
+            Votre demande de passage
+            en membre actif a été refusée
+            par l'administration.
+        </p>
 
-                <h4>
-                    Demande refusée
-                </h4>
+        <div class="motif-refus">
 
-                <p>
-                    Votre précédente demande
-                    de passage en membre actif
-                    a été refusée.
-                </p>
+            <strong>
+                Motif :
+            </strong>
 
-                <div class="motif-refus">
+            <p>
+                ${motif}
+            </p>
 
-                    <strong>
-                        Motif :
-                    </strong>
+        </div>
 
-                    <p>
-                        ${motif}
-                    </p>
+        <p>
+            Vous ne pouvez pas déposer
+            une nouvelle demande pour le moment.
+        </p>
 
-                </div>
+        <p>
+            Si vous souhaitez demander
+            un nouvel examen de votre situation,
+            veuillez contacter l'administration
+            de Chroma Esport.
+        </p>
 
-                <button
-                    id="nouvelleDemandeMembreActif"
-                    type="button"
-                >
-                    ⭐ Déposer une nouvelle demande
-                </button>
+    </div>
+\`;
 
-            </div>
-
-        `;
-
-        const bouton =
-            document.getElementById(
-                "nouvelleDemandeMembreActif"
-            );
-
-        if (bouton) {
-
-            bouton.addEventListener(
-                "click",
-                () => {
-
-                    demanderPassageMembreActif(
-                        membre
-                    );
-
-                }
-            );
-
-        }
-
-        return;
+return;
     }
 
 
