@@ -1090,6 +1090,22 @@ if (
 
 }
 
+if (
+    membre.statutDemandeMembreActif ===
+    "refusee" &&
+    membre.nouvelleDemandeMembreActifAutorisee !==
+    true
+) {
+
+    alert(
+        "L'administration ne vous a pas encore autorisé à déposer une nouvelle demande."
+    );
+
+    return;
+}
+
+
+
     if ( membre.statutDemandeMembreActif === 
         "refusee" 
        ) { 
