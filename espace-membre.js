@@ -677,7 +677,7 @@ if (
     */
 
     if (
-        !membre.dateDebutAdhesion
+        !membre.datePremiereAdhesion
     ) {
 
         blocMembreActif.style.display =
@@ -708,10 +708,7 @@ if (
     }
 
 
-    const dateDebut =
-        convertirDate(
-            membre.dateDebutAdhesion
-        );
+    const datePremiere = convertirDate(membre.datePremiereAdhesion);
 
     const dateEligibilite =
         new Date(
