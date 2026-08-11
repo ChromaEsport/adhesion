@@ -826,7 +826,7 @@ const cotisationAJour =
 
 const adhesionActive =
     membre.statutAdhesion ===
-    "active";
+    "en_cours";
 
 const critereCotisation =
     cotisationAJour &&
@@ -1054,7 +1054,7 @@ async function demanderPassageMembreActif(
 
 if (
     membre.statutAdhesion !==
-    "active"
+    "en_cours"
 ) {
 
     alert(
