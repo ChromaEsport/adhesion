@@ -944,226 +944,273 @@ function afficherMembres(liste) {
     if (liste.length === 0) {
 
         listeMembres.innerHTML =
-            `<tr>
-                <td colspan="8">
+            `
+            <tr>
+                <td colspan="7">
                     Aucun membre trouvé.
                 </td>
-            </tr>`;
+            </tr>
+            `;
 
         return;
     }
 
-
-    liste.forEach(membre => {
-
-        const estEnAttentePaiement =
-            filtreActuel === "en_attente_paiement";
-
-        
-const estDemandeMembreActif =
-    filtreActuel ===
-    "demande_membre_actif";
-
-
-
-
-        const statutAdhesionAffiche =
-            adhesionEstExpiree(membre)
-                ? "expiree"
-                : membre.statutAdhesion;
-
-
-        const statutPaiementAffiche =
-            adhesionEstExpiree(membre)
-                ? "en_attente"
-                : membre.statutPaiement;
-
-
-        const ligne =
-            document.createElement("tr");
-
-
-        let actions = "";
-
-
-        /* =========================================
-           EN ATTENTE DE PAIEMENT
-        ========================================= */
-
-        
-
-if (estEnAttentePaiement) {
-
-    actions = `
-        <button
-            class="voir-demande"
-            data-id="${membre.id}"
-        >
-            👤 Voir demande
-        </button>
-
-        <button
-            class="renvoyer-paiement"
-            data-id="${membre.id}"
-        >
-            🔄 Renvoyer le lien du paiement
-        </button>
-    `;
-
-}
-else if (estDemandeMembreActif) {
-
-    actions = `
-        <button
-            class="voir"
-            data-id="${membre.id}"
-        >
-            👤 Voir la demande
-        </button>
-    `;
-
-}
-else {
-
-    actions = `
-        <button
-            class="voir"
-            data-id="${membre.id}"
-        >
-            👤 Voir
-        </button>
-
-        <button
-            class="modifier"
-            data-id="${membre.id}"
-        >
-            ✏️ Modifier
-        </button>
-    `;
-
-}
-
-
-
-
-
-
-        /* =========================================
-           MEMBRES
-        ========================================= */
-
-        else {
-
-            actions = `
-
-                <button
-                    class="voir"
-                    data-id="${membre.id}"
-                >
-                    👤 Voir
-                </button>
-
-                <button
-                    class="modifier"
-                    data-id="${membre.id}"
-                >
-                    ✏️ Modifier
-                </button>
-
-            `;
-
-        }
-
-
-        ligne.innerHTML = `
-
-            <td>
-                ${membre.numeroMembre || "-"}
-            </td>
-
-            <td>
-    ${membre.prenom || ""}
-    ${membre.nom || ""}
-</td>
-            <td>
-                ${membre.discord || "-"}
-            </td>
-
-            <td>
-                ${statutPaiementAffiche || "-"}
-            </td>
-
-            <td>
-                ${statutAdhesionAffiche || "-"}
-            </td>
-
-            <td>
-                ${membre.statutMembre || "-"}
-            </td>
-
-            <td>
-                ${actions}
-            </td>
-
-        `;
-
-
-        listeMembres.appendChild(ligne);
-
-
-        /* =========================================
-           VOIR DEMANDE
-        ========================================= */
-
-        const boutonVoirDemande =
-            ligne.querySelector(".voir-demande");
-
-
-        if (boutonVoirDemande) {
-
-            boutonVoirDemande.addEventListener(
-                "click",
-                () => {
-
-                    window.location.href =
-                        "voir-adhesion.html?id="
-                        +
-                        membre.id;
-
-                }
-            );
-
-        }
-
-
-        /* =========================================
-           RENVOYER PAIEMENT
-           → sera branché à Stripe ensuite
-        ========================================= */
-
-        const boutonRenvoyerPaiement =
-    ligne.querySelector(".renvoyer-paiement");
-
-
-if (boutonRenvoyerPaiement) {
-
-    boutonRenvoyerPaiement.addEventListener(
-        "click",
-        () => {
-
-            if (!membre.lienPaiement) {
-
-                alert(
-                    "Aucun lien de paiement disponible pour cette demande."
+    liste.forEach(
+        membre => {
+
+            const estEnAttentePaiement =
+                filtreActuel ===
+                "en_attente_paiement";
+
+            const estDemandeMembreActif =
+                filtreActuel ===
+                "demande_membre_actif";
+
+            const statutAdhesionAffiche =
+                adhesionEstExpiree(membre)
+                    ? "expiree"
+                    : membre.statutAdhesion;
+
+            const statutPaiementAffiche =
+                adhesionEstExpiree(membre)
+                    ? "en_attente"
+                    : membre.statutPaiement;
+
+            const ligne =
+                document.createElement(
+                    "tr"
                 );
 
-                return;
+            let actions = "";
+
+
+            /* =========================================
+               EN ATTENTE DE PAIEMENT
+            ========================================= */
+
+            if (
+                estEnAttentePaiement
+            ) {
+
+                actions = `
+                    <button
+                        class="voir-demande"
+                        data-id="${membre.id}"
+                    >
+                        👤 Voir demande
+                    </button>
+
+                    <button
+                        class="renvoyer-paiement"
+                        data-id="${membre.id}"
+                    >
+                        🔄 Renvoyer le lien du paiement
+                    </button>
+                `;
 
             }
 
 
-            window.location.href =
-                membre.lienPaiement;
+            /* =========================================
+               DEMANDE MEMBRE ACTIF
+            ========================================= */
+
+            else if (
+                estDemandeMembreActif
+            ) {
+
+                actions = `
+                    <button
+                        class="voir"
+                        data-id="${membre.id}"
+                    >
+                        👤 Voir la demande
+                    </button>
+                `;
+
+            }
+
+
+            /* =========================================
+               AUTRES MEMBRES
+            ========================================= */
+
+            else {
+
+                actions = `
+                    <button
+                        class="voir"
+                        data-id="${membre.id}"
+                    >
+                        👤 Voir
+                    </button>
+
+                    <button
+                        class="modifier"
+                        data-id="${membre.id}"
+                    >
+                        ✏️ Modifier
+                    </button>
+                `;
+
+            }
+
+
+            ligne.innerHTML = `
+                <td>
+                    ${membre.numeroMembre || "-"}
+                </td>
+
+                <td>
+                    ${membre.prenom || ""}
+                    ${membre.nom || ""}
+                </td>
+
+                <td>
+                    ${membre.discord || "-"}
+                </td>
+
+                <td>
+                    ${statutPaiementAffiche || "-"}
+                </td>
+
+                <td>
+                    ${statutAdhesionAffiche || "-"}
+                </td>
+
+                <td>
+                    ${membre.statutMembre || "-"}
+                </td>
+
+                <td>
+                    ${actions}
+                </td>
+            `;
+
+            listeMembres.appendChild(
+                ligne
+            );
+
+
+            /* =========================================
+               VOIR DEMANDE DE PAIEMENT
+            ========================================= */
+
+            const boutonVoirDemande =
+                ligne.querySelector(
+                    ".voir-demande"
+                );
+
+            if (
+                boutonVoirDemande
+            ) {
+
+                boutonVoirDemande.addEventListener(
+                    "click",
+                    () => {
+
+                        window.location.href =
+                            "voir-adhesion.html?id="
+                            +
+                            membre.id;
+
+                    }
+                );
+
+            }
+
+
+            /* =========================================
+               RENVOYER PAIEMENT
+            ========================================= */
+
+            const boutonRenvoyerPaiement =
+                ligne.querySelector(
+                    ".renvoyer-paiement"
+                );
+
+            if (
+                boutonRenvoyerPaiement
+            ) {
+
+                boutonRenvoyerPaiement.addEventListener(
+                    "click",
+                    () => {
+
+                        if (
+                            !membre.lienPaiement
+                        ) {
+
+                            alert(
+                                "Aucun lien de paiement disponible pour cette demande."
+                            );
+
+                            return;
+                        }
+
+                        window.location.href =
+                            membre.lienPaiement;
+
+                    }
+                );
+
+            }
+
+
+            /* =========================================
+               VOIR MEMBRE
+            ========================================= */
+
+            const boutonVoir =
+                ligne.querySelector(
+                    ".voir"
+                );
+
+            if (
+                boutonVoir
+            ) {
+
+                boutonVoir.addEventListener(
+                    "click",
+                    () => {
+
+                        window.location.href =
+                            "fiche-membre.html?id="
+                            +
+                            membre.id;
+
+                    }
+                );
+
+            }
+
+
+            /* =========================================
+               MODIFIER MEMBRE
+            ========================================= */
+
+            const boutonModifier =
+                ligne.querySelector(
+                    ".modifier"
+                );
+
+            if (
+                boutonModifier
+            ) {
+
+                boutonModifier.addEventListener(
+                    "click",
+                    () => {
+
+                        window.location.href =
+                            "modifier-membre.html?id="
+                            +
+                            membre.id;
+
+                    }
+                );
+
+            }
 
         }
     );
@@ -1171,58 +1218,6 @@ if (boutonRenvoyerPaiement) {
 }
 
 
-        /* =========================================
-           VOIR MEMBRE
-        ========================================= */
-
-        const boutonVoir =
-            ligne.querySelector(".voir");
-
-
-        if (boutonVoir) {
-
-            boutonVoir.addEventListener(
-                "click",
-                () => {
-
-                    window.location.href =
-                        "fiche-membre.html?id="
-                        +
-                        membre.id;
-
-                }
-            );
-
-        }
-
-
-        /* =========================================
-           MODIFIER MEMBRE
-        ========================================= */
-
-        const boutonModifier =
-            ligne.querySelector(".modifier");
-
-
-        if (boutonModifier) {
-
-            boutonModifier.addEventListener(
-                "click",
-                () => {
-
-                    window.location.href =
-                        "modifier-membre.html?id="
-                        +
-                        membre.id;
-
-                }
-            );
-
-        }
-
-    });
-
-}
 
 
 
