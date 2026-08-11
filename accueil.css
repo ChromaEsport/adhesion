@@ -334,23 +334,45 @@
     }
 
 
-    /* =========================================
-PLATEFORMES PRINCIPALES
+ /* =========================================
+DISCORD + TWITCH
 ========================================= */
 
-.plateforme-principale {
-max-width: 850px;
-margin: 25px auto;
-padding: 32px;
+.plateformes-principales {
 
 
-display: flex;
-align-items: center;
-gap: 25px;
+max-width: 1000px;
+
+margin: 35px auto;
+
+display: grid;
+
+grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+gap: 20px;
+
+
+}
+
+/* =========================================
+CARTE PLATEFORME
+========================================= */
+
+.carte-plateforme {
+
+
+padding: 30px;
 
 border-radius: 22px;
 
-text-align: left;
+text-align: center;
+
+display: flex;
+
+flex-direction: column;
+
+align-items: center;
 
 transition:
     transform 0.2s ease,
@@ -359,18 +381,34 @@ transition:
 
 }
 
-.plateforme-principale:hover {
-transform: translateY(-3px);
+.carte-plateforme:hover {
+
+
+transform:
+    translateY(-4px);
+
+
 }
 
-.plateforme-icone {
-min-width: 70px;
+/* =========================================
+ICÔNE
+========================================= */
+
+.carte-plateforme .plateforme-icone {
+
+
 width: 70px;
+
+min-width: 70px;
+
 height: 70px;
 
+margin-bottom: 18px;
 
 display: flex;
+
 align-items: center;
+
 justify-content: center;
 
 border-radius: 18px;
@@ -380,18 +418,21 @@ font-size: 2rem;
 
 }
 
-.plateforme-contenu {
-flex: 1;
-}
+/* =========================================
+LABEL
+========================================= */
 
-.plateforme-label {
+.carte-plateforme .plateforme-label {
+
+
 display: block;
-
 
 margin-bottom: 8px;
 
-font-size: 0.75rem;
+font-size: 0.72rem;
+
 font-weight: 700;
+
 letter-spacing: 1.5px;
 
 opacity: 0.7;
@@ -399,22 +440,34 @@ opacity: 0.7;
 
 }
 
-.plateforme-contenu h3 {
-margin: 0 0 10px;
+/* =========================================
+TITRE
+========================================= */
+
+.carte-plateforme h3 {
 
 
-font-size: 1.6rem;
+margin: 0 0 12px;
+
+font-size: 1.45rem;
 
 
 }
 
-.plateforme-contenu p {
-margin: 0 0 22px;
+/* =========================================
+DESCRIPTION
+========================================= */
 
+.carte-plateforme p {
+
+
+margin: 0 auto 25px;
+
+max-width: 400px;
 
 line-height: 1.6;
 
-opacity: 0.9;
+opacity: 0.85;
 
 
 }
@@ -424,24 +477,32 @@ DISCORD
 ========================================= */
 
 .discord-principal {
-border: 1px solid rgba(88, 101, 242, 0.5);
 
+
+border:
+    1px solid rgba(88, 101, 242, 0.5);
 
 background:
     linear-gradient(
         135deg,
         rgba(88, 101, 242, 0.18),
-        rgba(88, 101, 242, 0.06)
+        rgba(88, 101, 242, 0.05)
     );
 
 box-shadow:
-    0 12px 35px rgba(88, 101, 242, 0.12);
+    0 12px 35px
+    rgba(88, 101, 242, 0.12);
 
 
 }
 
 .discord-principal .plateforme-icone {
-background: rgba(88, 101, 242, 0.2);
+
+
+background:
+    rgba(88, 101, 242, 0.2);
+
+
 }
 
 /* =========================================
@@ -449,8 +510,10 @@ TWITCH
 ========================================= */
 
 .twitch-principal {
-border: 1px solid rgba(145, 70, 255, 0.45);
 
+
+border:
+    1px solid rgba(145, 70, 255, 0.45);
 
 background:
     linear-gradient(
@@ -460,26 +523,35 @@ background:
     );
 
 box-shadow:
-    0 12px 35px rgba(145, 70, 255, 0.1);
+    0 12px 35px
+    rgba(145, 70, 255, 0.1);
 
 
 }
 
 .twitch-principal .plateforme-icone {
-background: rgba(145, 70, 255, 0.18);
+
+
+background:
+    rgba(145, 70, 255, 0.18);
+
+
 }
 
 /* =========================================
-BOUTONS PLATEFORMES
+BOUTONS
 ========================================= */
 
 .bouton-plateforme {
+
+
 display: inline-flex;
+
 align-items: center;
+
 justify-content: center;
 
-
-padding: 13px 24px;
+padding: 13px 22px;
 
 border-radius: 11px;
 
@@ -488,6 +560,8 @@ color: white;
 text-decoration: none;
 
 font-weight: 700;
+
+margin-top: auto;
 
 transition:
     transform 0.2s ease,
@@ -498,17 +572,28 @@ transition:
 }
 
 .bouton-plateforme:hover {
-transform: translateY(-2px);
-filter: brightness(1.08);
+
+
+transform:
+    translateY(-2px);
+
+filter:
+    brightness(1.08);
+
+
 }
 
 /* Discord */
 
 .bouton-discord {
-background: #5865F2;
+
+
+background:
+    #5865F2;
 
 box-shadow:
-    0 7px 22px rgba(88, 101, 242, 0.3);
+    0 7px 22px
+    rgba(88, 101, 242, 0.3);
 
 
 }
@@ -516,14 +601,18 @@ box-shadow:
 /* Twitch */
 
 .bouton-twitch {
-background: #9146FF;
 
+
+background:
+    #9146FF;
 
 box-shadow:
-    0 7px 22px rgba(145, 70, 255, 0.3);
+    0 7px 22px
+    rgba(145, 70, 255, 0.3);
 
 
 }
+
 
 /* =========================================
 RÉSEAUX SECONDAIRES
@@ -669,41 +758,6 @@ background:
 
 }
 
-/* =========================================
-MOBILE
-========================================= */
-
-@media (max-width: 650px) {
-
-
-.plateforme-principale {
-    margin: 20px 10px;
-    padding: 25px 20px;
-
-    flex-direction: column;
-
-    text-align: center;
-}
-
-.plateforme-contenu h3 {
-    font-size: 1.35rem;
-}
-
-.plateforme-contenu p {
-    font-size: 0.95rem;
-}
-
-.bouton-plateforme {
-    width: 100%;
-}
-
-.reseaux-secondaires {
-    margin-left: 15px;
-    margin-right: 15px;
-}
-
-
-}
 
 
     /* ================================
