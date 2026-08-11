@@ -70,7 +70,7 @@
 
     .logo span {
 
-        color: #9b5cff;
+        color: #3c9195;
 
     }
 
@@ -153,14 +153,14 @@
 
         background:
             rgba(
-                155,
-                92,
-                255,
+                60,
+                145,
+                149,
                 0.15
             );
 
         border-color:
-            #9b5cff;
+            #3c9195;
 
         transform:
             translateY(-2px);
@@ -279,14 +279,14 @@
 
         background:
             rgba(
-                155,
-                92,
-                255,
+                60,
+                145,
+                149,
                 0.12
             );
 
         border-color:
-            #9b5cff;
+            #3c9195;
 
     }
 
@@ -314,7 +314,7 @@
     .prix {
 
         color:
-            #9b5cff;
+            #3c9195;
 
         font-weight: 700;
 
@@ -418,13 +418,13 @@
     .lien-reseau:hover {
 
         border-color:
-            #9b5cff;
+            #3c9195;
 
         background:
             rgba(
-                155,
-                92,
-                255,
+                60,
+                145,
+                149,
                 0.12
             );
 
