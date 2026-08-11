@@ -959,6 +959,13 @@ function afficherMembres(liste) {
         const estEnAttentePaiement =
             filtreActuel === "en_attente_paiement";
 
+        
+const estDemandeMembreActif =
+    filtreActuel ===
+    "demande_membre_actif";
+
+
+
 
         const statutAdhesionAffiche =
             adhesionEstExpiree(membre)
@@ -983,27 +990,62 @@ function afficherMembres(liste) {
            EN ATTENTE DE PAIEMENT
         ========================================= */
 
-        if (estEnAttentePaiement) {
+        
 
-            actions = `
+if (estEnAttentePaiement) {
 
-                <button
-                    class="voir-demande"
-                    data-id="${membre.id}"
-                >
-                   👤 Voir demande
-                </button>
+    actions = `
+        <button
+            class="voir-demande"
+            data-id="${membre.id}"
+        >
+            👤 Voir demande
+        </button>
 
-                <button
-                    class="renvoyer-paiement"
-                    data-id="${membre.id}"
-                >
-                  🔄 Renvoyer le lien du paiement
-                </button>
+        <button
+            class="renvoyer-paiement"
+            data-id="${membre.id}"
+        >
+            🔄 Renvoyer le lien du paiement
+        </button>
+    `;
 
-            `;
+}
+else if (estDemandeMembreActif) {
 
-        }
+    actions = `
+        <button
+            class="voir"
+            data-id="${membre.id}"
+        >
+            👤 Voir la demande
+        </button>
+    `;
+
+}
+else {
+
+    actions = `
+        <button
+            class="voir"
+            data-id="${membre.id}"
+        >
+            👤 Voir
+        </button>
+
+        <button
+            class="modifier"
+            data-id="${membre.id}"
+        >
+            ✏️ Modifier
+        </button>
+    `;
+
+}
+
+
+
+
 
 
         /* =========================================
