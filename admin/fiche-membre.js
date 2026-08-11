@@ -745,8 +745,14 @@ const adhesionActive =
     
 // Aucun bloc si aucune demande n'existe
     if 
-( membre.statutDemandeMembreActif !== "en_attente" && membre.statutDemandeMembreActif !== "refusee" )
-    { blocDemandeMembreActif.style.display = "none"; 
+( membre.statutDemandeMembreActif !== 
+ "en_attente"
+ &&
+ membre.statutDemandeMembreActif !== 
+ "refusee" 
+) { 
+    blocDemandeMembreActif.style.display = 
+        "none"; 
      
      return; }
 
