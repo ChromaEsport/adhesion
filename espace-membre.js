@@ -496,69 +496,177 @@ function afficherEspaceMembreActif(
     }
 
 
+/*
+=========================================
+DEMANDE REFUSÉE
+=========================================
+*/
+
+if (
+    membre.statutDemandeMembreActif ===
+    "refusee"
+) {
+
+    blocMembreActif.style.display =
+        "block";
+
+    const motif =
+        membre.motifRefusMembreActif
+        ||
+        "Aucun motif communiqué.";
+
     /*
     =========================================
-    DEMANDE REFUSÉE
+    VÉRIFICATION AUTORISATION ADMIN
+    =========================================
+    */
+
+    const nouvelleDemandeAutorisee =
+        membre.nouvelleDemandeMembreActifAutorisee ===
+        true;
+
+    /*
+    =========================================
+    SI L'ADMIN N'A PAS AUTORISÉ
     =========================================
     */
 
     if (
-        membre.statutDemandeMembreActif ===
-        "refusee"
-    ) {blocMembreActif.style.display =
-    "block";
+        !nouvelleDemandeAutorisee
+    ) {
 
-const motif =
-    membre.motifRefusMembreActif
-    ||
-    "Aucun motif communiqué.";
+        contenuMembreActif.innerHTML = `
+            <div class="message-membre-actif">
 
-contenuMembreActif.innerHTML = `
-    <div class="message-membre-actif">
+                <div class="icone-membre-actif">
+                    ❌
+                </div>
 
-        <div class="icone-membre-actif">
-            ❌
-        </div>
+                <h4>
+                    Demande refusée
+                </h4>
 
-        <h4>
-            Demande refusée
-        </h4>
+                <p>
+                    Votre précédente demande
+                    de passage en membre actif
+                    a été refusée.
+                </p>
 
-        <p>
-            Votre demande de passage
-            en membre actif a été refusée
-            par l'administration.
-        </p>
+                <div class="motif-refus">
 
-        <div class="motif-refus">
+                    <strong>
+                        Motif :
+                    </strong>
 
-            <strong>
-                Motif :
-            </strong>
+                    <p>
+                        ${motif}
+                    </p>
+
+                </div>
+
+                <div class="information-demande-actif">
+
+                    <p>
+                        🔒 Une nouvelle demande
+                        ne peut pas être déposée
+                        pour le moment.
+                    </p>
+
+                    <p>
+                        Si l'administration vous
+                        autorise à déposer une nouvelle
+                        demande, cette possibilité
+                        apparaîtra automatiquement
+                        dans votre espace membre.
+                    </p>
+
+                </div>
+
+            </div>
+        `;
+
+        return;
+    }
+
+    /*
+    =========================================
+    SI L'ADMIN A AUTORISÉ UNE NOUVELLE DEMANDE
+    =========================================
+    */
+
+    contenuMembreActif.innerHTML = `
+        <div class="message-membre-actif">
+
+            <div class="icone-membre-actif">
+                ❌
+            </div>
+
+            <h4>
+                Demande précédente refusée
+            </h4>
 
             <p>
-                ${motif}
+                Votre précédente demande
+                de passage en membre actif
+                a été refusée.
             </p>
 
+            <div class="motif-refus">
+
+                <strong>
+                    Motif :
+                </strong>
+
+                <p>
+                    ${motif}
+                </p>
+
+            </div>
+
+            <div class="information-demande-actif">
+
+                <p>
+                    🟢 L'administration vous
+                    autorise maintenant à déposer
+                    une nouvelle demande.
+                </p>
+
+            </div>
+
+            <button
+                id="nouvelleDemandeMembreActif"
+                type="button"
+            >
+                ⭐ Déposer une nouvelle demande
+            </button>
+
         </div>
+    `;
 
-        <p>
-            Vous ne pouvez pas déposer
-            une nouvelle demande pour le moment.
-        </p>
+    const bouton =
+        document.getElementById(
+            "nouvelleDemandeMembreActif"
+        );
 
-        <p>
-            Si vous souhaitez demander
-            un nouvel examen de votre situation,
-            veuillez contacter l'administration
-            de Chroma Esport.
-        </p>
+    if (bouton) {
 
-    </div>
-`;
+        bouton.addEventListener(
+            "click",
+            () => {
 
-return;
+                demanderPassageMembreActif(
+                    membre
+                );
+
+            }
+        );
+
     }
+
+    return;
+}
+
+
 
 
     /*
