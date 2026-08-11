@@ -1105,15 +1105,6 @@ if (
 }
 
 
-
-    if ( membre.statutDemandeMembreActif === 
-        "refusee" 
-       ) { 
-        
-        alert(
-            "Votre précédente demande a été refusée. Vous ne pouvez pas déposer immédiatement une nouvelle demande." ); 
-                                                          
-        return; }
     
     if (
         !user
