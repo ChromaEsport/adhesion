@@ -334,101 +334,392 @@
     }
 
 
-    /* ================================
-       RESEAUX
-    ================================= */
+    /* =========================================
+PLATEFORMES PRINCIPALES
+========================================= */
 
-    .reseaux {
-
-        margin-top: 60px;
-
-        text-align: center;
-
-    }
+.plateforme-principale {
+max-width: 850px;
+margin: 25px auto;
+padding: 32px;
 
 
-    .reseaux h2 {
+display: flex;
+align-items: center;
+gap: 25px;
 
-        font-size: 25px;
+border-radius: 22px;
 
-        margin-bottom: 10px;
+text-align: left;
 
-    }
-
-
-    .reseaux p {
-
-        color: #888899;
-
-        margin-bottom: 25px;
-
-    }
+transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 
 
-    .liens-reseaux {
+}
 
-        display: flex;
+.plateforme-principale:hover {
+transform: translateY(-3px);
+}
 
-        justify-content: center;
-
-        flex-wrap: wrap;
-
-        gap: 12px;
-
-    }
-
-
-    .lien-reseau {
-
-        display: inline-block;
-
-        padding:
-            11px
-            18px;
-
-        border-radius: 10px;
-
-        background:
-            rgba(
-                255,
-                255,
-                255,
-                0.05
-            );
-
-        border:
-            1px solid
-            rgba(
-                255,
-                255,
-                255,
-                0.10
-            );
-
-        color: #ffffff;
-
-        text-decoration: none;
-
-        transition:
-            0.2s ease;
-
-    }
+.plateforme-icone {
+min-width: 70px;
+width: 70px;
+height: 70px;
 
 
-    .lien-reseau:hover {
+display: flex;
+align-items: center;
+justify-content: center;
 
-        border-color:
-            #3c9195;
+border-radius: 18px;
 
-        background:
-            rgba(
-                60,
-                145,
-                149,
-                0.12
-            );
+font-size: 2rem;
 
-    }
+
+}
+
+.plateforme-contenu {
+flex: 1;
+}
+
+.plateforme-label {
+display: block;
+
+
+margin-bottom: 8px;
+
+font-size: 0.75rem;
+font-weight: 700;
+letter-spacing: 1.5px;
+
+opacity: 0.7;
+
+
+}
+
+.plateforme-contenu h3 {
+margin: 0 0 10px;
+
+
+font-size: 1.6rem;
+
+
+}
+
+.plateforme-contenu p {
+margin: 0 0 22px;
+
+
+line-height: 1.6;
+
+opacity: 0.9;
+
+
+}
+
+/* =========================================
+DISCORD
+========================================= */
+
+.discord-principal {
+border: 1px solid rgba(88, 101, 242, 0.5);
+
+
+background:
+    linear-gradient(
+        135deg,
+        rgba(88, 101, 242, 0.18),
+        rgba(88, 101, 242, 0.06)
+    );
+
+box-shadow:
+    0 12px 35px rgba(88, 101, 242, 0.12);
+
+
+}
+
+.discord-principal .plateforme-icone {
+background: rgba(88, 101, 242, 0.2);
+}
+
+/* =========================================
+TWITCH
+========================================= */
+
+.twitch-principal {
+border: 1px solid rgba(145, 70, 255, 0.45);
+
+
+background:
+    linear-gradient(
+        135deg,
+        rgba(145, 70, 255, 0.16),
+        rgba(145, 70, 255, 0.05)
+    );
+
+box-shadow:
+    0 12px 35px rgba(145, 70, 255, 0.1);
+
+
+}
+
+.twitch-principal .plateforme-icone {
+background: rgba(145, 70, 255, 0.18);
+}
+
+/* =========================================
+BOUTONS PLATEFORMES
+========================================= */
+
+.bouton-plateforme {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+
+
+padding: 13px 24px;
+
+border-radius: 11px;
+
+color: white;
+
+text-decoration: none;
+
+font-weight: 700;
+
+transition:
+    transform 0.2s ease,
+    filter 0.2s ease,
+    box-shadow 0.2s ease;
+
+
+}
+
+.bouton-plateforme:hover {
+transform: translateY(-2px);
+filter: brightness(1.08);
+}
+
+/* Discord */
+
+.bouton-discord {
+background: #5865F2;
+
+box-shadow:
+    0 7px 22px rgba(88, 101, 242, 0.3);
+
+
+}
+
+/* Twitch */
+
+.bouton-twitch {
+background: #9146FF;
+
+
+box-shadow:
+    0 7px 22px rgba(145, 70, 255, 0.3);
+
+
+}
+
+/* =========================================
+RÉSEAUX SECONDAIRES
+========================================= */
+
+.reseaux-secondaires {
+max-width: 850px;
+
+
+margin: 45px auto 30px;
+
+text-align: center;
+
+
+}
+
+.reseaux-secondaires h3 {
+margin: 5px 0 10px;
+
+
+font-size: 1.35rem;
+
+
+}
+
+.reseaux-secondaires p {
+margin-bottom: 22px;
+
+
+opacity: 0.75;
+
+
+}
+
+.reseaux-secondaires .reseaux {
+display: flex;
+
+
+justify-content: center;
+
+flex-wrap: wrap;
+
+gap: 12px;
+
+
+}
+
+.reseaux-secondaires .reseaux a {
+display: inline-flex;
+
+
+align-items: center;
+justify-content: center;
+
+padding: 10px 18px;
+
+border-radius: 10px;
+
+text-decoration: none;
+
+transition:
+    transform 0.2s ease,
+    filter 0.2s ease;
+
+
+}
+
+.reseaux-secondaires .reseaux a:hover {
+transform: translateY(-2px);
+filter: brightness(1.08);
+}
+
+/* =========================================
+ESPACE MEMBRE
+========================================= */
+
+.espace-membre-accueil {
+max-width: 700px;
+
+
+margin: 45px auto 20px;
+
+padding: 28px;
+
+text-align: center;
+
+border-radius: 18px;
+
+border: 1px solid rgba(255, 255, 255, 0.1);
+
+background:
+    rgba(255, 255, 255, 0.03);
+
+
+}
+
+.espace-membre-accueil .plateforme-icone {
+margin: 0 auto 15px;
+
+
+width: 55px;
+min-width: 55px;
+height: 55px;
+
+font-size: 1.5rem;
+
+background:
+    rgba(255, 255, 255, 0.06);
+
+
+}
+
+.espace-membre-accueil h3 {
+margin-bottom: 10px;
+}
+
+.espace-membre-accueil p {
+margin-bottom: 20px;
+
+
+opacity: 0.75;
+
+
+}
+
+.bouton-espace-membre {
+display: inline-flex;
+
+
+align-items: center;
+justify-content: center;
+
+padding: 11px 22px;
+
+border-radius: 10px;
+
+border: 1px solid rgba(255, 255, 255, 0.15);
+
+color: inherit;
+
+text-decoration: none;
+
+font-weight: 600;
+
+transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+
+
+}
+
+.bouton-espace-membre:hover {
+transform: translateY(-2px);
+
+
+background:
+    rgba(255, 255, 255, 0.07);
+
+
+}
+
+/* =========================================
+MOBILE
+========================================= */
+
+@media (max-width: 650px) {
+
+
+.plateforme-principale {
+    margin: 20px 10px;
+    padding: 25px 20px;
+
+    flex-direction: column;
+
+    text-align: center;
+}
+
+.plateforme-contenu h3 {
+    font-size: 1.35rem;
+}
+
+.plateforme-contenu p {
+    font-size: 0.95rem;
+}
+
+.bouton-plateforme {
+    width: 100%;
+}
+
+.reseaux-secondaires {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+
+}
 
 
     /* ================================
