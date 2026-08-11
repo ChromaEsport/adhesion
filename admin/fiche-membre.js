@@ -223,6 +223,10 @@ membre,
 id
 );
 
+    configurerAutorisationNouvelleDemande(
+    membre,
+    id
+);
     
 afficherActionsAdmin(membre);
 
