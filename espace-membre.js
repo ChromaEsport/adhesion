@@ -1191,19 +1191,22 @@ if (
 
         const demandeData = {
 
-            statutDemandeMembreActif:
-                "en_attente",
+    statutDemandeMembreActif:
+        "en_attente",
 
-            demandeMembreActif:
-                true,
+    demandeMembreActif:
+        true,
 
-            dateDemandeMembreActif:
-                new Date(),
+    nouvelleDemandeMembreActifAutorisee:
+        false,
 
-            firebaseUid:
-                user.uid
+    dateDemandeMembreActif:
+        new Date(),
 
-        };
+    firebaseUid:
+        user.uid
+
+};
 
 
         /*
