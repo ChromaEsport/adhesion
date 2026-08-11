@@ -1393,6 +1393,9 @@ if (boutonRefuser) {
                         demandeMembreActif:
                             false,
 
+
+                        nouvelleDemandeMembreActifAutorisee: false,
+                        
                         dateDecisionMembreActif:
                             Timestamp.now(),
 
