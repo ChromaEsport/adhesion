@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+    Rejoindre la communauté | Chroma Esport
+</title>
+
+<link
+    rel="stylesheet"
+    href="devenir-membre-communaute.css"
+>
+
+
+</head>
+
+<body>
+
+<main class="page">
+
+<section class="communaute-card">
+
+
+<!-- =========================================
+     EN-TÊTE
+========================================= -->
+
+<div class="logo-zone">
+
+    <h1>
+        CHROMA ESPORT
+    </h1>
+
+    <p>
+        Rejoignez gratuitement notre communauté
+    </p>
+
+</div>
+
+
+<!-- =========================================
+     PRÉSENTATION
+========================================= -->
+
+<div class="info-box">
+
+    <strong>
+        💜 Membre Communauté — Gratuit
+    </strong>
+
+    <p>
+        Vous souhaitez rejoindre Chroma Esport,
+        suivre nos actualités et participer à la
+        vie de notre communauté sans prendre de
+        cotisation ?
+    </p>
+
+    <p>
+        Créez gratuitement votre compte et
+        accédez à votre espace membre.
+    </p>
+
+    <p>
+        Vous pourrez plus tard choisir de devenir
+        membre adhérent ou simplement soutenir
+        l'association par un don.
+    </p>
+
+</div>
+
+
+<!-- =========================================
+     FORMULAIRE
+========================================= -->
+
+<form id="communauteForm">
+
+
+    <!-- =====================================
+         INFORMATIONS PERSONNELLES
+    ===================================== -->
+
+    <h2>
+        Vos informations
+    </h2>
+
+
+    <div class="form-row">
+
+        <div class="form-group">
+
+            <label for="prenom">
+                Prénom *
+            </label>
+
+            <input
+                type="text"
+                id="prenom"
+                name="prenom"
+                required
+                autocomplete="given-name"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label for="nom">
+                Nom *
+            </label>
+
+            <input
+                type="text"
+                id="nom"
+                name="nom"
+                required
+                autocomplete="family-name"
+            >
+
+        </div>
+
+    </div>
+
+
+    <div class="form-group">
+
+        <label for="dateNaissance">
+            Date de naissance *
+        </label>
+
+        <input
+            type="date"
+            id="dateNaissance"
+            name="dateNaissance"
+            required
+            autocomplete="bday"
+        >
+
+    </div>
+
+
+    <!-- =====================================
+         CONTACT
+    ===================================== -->
+
+    <h2>
+        Vos coordonnées
+    </h2>
+
+
+    <div class="form-group">
+
+        <label for="email">
+            Adresse e-mail *
+        </label>
+
+        <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            autocomplete="email"
+        >
+
+        <small>
+            Cette adresse sera utilisée pour vous
+            connecter à votre espace membre.
+        </small>
+
+    </div>
+
+
+    <div class="form-group">
+
+        <label for="emailConfirmation">
+            Confirmer votre adresse e-mail *
+        </label>
+
+        <input
+            type="email"
+            id="emailConfirmation"
+            name="emailConfirmation"
+            required
+            autocomplete="email"
+        >
+
+    </div>
+
+
+    <div class="form-group">
+
+        <label for="discord">
+            Pseudo Discord *
+        </label>
+
+        <input
+            type="text"
+            id="discord"
+            name="discord"
+            required
+            placeholder="Exemple : ChromaPlayer"
+            autocomplete="off"
+        >
+
+        <small>
+            Discord est le principal espace
+            d'échange de la communauté Chroma Esport.
+        </small>
+
+    </div>
+
+
+    <!-- =====================================
+         MOT DE PASSE
+    ===================================== -->
+
+    <h2>
+        Sécurisez votre compte
+    </h2>
+
+
+    <div class="info-box">
+
+        <p>
+            Votre compte vous permettra d'accéder
+            à votre espace membre personnel.
+        </p>
+
+        <p>
+            Choisissez un mot de passe suffisamment
+            sécurisé et ne l'utilisez pas sur un autre
+            service.
+        </p>
+
+    </div>
+
+
+    <div class="form-group">
+
+        <label for="password">
+            Mot de passe *
+        </label>
+
+        <input
+            type="password"
+            id="password"
+            name="password"
+            required
+            autocomplete="new-password"
+            minlength="6"
+        >
+
+        <small>
+            Minimum 6 caractères.
+        </small>
+
+    </div>
+
+
+    <div class="form-group">
+
+        <label for="passwordConfirmation">
+            Confirmer votre mot de passe *
+        </label>
+
+        <input
+            type="password"
+            id="passwordConfirmation"
+            name="passwordConfirmation"
+            required
+            autocomplete="new-password"
+            minlength="6"
+        >
+
+    </div>
+
+
+    <!-- =====================================
+         ADRESSE
+    ===================================== -->
+
+    <h2>
+        Adresse postale
+    </h2>
+
+
+    <div class="form-group">
+
+        <label for="adresse">
+            Adresse *
+        </label>
+
+        <input
+            type="text"
+            id="adresse"
+            name="adresse"
+            required
+            autocomplete="street-address"
+            placeholder="Exemple : 12 rue Victor Hugo"
+        >
+
+    </div>
+
+
+    <div class="form-group">
+
+        <label for="complementAdresse">
+            Complément d'adresse
+        </label>
+
+        <input
+            type="text"
+            id="complementAdresse"
+            name="complementAdresse"
+            autocomplete="address-line2"
+            placeholder="Appartement, bâtiment, étage..."
+        >
+
+    </div>
+
+
+    <div class="form-row">
+
+        <div class="form-group">
+
+            <label for="codePostal">
+                Code postal *
+            </label>
+
+            <input
+                type="text"
+                id="codePostal"
+                name="codePostal"
+                required
+                maxlength="10"
+                autocomplete="postal-code"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label for="ville">
+                Ville *
+            </label>
+
+            <input
+                type="text"
+                id="ville"
+                name="ville"
+                required
+                autocomplete="address-level2"
+            >
+
+        </div>
+
+    </div>
+
+
+    <div class="form-group">
+
+        <label for="pays">
+            Pays *
+        </label>
+
+        <select
+            id="pays"
+            name="pays"
+            required
+            autocomplete="country-name"
+        >
+
+            <option
+                value="France"
+                selected
+            >
+                France
+            </option>
+
+            <option value="Belgique">
+                Belgique
+            </option>
+
+            <option value="Suisse">
+                Suisse
+            </option>
+
+            <option value="Luxembourg">
+                Luxembourg
+            </option>
+
+            <option value="Canada">
+                Canada
+            </option>
+
+            <option value="Autre">
+                Autre
+            </option>
+
+        </select>
+
+    </div>
+
+
+    <!-- =====================================
+         INFORMATIONS COMMUNAUTÉ
+    ===================================== -->
+
+    <h2>
+        Votre accès à la communauté
+    </h2>
+
+
+    <div class="info-box">
+
+        <strong>
+            💜 Un accès gratuit à la communauté
+        </strong>
+
+        <p>
+            En rejoignant gratuitement Chroma Esport,
+            vous pourrez accéder à votre espace membre
+            et rester informé de la vie de l'association.
+        </p>
+
+        <p>
+            Vous pourrez également rejoindre notre
+            Discord et échanger avec les autres membres
+            de la communauté.
+        </p>
+
+        <p>
+            Cette inscription ne vous donne pas le
+            statut de membre adhérent et ne nécessite
+            aucune cotisation.
+        </p>
+
+    </div>
+
+
+    <!-- =====================================
+         CONDITIONS
+    ===================================== -->
+
+    <h2>
+        Conditions
+    </h2>
+
+
+    <div class="checkbox-group">
+
+        <label>
+
+            <input
+                type="checkbox"
+                id="informationsExactes"
+                required
+            >
+
+            Je certifie que les informations
+            communiquées sont exactes.
+
+        </label>
+
+    </div>
+
+
+    <div class="checkbox-group">
+
+        <label>
+
+            <input
+                type="checkbox"
+                id="statuts"
+                required
+            >
+
+            J’ai pris connaissance des statuts
+            et du règlement intérieur de
+            Chroma Esport.
+
+        </label>
+
+    </div>
+
+
+    <div class="checkbox-group">
+
+        <label>
+
+            <input
+                type="checkbox"
+                id="communaute"
+                required
+            >
+
+            Je comprends que l'inscription à la
+            communauté est gratuite et ne constitue
+            pas une adhésion payante à l'association.
+
+        </label>
+
+    </div>
+
+
+    <div class="checkbox-group">
+
+        <label>
+
+            <input
+                type="checkbox"
+                id="espaceMembre"
+                required
+            >
+
+            J'accepte la création de mon compte
+            et l'accès à mon espace membre personnel.
+
+        </label>
+
+    </div>
+
+
+    <!-- =====================================
+         ACCÈS ADHÉSION
+    ===================================== -->
+
+    <div class="info-box">
+
+        <strong>
+            ⭐ Vous pourrez évoluer quand vous le souhaitez
+        </strong>
+
+        <p>
+            Depuis votre espace membre, vous pourrez
+            ultérieurement choisir de devenir membre
+            adhérent en réglant la cotisation annuelle
+            de 50 €.
+        </p>
+
+        <p>
+            Vous pourrez également soutenir Chroma Esport
+            en effectuant un don libre.
+        </p>
+
+    </div>
+
+
+    <!-- =====================================
+         VALIDATION
+    ===================================== -->
+
+    <button
+        type="submit"
+    >
+        💜 REJOINDRE LA COMMUNAUTÉ
+    </button>
+
+
+    <p
+        id="message"
+        class="message"
+    ></p>
+
+
+    <!-- =====================================
+         DÉJÀ MEMBRE
+    ===================================== -->
+
+    <div class="connexion-link">
+
+        <p>
+            Vous avez déjà un compte ?
+        </p>
+
+        <a href="espace-membre.html">
+            🔐 Accéder à mon espace membre
+        </a>
+
+    </div>
+
+
+</form>
+
+
+</section>
+
+</main>
+
+<script
+    type="module"
+    src="devenir-membre-communaute.js"
+></script>
+
+</body>
+
+</html>
