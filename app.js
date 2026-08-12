@@ -1,10 +1,18 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+import { initializeApp } 
+from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+
+import {
+    getAuth,
+    onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 
 import {
     getFirestore,
     collection,
     addDoc,
-    serverTimestamp
+    serverTimestamp,
+    doc,
+    getDoc
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -19,6 +27,8 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app);
 
 const db = getFirestore(app);
 
@@ -43,6 +53,201 @@ const donLibreZone = document.getElementById(
 const donLibre = document.getElementById(
     "donLibre"
 );
+
+const prenom =
+    document.getElementById("prenom");
+
+const nom =
+    document.getElementById("nom");
+
+const discord =
+    document.getElementById("discord");
+
+const adresseInput =
+    document.getElementById("adresse");
+
+const complementAdresseInput =
+    document.getElementById("complementAdresse");
+
+const codePostalInput =
+    document.getElementById("codePostal");
+
+const villeInput =
+    document.getElementById("ville");
+
+const paysInput =
+    document.getElementById("pays");
+
+const messageCompteCommunaute =
+    document.getElementById(
+        "messageCompteCommunaute"
+    );
+async function chargerMembreCommunaute(user) {
+
+    if (!user) {
+        return;
+    }
+
+    try {
+
+        console.log(
+            "Utilisateur connecté :",
+            user.uid
+        );
+
+        const communauteRef =
+            doc(
+                db,
+                "communaute",
+                user.uid
+            );
+
+        const communauteSnapshot =
+            await getDoc(
+                communauteRef
+            );
+
+        if (
+            !communauteSnapshot.exists()
+        ) {
+
+            console.log(
+                "Aucun compte communauté trouvé pour cet utilisateur."
+            );
+
+            return;
+        }
+
+        const communaute =
+            communauteSnapshot.data();
+
+        console.log(
+            "Membre Communauté trouvé :",
+            communaute
+        );
+
+
+        /*
+        =========================================
+        PRÉREMPLISSAGE
+        =========================================
+        */
+
+        prenom.value =
+            communaute.prenom || "";
+
+        nom.value =
+            communaute.nom || "";
+
+        email.value =
+            communaute.email ||
+            user.email ||
+            "";
+
+        emailConfirmation.value =
+            communaute.email ||
+            user.email ||
+            "";
+
+        discord.value =
+            communaute.discord || "";
+
+        adresseInput.value =
+            communaute.adresse || "";
+
+        complementAdresseInput.value =
+            communaute.complementAdresse || "";
+
+        codePostalInput.value =
+            communaute.codePostal || "";
+
+        villeInput.value =
+            communaute.ville || "";
+
+        paysInput.value =
+            communaute.pays ||
+            "France";
+
+
+        /*
+        =========================================
+        DATE DE NAISSANCE
+        =========================================
+        */
+
+        if (
+            communaute.dateNaissance
+        ) {
+
+            if (
+                typeof communaute.dateNaissance.toDate ===
+                "function"
+            ) {
+
+                const date =
+                    communaute.dateNaissance.toDate();
+
+                dateNaissance.value =
+                    date.toISOString()
+                        .split("T")[0];
+
+            }
+            else {
+
+                dateNaissance.value =
+                    communaute.dateNaissance;
+
+            }
+
+        }
+
+
+        /*
+        =========================================
+        MESSAGE
+        =========================================
+        */
+
+        if (
+            messageCompteCommunaute
+        ) {
+
+            messageCompteCommunaute.style.display =
+                "block";
+
+        }
+
+    }
+    catch (error) {
+
+        console.error(
+            "Erreur lors du chargement du compte communauté :",
+            error
+        );
+
+    }
+}
+
+onAuthStateChanged(
+    auth,
+    async (user) => {
+
+        if (!user) {
+
+            console.log(
+                "Aucun utilisateur connecté."
+            );
+
+            return;
+        }
+
+        await chargerMembreCommunaute(
+            user
+        );
+
+    }
+);
+
  // Masquer le champ de don libre au chargement
 
 donLibreZone.classList.add(
