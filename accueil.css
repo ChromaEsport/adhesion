@@ -683,6 +683,9 @@ transition:
 
     background: rgb(60 155 159 / 50%);
         color:white;
+
+        width: 270px;
+    font-weight: 700;
 }
 
 .reseaux-secondaires .reseaux a:hover {
