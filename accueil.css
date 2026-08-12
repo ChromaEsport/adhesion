@@ -538,12 +538,14 @@ background:
 
 }
 .plateforme-icone img {
-        width: 42px;
-        height: 42px;
-        object-fit: contain;
+        width: 70px;
+        
 }
 
-
+.img {
+        width: 70px;
+        
+}
 /* =========================================
 BOUTONS
 ========================================= */
