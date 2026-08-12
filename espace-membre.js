@@ -194,88 +194,78 @@ onAuthStateChanged(
 CHARGER LE MEMBRE
 ========================================================= */
 
-async function chargerMembre(
-    firebaseUid
-) {
-
+async function chargerMembre(firebaseUid) {
     try {
 
         if (!firebaseUid) {
-
-            afficherErreur(
-                "Identifiant Firebase introuvable."
-            );
-
+            afficherErreur("Identifiant Firebase introuvable.");
             return;
         }
 
-        const requete =
-            query(
-                collection(
-                    db,
-                    "membres"
-                ),
-                where(
-                    "firebaseUid",
-                    "==",
-                    firebaseUid
-                )
-            );
+        /*
+        =========================================
+        RECHERCHE DANS MEMBRES
+        =========================================
+        */
 
-        const resultat =
-            await getDocs(
-                requete
-            );
+        const requete = query(
+            collection(db, "membres"),
+            where("firebaseUid", "==", firebaseUid)
+        );
 
-        if (
-            resultat.empty
-        ) {
+        const resultat = await getDocs(requete);
 
-            console.error(
-                "Aucun membre trouvé avec le firebaseUid :",
-                firebaseUid
-            );
+        if (!resultat.empty) {
 
-            afficherErreur(
-                "Aucun membre correspondant à ce compte n'a été trouvé."
-            );
+            let membre = null;
 
-            return;
-        }
-
-        let membre = null;
-
-        resultat.forEach(
-            documentFirestore => {
-
+            resultat.forEach(documentFirestore => {
                 membre = {
-
-                    id:
-                        documentFirestore.id,
-
+                    id: documentFirestore.id,
+                    typeCompte: "adherent",
                     ...documentFirestore.data()
-
                 };
+            });
 
-            }
+            afficherMembre(membre);
+            return;
+        }
+
+        /*
+        =========================================
+        RECHERCHE DANS COMMUNAUTE
+        =========================================
+        */
+
+        const communauteRef = doc(
+            db,
+            "communaute",
+            firebaseUid
         );
 
-        console.log(
-            "Membre trouvé avec firebaseUid :",
-            membre
-        );
+        const communauteDoc = await getDoc(communauteRef);
 
-        afficherMembre(
-            membre
+        if (communauteDoc.exists()) {
+
+            const membre = {
+                id: communauteDoc.id,
+                typeCompte: "communaute",
+                ...communauteDoc.data()
+            };
+
+            afficherMembre(membre);
+            return;
+        }
+
+        afficherErreur(
+            "Aucun compte associé à cette connexion."
         );
 
     }
+
     catch (error) {
 
-        console.error(
-            "Erreur lors du chargement du membre :",
-            error
-        );
+        console.error(error);
 
         afficherErreur(
             "Impossible de charger vos informations."
