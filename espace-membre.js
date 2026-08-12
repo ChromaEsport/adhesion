@@ -1245,13 +1245,13 @@ if (
         =====================================
         */
 
-        const datePremiere =
+        const dateDebut =
             convertirDate(
                 membre.datePremiereAdhesion
             );
 
         if (
-    !datePremiere
+    !dateDebut
 ) {
     alert(
         "Impossible de vérifier votre ancienneté."
@@ -1262,7 +1262,7 @@ if (
 
         const dateEligibilite =
     new Date(
-        datePremiere
+        dateDebut
     );
 
         dateEligibilite.setMonth(
