@@ -637,7 +637,12 @@ a:hover {
     color:
         #ffffff;
 }
-
+.connexion-link {
+   
+    text-align: center;
+    margin-top: 40px;
+   
+}
 
 /* =========================================================
    SCROLLBAR
