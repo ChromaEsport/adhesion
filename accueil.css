@@ -805,7 +805,23 @@ background:
                 1fr;
 
         }
+.plateformes-principales {
+    grid-template-columns: 1fr;
+    margin: 25px 10px;
+}
 
+.carte-plateforme {
+    padding: 25px 20px;
+}
+
+.bouton-plateforme {
+    width: 100%;
+}
+
+
+
+
+            
     }
 
 
