@@ -1247,26 +1247,23 @@ if (
 
         const dateDebut =
             convertirDate(
-                membre.dateDebutAdhesion
+                membre.datePremiereAdhesion
             );
 
         if (
-            !dateDebut
-        ) {
-
-            alert(
-                "Impossible de vérifier votre ancienneté."
-            );
-
-            return;
-
-        }
+    !datePremiere
+) {
+    alert(
+        "Impossible de vérifier votre ancienneté."
+    );
+    return;
+}
 
 
         const dateEligibilite =
-            new Date(
-                dateDebut
-            );
+    new Date(
+        datePremiere
+    );
 
         dateEligibilite.setMonth(
             dateEligibilite.getMonth() + 6
