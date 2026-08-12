@@ -332,6 +332,31 @@ function afficherMembre(membre) {
             membre
         );
 
+         /*
+    =========================================
+    AFFICHAGE COMMUNAUTÉ
+    =========================================
+    */
+
+    if (blocCommunaute) {
+        blocCommunaute.style.display =
+            "block";
+    }
+
+    if (blocAdhesion) {
+        blocAdhesion.style.display =
+            "none";
+    }
+
+    if (blocCarteMembre) {
+        blocCarteMembre.style.display =
+            "none";
+    }
+
+    if (blocMembreActif) {
+        blocMembreActif.style.display =
+            "none";
+    }
         /*
         -----------------------------------------
         STATUT
