@@ -1,4 +1,4 @@
-* {
+/** {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -25,6 +25,439 @@ transparent 35%
 #0b0d14;
 color: #f5f5f7;
 padding: 40px 20px;
+}
+
+/* =========================================
+PAGE
+========================================= */
+
+/*.page {
+width: 100%;
+max-width: 900px;
+margin: 0 auto;
+}
+
+/* =========================================
+CARTE PRINCIPALE
+========================================= */
+
+/*.communaute-card {
+background: rgba(20, 23, 34, 0.96);
+border: 1px solid rgba(255, 255, 255, 0.08);
+border-radius: 24px;
+padding: 45px;
+box-shadow:
+0 25px 70px rgba(0, 0, 0, 0.45);
+}
+
+/* =========================================
+LOGO / EN-TÊTE
+========================================= */
+
+/*.logo-zone {
+text-align: center;
+margin-bottom: 35px;
+}
+
+.logo-zone h1 {
+font-size: 38px;
+font-weight: 900;
+letter-spacing: 3px;
+margin-bottom: 10px;
+}
+
+.logo-zone p {
+font-size: 17px;
+color: #b7b9c5;
+}
+
+/* =========================================
+BOÎTES D'INFORMATION
+========================================= */
+
+/*.info-box {
+background: rgba(255, 255, 255, 0.035);
+border: 1px solid rgba(255, 255, 255, 0.08);
+border-left: 4px solid #8a5cf6;
+border-radius: 14px;
+padding: 22px;
+margin-bottom: 30px;
+}
+
+.info-box strong {
+display: block;
+font-size: 18px;
+margin-bottom: 10px;
+}
+
+.info-box p {
+color: #c4c6d0;
+line-height: 1.6;
+margin-top: 8px;
+}
+
+/* =========================================
+FORMULAIRE
+========================================= */
+
+/*form {
+width: 100%;
+}
+
+form h2 {
+font-size: 22px;
+margin: 35px 0 20px;
+padding-bottom: 10px;
+border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* =========================================
+LIGNES
+========================================= */
+
+/*.form-row {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 18px;
+}
+
+/* =========================================
+GROUPES
+========================================= */
+
+/*.form-group {
+margin-bottom: 20px;
+}
+
+.form-group label {
+display: block;
+font-size: 14px;
+font-weight: 700;
+margin-bottom: 8px;
+color: #e8e8ed;
+}
+
+.form-group small {
+display: block;
+margin-top: 7px;
+color: #8f92a0;
+font-size: 12px;
+line-height: 1.5;
+}
+
+/* =========================================
+INPUTS
+========================================= */
+
+/*input,
+select {
+width: 100%;
+min-height: 48px;
+padding: 12px 14px;
+border-radius: 10px;
+border: 1px solid rgba(255, 255, 255, 0.12);
+background: #10131d;
+color: #ffffff;
+font-size: 15px;
+outline: none;
+transition:
+border-color 0.2s ease,
+box-shadow 0.2s ease,
+background 0.2s ease;
+}
+
+input::placeholder {
+color: #666a78;
+}
+
+input:focus,
+select:focus {
+border-color: #8a5cf6;
+background: #121622;
+box-shadow:
+0 0 0 3px rgba(138, 92, 246, 0.14);
+}
+
+/* =========================================
+DATE
+========================================= */
+
+/*input[type="date"] {
+color-scheme: dark;
+}
+
+/* =========================================
+CHECKBOXES
+========================================= */
+
+/*.checkbox-group {
+margin-bottom: 15px;
+}
+
+.checkbox-group label {
+display: flex;
+align-items: flex-start;
+gap: 12px;
+padding: 15px;
+background: rgba(255, 255, 255, 0.025);
+border: 1px solid rgba(255, 255, 255, 0.07);
+border-radius: 12px;
+color: #c7c9d2;
+font-size: 14px;
+line-height: 1.5;
+cursor: pointer;
+transition:
+background 0.2s ease,
+border-color 0.2s ease;
+}
+
+.checkbox-group label:hover {
+background: rgba(255, 255, 255, 0.045);
+border-color: rgba(138, 92, 246, 0.35);
+}
+
+.checkbox-group input[type="checkbox"] {
+width: 18px;
+min-width: 18px;
+height: 18px;
+min-height: 18px;
+margin-top: 2px;
+accent-color: #8a5cf6;
+}
+
+/* =========================================
+BOUTON PRINCIPAL
+========================================= */
+
+/*button[type="submit"] {
+width: 100%;
+min-height: 56px;
+margin-top: 25px;
+padding: 14px 20px;
+border: none;
+border-radius: 12px;
+background: linear-gradient(
+135deg,
+#8a5cf6,
+#6d45d9
+);
+color: #ffffff;
+font-size: 15px;
+font-weight: 800;
+letter-spacing: 0.5px;
+cursor: pointer;
+transition:
+transform 0.2s ease,
+filter 0.2s ease,
+box-shadow 0.2s ease;
+box-shadow:
+0 10px 30px rgba(138, 92, 246, 0.25);
+}
+
+button[type="submit"]:hover {
+transform: translateY(-2px);
+filter: brightness(1.08);
+box-shadow:
+0 14px 35px rgba(138, 92, 246, 0.35);
+}
+
+button[type="submit"]:active {
+transform: translateY(0);
+}
+
+/* =========================================
+MESSAGE
+========================================= */
+
+/*.message {
+min-height: 24px;
+margin-top: 18px;
+text-align: center;
+font-size: 14px;
+line-height: 1.5;
+}
+
+/* =========================================
+CONNEXION
+========================================= */
+
+/*.connexion-link {
+text-align: center;
+margin-top: 30px;
+padding-top: 25px;
+border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.connexion-link p {
+color: #9295a2;
+margin-bottom: 10px;
+}
+
+.connexion-link a {
+color: #b18cff;
+font-weight: 700;
+text-decoration: none;
+transition: color 0.2s ease;
+}
+
+.connexion-link a:hover {
+color: #ffffff;
+}
+
+/* =========================================
+RESPONSIVE
+========================================= */
+
+/*@media (max-width: 700px) {
+
+
+body {
+    padding: 20px 12px;
+}
+
+.communaute-card {
+    padding: 28px 20px;
+    border-radius: 18px;
+}
+
+.logo-zone h1 {
+    font-size: 29px;
+    letter-spacing: 2px;
+}
+
+.logo-zone p {
+    font-size: 15px;
+}
+
+.form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+}
+
+form h2 {
+    font-size: 20px;
+    margin-top: 30px;
+}
+
+.info-box {
+    padding: 18px;
+}
+
+
+}
+
+/* =========================================
+PETITS ÉCRANS
+========================================= */
+
+/*@media (max-width: 430px) {
+
+
+body {
+    padding: 10px 8px;
+}
+
+.communaute-card {
+    padding: 22px 15px;
+    border-radius: 15px;
+}
+
+.logo-zone h1 {
+    font-size: 25px;
+}
+
+.info-box {
+    padding: 15px;
+}
+
+.checkbox-group label {
+    padding: 12px;
+    font-size: 13px;
+}
+
+button[type="submit"] {
+    font-size: 14px;
+}
+
+
+}*/
+
+
+
+
+
+
+/* =========================================================
+   CHROMA ESPORT
+   FORMULAIRE MEMBRE COMMUNAUTÉ
+   ========================================================= */
+
+:root {
+    --chroma: #3c9195;
+    --chroma-light: #55b7bb;
+    --chroma-dark: #2d7175;
+
+    --background: #0b1113;
+    --background-secondary: #10191b;
+    --card: #141f21;
+    --card-light: #192628;
+
+    --border: rgba(60, 145, 149, 0.25);
+    --border-focus: rgba(60, 145, 149, 0.75);
+
+    --text: #f1f5f5;
+    --text-secondary: #aab9ba;
+    --text-muted: #7d8d8e;
+
+    --success: #6ed6a3;
+    --error: #ff6b7a;
+    --warning: #f2c76c;
+
+    --radius: 14px;
+    --radius-small: 9px;
+
+    --shadow:
+        0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+
+    min-height: 100vh;
+
+    font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    background:
+        radial-gradient(
+            circle at top,
+            rgba(60, 145, 149, 0.12),
+            transparent 35%
+        ),
+        var(--background);
+
+    color: var(--text);
+
+    line-height: 1.6;
 }
 
 /* =========================================
@@ -170,8 +603,8 @@ input::placeholder {
 color: #666a78;
 }
 
-input:focus,
-select:focus {
+input,
+select {
 border-color: #8a5cf6;
 background: #121622;
 box-shadow:
@@ -211,7 +644,7 @@ background 0.2s ease,
 border-color 0.2s ease;
 }
 
-.checkbox-group label:hover {
+.checkbox-group label {
 background: rgba(255, 255, 255, 0.045);
 border-color: rgba(138, 92, 246, 0.35);
 }
@@ -254,14 +687,14 @@ box-shadow:
 0 10px 30px rgba(138, 92, 246, 0.25);
 }
 
-button[type="submit"]:hover {
+button[type="submit"] {
 transform: translateY(-2px);
 filter: brightness(1.08);
 box-shadow:
 0 14px 35px rgba(138, 92, 246, 0.35);
 }
 
-button[type="submit"]:active {
+button[type="submit"] {
 transform: translateY(0);
 }
 
@@ -300,7 +733,7 @@ text-decoration: none;
 transition: color 0.2s ease;
 }
 
-.connexion-link a:hover {
+.connexion-link a {
 color: #ffffff;
 }
 
@@ -309,7 +742,6 @@ RESPONSIVE
 ========================================= */
 
 @media (max-width: 700px) {
-
 
 body {
     padding: 20px 12px;
@@ -342,8 +774,6 @@ form h2 {
 .info-box {
     padding: 18px;
 }
-
-
 }
 
 /* =========================================
@@ -351,7 +781,6 @@ PETITS ÉCRANS
 ========================================= */
 
 @media (max-width: 430px) {
-
 
 body {
     padding: 10px 8px;
@@ -378,6 +807,893 @@ body {
 button[type="submit"] {
     font-size: 14px;
 }
+}
+
+Ce que tu devrais obtenir
+Sur PC :
+
+CHROMA ESPORT
+Rejoignez gratuitement notre communauté
+
+Puis une grande carte avec les différentes sections du formulaire.
+
+Sur mobile, les champs qui étaient côte à côte :
+
+Prénom | Nom
+
+deviennent :
+
+Prénom
+Nom
+
+comme pour tes autres pages.
+
+Et surtout, ce CSS est totalement indépendant de style.css. Tu pourras donc modifier plus tard le design de la page d'adhésion payante sans casser la page Communauté.
+
+Une fois que tu as créé le fichier et vérifié le rendu de la page, on passe au devenir-membre-communaute.js et là on s'occupera de Firebase Authentication + collection communaute, sans toucher à membres.
 
 
+pourquoi tu me met violet a chaque fois la couleur de chroma c'est dans c'est ton la #3c9195  
+
+Oui, tu as raison. Pour Chroma Esport, on part sur #3C9195 comme couleur principale, pas du violet.
+
+Pour devenir-membre-communaute.css, je te propose donc :
+
+Couleur principale : #3C9195
+
+Fond sombre cohérent avec ton site
+
+Cartes légèrement contrastées
+
+Champs de formulaire modernes
+
+Boutons en #3C9195
+
+Effets hover dans des nuances du même ton
+
+Responsive mobile
+
+Aucun violet
+
+Et surtout, on garde une identité différente de la page adhésion payante, puisque le membre communauté est gratuit.
+
+Si tu veux, on peut maintenant faire le CSS complet de devenir-membre-communaute.html, puis on passera au .js.
+
+
+Faire le CSS complet de devenir-membre-communaute.html
+
+Oui. On va faire un CSS complet, autonome pour devenir-membre-communaute.html, avec la couleur Chroma #3C9195 comme couleur principale.
+
+Je pars sur un rendu moderne, sombre, propre et cohérent avec ton portail accueil.html, sans violet.
+
+À mettre dans :
+
+devenir-membre-communaute.css
+
+/* =========================================================
+   CHROMA ESPORT
+   FORMULAIRE MEMBRE COMMUNAUTÉ
+   ========================================================= */
+
+:root {
+    --chroma: #3c9195;
+    --chroma-light: #55b7bb;
+    --chroma-dark: #2d7175;
+
+    --background: #0b1113;
+    --background-secondary: #10191b;
+    --card: #141f21;
+    --card-light: #192628;
+
+    --border: rgba(60, 145, 149, 0.25);
+    --border-focus: rgba(60, 145, 149, 0.75);
+
+    --text: #f1f5f5;
+    --text-secondary: #aab9ba;
+    --text-muted: #7d8d8e;
+
+    --success: #6ed6a3;
+    --error: #ff6b7a;
+    --warning: #f2c76c;
+
+    --radius: 14px;
+    --radius-small: 9px;
+
+    --shadow:
+        0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+
+    min-height: 100vh;
+
+    font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    background:
+        radial-gradient(
+            circle at top,
+            rgba(60, 145, 149, 0.12),
+            transparent 35%
+        ),
+        var(--background);
+
+    color: var(--text);
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   PAGE
+   ========================================================= */
+
+.page {
+    width: 100%;
+    min-height: 100vh;
+
+    padding:
+        40px 20px 70px;
+
+    display: flex;
+    justify-content: center;
+}
+
+
+/* =========================================================
+   CARTE PRINCIPALE
+   ========================================================= */
+
+.adhesion-card {
+    width: 100%;
+    max-width: 850px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(20, 31, 33, 0.98),
+            rgba(14, 23, 25, 0.98)
+        );
+
+    border: 1px solid var(--border);
+
+    border-radius: 20px;
+
+    box-shadow:
+        var(--shadow),
+        0 0 50px rgba(60, 145, 149, 0.05);
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   ZONE LOGO / EN-TÊTE
+   ========================================================= */
+
+.logo-zone {
+    position: relative;
+
+    padding:
+        42px 40px 36px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(60, 145, 149, 0.18),
+            rgba(60, 145, 149, 0.04)
+        );
+
+    border-bottom:
+        1px solid var(--border);
+}
+
+.logo-zone::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 160px;
+    height: 3px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--chroma),
+            transparent
+        );
+}
+
+.logo-zone h1 {
+    margin: 0;
+
+    font-size: 2rem;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    color: var(--text);
+}
+
+.logo-zone h1::after {
+    content: "";
+
+    display: block;
+
+    width: 55px;
+    height: 3px;
+
+    margin: 14px auto 0;
+
+    border-radius: 10px;
+
+    background: var(--chroma);
+}
+
+.logo-zone p {
+    margin:
+        18px 0 0;
+
+    color: var(--text-secondary);
+
+    font-size: 1rem;
+}
+
+
+/* =========================================================
+   INFO BOX
+   ========================================================= */
+
+.info-box {
+    margin: 28px 40px;
+
+    padding: 20px 22px;
+
+    background:
+        rgba(60, 145, 149, 0.07);
+
+    border:
+        1px solid var(--border);
+
+    border-left:
+        4px solid var(--chroma);
+
+    border-radius:
+        var(--radius-small);
+}
+
+.info-box strong {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: var(--chroma-light);
+
+    font-size: 1rem;
+}
+
+.info-box p {
+    margin: 7px 0;
+
+    color: var(--text-secondary);
+
+    font-size: 0.92rem;
+}
+
+
+/* =========================================================
+   FORMULAIRE
+   ========================================================= */
+
+#adhesionForm {
+    padding:
+        10px 40px 45px;
+}
+
+#adhesionForm h2 {
+    margin:
+        32px 0 20px;
+
+    padding-bottom: 10px;
+
+    font-size: 1.15rem;
+
+    font-weight: 700;
+
+    color: var(--text);
+
+    border-bottom:
+        1px solid rgba(255, 255, 255, 0.08);
+
+    position: relative;
+}
+
+#adhesionForm h2::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: -1px;
+
+    width: 55px;
+    height: 2px;
+
+    background: var(--chroma);
+}
+
+
+/* =========================================================
+   LIGNES DE FORMULAIRE
+   ========================================================= */
+
+.form-row {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 18px;
+}
+
+
+/* =========================================================
+   GROUPE
+   ========================================================= */
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-size: 0.9rem;
+
+    font-weight: 600;
+
+    color: var(--text);
+}
+
+.form-group small {
+    display: block;
+
+    margin-top: 7px;
+
+    color: var(--text-muted);
+
+    font-size: 0.78rem;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   INPUTS / SELECT
+   ========================================================= */
+
+input,
+select,
+textarea {
+    width: 100%;
+
+    min-height: 48px;
+
+    padding:
+        12px 14px;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.12);
+
+    border-radius:
+        var(--radius-small);
+
+    background:
+        #0d1618;
+
+    color:
+        var(--text);
+
+    font-family: inherit;
+
+    font-size: 0.95rem;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+input:hover,
+select:hover,
+textarea:hover {
+    border-color:
+        rgba(60, 145, 149, 0.45);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color:
+        var(--border-focus);
+
+    background:
+        #101b1d;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(60, 145, 149, 0.12);
+}
+
+
+/* =========================================================
+   PLACEHOLDER
+   ========================================================= */
+
+input::placeholder,
+textarea::placeholder {
+    color:
+        #617072;
+
+    opacity: 1;
+}
+
+
+/* =========================================================
+   SELECT
+   ========================================================= */
+
+select {
+    cursor: pointer;
+
+    appearance: auto;
+}
+
+
+/* =========================================================
+   DATE
+   ========================================================= */
+
+input[type="date"] {
+    color-scheme: dark;
+}
+
+
+/* =========================================================
+   CHECKBOXES
+   ========================================================= */
+
+.checkbox-group {
+    margin:
+        14px 0;
+
+    padding:
+        15px 16px;
+
+    background:
+        rgba(255, 255, 255, 0.025);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.07);
+
+    border-radius:
+        var(--radius-small);
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease;
+}
+
+.checkbox-group:hover {
+    background:
+        rgba(60, 145, 149, 0.05);
+
+    border-color:
+        rgba(60, 145, 149, 0.25);
+}
+
+.checkbox-group label {
+    display: flex;
+
+    align-items:
+        flex-start;
+
+    gap: 12px;
+
+    margin: 0;
+
+    cursor: pointer;
+
+    color:
+        var(--text-secondary);
+
+    font-size:
+        0.88rem;
+
+    line-height:
+        1.5;
+}
+
+.checkbox-group input[type="checkbox"] {
+    flex:
+        0 0 auto;
+
+    width:
+        18px;
+
+    height:
+        18px;
+
+    min-height:
+        18px;
+
+    margin:
+        2px 0 0;
+
+    padding:
+        0;
+
+    accent-color:
+        var(--chroma);
+
+    cursor:
+        pointer;
+}
+
+
+/* =========================================================
+   ZONE DON
+   ========================================================= */
+
+#donLibreZone {
+    display: none;
+}
+
+
+/* =========================================================
+   BOUTON PRINCIPAL
+   ========================================================= */
+
+button[type="submit"] {
+    width: 100%;
+
+    min-height: 54px;
+
+    margin-top: 28px;
+
+    padding:
+        14px 20px;
+
+    border: none;
+
+    border-radius:
+        var(--radius-small);
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--chroma),
+            var(--chroma-dark)
+        );
+
+    color:
+        #ffffff;
+
+    font-family:
+        inherit;
+
+    font-size:
+        0.95rem;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        0.5px;
+
+    cursor:
+        pointer;
+
+    box-shadow:
+        0 8px 25px
+        rgba(60, 145, 149, 0.2);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        filter 0.2s ease;
+}
+
+button[type="submit"]:hover {
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 12px 30px
+        rgba(60, 145, 149, 0.3);
+
+    filter:
+        brightness(1.08);
+}
+
+button[type="submit"]:active {
+    transform:
+        translateY(0);
+}
+
+button[type="submit"]:disabled {
+    opacity:
+        0.6;
+
+    cursor:
+        not-allowed;
+
+    transform:
+        none;
+
+    box-shadow:
+        none;
+}
+
+
+/* =========================================================
+   MESSAGE
+   ========================================================= */
+
+.message {
+    margin:
+        18px 0 0;
+
+    padding:
+        12px 15px;
+
+    border-radius:
+        var(--radius-small);
+
+    text-align:
+        center;
+
+    font-size:
+        0.9rem;
+
+    min-height:
+        0;
+}
+
+.message:empty {
+    display:
+        none;
+}
+
+
+/* =========================================================
+   ÉTAT ERREUR
+   ========================================================= */
+
+input:invalid:not(:placeholder-shown) {
+    border-color:
+        rgba(255, 107, 122, 0.45);
+}
+
+input:valid:not(:placeholder-shown) {
+    border-color:
+        rgba(110, 214, 163, 0.2);
+}
+
+
+/* =========================================================
+   LIENS
+   ========================================================= */
+
+a {
+    color:
+        var(--chroma-light);
+
+    text-decoration:
+        none;
+
+    transition:
+        color 0.2s ease;
+}
+
+a:hover {
+    color:
+        #ffffff;
+}
+
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+::-webkit-scrollbar {
+    width:
+        9px;
+}
+
+::-webkit-scrollbar-track {
+    background:
+        var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+    background:
+        #285e61;
+
+    border-radius:
+        20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background:
+        var(--chroma);
+}
+
+
+/* =========================================================
+   RESPONSIVE TABLETTE
+   ========================================================= */
+
+@media (max-width: 760px) {
+
+    .page {
+        padding:
+            25px 14px 50px;
+    }
+
+    .logo-zone {
+        padding:
+            34px 24px 30px;
+    }
+
+    .logo-zone h1 {
+        font-size:
+            1.65rem;
+    }
+
+    .info-box {
+        margin:
+            22px 24px;
+    }
+
+    #adhesionForm {
+        padding:
+            5px 24px 35px;
+    }
+
+    .form-row {
+        grid-template-columns:
+            1fr;
+
+        gap:
+            0;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .page {
+        padding:
+            12px 8px 35px;
+    }
+
+    .adhesion-card {
+        border-radius:
+            14px;
+    }
+
+    .logo-zone {
+        padding:
+            28px 18px 25px;
+    }
+
+    .logo-zone h1 {
+        font-size:
+            1.35rem;
+
+        letter-spacing:
+            1.5px;
+    }
+
+    .logo-zone p {
+        font-size:
+            0.88rem;
+    }
+
+    .info-box {
+        margin:
+            18px 16px;
+
+        padding:
+            16px;
+    }
+
+    #adhesionForm {
+        padding:
+            2px 16px 28px;
+    }
+
+    #adhesionForm h2 {
+        font-size:
+            1.05rem;
+
+        margin-top:
+            28px;
+    }
+
+    .form-group {
+        margin-bottom:
+            17px;
+    }
+
+    .form-group label {
+        font-size:
+            0.86rem;
+    }
+
+    input,
+    select,
+    textarea {
+        min-height:
+            46px;
+
+        font-size:
+            0.9rem;
+    }
+
+    .checkbox-group {
+        padding:
+            13px;
+    }
+
+    .checkbox-group label {
+        font-size:
+            0.82rem;
+    }
+
+    button[type="submit"] {
+        min-height:
+            52px;
+
+        font-size:
+            0.88rem;
+    }
 }
