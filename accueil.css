@@ -686,6 +686,8 @@ transition:
 
         width: 270px;
     font-weight: 700;
+
+        border: 1px solid rgba(255, 255, 255, 0.10);
 }
 
 .reseaux-secondaires .reseaux a:hover {
@@ -693,6 +695,7 @@ transform: translateY(-2px);
 filter: brightness(1.08);
 background: rgb(60 155 159 / 25%);
         color:white;
+        border-color: #3c9195;
 }
 
 /* =========================================
