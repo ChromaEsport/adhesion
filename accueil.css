@@ -814,7 +814,10 @@ background: rgba(255, 255, 255, 0.25);
 }
 
 
-
+.espace-membre {
+    
+    width: 100%;
+}
 
             
     }
