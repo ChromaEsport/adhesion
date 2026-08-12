@@ -976,9 +976,9 @@ if (
 
 
     const dateDebut =
-        afficherDate(
-            membre.dateDebutAdhesion
-        );
+    afficherDate(
+        membre.datePremiereAdhesion
+    );
 
 
     const dateDemande =
@@ -988,9 +988,9 @@ if (
 
 
     const dateEligibiliteObjet =
-        calculerDateEligibiliteMembreActif(
-            membre.dateDebutAdhesion
-        );
+    calculerDateEligibiliteMembreActif(
+        membre.datePremiereAdhesion
+    );
 
 
     let dateEligibilite = "-";
