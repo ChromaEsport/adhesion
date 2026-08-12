@@ -163,6 +163,23 @@ document.getElementById(
 "contenuMembreActif"
 );
 
+const blocAdhesion =
+document.getElementById(
+"blocAdhesion"
+    );
+
+const blocCarteMembre =
+document.getElementById(
+"blocCarteMembre"
+    );
+
+const blocCommunaute =
+document.getElementById(
+"blocCommunaute"
+    );
+
+
+
 /* =========================================================
 AUTHENTIFICATION
 ========================================================= */
