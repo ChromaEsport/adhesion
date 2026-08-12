@@ -15,10 +15,12 @@ import {
     query,
     where,
     getDocs,
+    getDoc,
     doc,
     updateDoc,
     Timestamp
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+
 /* =========================================================
 FIREBASE
 ========================================================= */
