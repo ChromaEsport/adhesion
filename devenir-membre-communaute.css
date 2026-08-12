@@ -8,7 +8,7 @@
     --chroma-light: #55b7bb;
     --chroma-dark: #2d7175;
 
-    --background: radial-gradient(circle at center top, rgb(0, 70, 75) 0%, rgb(16, 16, 27) 66%, rgb(8, 8, 15) 100%);
+    --background: radial-gradient(circle at center top, rgb(0, 90, 95) 0%, rgb(0 30 30) 30%, rgb(0 0 0) 100%);
     --background-secondary: #10191b;
     --card: #141f21;
     --card-light: #192628;
