@@ -487,7 +487,15 @@ const pays =
     .value;
 
         
-       try {
+const utilisateurConnecte =
+    auth.currentUser;
+
+const firebaseUid =
+    utilisateurConnecte
+        ? utilisateurConnecte.uid
+        : null;   
+      
+        try {
 
     await addDoc(
         collection(db, "adhesions"),
@@ -528,11 +536,17 @@ ville:
 pays:
     pays,
 
+firebaseUid:
+    firebaseUid,
 
+origine:
+    firebaseUid
+        ? "communaute"
+        : "nouvelle_adhesion",            
+            
 annee:
     2026,
-
-
+            
             cotisation:
                 cotisation,
 
