@@ -700,21 +700,14 @@ ESPACE MEMBRE
 ========================================= */
 
 .espace-membre {
-max-width: 400px;
-
-
-margin: 20px auto 45px;
-
-padding: 28px;
-
-text-align: center;
-
-border-radius: 18px;
-
-border: 1px solid rgba(255, 255, 255, 0.1);
-
-background:
-    rgba(255, 255, 255, 0.03);
+        
+    margin: 20px auto 45px;
+    padding: 28px;
+    text-align: center;
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgb(60 155 159 / 25%);
+    width: 66%;
 
 
 }
@@ -755,15 +748,14 @@ transition:
     transform 0.2s ease,
     background 0.2s ease;
 
-
+background:#3c9195;
 }
 
 .bouton-espace-membre:hover {
 transform: translateY(-2px);
 
 
-background:
-    rgba(255, 255, 255, 0.07);
+background: rgba(255, 255, 255, 0.25);
 
 
 }
