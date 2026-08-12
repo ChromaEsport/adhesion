@@ -243,13 +243,7 @@
 
         color: #ffffff;
 
-        background:
-            rgba(
-                255,
-                255,
-                255,
-                0.05
-            );
+        background: rgb(60 155 159 / 25%);
 
         border:
             1px solid
