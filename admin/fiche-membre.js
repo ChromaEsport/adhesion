@@ -1518,7 +1518,7 @@ membre.statutPaiement ===
 
 const dateEligibilite =
 calculerDateEligibiliteMembreActif(
-membre.dateDebutAdhesion
+membre.datePremiereAdhesion
 );
 
 let sixMoisAtteints =
