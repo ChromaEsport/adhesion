@@ -1251,7 +1251,7 @@ if (
             );
 
         if (
-    !datePremiere
+    !datePremiereAdhesion
 ) {
     alert(
         "Impossible de vérifier votre ancienneté."
