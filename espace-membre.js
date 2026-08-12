@@ -278,116 +278,199 @@ async function chargerMembre(firebaseUid) {
 AFFICHER LE MEMBRE
 ========================================================= */
 
-function afficherMembre(
-membre
-) {
+function afficherMembre(membre) {
+
+    /*
+    =========================================
+    INFORMATIONS COMMUNES
+    =========================================
+    */
+
+    prenomMembre.textContent =
+        membre.prenom || "-";
+
+    prenomInformation.textContent =
+        membre.prenom || "-";
+
+    nomMembre.textContent =
+        membre.nom || "-";
+
+    emailMembre.textContent =
+        membre.email || "-";
+
+    discordMembre.textContent =
+        membre.discord || "-";
 
 
-prenomMembre.textContent =
-    membre.prenom ||
-    "-";
+    /*
+    =========================================
+    COMPTE COMMUNAUTÉ
+    =========================================
+    */
+
+    if (membre.typeCompte === "communaute") {
+
+        console.log(
+            "Compte Membre Communauté chargé :",
+            membre
+        );
+
+        /*
+        -----------------------------------------
+        STATUT
+        -----------------------------------------
+        */
+
+        statutMembre.textContent =
+            "💜 Membre Communauté";
 
 
-prenomInformation.textContent =
-    membre.prenom ||
-    "-";
+        /*
+        -----------------------------------------
+        PAS DE NUMÉRO CHRO
+        -----------------------------------------
+        */
+
+        numeroMembre.textContent =
+            "Communauté";
+
+        numeroMembreHeader.textContent =
+            "💜 COMMUNAUTÉ";
 
 
-nomMembre.textContent =
-    membre.nom ||
-    "-";
+        /*
+        -----------------------------------------
+        ADHÉSION
+        -----------------------------------------
+        */
+
+        statutAdhesion.textContent =
+            "💜 Inscription gratuite";
+
+        anneeAdhesion.textContent =
+            "-";
+
+        dateDebutAdhesion.textContent =
+            "-";
+
+        dateFinAdhesion.textContent =
+            "-";
+
+        statutPaiement.textContent =
+            "💜 Aucun paiement";
+
+        cotisation.textContent =
+            "0,00 €";
 
 
-emailMembre.textContent =
-    membre.email ||
-    "-";
+        /*
+        -----------------------------------------
+        CARTE MEMBRE
+        -----------------------------------------
+        */
+
+        numeroCarte.textContent =
+            "COMMUNAUTÉ";
+
+        statutCarte.textContent =
+            "💜 Membre Communauté";
 
 
-discordMembre.textContent =
-    membre.discord ||
-    "-";
+        /*
+        -----------------------------------------
+        BLOC MEMBRE ACTIF
+        -----------------------------------------
+        */
+
+        if (blocMembreActif) {
+
+            blocMembreActif.style.display =
+                "none";
+
+        }
 
 
-numeroMembre.textContent =
-    membre.numeroMembre ||
-    "-";
+        return;
+    }
 
 
-numeroMembreHeader.textContent =
-    membre.numeroMembre ||
-    "-";
+    /*
+    =========================================
+    MEMBRE ADHÉRENT
+    =========================================
+    */
 
-
-statutMembre.textContent =
-    traduireStatutMembre(
-        membre.statutMembre
+    console.log(
+        "Compte membre adhérent chargé :",
+        membre
     );
 
 
-statutAdhesion.textContent =
-    traduireStatutAdhesion(
-        membre.statutAdhesion
+    numeroMembre.textContent =
+        membre.numeroMembre || "-";
+
+    numeroMembreHeader.textContent =
+        membre.numeroMembre || "-";
+
+    statutMembre.textContent =
+        traduireStatutMembre(
+            membre.statutMembre
+        );
+
+    statutAdhesion.textContent =
+        traduireStatutAdhesion(
+            membre.statutAdhesion
+        );
+
+    anneeAdhesion.textContent =
+        membre.annee || "-";
+
+    dateDebutAdhesion.textContent =
+        afficherDate(
+            membre.dateDebutAdhesion
+        );
+
+    dateFinAdhesion.textContent =
+        afficherDate(
+            membre.dateFinAdhesion
+        );
+
+    statutPaiement.textContent =
+        traduireStatutPaiement(
+            membre.statutPaiement
+        );
+
+    cotisation.textContent =
+        formatEuro(
+            membre.cotisation
+        );
+
+    numeroCarte.textContent =
+        membre.numeroMembre || "-";
+
+
+    if (membre.carteEnvoyee === true) {
+
+        statutCarte.textContent =
+            "🟢 Carte envoyée";
+
+    } else {
+
+        statutCarte.textContent =
+            "🔴 Carte non envoyée";
+
+    }
+
+
+    /*
+    =========================================
+    ESPACE MEMBRE ACTIF
+    =========================================
+    */
+
+    afficherEspaceMembreActif(
+        membre
     );
-
-
-anneeAdhesion.textContent =
-    membre.annee ||
-    "-";
-
-
-dateDebutAdhesion.textContent =
-    afficherDate(
-        membre.dateDebutAdhesion
-    );
-
-
-dateFinAdhesion.textContent =
-    afficherDate(
-        membre.dateFinAdhesion
-    );
-
-
-statutPaiement.textContent =
-    traduireStatutPaiement(
-        membre.statutPaiement
-    );
-
-
-cotisation.textContent =
-    formatEuro(
-        membre.cotisation
-    );
-
-
-numeroCarte.textContent =
-    membre.numeroMembre ||
-    "-";
-
-
-if (
-    membre.carteEnvoyee === true
-) {
-
-    statutCarte.textContent =
-        "🟢 Carte envoyée";
-
-}
-else {
-
-    statutCarte.textContent =
-        "🔴 Carte non envoyée";
-
-}
-
-
-console.log(
-    "Membre chargé :",
-    membre
-);
-
-afficherEspaceMembreActif(
-    membre
-);
 }
 
 function afficherEspaceMembreActif(
