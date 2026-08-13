@@ -103,26 +103,11 @@ body {
 
 .adhesion-card {
     width: 100%;
-    max-width: 850px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(20, 31, 33, 0.98),
-            rgba(14, 23, 25, 0.98)
-        );
-
-    border:
-        1px solid var(--border);
-
-    border-radius:
-        20px;
-
-    box-shadow:
-        var(--shadow),
-        0 0 50px rgba(60, 145, 149, 0.05);
-
-    overflow: hidden;
+    min-height: 100vh;
+    padding: 0px 70px 00px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 
 
@@ -267,46 +252,15 @@ body {
 
 #adhesionForm {
     padding:
-        10px 40px 45px;
+        00px 00px 0px;
 }
 
 #adhesionForm h2 {
-    margin:
-        32px 0 20px;
-
-    padding-bottom:
-        10px;
-
-    font-size:
-        1.15rem;
-
-    font-weight:
-        700;
-
-    color:
-        var(--text);
-
-    border-bottom:
-        1px solid rgba(255, 255, 255, 0.08);
-
-    position:
-        relative;
+    
 }
 
 #adhesionForm h2::after {
-    content: "";
-
-    position:
-        absolute;
-
-    left: 0;
-    bottom: -1px;
-
-    width: 55px;
-    height: 2px;
-
-    background:
-        var(--chroma);
+   
 }
 
 
