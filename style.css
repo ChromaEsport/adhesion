@@ -219,6 +219,9 @@ body {
 
     border-radius:
         var(--radius-small);
+
+   margin-top: 28px;
+    margin-bottom: 0px;
 }
 
 .info-box strong {
