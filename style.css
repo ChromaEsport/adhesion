@@ -212,14 +212,12 @@ body {
     border:
         1px solid var(--border);
 
-    border-left:
-        4px solid var(--chroma);
-
     border-radius:
         var(--radius-small);
 
    margin-top: 28px;
     margin-bottom: 0px;
+   text-align: center;
 }
 
 .info-box strong {
@@ -228,11 +226,9 @@ body {
     margin-bottom:
         8px;
 
-    color:
-        var(--chroma-light);
-
-    font-size:
-        1rem;
+ color: #77faff;
+    font-size: 24px;
+    text-align: center;
 }
 
 .info-box p {
