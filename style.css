@@ -522,6 +522,12 @@ input[type="password"] {
    ZONE DON
    ========================================================= */
 
+
+.form-group label donlibre{
+
+margin-top: 20px;
+   
+}
 #donLibreZone {
     display:
         none;
