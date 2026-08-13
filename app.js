@@ -108,15 +108,6 @@ const passwordConfirmation =
         "passwordConfirmation"
     );
 
-const don =
-    document.getElementById(
-        "don"
-    );
-
-const donLibreZone =
-    document.getElementById(
-        "donLibreZone"
-    );
 
 const donLibre =
     document.getElementById(
@@ -455,27 +446,6 @@ onAuthStateChanged(
 );
 
 
-/*
-=========================================
-DON LIBRE
-=========================================
-*/
-
-if (donLibreZone) {
-
-    donLibreZone.classList.add(
-        "hidden"
-    );
-
-}
-
-
-if (donLibre) {
-
-    donLibre.required =
-        false;
-
-}
 
 
 /*
@@ -503,50 +473,6 @@ if (dateNaissance) {
 
 }
 
-
-/*
-=========================================
-APPARITION DON LIBRE
-=========================================
-*/
-
-if (don) {
-
-    don.addEventListener(
-        "change",
-        function () {
-
-            if (
-                don.value === "autre"
-            ) {
-
-                donLibreZone.classList.remove(
-                    "hidden"
-                );
-
-                donLibre.required =
-                    true;
-
-            }
-
-            else {
-
-                donLibreZone.classList.add(
-                    "hidden"
-                );
-
-                donLibre.required =
-                    false;
-
-                donLibre.value =
-                    "";
-
-            }
-
-        }
-    );
-
-}
 
 
 /*
@@ -864,46 +790,31 @@ adhesionForm.addEventListener(
             */
 
             let montantDon =
-                Number(
-                    don.value
-                );
+    Number(
+        donLibre.value || 0
+    );
 
 
-            if (
-                don.value ===
-                "autre"
-            ) {
+if (
+    !Number.isFinite(montantDon)
+    ||
+    montantDon < 0
+) {
 
-                montantDon =
-                    Number(
-                        donLibre.value
-                    );
+    afficherMessage(
+        "Veuillez indiquer un montant de don valide.",
+        "error"
+    );
 
+    donLibre.focus();
 
-                if (
-                    !Number.isFinite(
-                        montantDon
-                    )
-                    ||
-                    montantDon <= 0
-                ) {
+    if (bouton) {
+        bouton.disabled = false;
+    }
 
-                    afficherMessage(
-                        "Veuillez indiquer un montant de don valide.",
-                        "error"
-                    );
+    return;
 
-                    donLibre.focus();
-
-                    if (bouton) {
-                        bouton.disabled = false;
-                    }
-
-                    return;
-
-                }
-
-            }
+}
 
 
             /*
