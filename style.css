@@ -1,17 +1,49 @@
-
-@import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Roboto:wght@400;500;700&display=swap");
+/* =========================================================
+   CHROMA ESPORT
+   FORMULAIRE D'ADHÉSION
+   MÊME IDENTITÉ VISUELLE QUE COMMUNAUTÉ
+   ========================================================= */
 
 :root {
-    --chroma-dark: #010c2c;
-    --chroma-dark-light: #07163f;
-    --chroma-blue: #3c9195;
-    --chroma-green: #8fecc9;
-    --chroma-white: #ffffff;
-    --chroma-text: #dce8f5;
-    --chroma-muted: #9fb2c8;
-    --chroma-border: rgba(143, 236, 201, 0.25);
-    --chroma-danger: #ff5b6e;
+    --chroma: #3c9195;
+    --chroma-light: #55b7bb;
+    --chroma-dark: #2d7175;
+
+    --background:
+        radial-gradient(
+            circle at center top,
+            rgb(0, 90, 95) 0%,
+            rgb(0 30 30) 30%,
+            rgb(0 0 0) 100%
+        );
+
+    --background-secondary: #10191b;
+
+    --card: #141f21;
+    --card-light: #192628;
+
+    --border: rgba(60, 145, 149, 0.25);
+    --border-focus: rgba(60, 145, 149, 0.75);
+
+    --text: #ffffff;
+    --text-secondary: #ffffff;
+    --text-muted: #7d8d8e;
+
+    --success: #6ed6a3;
+    --error: #ff6b7a;
+    --warning: #f2c76c;
+
+    --radius: 14px;
+    --radius-small: 9px;
+
+    --shadow:
+        0 20px 60px rgba(0, 0, 0, 0.35);
 }
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
 
 * {
     box-sizing: border-box;
@@ -23,280 +55,464 @@ html {
 
 body {
     margin: 0;
+    padding: 0;
+
     min-height: 100vh;
 
-    font-family: "Roboto", Arial, sans-serif;
-
-    color: var(--chroma-text);
+    font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
 
     background:
         radial-gradient(
             circle at top,
-            rgba(60, 145, 149, 0.25),
-            transparent 45%
+            rgba(60, 145, 149, 0.12),
+            transparent 35%
         ),
-        var(--chroma-dark);
+        var(--background);
+
+    color: var(--text);
+
+    line-height: 1.6;
 }
+
+
+/* =========================================================
+   PAGE
+   ========================================================= */
 
 .page {
     width: 100%;
     min-height: 100vh;
 
-    padding: 50px 20px;
+    padding:
+        40px 20px 70px;
 
     display: flex;
     justify-content: center;
-    align-items: flex-start;
 }
+
+
+/* =========================================================
+   CARTE PRINCIPALE
+   ========================================================= */
 
 .adhesion-card {
     width: 100%;
     max-width: 850px;
 
-    padding: 45px;
-
     background:
         linear-gradient(
             145deg,
-            rgba(255, 255, 255, 0.98),
-            #009688
+            rgba(20, 31, 33, 0.98),
+            rgba(14, 23, 25, 0.98)
         );
 
-    border: 1px solid var(--chroma-border);
+    border:
+        1px solid var(--border);
 
-    border-radius: 22px;
+    border-radius:
+        20px;
 
     box-shadow:
-        0 20px 70px rgba(0, 0, 0, 0.45);
+        var(--shadow),
+        0 0 50px rgba(60, 145, 149, 0.05);
+
+    overflow: hidden;
 }
 
+
+/* =========================================================
+   ZONE LOGO / EN-TÊTE
+   ========================================================= */
+
 .logo-zone {
+    position: relative;
+
+    padding:
+        42px 40px 36px;
+
     text-align: center;
 
-    margin-bottom: 35px;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(60, 155, 159, 0.00),
+            rgba(60, 155, 159, 0.25)
+        );
+
+    border-bottom:
+        1px solid var(--border);
+}
+
+.logo-zone::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    width: 160px;
+    height: 3px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--chroma),
+            transparent
+        );
 }
 
 .logo-zone h1 {
     margin: 0;
 
-    font-family: "Rajdhani", Arial, sans-serif;
+    font-size: 2rem;
 
-    font-size: clamp(2.5rem, 7vw, 4.5rem);
+    font-weight: 800;
 
-    font-weight: 700;
+    letter-spacing: 2px;
 
-    letter-spacing: 5px;
+    color: var(--text);
+}
 
-    color: var(--chroma-green);
+.logo-zone h1::after {
+    content: "";
 
-    text-shadow:
-        0 0 20px rgba(143, 236, 201, 0.35);
+    display: block;
+
+    width: 55px;
+    height: 3px;
+
+    margin:
+        14px auto 0;
+
+    border-radius: 10px;
+
+    background:
+        var(--chroma);
 }
 
 .logo-zone p {
-    margin: 5px 0 0;
+    margin:
+        18px 0 0;
 
-    font-family: "Rajdhani", Arial, sans-serif;
+    color:
+        var(--text-secondary);
 
-    font-size: 1.35rem;
-
-    font-weight: 600;
-
-    letter-spacing: 1.5px;
-
-    color: var(--chroma-blue);
+    font-size: 1rem;
 }
 
-.info-box {
-    margin-bottom: 35px;
 
-    padding: 22px;
+/* =========================================================
+   INFO BOX
+   ========================================================= */
+
+.info-box {
+    margin:
+        28px 40px;
+
+    padding:
+        20px 22px;
 
     background:
-        rgba(60, 145, 149, 0.1);
+        rgba(60, 155, 159, 0.08);
+
+    border:
+        1px solid var(--border);
 
     border-left:
-        4px solid var(--chroma-green);
+        4px solid var(--chroma);
 
-    border-radius: 10px;
+    border-radius:
+        var(--radius-small);
 }
 
 .info-box strong {
     display: block;
 
-    margin-bottom: 10px;
+    margin-bottom:
+        8px;
 
-    font-family: "Rajdhani", Arial, sans-serif;
+    color:
+        var(--chroma-light);
 
-    font-size: 1.55rem;
-
-    color: var(--chroma-green);
+    font-size:
+        1rem;
 }
 
 .info-box p {
-    margin: 8px 0;
-
-    line-height: 1.6;
-
-    color: var(--chroma-text);
-}
-
-form h2 {
     margin:
-        38px 0
-        20px;
-
-    padding-bottom: 10px;
-
-    font-family:
-        "Rajdhani",
-        Arial,
-        sans-serif;
-
-    font-size: 2rem;
-
-    letter-spacing: 1px;
+        7px 0;
 
     color:
-        var(--chroma-green);
+        var(--text-secondary);
+
+    font-size:
+        0.92rem;
+}
+
+
+/* =========================================================
+   FORMULAIRE
+   ========================================================= */
+
+#adhesionForm {
+    padding:
+        10px 40px 45px;
+}
+
+#adhesionForm h2 {
+    margin:
+        32px 0 20px;
+
+    padding-bottom:
+        10px;
+
+    font-size:
+        1.15rem;
+
+    font-weight:
+        700;
+
+    color:
+        var(--text);
 
     border-bottom:
-        1px solid
-        var(--chroma-border);
+        1px solid rgba(255, 255, 255, 0.08);
+
+    position:
+        relative;
 }
+
+#adhesionForm h2::after {
+    content: "";
+
+    position:
+        absolute;
+
+    left: 0;
+    bottom: -1px;
+
+    width: 55px;
+    height: 2px;
+
+    background:
+        var(--chroma);
+}
+
+
+/* =========================================================
+   LIGNES DE FORMULAIRE
+   ========================================================= */
 
 .form-row {
     display: grid;
 
     grid-template-columns:
-        repeat(2, 1fr);
+        repeat(2, minmax(0, 1fr));
 
-    gap: 20px;
+    gap:
+        18px;
 }
 
+
+/* =========================================================
+   GROUPE
+   ========================================================= */
+
 .form-group {
-    margin-bottom: 22px;
-
-    display: flex;
-
-    flex-direction:
-        column;
+    margin-bottom:
+        20px;
 }
 
 .form-group label {
-    margin-bottom: 8px;
+    display: block;
 
-    font-family:
-        "Rajdhani",
-        Arial,
-        sans-serif;
+    margin-bottom:
+        8px;
 
-    font-size: 1.2rem;
+    font-size:
+        0.9rem;
 
-    font-weight: 700;
+    font-weight:
+        600;
 
     color:
-        var(--chroma-white);
+        var(--text);
 }
 
-.form-group input,
-.form-group select {
-    width: 100%;
+.form-group small {
+    display: block;
 
-    min-height: 50px;
-
-    padding:
-        12px 15px;
-
-    font-family:
-        "Roboto",
-        Arial,
-        sans-serif;
-
-    font-size: 1rem;
+    margin-top:
+        7px;
 
     color:
-        var(--chroma-white);
+        var(--text-muted);
 
-    background:
-        rgba(255, 255, 255, 0.06);
+    font-size:
+        0.78rem;
+
+    line-height:
+        1.5;
+}
+
+
+/* =========================================================
+   INPUTS / SELECT
+   ========================================================= */
+
+input,
+select,
+textarea {
+    width: 100%;
+
+    min-height:
+        48px;
+
+    padding:
+        12px 14px;
 
     border:
-        1px solid
-        rgba(255, 255, 255, 0.15);
+        4px solid #ff6b7a73;
 
     border-radius:
-        9px;
+        var(--radius-small);
+
+    background:
+        #ffffff;
+
+    color:
+        #000000;
+
+    font-family:
+        inherit;
+
+    font-size:
+        0.95rem;
 
     outline:
         none;
 
     transition:
-        border-color 0.2s,
-        box-shadow 0.2s,
-        background 0.2s;
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
 }
 
-.form-group input:focus,
-.form-group select:focus {
-    background:
-        rgba(255, 255, 255, 0.09);
-
+input:hover,
+select:hover,
+textarea:hover {
     border-color:
-        var(--chroma-green);
+        rgba(60, 155, 159, 0.45);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border:
+        3px solid #3c9195;
+
+    background:
+        #ffffff;
 
     box-shadow:
         0 0 0 3px
-        rgba(143, 236, 201, 0.1);
+        rgba(60, 145, 149, 0.12);
 }
 
-.form-group input::placeholder {
+
+/* =========================================================
+   PLACEHOLDER
+   ========================================================= */
+
+input::placeholder,
+textarea::placeholder {
     color:
-        rgba(220, 232, 245, 0.45);
+        #617072;
+
+    opacity:
+        1;
 }
 
-.form-group small {
-    margin-top: 7px;
 
-    line-height: 1.45;
+/* =========================================================
+   SELECT
+   ========================================================= */
 
-    color:
-        var(--chroma-muted);
+select {
+    cursor:
+        pointer;
+
+    appearance:
+        auto;
 }
+
+
+/* =========================================================
+   DATE
+   ========================================================= */
+
+input[type="date"] {
+    color-scheme:
+        dark;
+}
+
+
+/* =========================================================
+   MOT DE PASSE
+   ========================================================= */
+
+input[type="password"] {
+    letter-spacing:
+        0.5px;
+}
+
+
+/* =========================================================
+   CHECKBOXES
+   ========================================================= */
 
 .checkbox-group {
-    margin-bottom:
-        15px;
+    margin:
+        14px 0;
 
     padding:
-        15px 17px;
+        15px 16px;
 
     background:
-        rgba(255, 255, 255, 0.035);
+        rgba(255, 255, 255, 0.025);
 
     border:
-        1px solid
-        rgba(255, 255, 255, 0.08);
+        1px solid rgba(255, 255, 255, 0.07);
 
     border-radius:
-        9px;
+        var(--radius-small);
 
     transition:
-        border-color 0.2s,
-        background 0.2s;
+        border-color 0.2s ease,
+        background 0.2s ease;
 }
 
 .checkbox-group:hover {
     background:
-        rgba(60, 145, 149, 0.08);
+        rgba(60, 145, 149, 0.05);
 
     border-color:
-        rgba(143, 236, 201, 0.22);
+        rgba(60, 145, 149, 0.25);
 }
 
 .checkbox-group label {
-    display:
-        flex;
+    display: flex;
 
     align-items:
         flex-start;
@@ -304,80 +520,115 @@ form h2 {
     gap:
         12px;
 
-    line-height:
-        1.5;
-
-    cursor:
-        pointer;
-}
-
-.checkbox-group input {
-    width:
-        19px;
-
-    height:
-        19px;
-
-    margin-top:
-        2px;
-
-    accent-color:
-        var(--chroma-green);
-
-    cursor:
-        pointer;
-
-    flex-shrink:
+    margin:
         0;
-}
 
-button[type="submit"] {
-    width: 100%;
-
-    margin-top: 25px;
-
-    min-height: 58px;
-
-    padding:
-        15px 25px;
-
-    font-family:
-        "Rajdhani",
-        Arial,
-        sans-serif;
-
-    font-size:
-        1.35rem;
-
-    font-weight:
-        700;
-
-    letter-spacing:
-        2px;
+    cursor:
+        pointer;
 
     color:
-        var(--chroma-dark);
+        var(--text-secondary);
 
-    background:
-        linear-gradient(
-            135deg,
-            var(--chroma-green),
-            #5ecfb0
-        );
+    font-size:
+        0.88rem;
+
+    line-height:
+        1.5;
+}
+
+.checkbox-group input[type="checkbox"] {
+    flex:
+        0 0 auto;
+
+    width:
+        18px;
+
+    height:
+        18px;
+
+    min-height:
+        18px;
+
+    margin:
+        2px 0 0;
+
+    padding:
+        0;
+
+    accent-color:
+        var(--chroma);
+
+    cursor:
+        pointer;
+}
+
+
+/* =========================================================
+   ZONE DON
+   ========================================================= */
+
+#donLibreZone {
+    display:
+        none;
+}
+
+
+/* =========================================================
+   BOUTON PRINCIPAL
+   ========================================================= */
+
+button[type="submit"] {
+    width:
+        100%;
+
+    min-height:
+        54px;
+
+    margin-top:
+        28px;
+
+    padding:
+        14px 20px;
 
     border:
         none;
 
     border-radius:
-        10px;
+        var(--radius-small);
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--chroma),
+            var(--chroma-dark)
+        );
+
+    color:
+        #ffffff;
+
+    font-family:
+        inherit;
+
+    font-size:
+        0.95rem;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        0.5px;
 
     cursor:
         pointer;
 
+    box-shadow:
+        0 8px 25px
+        rgba(60, 145, 149, 0.2);
+
     transition:
-        transform 0.2s,
-        box-shadow 0.2s,
-        filter 0.2s;
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        filter 0.2s ease;
 }
 
 button[type="submit"]:hover {
@@ -385,11 +636,11 @@ button[type="submit"]:hover {
         translateY(-2px);
 
     box-shadow:
-        0 10px 30px
-        rgba(143, 236, 201, 0.25);
+        0 12px 30px
+        rgba(60, 145, 149, 0.3);
 
     filter:
-        brightness(1.06);
+        brightness(1.08);
 }
 
 button[type="submit"]:active {
@@ -397,89 +648,144 @@ button[type="submit"]:active {
         translateY(0);
 }
 
-.message {
-    min-height:
-        25px;
+button[type="submit"]:disabled {
+    opacity:
+        0.6;
 
+    cursor:
+        not-allowed;
+
+    transform:
+        none;
+
+    box-shadow:
+        none;
+}
+
+
+/* =========================================================
+   MESSAGE
+   ========================================================= */
+
+.message {
     margin:
-        20px 0 0;
+        18px 0 0;
+
+    padding:
+        12px 15px;
+
+    border-radius:
+        var(--radius-small);
 
     text-align:
         center;
 
-    line-height:
-        1.5;
+    font-size:
+        0.9rem;
 
-    font-weight:
-        600;
+    min-height:
+        0;
 }
 
-.message.success {
+.message:empty {
+    display:
+        none;
+}
+
+
+/* =========================================================
+   ÉTAT ERREUR / VALIDATION
+   ========================================================= */
+
+input:invalid:not(:placeholder-shown) {
+    border-color:
+        rgba(255, 107, 122, 0.45);
+}
+
+input:valid:not(:placeholder-shown) {
+    border-color:
+        rgba(60, 155, 159, 1);
+}
+
+
+/* =========================================================
+   LIENS
+   ========================================================= */
+
+a {
     color:
-        var(--chroma-green);
+        var(--chroma-light);
+
+    text-decoration:
+        none;
+
+    transition:
+        color 0.2s ease;
 }
 
-.message.error {
+a:hover {
     color:
-        var(--chroma-danger);
+        #ffffff;
 }
 
-.form-group select {
-    appearance: none;
 
-    cursor: pointer;
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
 
-    padding-right: 50px;
-
-    background-image:
-        linear-gradient(
-            45deg,
-            transparent 50%,
-            var(--chroma-green) 50%
-        ),
-        linear-gradient(
-            135deg,
-            var(--chroma-green) 50%,
-            transparent 50%
-        );
-
-    background-position:
-        calc(100% - 22px) 22px,
-        calc(100% - 16px) 22px;
-
-    background-size:
-        7px 7px,
-        7px 7px;
-
-    background-repeat:
-        no-repeat;
+::-webkit-scrollbar {
+    width:
+        9px;
 }
 
-.form-group select option {
-    color:
-        var(--chroma-white);
-
+::-webkit-scrollbar-track {
     background:
-        var(--chroma-dark-light);
+        var(--background);
 }
 
-.hidden {
-    display: none !important;
+::-webkit-scrollbar-thumb {
+    background:
+        #285e61;
+
+    border-radius:
+        20px;
 }
 
-@media (max-width: 700px) {
+::-webkit-scrollbar-thumb:hover {
+    background:
+        var(--chroma);
+}
+
+
+/* =========================================================
+   RESPONSIVE TABLETTE
+   ========================================================= */
+
+@media (max-width: 760px) {
 
     .page {
         padding:
-            20px 12px;
+            25px 14px 50px;
     }
 
-    .adhesion-card {
+    .logo-zone {
         padding:
-            28px 20px;
+            34px 24px 30px;
+    }
 
-        border-radius:
-            16px;
+    .logo-zone h1 {
+        font-size:
+            1.65rem;
+    }
+
+    .info-box {
+        margin:
+            22px 24px;
+    }
+
+    #adhesionForm {
+        padding:
+            5px 24px 35px;
     }
 
     .form-row {
@@ -489,20 +795,99 @@ button[type="submit"]:active {
         gap:
             0;
     }
+}
+
+
+/* =========================================================
+   RESPONSIVE MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .page {
+        padding:
+            12px 8px 35px;
+    }
+
+    .adhesion-card {
+        border-radius:
+            14px;
+    }
+
+    .logo-zone {
+        padding:
+            28px 18px 25px;
+    }
 
     .logo-zone h1 {
+        font-size:
+            1.35rem;
+
         letter-spacing:
-            3px;
+            1.5px;
     }
 
     .logo-zone p {
         font-size:
-            1.1rem;
+            0.88rem;
     }
 
-    form h2 {
+    .info-box {
+        margin:
+            18px 16px;
+
+        padding:
+            16px;
+    }
+
+    #adhesionForm {
+        padding:
+            2px 16px 28px;
+    }
+
+    #adhesionForm h2 {
         font-size:
-            1.7rem;
+            1.05rem;
+
+        margin-top:
+            28px;
+    }
+
+    .form-group {
+        margin-bottom:
+            17px;
+    }
+
+    .form-group label {
+        font-size:
+            0.86rem;
+    }
+
+    input,
+    select,
+    textarea {
+        min-height:
+            46px;
+
+        font-size:
+            0.9rem;
+    }
+
+    .checkbox-group {
+        padding:
+            13px;
+    }
+
+    .checkbox-group label {
+        font-size:
+            0.82rem;
+    }
+
+    button[type="submit"] {
+        min-height:
+            52px;
+
+        font-size:
+            0.88rem;
     }
 }
-
