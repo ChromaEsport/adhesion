@@ -279,7 +279,7 @@ if (communauteDoc.exists()) {
     */
 
     const requeteAdhesion = query(
-        collection(db, "adhesion"),
+        collection(db, "adhesions"),
         where(
             "firebaseUid",
             "==",
