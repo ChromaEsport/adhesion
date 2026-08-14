@@ -254,25 +254,106 @@ async function chargerMembre(firebaseUid) {
         =========================================
         */
 
-        const communauteRef = doc(
-            db,
-            "communaute",
+      const communauteRef = doc(
+    db,
+    "communaute",
+    firebaseUid
+);
+
+const communauteDoc = await getDoc(
+    communauteRef
+);
+
+if (communauteDoc.exists()) {
+
+    const membre = {
+        id: communauteDoc.id,
+        typeCompte: "communaute",
+        ...communauteDoc.data()
+    };
+
+    /*
+    =========================================
+    RECHERCHE D'UNE DEMANDE D'ADHÉSION
+    =========================================
+    */
+
+    const requeteAdhesion = query(
+        collection(db, "adhesion"),
+        where(
+            "firebaseUid",
+            "==",
             firebaseUid
+        )
+    );
+
+    const resultatAdhesion =
+        await getDocs(
+            requeteAdhesion
         );
 
-        const communauteDoc = await getDoc(communauteRef);
+    /*
+    =========================================
+    SI UNE DEMANDE EXISTE
+    =========================================
+    */
 
-        if (communauteDoc.exists()) {
+    if (!resultatAdhesion.empty) {
 
-            const membre = {
-                id: communauteDoc.id,
-                typeCompte: "communaute",
-                ...communauteDoc.data()
-            };
+        /*
+        On prend la demande la plus récente.
+        */
 
-            afficherMembre(membre);
-            return;
+        let demandeLaPlusRecente = null;
+
+        resultatAdhesion.forEach(
+            documentFirestore => {
+
+                const data =
+                    documentFirestore.data();
+
+                if (
+                    !demandeLaPlusRecente ||
+                    (
+                        data.dateDemande &&
+                        data.dateDemande.toMillis() >
+                        demandeLaPlusRecente.dateDemande.toMillis()
+                    )
+                ) {
+                    demandeLaPlusRecente = {
+                        id:
+                            documentFirestore.id,
+                        ...data
+                    };
+                }
+
+            }
+        );
+
+        if (demandeLaPlusRecente) {
+
+            membre.demandeAdhesion =
+                demandeLaPlusRecente;
+
+            membre.statutDemandeAdhesion =
+                demandeLaPlusRecente.statut;
+
+            membre.dateDemandeAdhesion =
+                demandeLaPlusRecente.dateDemande;
         }
+    }
+
+    console.log(
+        "Compte communauté chargé avec demande :",
+        membre
+    );
+
+    afficherMembre(
+        membre
+    );
+
+    return;
+}
 
         afficherErreur(
             "Aucun compte associé à cette connexion."
