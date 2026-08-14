@@ -390,6 +390,8 @@ if (communauteDoc.exists()) {
 /* =========================================================
 AFFICHER LE MEMBRE
 ========================================================= */
+function afficherMembre(membre) {
+
 
 /*
 =========================================
@@ -773,7 +775,7 @@ console.error(
 afficherErreur(
     "Impossible de déterminer le type de votre compte."
 );
-
+}
     /*
     =========================================
     MEMBRE ADHÉRENT
