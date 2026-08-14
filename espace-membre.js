@@ -1423,6 +1423,7 @@ if (boutonRenouvellement) {
 
 async function lancerRenouvellementStripe(membre) {
 
+
 if (!membre) {
     alert(
         "Impossible de récupérer les informations du membre."
@@ -1452,7 +1453,6 @@ const user =
     auth.currentUser;
 
 if (!user) {
-
     alert(
         "Votre session a expiré. Veuillez vous reconnecter."
     );
@@ -1488,30 +1488,30 @@ try {
 
     const reponse =
         await fetch(
-            "chroma-stripe.max2501.workers.dev",
+            "https://chroma-stripe.max2501.workers.dev/",
             {
-
                 method:
                     "POST",
 
                 headers: {
-
                     "Content-Type":
                         "application/json",
 
                     "Authorization":
                         "Bearer " + token
-
                 },
 
                 body:
                     JSON.stringify({
 
-                        action:
+                        type:
                             "renouvellement",
 
                         membreId:
                             membre.id,
+
+                        numeroMembre:
+                            membre.numeroMembre,
 
                         email:
                             membre.email,
@@ -1527,14 +1527,17 @@ try {
 
                         don:
                             0
-
                     })
-
             }
         );
 
     const resultat =
         await reponse.json();
+
+    console.log(
+        "Réponse Worker Stripe :",
+        resultat
+    );
 
     if (!reponse.ok) {
 
@@ -1547,7 +1550,6 @@ try {
             resultat.error ||
             "Impossible de créer le paiement."
         );
-
     }
 
     /*
@@ -1564,7 +1566,6 @@ try {
             resultat.url;
 
         return;
-
     }
 
     throw new Error(
@@ -1588,8 +1589,11 @@ catch (error) {
 
     boutonRenouvellement.textContent =
         "🔄 Renouveler mon adhésion";
+}
 
-}}
+
+}
+
 
 function convertirDate(
     date
