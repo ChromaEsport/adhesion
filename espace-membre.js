@@ -531,14 +531,18 @@ else if (
 }
 else {
 
-    demandeAdhesionCommunaute.style.display =
-        "none";
+demandeAdhesionCommunaute.style.display =
+    "none";
 
-    demandeAdhesionCommunaute.innerHTML =
-        "";
+
+demandeAdhesionCommunaute.innerHTML =
+    "";
+
+
 if (boutonDevenirAdherent) {
     boutonDevenirAdherent.style.display =
-        "inline-flex";}
+        "inline-flex";
+}
 }}
     
 /*
