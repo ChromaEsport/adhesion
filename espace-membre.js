@@ -464,12 +464,8 @@ if (
     demandeAdhesionCommunaute.innerHTML = `
         <div class="message-demande-adhesion en-attente">
 
-            <div class="icone-demande-adhesion">
-                ⏳
-            </div>
-
             <h4>
-                Votre demande d'adhésion est en cours
+                ⏳ Votre demande d'adhésion est en cours
             </h4>
 
             <p>
@@ -540,7 +536,9 @@ else {
 
     demandeAdhesionCommunaute.innerHTML =
         "";
-
+if (boutonDevenirAdherent) {
+    boutonDevenirAdherent.style.display =
+        "inline-flex";
 }}
     
 /*
