@@ -1384,6 +1384,213 @@ if (bouton) {
 
 }
 
+function afficherRenouvellement(membre) {
+
+if (!blocRenouvellement) {
+    return;
+}
+
+// Par défaut : bloc caché
+blocRenouvellement.style.display = "none";
+
+// Le renouvellement concerne uniquement
+// les adhésions expirées
+if (
+    membre.statutAdhesion !== "expiree"
+) {
+    return;
+}
+
+// Afficher le bloc
+blocRenouvellement.style.display = "block";
+
+// Si un bouton existe
+if (boutonRenouvellement) {
+
+    boutonRenouvellement.style.display =
+        "inline-flex";
+
+    boutonRenouvellement.onclick = () => {
+
+        lancerRenouvellementStripe(
+            membre
+        );
+
+    };
+
+}
+}
+
+async function lancerRenouvellementStripe(membre) {
+
+if (!membre) {
+    alert(
+        "Impossible de récupérer les informations du membre."
+    );
+    return;
+}
+
+if (
+    membre.statutAdhesion !== "expiree"
+) {
+    alert(
+        "Votre adhésion est déjà en cours."
+    );
+    return;
+}
+
+const confirmation =
+    confirm(
+        "Souhaitez-vous renouveler votre adhésion pour 50,00 € ?"
+    );
+
+if (!confirmation) {
+    return;
+}
+
+const user =
+    auth.currentUser;
+
+if (!user) {
+
+    alert(
+        "Votre session a expiré. Veuillez vous reconnecter."
+    );
+
+    window.location.href =
+        "connexion-membre.html";
+
+    return;
+}
+
+try {
+
+    boutonRenouvellement.disabled =
+        true;
+
+    boutonRenouvellement.textContent =
+        "⏳ Préparation du paiement...";
+
+    /*
+    =========================================
+    RÉCUPÉRATION DU TOKEN FIREBASE
+    =========================================
+    */
+
+    const token =
+        await user.getIdToken();
+
+    /*
+    =========================================
+    APPEL DU WORKER STRIPE
+    =========================================
+    */
+
+    const reponse =
+        await fetch(
+            "TON_URL_CLOUDFLARE_WORKER",
+            {
+
+                method:
+                    "POST",
+
+                headers: {
+
+                    "Content-Type":
+                        "application/json",
+
+                    "Authorization":
+                        "Bearer " + token
+
+                },
+
+                body:
+                    JSON.stringify({
+
+                        action:
+                            "renouvellement",
+
+                        membreId:
+                            membre.id,
+
+                        email:
+                            membre.email,
+
+                        nom:
+                            membre.nom,
+
+                        prenom:
+                            membre.prenom,
+
+                        cotisation:
+                            50,
+
+                        don:
+                            0
+
+                    })
+
+            }
+        );
+
+    const resultat =
+        await reponse.json();
+
+    if (!reponse.ok) {
+
+        console.error(
+            "Erreur Stripe :",
+            resultat
+        );
+
+        throw new Error(
+            resultat.error ||
+            "Impossible de créer le paiement."
+        );
+
+    }
+
+    /*
+    =========================================
+    REDIRECTION VERS STRIPE
+    =========================================
+    */
+
+    if (
+        resultat.url
+    ) {
+
+        window.location.href =
+            resultat.url;
+
+        return;
+
+    }
+
+    throw new Error(
+        "URL Stripe introuvable."
+    );
+
+}
+catch (error) {
+
+    console.error(
+        "Erreur renouvellement :",
+        error
+    );
+
+    alert(
+        "Impossible de préparer votre renouvellement. Veuillez réessayer."
+    );
+
+    boutonRenouvellement.disabled =
+        false;
+
+    boutonRenouvellement.textContent =
+        "🔄 Renouveler mon adhésion";
+
+}}
+
 function convertirDate(
     date
 ) {
