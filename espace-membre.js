@@ -1488,7 +1488,7 @@ try {
 
     const reponse =
         await fetch(
-            "TON_URL_CLOUDFLARE_WORKER",
+            "chroma-stripe.max2501.workers.dev",
             {
 
                 method:
