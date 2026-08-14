@@ -1376,62 +1376,7 @@ async function accepterAdhesion(
 }
 
 
-        await updateDoc(
-            adhesionRef,
-            {
-
-                statut:
-                    "acceptee",
-
-                statutPaiement:
-                    "en_attente",
-
-                stripeSessionId:
-                    stripe.sessionId,
-
-                lienPaiement:
-                    stripe.url,
-
-                dateDecision:
-                    serverTimestamp(),
-
-                decisionParNom:
-                    utilisateur.displayName
-                    ||
-                    utilisateur.email
-                    ||
-                    "Administrateur",
-
-                decisionParEmail:
-                    utilisateur.email
-                    ||
-                    ""
-
-            }
-        );
-
-
-        window.location.href =
-            stripe.url;
-
-    }
-    catch (error) {
-
-        console.error(
-            "Erreur acceptation :",
-            error
-        );
-
-
-        alert(
-            "Erreur lors de l'acceptation."
-        );
-
-    }
-
-}
-
-
+    
 
 /* =====================================================
    CHANGER STATUT
