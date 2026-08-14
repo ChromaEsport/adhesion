@@ -526,7 +526,7 @@ else {
     demandeAdhesionCommunaute.innerHTML =
         "";
 
-}
+}}
     
 /*
 =========================================
