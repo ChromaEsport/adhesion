@@ -431,6 +431,103 @@ if (blocMembreActif) {
         "none";
 }
 
+    const demandeAdhesionCommunaute =
+document.getElementById(
+"demandeAdhesionCommunaute"
+);
+
+if (demandeAdhesionCommunaute) {
+
+if (
+    membre.statutDemandeAdhesion ===
+    "en_attente"
+) {
+
+    demandeAdhesionCommunaute.style.display =
+        "block";
+
+    demandeAdhesionCommunaute.innerHTML = `
+        <div class="message-demande-adhesion en-attente">
+
+            <div class="icone-demande-adhesion">
+                ⏳
+            </div>
+
+            <h4>
+                Votre demande d'adhésion est en cours
+            </h4>
+
+            <p>
+                Votre demande pour devenir
+                membre adhérent de Chroma Esport
+                a bien été enregistrée.
+            </p>
+
+            <p>
+                L'administration doit maintenant
+                examiner votre demande.
+            </p>
+
+            <div class="statut-demande-adhesion">
+                🟠 Demande en attente
+            </div>
+
+            <div class="paiement-demande-adhesion">
+                💳 Cotisation : <strong>50,00 €</strong>
+            </div>
+
+            <p class="information-paiement">
+                Aucun paiement n'est demandé tant
+                que votre demande n'a pas été acceptée.
+            </p>
+
+        </div>
+    `;
+
+}
+else if (
+    membre.statutDemandeAdhesion ===
+    "refusee"
+) {
+
+    demandeAdhesionCommunaute.style.display =
+        "block";
+
+    demandeAdhesionCommunaute.innerHTML = `
+        <div class="message-demande-adhesion refusee">
+
+            <div class="icone-demande-adhesion">
+                ❌
+            </div>
+
+            <h4>
+                Votre demande d'adhésion a été refusée
+            </h4>
+
+            <p>
+                Votre demande pour devenir
+                membre adhérent de Chroma Esport
+                n'a pas été acceptée.
+            </p>
+
+            <div class="statut-demande-adhesion">
+                🔴 Demande refusée
+            </div>
+
+        </div>
+    `;
+
+}
+else {
+
+    demandeAdhesionCommunaute.style.display =
+        "none";
+
+    demandeAdhesionCommunaute.innerHTML =
+        "";
+
+}
+    
 /*
 =========================================
 STATUT MEMBRE
