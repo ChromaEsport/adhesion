@@ -189,7 +189,9 @@ body {
 
     color: var(--text-secondary);
 
-    font-size: 1rem;
+    font-size: 24px;
+
+   font-weight: bold;
 }
 
 
@@ -213,6 +215,8 @@ body {
 
     border-radius:
         var(--radius-small);
+
+   text-align:center;
 }
 
 .info-box strong {
@@ -220,9 +224,10 @@ body {
 
     margin-bottom: 8px;
 
-    color: var(--chroma-light);
-
     font-size: 1rem;
+
+   color: #77faff;
+    font-size: 24px;
 }
 
 .info-box p {
@@ -446,10 +451,13 @@ input[type="date"] {
         var(--text-secondary);
 
     font-size:
-        0.88rem;
+        16px;
 
     line-height:
         1.5;
+
+   font-weight: bold;
+    align-items: center;
 }
 
 .checkbox-group input[type="checkbox"] {
