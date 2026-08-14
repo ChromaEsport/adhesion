@@ -787,10 +787,6 @@ afficherErreur(
     =========================================
     */
 
-    afficherEspaceMembreActif(
-        membre
-    );
-
 
 function afficherEspaceMembreActif(
     membre
