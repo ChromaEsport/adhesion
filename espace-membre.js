@@ -771,6 +771,10 @@ if (
         membre
     );
 
+    afficherRenouvellement(
+membre
+);
+
     return;
 
 }
