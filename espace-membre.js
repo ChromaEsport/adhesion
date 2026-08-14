@@ -439,7 +439,7 @@ document.getElementById(
 if (demandeAdhesionCommunaute) {
 
 if (
-    membre.statutDemandeAdhesion ===
+    membre.statut ===
     "en_attente"
 ) {
 
