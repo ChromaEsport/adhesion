@@ -375,36 +375,29 @@ if (
     membre.statutDemandeAdhesion ===
     "en_attente"
 ) {
-
     statutAdhesion.textContent =
-        "🟠 Demande en cours";
+        "🟠 Demande d’adhésion en cours";
 
     statutPaiement.textContent =
         "💜 Aucun paiement";
 
     cotisation.textContent =
         "50,00 €";
-
 }
-
 else if (
     membre.statutDemandeAdhesion ===
     "refusee"
 ) {
-
     statutAdhesion.textContent =
-        "🔴 Demande refusée";
+        "🔴 Demande d’adhésion refusée";
 
     statutPaiement.textContent =
         "💜 Aucun paiement";
 
     cotisation.textContent =
-        "50,00 €";
-
+        "0,00 €";
 }
-
 else {
-
     statutAdhesion.textContent =
         "💜 Inscription gratuite";
 
@@ -413,7 +406,6 @@ else {
 
     cotisation.textContent =
         "0,00 €";
-
 }
 
 anneeAdhesion.textContent =
