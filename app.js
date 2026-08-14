@@ -169,7 +169,7 @@ UTILISATEUR CONNECTÉ
 =========================================
 */
 
-let utilisateurConnecte = null;
+let utilisateurConnecte = null;let authentificationVerifiee = false;
 
 
 /*
@@ -222,6 +222,7 @@ async function chargerMembreCommunaute(user) {
         const communaute =
             communauteSnapshot.data();
 
+        utilisateurConnecte = user;
 
         console.log(
             "Membre Communauté trouvé :",
@@ -427,25 +428,27 @@ onAuthStateChanged(
     async (user) => {
 
         utilisateurConnecte =
-            user || null;
+        user || null;
 
+    if (!user) {
 
-        if (!user) {
+        authentificationVerifiee =
+            true;
 
-            console.log(
-                "Aucun utilisateur connecté."
-            );
-
-            return;
-
-        }
-
-
-        await chargerMembreCommunaute(
-            user
+        console.log(
+            "Aucun utilisateur connecté."
         );
 
+        return;
     }
+
+    await chargerMembreCommunaute(
+        user
+    );
+
+    authentificationVerifiee =
+        true;
+}
 );
 
 
@@ -562,7 +565,17 @@ adhesionForm.addEventListener(
 
         event.preventDefault();
 
+if (!authentificationVerifiee) {
 
+afficherMessage(
+    "⏳ Vérification de votre compte en cours. Veuillez patienter quelques secondes.",
+    "error"
+);
+
+
+return;
+
+}
         message.textContent =
             "";
 
