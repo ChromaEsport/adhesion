@@ -1231,11 +1231,8 @@ async function accepterAdhesion(
     id,
     utilisateur
 ) {
-    try {
 
-        /* =========================================
-           RÉCUPÉRATION DE LA DEMANDE
-        ========================================= */
+    try {
 
         const adhesionRef =
             doc(
@@ -1244,27 +1241,29 @@ async function accepterAdhesion(
                 id
             );
 
+
         const adhesionSnap =
             await getDoc(
                 adhesionRef
             );
 
+
         if (
             !adhesionSnap.exists()
         ) {
+
             alert(
                 "Demande introuvable."
             );
+
             return;
+
         }
+
 
         const data =
             adhesionSnap.data();
 
-
-        /* =========================================
-           CRÉATION DU PAIEMENT STRIPE
-        ========================================= */
 
         const reponse =
             await fetch(
@@ -1281,6 +1280,7 @@ async function accepterAdhesion(
 
                     body:
                         JSON.stringify({
+
                             montant:
                                 data.total,
 
@@ -1289,16 +1289,20 @@ async function accepterAdhesion(
 
                             adhesionId:
                                 id
+
                         })
                 }
             );
 
+
         const stripe =
             await reponse.json();
+
 
         if (
             !stripe.url
         ) {
+
             console.error(
                 "Réponse Stripe :",
                 stripe
@@ -1309,18 +1313,14 @@ async function accepterAdhesion(
             );
 
             return;
+
         }
 
-
-        /* =========================================
-           DEMANDE → ACCEPTÉE
-           LE MEMBRE RESTE COMMUNAUTÉ
-           JUSQU'AU PAIEMENT
-        ========================================= */
 
         await updateDoc(
             adhesionRef,
             {
+
                 statut:
                     "acceptee",
 
@@ -1350,16 +1350,14 @@ async function accepterAdhesion(
 
                 decisionParUid:
                     utilisateur.uid
+
             }
         );
 
 
-        /* =========================================
-           REDIRECTION VERS LE PAIEMENT
-        ========================================= */
-
         window.location.href =
             stripe.url;
+
 
     }
     catch (error) {
@@ -1372,7 +1370,9 @@ async function accepterAdhesion(
         alert(
             "Erreur lors de l'acceptation."
         );
+
     }
+
 }
 
 
