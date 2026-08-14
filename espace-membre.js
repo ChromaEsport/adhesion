@@ -391,208 +391,212 @@ if (communauteDoc.exists()) {
 AFFICHER LE MEMBRE
 ========================================================= */
 
-function afficherMembre(membre) {
+/*
+=========================================
+INFORMATIONS COMMUNES
+=========================================
+*/
 
-    /*
-    =========================================
-    INFORMATIONS COMMUNES
-    =========================================
-    */
+prenomMembre.textContent =
+    membre.prenom || "-";
 
-    prenomMembre.textContent =
-        membre.prenom || "-";
+prenomInformation.textContent =
+    membre.prenom || "-";
 
-    prenomInformation.textContent =
-        membre.prenom || "-";
+nomMembre.textContent =
+    membre.nom || "-";
 
-    nomMembre.textContent =
-        membre.nom || "-";
+emailMembre.textContent =
+    membre.email || "-";
 
-    emailMembre.textContent =
-        membre.email || "-";
-
-    discordMembre.textContent =
-        membre.discord || "-";
+discordMembre.textContent =
+    membre.discord || "-";
 
 
-   console.log(
-    "Compte Membre Communauté chargé :",
+console.log(
+    "Compte chargé dans afficherMembre :",
     membre
 );
 
+
 /*
 =========================================
-AFFICHAGE COMMUNAUTÉ
+DÉTECTION DU TYPE DE COMPTE
 =========================================
 */
 
-if (blocCommunaute) {
-    blocCommunaute.style.display =
-        "block";
-}
+if (
+    membre.typeCompte === "communaute"
+) {
 
-if (blocAdhesion) {
-    blocAdhesion.style.display =
-        "none";
-}
+    /*
+    =========================================
+    AFFICHAGE COMMUNAUTÉ
+    =========================================
+    */
 
-if (blocCarteMembre) {
-    blocCarteMembre.style.display =
-        "none";
-}
+    console.log(
+        "Affichage du compte COMMUNAUTÉ"
+    );
 
-if (blocMembreActif) {
-    blocMembreActif.style.display =
-        "none";
-}
+
+    if (blocCommunaute) {
+
+        blocCommunaute.style.display =
+            "block";
+
+    }
+
+
+    if (blocAdhesion) {
+
+        blocAdhesion.style.display =
+            "none";
+
+    }
+
+
+    if (blocCarteMembre) {
+
+        blocCarteMembre.style.display =
+            "none";
+
+    }
+
+
+    if (blocMembreActif) {
+
+        blocMembreActif.style.display =
+            "none";
+
+    }
+
 
     const demandeAdhesionCommunaute =
-document.getElementById(
-"demandeAdhesionCommunaute"
-);
-
-if (demandeAdhesionCommunaute) {
-
-if (
-    membre.statutDemandeAdhesion ===
-    "en_attente"
-) {
-
-    demandeAdhesionCommunaute.style.display =
-        "block";
-
-    demandeAdhesionCommunaute.innerHTML = `
-        <div class="message-demande-adhesion en-attente">
-
-            <h4>
-                ⏳ Votre demande d'adhésion est en cours
-            </h4>
-
-            <p>
-                Votre demande pour devenir
-                membre adhérent de Chroma Esport
-                a bien été enregistrée.
-            </p>
-
-            <p>
-                L'administration doit maintenant
-                examiner votre demande.
-            </p>
-
-            <div class="statut-demande-adhesion">
-                🟠 Demande en attente
-            </div>
-
-            <div class="paiement-demande-adhesion">
-                💳 Cotisation : <strong>50,00 €</strong>
-            </div>
-
-            <p class="information-paiement">
-                Aucun paiement n'est demandé tant
-                que votre demande n'a pas été acceptée.
-            </p>
-
-        </div>
-    `;
-
-}
-else if (
-    membre.statutDemandeAdhesion ===
-    "refusee"
-) {
-
-    demandeAdhesionCommunaute.style.display =
-        "block";
-
-    demandeAdhesionCommunaute.innerHTML = `
-        <div class="message-demande-adhesion refusee">
-
-            <div class="icone-demande-adhesion">
-                ❌
-            </div>
-
-            <h4>
-                Votre demande d'adhésion a été refusée
-            </h4>
-
-            <p>
-                Votre demande pour devenir
-                membre adhérent de Chroma Esport
-                n'a pas été acceptée.
-            </p>
-
-            <div class="statut-demande-adhesion">
-                🔴 Demande refusée
-            </div>
-
-        </div>
-    `;
-
-}
-else {
-
-demandeAdhesionCommunaute.style.display =
-    "none";
+        document.getElementById(
+            "demandeAdhesionCommunaute"
+        );
 
 
-demandeAdhesionCommunaute.innerHTML =
-    "";
+    if (
+        demandeAdhesionCommunaute
+    ) {
+
+        if (
+            membre.statutDemandeAdhesion ===
+            "en_attente"
+        ) {
+
+            demandeAdhesionCommunaute.style.display =
+                "block";
+
+            demandeAdhesionCommunaute.innerHTML = `
+                <div class="message-demande-adhesion en-attente">
+
+                    <h4>
+                        ⏳ Votre demande d'adhésion est en cours
+                    </h4>
+
+                    <p>
+                        Votre demande pour devenir
+                        membre adhérent de Chroma Esport
+                        a bien été enregistrée.
+                    </p>
+
+                    <p>
+                        L'administration doit maintenant
+                        examiner votre demande.
+                    </p>
+
+                    <div class="statut-demande-adhesion">
+                        🟠 Demande en attente
+                    </div>
+
+                    <div class="paiement-demande-adhesion">
+                        💳 Cotisation :
+                        <strong>50,00 €</strong>
+                    </div>
+
+                    <p class="information-paiement">
+                        Aucun paiement n'est demandé tant
+                        que votre demande n'a pas été acceptée.
+                    </p>
+
+                </div>
+            `;
+
+        }
+
+        else if (
+            membre.statutDemandeAdhesion ===
+            "refusee"
+        ) {
+
+            demandeAdhesionCommunaute.style.display =
+                "block";
+
+            demandeAdhesionCommunaute.innerHTML = `
+                <div class="message-demande-adhesion refusee">
+
+                    <div class="icone-demande-adhesion">
+                        ❌
+                    </div>
+
+                    <h4>
+                        Votre demande d'adhésion a été refusée
+                    </h4>
+
+                    <p>
+                        Votre demande pour devenir
+                        membre adhérent de Chroma Esport
+                        n'a pas été acceptée.
+                    </p>
+
+                    <div class="statut-demande-adhesion">
+                        🔴 Demande refusée
+                    </div>
+
+                </div>
+            `;
+
+        }
+
+        else {
+
+            demandeAdhesionCommunaute.style.display =
+                "none";
+
+            demandeAdhesionCommunaute.innerHTML =
+                "";
+
+            if (boutonDevenirAdherent) {
+
+                boutonDevenirAdherent.style.display =
+                    "inline-flex";
+
+            }
+
+        }
+
+    }
 
 
-if (boutonDevenirAdherent) {
-    boutonDevenirAdherent.style.display =
-        "inline-flex";
-}
-}}
-    
-/*
-=========================================
-STATUT MEMBRE
-=========================================
-*/
+    /*
+    =========================================
+    STATUT COMMUNAUTÉ
+    =========================================
+    */
 
-statutMembre.textContent =
-    "💜 Membre Communauté";
+    statutMembre.textContent =
+        "💜 Membre Communauté";
 
-numeroMembre.textContent =
-    "Communauté";
+    numeroMembre.textContent =
+        "Communauté";
 
-numeroMembreHeader.textContent =
-    "💜 COMMUNAUTÉ";
+    numeroMembreHeader.textContent =
+        "💜 COMMUNAUTÉ";
 
-/*
-=========================================
-STATUT ADHÉSION
-=========================================
-*/
 
-if (
-    membre.statutDemandeAdhesion ===
-    "en_attente"
-) {
-    statutAdhesion.textContent =
-        "🟠 Demande d’adhésion en cours";
-
-    statutPaiement.textContent =
-        "💜 Aucun paiement";
-
-    cotisation.textContent =
-        "50,00 €";
-}
-else if (
-    membre.statutDemandeAdhesion ===
-    "refusee"
-) {
-    statutAdhesion.textContent =
-        "🔴 Demande d’adhésion refusée";
-
-    statutPaiement.textContent =
-        "💜 Aucun paiement";
-
-    cotisation.textContent =
-        "0,00 €";
-}
-else {
     statutAdhesion.textContent =
         "💜 Inscription gratuite";
 
@@ -601,41 +605,174 @@ else {
 
     cotisation.textContent =
         "0,00 €";
+
+    anneeAdhesion.textContent =
+        "-";
+
+    dateDebutAdhesion.textContent =
+        "-";
+
+    dateFinAdhesion.textContent =
+        "-";
+
+
+    numeroCarte.textContent =
+        "COMMUNAUTÉ";
+
+    statutCarte.textContent =
+        "💜 Membre Communauté";
+
+
+    return;
+
 }
 
-anneeAdhesion.textContent =
-    "-";
-
-dateDebutAdhesion.textContent =
-    "-";
-
-dateFinAdhesion.textContent =
-    "-";
 
 /*
 =========================================
-CARTE MEMBRE
+MEMBRE ADHÉRENT
 =========================================
 */
 
-numeroCarte.textContent =
-    "COMMUNAUTÉ";
+if (
+    membre.typeCompte === "adherent"
+) {
 
-statutCarte.textContent =
-    "💜 Membre Communauté";
+    console.log(
+        "Affichage du compte ADHÉRENT :",
+        membre
+    );
+
+
+    /*
+    =========================================
+    AFFICHAGE DES BLOCS
+    =========================================
+    */
+
+    if (blocCommunaute) {
+
+        blocCommunaute.style.display =
+            "none";
+
+    }
+
+    if (blocAdhesion) {
+
+        blocAdhesion.style.display =
+            "block";
+
+    }
+
+    if (blocCarteMembre) {
+
+        blocCarteMembre.style.display =
+            "block";
+
+    }
+
+
+    /*
+    =========================================
+    INFORMATIONS ADHÉRENT
+    =========================================
+    */
+
+    numeroMembre.textContent =
+        membre.numeroMembre || "-";
+
+    numeroMembreHeader.textContent =
+        membre.numeroMembre || "-";
+
+    statutMembre.textContent =
+        traduireStatutMembre(
+            membre.statutMembre
+        );
+
+    statutAdhesion.textContent =
+        traduireStatutAdhesion(
+            membre.statutAdhesion
+        );
+
+    anneeAdhesion.textContent =
+        membre.annee || "-";
+
+    dateDebutAdhesion.textContent =
+        afficherDate(
+            membre.dateDebutAdhesion
+        );
+
+    dateFinAdhesion.textContent =
+        afficherDate(
+            membre.dateFinAdhesion
+        );
+
+    statutPaiement.textContent =
+        traduireStatutPaiement(
+            membre.statutPaiement
+        );
+
+    cotisation.textContent =
+        formatEuro(
+            membre.cotisation
+        );
+
+
+    /*
+    =========================================
+    CARTE MEMBRE
+    =========================================
+    */
+
+    numeroCarte.textContent =
+        membre.numeroMembre || "-";
+
+
+    if (
+        membre.carteEnvoyee === true
+    ) {
+
+        statutCarte.textContent =
+            "🟢 Carte envoyée";
+
+    }
+    else {
+
+        statutCarte.textContent =
+            "🔴 Carte non envoyée";
+
+    }
+
+
+    /*
+    =========================================
+    ESPACE MEMBRE ACTIF
+    =========================================
+    */
+
+    afficherEspaceMembreActif(
+        membre
+    );
+
+    return;
+
+}
+
 
 /*
 =========================================
-BLOC MEMBRE ACTIF
+TYPE DE COMPTE INCONNU
 =========================================
 */
 
-if (blocMembreActif) {
-    blocMembreActif.style.display =
-        "none";
-}
+console.error(
+    "Type de compte inconnu :",
+    membre
+);
 
-return;
+afficherErreur(
+    "Impossible de déterminer le type de votre compte."
+);
 
     /*
     =========================================
