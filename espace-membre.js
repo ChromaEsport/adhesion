@@ -679,7 +679,11 @@ if (
     INFORMATIONS ADHÉRENT
     =========================================
     */
-
+    console.log(
+        "Compte membre adhérent chargé :",
+        membre
+    );
+    
     numeroMembre.textContent =
         membre.numeroMembre || "-";
 
@@ -776,73 +780,6 @@ afficherErreur(
     "Impossible de déterminer le type de votre compte."
 );
 }
-    /*
-    =========================================
-    MEMBRE ADHÉRENT
-    =========================================
-    */
-
-    console.log(
-        "Compte membre adhérent chargé :",
-        membre
-    );
-
-
-    numeroMembre.textContent =
-        membre.numeroMembre || "-";
-
-    numeroMembreHeader.textContent =
-        membre.numeroMembre || "-";
-
-    statutMembre.textContent =
-        traduireStatutMembre(
-            membre.statutMembre
-        );
-
-    statutAdhesion.textContent =
-        traduireStatutAdhesion(
-            membre.statutAdhesion
-        );
-
-    anneeAdhesion.textContent =
-        membre.annee || "-";
-
-    dateDebutAdhesion.textContent =
-        afficherDate(
-            membre.dateDebutAdhesion
-        );
-
-    dateFinAdhesion.textContent =
-        afficherDate(
-            membre.dateFinAdhesion
-        );
-
-    statutPaiement.textContent =
-        traduireStatutPaiement(
-            membre.statutPaiement
-        );
-
-    cotisation.textContent =
-        formatEuro(
-            membre.cotisation
-        );
-
-    numeroCarte.textContent =
-        membre.numeroMembre || "-";
-
-
-    if (membre.carteEnvoyee === true) {
-
-        statutCarte.textContent =
-            "🟢 Carte envoyée";
-
-    } else {
-
-        statutCarte.textContent =
-            "🔴 Carte non envoyée";
-
-    }
-
 
     /*
     =========================================
