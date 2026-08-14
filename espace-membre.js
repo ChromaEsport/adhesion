@@ -319,122 +319,136 @@ function afficherMembre(membre) {
         membre.discord || "-";
 
 
-    /*
-    =========================================
-    COMPTE COMMUNAUTÉ
-    =========================================
-    */
+   console.log(
+    "Compte Membre Communauté chargé :",
+    membre
+);
 
-    if (membre.typeCompte === "communaute") {
+/*
+=========================================
+AFFICHAGE COMMUNAUTÉ
+=========================================
+*/
 
-        console.log(
-            "Compte Membre Communauté chargé :",
-            membre
-        );
+if (blocCommunaute) {
+    blocCommunaute.style.display =
+        "block";
+}
 
-         /*
-    =========================================
-    AFFICHAGE COMMUNAUTÉ
-    =========================================
-    */
+if (blocAdhesion) {
+    blocAdhesion.style.display =
+        "none";
+}
 
-    if (blocCommunaute) {
-        blocCommunaute.style.display =
-            "block";
-    }
+if (blocCarteMembre) {
+    blocCarteMembre.style.display =
+        "none";
+}
 
-    if (blocAdhesion) {
-        blocAdhesion.style.display =
-            "none";
-    }
+if (blocMembreActif) {
+    blocMembreActif.style.display =
+        "none";
+}
 
-    if (blocCarteMembre) {
-        blocCarteMembre.style.display =
-            "none";
-    }
+/*
+=========================================
+STATUT MEMBRE
+=========================================
+*/
 
-    if (blocMembreActif) {
-        blocMembreActif.style.display =
-            "none";
-    }
-        /*
-        -----------------------------------------
-        STATUT
-        -----------------------------------------
-        */
+statutMembre.textContent =
+    "💜 Membre Communauté";
 
-        statutMembre.textContent =
-            "💜 Membre Communauté";
+numeroMembre.textContent =
+    "Communauté";
 
+numeroMembreHeader.textContent =
+    "💜 COMMUNAUTÉ";
 
-        /*
-        -----------------------------------------
-        PAS DE NUMÉRO CHRO
-        -----------------------------------------
-        */
+/*
+=========================================
+STATUT ADHÉSION
+=========================================
+*/
 
-        numeroMembre.textContent =
-            "Communauté";
+if (
+    membre.statutDemandeAdhesion ===
+    "en_attente"
+) {
 
-        numeroMembreHeader.textContent =
-            "💜 COMMUNAUTÉ";
+    statutAdhesion.textContent =
+        "🟠 Demande en cours";
 
+    statutPaiement.textContent =
+        "💜 Aucun paiement";
 
-        /*
-        -----------------------------------------
-        ADHÉSION
-        -----------------------------------------
-        */
+    cotisation.textContent =
+        "50,00 €";
 
-        statutAdhesion.textContent =
-            "💜 Inscription gratuite";
+}
 
-        anneeAdhesion.textContent =
-            "-";
+else if (
+    membre.statutDemandeAdhesion ===
+    "refusee"
+) {
 
-        dateDebutAdhesion.textContent =
-            "-";
+    statutAdhesion.textContent =
+        "🔴 Demande refusée";
 
-        dateFinAdhesion.textContent =
-            "-";
+    statutPaiement.textContent =
+        "💜 Aucun paiement";
 
-        statutPaiement.textContent =
-            "💜 Aucun paiement";
+    cotisation.textContent =
+        "50,00 €";
 
-        cotisation.textContent =
-            "0,00 €";
+}
 
+else {
 
-        /*
-        -----------------------------------------
-        CARTE MEMBRE
-        -----------------------------------------
-        */
+    statutAdhesion.textContent =
+        "💜 Inscription gratuite";
 
-        numeroCarte.textContent =
-            "COMMUNAUTÉ";
+    statutPaiement.textContent =
+        "💜 Aucun paiement";
 
-        statutCarte.textContent =
-            "💜 Membre Communauté";
+    cotisation.textContent =
+        "0,00 €";
 
+}
 
-        /*
-        -----------------------------------------
-        BLOC MEMBRE ACTIF
-        -----------------------------------------
-        */
+anneeAdhesion.textContent =
+    "-";
 
-        if (blocMembreActif) {
+dateDebutAdhesion.textContent =
+    "-";
 
-            blocMembreActif.style.display =
-                "none";
+dateFinAdhesion.textContent =
+    "-";
 
-        }
+/*
+=========================================
+CARTE MEMBRE
+=========================================
+*/
 
+numeroCarte.textContent =
+    "COMMUNAUTÉ";
 
-        return;
-    }
+statutCarte.textContent =
+    "💜 Membre Communauté";
 
+/*
+=========================================
+BLOC MEMBRE ACTIF
+=========================================
+*/
+
+if (blocMembreActif) {
+    blocMembreActif.style.display =
+        "none";
+}
+
+return;
 
     /*
     =========================================
