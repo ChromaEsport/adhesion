@@ -1227,13 +1227,15 @@ logout.addEventListener(
 /* =====================================================
    ACCEPTER UNE ADHÉSION
 ===================================================== */
-
 async function accepterAdhesion(
     id,
     utilisateur
 ) {
-
     try {
+
+        /* =========================================
+           RÉCUPÉRATION DE LA DEMANDE
+        ========================================= */
 
         const adhesionRef =
             doc(
@@ -1242,35 +1244,32 @@ async function accepterAdhesion(
                 id
             );
 
-
         const adhesionSnap =
             await getDoc(
                 adhesionRef
             );
 
-
         if (
             !adhesionSnap.exists()
         ) {
-
             alert(
                 "Demande introuvable."
             );
-
             return;
-
         }
-
 
         const data =
             adhesionSnap.data();
 
 
+        /* =========================================
+           CRÉATION DU PAIEMENT STRIPE
+        ========================================= */
+
         const reponse =
             await fetch(
                 "https://chroma-stripe.max2501.workers.dev",
                 {
-
                     method:
                         "POST",
 
@@ -1282,7 +1281,6 @@ async function accepterAdhesion(
 
                     body:
                         JSON.stringify({
-
                             montant:
                                 data.total,
 
@@ -1291,34 +1289,91 @@ async function accepterAdhesion(
 
                             adhesionId:
                                 id
-
                         })
-
                 }
             );
-
 
         const stripe =
             await reponse.json();
 
-
         if (
             !stripe.url
         ) {
-
             console.error(
                 "Réponse Stripe :",
                 stripe
             );
-
 
             alert(
                 "Impossible de créer le paiement Stripe."
             );
 
             return;
-
         }
+
+
+        /* =========================================
+           DEMANDE → ACCEPTÉE
+           LE MEMBRE RESTE COMMUNAUTÉ
+           JUSQU'AU PAIEMENT
+        ========================================= */
+
+        await updateDoc(
+            adhesionRef,
+            {
+                statut:
+                    "acceptee",
+
+                statutPaiement:
+                    "en_attente",
+
+                stripeSessionId:
+                    stripe.sessionId,
+
+                lienPaiement:
+                    stripe.url,
+
+                dateDecision:
+                    serverTimestamp(),
+
+                decisionParNom:
+                    utilisateur.displayName
+                    ||
+                    utilisateur.email
+                    ||
+                    "Administrateur",
+
+                decisionParEmail:
+                    utilisateur.email
+                    ||
+                    "",
+
+                decisionParUid:
+                    utilisateur.uid
+            }
+        );
+
+
+        /* =========================================
+           REDIRECTION VERS LE PAIEMENT
+        ========================================= */
+
+        window.location.href =
+            stripe.url;
+
+    }
+    catch (error) {
+
+        console.error(
+            "Erreur acceptation :",
+            error
+        );
+
+        alert(
+            "Erreur lors de l'acceptation."
+        );
+    }
+}
 
 
         await updateDoc(
