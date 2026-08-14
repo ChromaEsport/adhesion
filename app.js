@@ -16,7 +16,10 @@ import {
     serverTimestamp,
     doc,
     getDoc,
-    setDoc
+    setDoc,
+    query,
+    where,
+    getDocs
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
 
@@ -1018,7 +1021,52 @@ if (
 
             }
 
+/*
+=========================================
+VÉRIFICATION D'UNE DEMANDE EXISTANTE
+=========================================
+*/
+if (firebaseUid) {
 
+const requeteDemandeExistante =
+    query(
+        collection(
+            db,
+            "adhesions"
+        ),
+        where(
+            "firebaseUid",
+            "==",
+            firebaseUid
+        ),
+        where(
+            "statut",
+            "==",
+            "en_attente"
+        )
+    );
+
+const demandesExistantes =
+    await getDocs(
+        requeteDemandeExistante
+    );
+
+if (!demandesExistantes.empty) {
+
+    afficherMessage(
+        "🟠 Vous avez déjà une demande d’adhésion en cours d’examen. Vous ne pouvez pas déposer une nouvelle demande tant que celle-ci n’a pas été traitée.",
+        "error"
+    );
+
+    if (bouton) {
+        bouton.disabled = false;
+    }
+
+    return;
+}
+    }
+
+    
             /*
             =========================================
             CRÉATION DEMANDE D'ADHÉSION
