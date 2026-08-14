@@ -538,7 +538,7 @@ else {
         "";
 if (boutonDevenirAdherent) {
     boutonDevenirAdherent.style.display =
-        "inline-flex";
+        "inline-flex";}
 }}
     
 /*
