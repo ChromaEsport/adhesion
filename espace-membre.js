@@ -183,6 +183,17 @@ const boutonDevenirAdherent =
         ".bouton-communaute.adherer"
     );
 
+const blocRenouvellement =
+document.getElementById(
+"blocRenouvellement"
+);
+
+const boutonRenouvellement =
+document.getElementById(
+"boutonRenouvellement"
+);
+
+
 /* =========================================================
 AUTHENTIFICATION
 ========================================================= */
