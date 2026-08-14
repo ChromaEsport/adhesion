@@ -178,7 +178,10 @@ document.getElementById(
 "blocCommunaute"
     );
 
-
+const boutonDevenirAdherent =
+    document.querySelector(
+        ".bouton-communaute.adherer"
+    );
 
 /* =========================================================
 AUTHENTIFICATION
@@ -340,6 +343,18 @@ if (communauteDoc.exists()) {
 
             membre.dateDemandeAdhesion =
                 demandeLaPlusRecente.dateDemande;
+
+ /*
+        =========================================
+        UNE DEMANDE EXISTE
+        =========================================
+        */
+
+        if (boutonDevenirAdherent) {
+            boutonDevenirAdherent.style.display =
+                "none";
+        }
+            
         }
     }
 
