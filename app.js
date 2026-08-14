@@ -111,6 +111,10 @@ const passwordConfirmation =
         "passwordConfirmation"
     );
 
+const sectionMotDePasse = 
+    document.getElementById(
+        "sectionMotDePasse" 
+    );
 
 const donLibre =
     document.getElementById(
@@ -383,25 +387,23 @@ async function chargerMembreCommunaute(user) {
         */
 
         if (password) {
+password.required =
+false;
+password.disabled =
+true;
+}
 
-            password.required =
-                false;
+if (passwordConfirmation) {
+passwordConfirmation.required =
+false;
+passwordConfirmation.disabled =
+true;
+}
 
-            password.disabled =
-                true;
-
-        }
-
-
-        if (passwordConfirmation) {
-
-            passwordConfirmation.required =
-                false;
-
-            passwordConfirmation.disabled =
-                true;
-
-        }
+if (sectionMotDePasse) {
+sectionMotDePasse.style.display =
+"none";
+}
 
 
     }
