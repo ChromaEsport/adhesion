@@ -472,6 +472,12 @@ input[type="date"] {
 /* =========================================================
    CHECKBOXES total a payer
    ========================================================= */
+.montanttotal h2 {
+
+text-align:center;
+}
+
+
 .checkbox-grouptap {
     margin:
         14px 0;
