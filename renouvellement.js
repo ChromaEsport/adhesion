@@ -250,6 +250,9 @@ let don =
 // =========================
 // CALCUL DU TOTAL
 // =========================
+
+function mettreAJourTotal() {
+
 don =
     parseFloat(
         champDon.value
