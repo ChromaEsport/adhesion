@@ -222,21 +222,11 @@ function remplirFormulaire(
 // GESTION DU DON
 // =========================
 
-const boutonsDon =
-    document.querySelectorAll(
-        ".bouton-don"
-    );
 
 
-const autreDon =
+const affichagedonLibre =
     document.getElementById(
-        "autreDon"
-    );
-
-
-const affichageDon =
-    document.getElementById(
-        "affichageDon"
+        "affichagedonLibre"
     );
 
 
@@ -253,83 +243,6 @@ const cotisation =
 let don =
     0;
 
-
-// =========================
-// CHOIX RAPIDE DU DON
-// =========================
-
-boutonsDon.forEach(
-    bouton => {
-
-        bouton.addEventListener(
-            "click",
-            () => {
-
-                boutonsDon.forEach(
-                    autre => {
-
-                        autre.classList.remove(
-                            "actif"
-                        );
-
-                    }
-                );
-
-
-                bouton.classList.add(
-                    "actif"
-                );
-
-
-                don =
-                    Number(
-                        bouton.dataset.don
-                    );
-
-
-                autreDon.value =
-                    "";
-
-
-                mettreAJourTotal();
-
-            }
-        );
-
-    }
-);
-
-
-// =========================
-// AUTRE DON
-// =========================
-
-autreDon.addEventListener(
-    "input",
-    () => {
-
-        boutonsDon.forEach(
-            bouton => {
-
-                bouton.classList.remove(
-                    "actif"
-                );
-
-            }
-        );
-
-
-        don =
-            Number(
-                autreDon.value
-            )
-            || 0;
-
-
-        mettreAJourTotal();
-
-    }
-);
 
 
 // =========================
