@@ -3,11 +3,18 @@ import {
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
 
 import {
+    getAuth,
+    onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+
+import {
     getFirestore,
     doc,
     getDoc,
     updateDoc
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+
+
 
 // =========================
 // CONFIGURATION FIREBASE
@@ -45,7 +52,7 @@ const app =
 const db =
     getFirestore(app);
 
-
+const auth = getAuth(app);
 // =========================
 // RÉCUPÉRATION DE L'ID
 // =========================
@@ -70,7 +77,7 @@ const message =
 // CHARGEMENT DU MEMBRE
 // =========================
 
-async function chargerMembre() {
+async function chargerMembre(firebaseUid) {
 
     if (!membreId) {
 
@@ -112,6 +119,13 @@ async function chargerMembre() {
 
         const membre =
             membreSnap.data();
+
+        if (membre.firebaseUid !== firebaseUid) {
+    afficherErreur(
+        "Vous n'êtes pas autorisé à accéder à cette adhésion."
+    );
+    return;
+}
 
             window.membreActuel = membre;
         
@@ -624,4 +638,13 @@ function afficherErreur(
 // DÉMARRAGE
 // =========================
 
-chargerMembre();
+onAuthStateChanged(auth, async (user) => {
+
+    if (!user) {
+        window.location.href = "../connexion-membre.html";
+        return;
+    }
+
+    await chargerMembre(user.uid);
+
+});
