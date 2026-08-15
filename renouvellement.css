@@ -568,15 +568,11 @@ text-align:center;
     display: none;
 }
 
-.ligne-total total-final{
+.total-final{
 color: #77faff;
     margin-top: 15px;
 }
 
-.ligne-total span {
-
-   font-weight: bold;
-}
 
 
 
