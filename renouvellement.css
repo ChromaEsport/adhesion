@@ -572,7 +572,7 @@ text-align:center;
 color: #77faff;
     margin-top: 15px;
 }
-.total-final h1::before {
+.total-final strong::before {
    content: "";
     position: absolute;
     top: 0;
