@@ -497,6 +497,9 @@ text-align:center;
     transition:
         border-color 0.2s ease,
         background 0.2s ease;
+
+   text-align: center;
+    font-size: 20px;
 }
 
 .checkbox-grouptap:hover {
@@ -564,6 +567,17 @@ text-align:center;
 #donLibreZone {
     display: none;
 }
+
+.ligne-total total-final{
+color: #77faff;
+    margin-top: 15px;
+}
+
+.ligne-total span {
+
+   font-weight: bold;
+}
+
 
 
 /* =========================================================
