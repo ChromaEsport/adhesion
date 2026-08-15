@@ -224,52 +224,67 @@ function remplirFormulaire(
 
 
 
-const affichagedonLibre =
-    document.getElementById(
-        "affichagedonLibre"
-    );
-
+const affichageDon =
+document.getElementById(
+"affichageDon"
+);
 
 const affichageTotal =
-    document.getElementById(
-        "affichageTotal"
-    );
+document.getElementById(
+"affichageTotal"
+);
 
+const champDon =
+document.getElementById(
+"donLibre"
+);
 
 const cotisation =
-    50;
-
+50;
 
 let don =
-    0;
+0;
 
 
 
 // =========================
 // CALCUL DU TOTAL
 // =========================
+don =
+    parseFloat(
+        champDon.value
+    ) || 0;
 
-function mettreAJourTotal() {
-
-    const total =
-        cotisation +
-        donLibre;
-
-
-    affichagedonLibre.textContent =
-        don.toFixed(2)
-        +
-        " €";
+const total =
+    cotisation +
+    don;
 
 
-    affichageTotal.textContent =
-        total.toFixed(2)
-        +
-        " €";
+affichageDon.textContent =
+    don.toFixed(2) +
+    " €";
+
+
+affichageTotal.textContent =
+    total.toFixed(2) +
+    " €";
 
 }
 
+// =========================
+// MISE À JOUR EN DIRECT
+// =========================
 
+champDon.addEventListener(
+"input",
+mettreAJourTotal
+);
+
+// =========================
+// INITIALISATION
+// =========================
+
+mettreAJourTotal();
 // =========================
 // BOUTON PAIEMENT
 // =========================
@@ -284,9 +299,14 @@ boutonRenouvellement.addEventListener(
     "click",
     async () => {
 
-        const total =
-            cotisation +
-            don;
+        don =
+parseFloat(
+document.getElementById("donLibre").value
+) || 0;
+
+const total =
+cotisation +
+don;
 
 
         // =========================
