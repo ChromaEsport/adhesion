@@ -2060,7 +2060,7 @@ document.body.innerHTML = `
             </p>
 
             <button
-                onclick="window.location.href='index.html'"
+                onclick="window.location.href='connexion-membre.html'"
                 style="
                     margin-top:15px;
                     padding:12px 20px;
