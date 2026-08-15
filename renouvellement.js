@@ -340,10 +340,10 @@ function mettreAJourTotal() {
 
     const total =
         cotisation +
-        don;
+        donLibre;
 
 
-    affichageDon.textContent =
+    affichagedonLibre.textContent =
         don.toFixed(2)
         +
         " €";
