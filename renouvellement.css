@@ -572,7 +572,16 @@ text-align:center;
 color: #77faff;
     margin-top: 15px;
 }
-
+.total-final h1::before {
+   content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 160px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--chroma), transparent);
+}
 
 
 
