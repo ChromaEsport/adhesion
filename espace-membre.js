@@ -1421,7 +1421,7 @@ if (boutonRenouvellement) {
 }
 }
 
-async function lancerRenouvellementStripe(membre) {
+function lancerRenouvellementStripe(membre) {
 
 
 if (!membre) {
@@ -1440,11 +1440,20 @@ if (
     return;
 }
 
+if (!membre.id) {
+    alert(
+        "Identifiant du membre introuvable."
+    );
+    return;
+}
+
 window.location.href =
-    "https://chromaesport.github.io/adhesion/renouvellement";
+    "https://chromaesport.github.io/adhesion/renouvellement?id="
+    + encodeURIComponent(membre.id);
+
 
 }
-    
+
 
 
 function convertirDate(
