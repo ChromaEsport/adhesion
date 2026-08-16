@@ -198,6 +198,8 @@ document.getElementById(
 "boutonDon"
 );
 
+let membreConnecte = null;
+
 /* =========================================================
 Bouton Don
 ========================================================= */
@@ -292,16 +294,16 @@ type:
     "don",
 
 firebaseUid:
-    user.uid,
+user.uid,
 
 membreId:
-    membre.id || "",
+membreConnecte?.id || "",
 
 numeroMembre:
-    membre.numeroMembre || "",
+membreConnecte?.numeroMembre || "",
 
 typeCompte:
-    membre.typeCompte || "",
+membreConnecte?.typeCompte || "",
 
 adhesionId:
     "",
@@ -584,7 +586,7 @@ AFFICHER LE MEMBRE
 ========================================================= */
 function afficherMembre(membre) {
 
-
+membreConnecte = membre;
 /*
 =========================================
 INFORMATIONS COMMUNES
