@@ -203,14 +203,13 @@ Bouton Don
 ========================================================= */
 if (boutonDon) {
 
-
 console.log(
     "Bouton Don détecté."
 );
 
 boutonDon.addEventListener(
     "click",
-    () => {
+    async () => {
 
         console.log(
             "Bouton Don cliqué."
@@ -251,15 +250,100 @@ boutonDon.addEventListener(
 
         console.log(
             "Montant du don :",
-            montantDon,
-            "€"
+            montantDon
         );
 
-        alert(
-            "Montant du don sélectionné : " +
-            montantDon.toFixed(2) +
-            " €"
-        );
+        const user =
+            auth.currentUser;
+
+        if (!user) {
+
+            alert(
+                "Votre session a expiré. Veuillez vous reconnecter."
+            );
+
+            return;
+        }
+
+        try {
+
+            const response =
+                await fetch(
+                    "chroma-stripe.max2501.workers.dev",
+                    {
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
+
+                        body: JSON.stringify({
+
+                            montant:
+                                montantDon,
+
+                            email:
+                                user.email || "",
+
+                            type:
+                                "don",
+
+                            membreId:
+                                "",
+
+                            numeroMembre:
+                                "",
+
+                            adhesionId:
+                                "",
+
+                            cotisation:
+                                0,
+
+                            don:
+                                montantDon
+
+                        })
+                    }
+                );
+
+            const data =
+                await response.json();
+
+            console.log(
+                "Réponse Worker Stripe :",
+                data
+            );
+
+            if (
+                !response.ok ||
+                !data.url
+            ) {
+
+                throw new Error(
+                    data.message ||
+                    "Impossible de créer le paiement Stripe."
+                );
+
+            }
+
+            window.location.href =
+                data.url;
+
+        }
+        catch (error) {
+
+            console.error(
+                "Erreur paiement don :",
+                error
+            );
+
+            alert(
+                "Impossible de lancer le paiement du don. Veuillez réessayer."
+            );
+
+        }
 
     }
 );
@@ -275,6 +359,7 @@ console.error(
 
 
 }
+
 
 
 
