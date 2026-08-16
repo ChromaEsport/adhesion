@@ -1641,3 +1641,408 @@ body.popup-don-ouvert {
     }
 
 }
+/* =====================================================
+MES DONS
+===================================================== */
+
+.bloc-mes-dons {
+border:
+1px solid
+rgba(
+143,
+236,
+201,
+0.18
+);
+
+background:
+    linear-gradient(
+        135deg,
+        #081638,
+        rgba(
+            60,
+            145,
+            149,
+            0.14
+        )
+    );
+
+}
+
+/* ==============================
+STATISTIQUES DONS
+============================== */
+
+.stats-dons {
+
+display: grid;
+
+
+grid-template-columns:
+    repeat(2, 1fr);
+
+
+gap: 15px;
+
+
+margin-bottom: 25px;
+
+}
+
+.stat-don {
+
+display: flex;
+
+
+align-items: center;
+
+
+gap: 15px;
+
+
+padding: 18px;
+
+
+border-radius: 12px;
+
+
+background:
+    rgba(
+        255,
+        255,
+        255,
+        0.04
+    );
+
+
+border:
+    1px solid
+    rgba(
+        255,
+        255,
+        255,
+        0.06
+    );
+
+}
+
+.stat-don-icone {
+
+width: 48px;
+
+
+height: 48px;
+
+
+display: flex;
+
+
+align-items: center;
+
+
+justify-content: center;
+
+
+flex-shrink: 0;
+
+
+border-radius: 50%;
+
+
+background:
+    rgba(
+        143,
+        236,
+        201,
+        0.10
+    );
+
+
+border:
+    1px solid
+    rgba(
+        143,
+        236,
+        201,
+        0.18
+    );
+
+
+font-size: 22px;
+
+}
+
+.stat-don-label {
+
+display: block;
+
+
+margin-bottom: 5px;
+
+
+color: #8fa3c4;
+
+
+font-size: 13px;
+
+}
+
+.stat-don-valeur {
+
+display: block;
+
+
+color: #8fecc9;
+
+
+font-size: 21px;
+
+}
+
+/* ==============================
+HISTORIQUE
+============================== */
+
+.historique-dons h4 {
+
+margin:
+    0
+    0
+    15px
+    0;
+
+
+color: #ffffff;
+
+
+font-size: 17px;
+
+}
+
+.liste-dons {
+
+display: flex;
+
+
+flex-direction: column;
+
+
+gap: 10px;
+
+}
+
+/* ==============================
+LIGNE DON
+============================== */
+
+.ligne-don {
+
+display: flex;
+
+
+justify-content: space-between;
+
+
+align-items: center;
+
+
+gap: 15px;
+
+
+padding: 15px 18px;
+
+
+border-radius: 10px;
+
+
+background:
+    rgba(
+        255,
+        255,
+        255,
+        0.035
+    );
+
+
+border:
+    1px solid
+    rgba(
+        255,
+        255,
+        255,
+        0.05
+    );
+
+}
+
+.information-don {
+
+display: flex;
+
+
+align-items: center;
+
+
+gap: 12px;
+
+}
+
+.icone-historique-don {
+
+width: 38px;
+
+
+height: 38px;
+
+
+display: flex;
+
+
+align-items: center;
+
+
+justify-content: center;
+
+
+border-radius: 50%;
+
+
+background:
+    rgba(
+        143,
+        236,
+        201,
+        0.08
+    );
+
+
+font-size: 17px;
+
+}
+
+.date-don {
+
+display: block;
+
+
+color: #8fa3c4;
+
+
+font-size: 12px;
+
+
+margin-bottom: 3px;
+
+}
+
+.statut-don {
+
+display: block;
+
+
+color: #8fecc9;
+
+
+font-size: 12px;
+
+}
+
+.montant-don {
+
+color: #ffffff;
+
+
+font-size: 17px;
+
+
+font-weight: bold;
+
+
+white-space: nowrap;
+
+}
+
+/* ==============================
+AUCUN DON
+============================== */
+
+.aucun-don {
+
+text-align: center;
+
+
+padding: 25px 15px;
+
+
+color: #8fa3c4;
+
+}
+
+.aucun-don .icone-aucun-don {
+
+font-size: 30px;
+
+
+margin-bottom: 8px;
+
+}
+
+.aucun-don p {
+
+margin: 5px 0;
+
+}
+
+/* ==============================
+CHARGEMENT
+============================== */
+
+.chargement-dons {
+
+text-align: center;
+
+
+padding: 20px;
+
+
+color: #8fa3c4;
+
+}
+
+/* ==============================
+MOBILE
+============================== */
+
+@media (max-width: 600px) {
+
+.stats-dons {
+
+
+    grid-template-columns: 1fr;
+
+
+}
+
+
+
+
+.ligne-don {
+
+
+    align-items: flex-start;
+
+
+}
+
+
+
+
+.montant-don {
+
+
+    font-size: 16px;
+
+
+}
+
+}
