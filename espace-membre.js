@@ -203,12 +203,25 @@ if (boutonDon) {
 console.log(
 "Bouton Don détecté."
 );
+
+
+boutonDon.addEventListener(
+    "click",
+    () => {
+        console.log(
+            "Bouton Don cliqué."
+        );
+    }
+);
+
+
 }
 else {
 console.error(
 "Bouton Don introuvable."
 );
 }
+
 
 /* =========================================================
 AUTHENTIFICATION
