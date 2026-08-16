@@ -1041,3 +1041,603 @@ padding: 14px 20px;
 
 }
 
+/* =====================================================
+   POPUP DON
+====================================================== */
+
+.popup-don-overlay {
+    position: fixed;
+    inset: 0;
+
+    z-index: 9999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background:
+        rgba(
+            0,
+            0,
+            0,
+            0.72
+        );
+
+    backdrop-filter:
+        blur(6px);
+
+    -webkit-backdrop-filter:
+        blur(6px);
+}
+
+
+body.popup-don-ouvert {
+    overflow: hidden;
+}
+
+
+.popup-don {
+    position: relative;
+
+    width: 100%;
+    max-width: 480px;
+
+    padding: 32px;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #081638,
+            #102653
+        );
+
+    border:
+        1px solid
+        rgba(
+            143,
+            236,
+            201,
+            0.25
+        );
+
+    box-shadow:
+        0 25px 80px
+        rgba(
+            0,
+            0,
+            0,
+            0.55
+        );
+
+    animation:
+        apparitionPopupDon
+        0.22s
+        ease-out;
+}
+
+
+@keyframes apparitionPopupDon {
+
+    from {
+        opacity: 0;
+        transform:
+            translateY(15px)
+            scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+}
+
+
+/* ==============================
+   BOUTON FERMER
+============================== */
+
+.popup-don-fermer {
+    position: absolute;
+
+    top: 14px;
+    right: 14px;
+
+    width: 36px;
+    height: 36px;
+
+    border: none;
+    border-radius: 50%;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.06
+        );
+
+    color: #ffffff;
+
+    font-size: 25px;
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s,
+        transform 0.2s;
+}
+
+
+.popup-don-fermer:hover {
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.13
+        );
+
+    transform:
+        rotate(90deg);
+
+}
+
+
+/* ==============================
+   ICONE
+============================== */
+
+.popup-don-icone {
+    width: 68px;
+    height: 68px;
+
+    margin:
+        0 auto
+        18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        rgba(
+            143,
+            236,
+            201,
+            0.10
+        );
+
+    border:
+        1px solid
+        rgba(
+            143,
+            236,
+            201,
+            0.22
+        );
+
+    font-size: 32px;
+
+    box-shadow:
+        0 0 30px
+        rgba(
+            143,
+            236,
+            201,
+            0.08
+        );
+}
+
+
+/* ==============================
+   TITRE
+============================== */
+
+.popup-don h3 {
+
+    margin:
+        0 0 10px;
+
+    text-align: center;
+
+    color: #8fecc9;
+
+    font-size: 24px;
+
+}
+
+
+.popup-don-description {
+
+    margin:
+        0 auto 22px;
+
+    max-width: 390px;
+
+    text-align: center;
+
+    color: #b8c7df;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+
+}
+
+
+/* ==============================
+   MONTANTS RAPIDES
+============================== */
+
+.popup-don-montants {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 10px;
+
+    margin-bottom: 22px;
+
+}
+
+
+.montant-don-rapide {
+
+    padding: 12px 8px;
+
+    border:
+        1px solid
+        rgba(
+            143,
+            236,
+            201,
+            0.18
+        );
+
+    border-radius: 9px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.04
+        );
+
+    color: #ffffff;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s,
+        border 0.2s,
+        transform 0.2s;
+
+}
+
+
+.montant-don-rapide:hover {
+
+    background:
+        rgba(
+            143,
+            236,
+            201,
+            0.10
+        );
+
+    border-color:
+        rgba(
+            143,
+            236,
+            201,
+            0.4
+        );
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+.montant-don-rapide.selectionne {
+
+    background:
+        linear-gradient(
+            135deg,
+            #3c9195,
+            #8fecc9
+        );
+
+    border-color:
+        #8fecc9;
+
+    color:
+        #010c2c;
+
+}
+
+
+/* ==============================
+   CHAMP MONTANT
+============================== */
+
+.champ-montant-don label {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #b8c7df;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+}
+
+
+.input-montant-wrapper {
+
+    display: flex;
+
+    align-items: center;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(
+            143,
+            236,
+            201,
+            0.25
+        );
+
+    border-radius: 10px;
+
+    background:
+        rgba(
+            0,
+            0,
+            0,
+            0.18
+        );
+
+    transition:
+        border-color 0.2s,
+        box-shadow 0.2s;
+
+}
+
+
+.input-montant-wrapper:focus-within {
+
+    border-color:
+        #8fecc9;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(
+            143,
+            236,
+            201,
+            0.08
+        );
+
+}
+
+
+.input-montant-wrapper input {
+
+    flex: 1;
+
+    min-width: 0;
+
+    padding:
+        14px 15px;
+
+    border: none;
+
+    outline: none;
+
+    background: transparent;
+
+    color: #ffffff;
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+}
+
+
+.input-montant-wrapper input::placeholder {
+
+    color:
+        #607394;
+
+}
+
+
+.input-montant-wrapper span {
+
+    padding:
+        0 17px;
+
+    color:
+        #8fecc9;
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+}
+
+
+/* ==============================
+   ERREUR
+============================== */
+
+.erreur-montant-don {
+
+    min-height: 18px;
+
+    margin:
+        7px 0 0;
+
+    color:
+        #ff7676;
+
+    font-size: 13px;
+
+}
+
+
+/* ==============================
+   BOUTON CONTINUER
+============================== */
+
+.bouton-continuer-don {
+
+    width: 100%;
+
+    margin-top: 10px;
+
+    padding:
+        15px 20px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #3c9195,
+            #8fecc9
+        );
+
+    color:
+        #010c2c;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s,
+        opacity 0.2s,
+        box-shadow 0.2s;
+
+}
+
+
+.bouton-continuer-don:hover {
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 8px 25px
+        rgba(
+            143,
+            236,
+            201,
+            0.18
+        );
+
+}
+
+
+.bouton-continuer-don:disabled {
+
+    opacity: 0.65;
+
+    cursor:
+        wait;
+
+    transform:
+        none;
+
+}
+
+
+/* ==============================
+   SÉCURITÉ
+============================== */
+
+.popup-don-securite {
+
+    margin:
+        15px 0 0;
+
+    text-align: center;
+
+    color:
+        #6f82a5;
+
+    font-size: 11px;
+
+    line-height: 1.4;
+
+}
+
+
+/* ==============================
+   MOBILE
+============================== */
+
+@media (max-width: 500px) {
+
+    .popup-don {
+
+        padding:
+            28px 20px;
+
+        border-radius: 17px;
+
+    }
+
+
+    .popup-don h3 {
+
+        font-size: 21px;
+
+    }
+
+
+    .popup-don-montants {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+
+    .popup-don-description {
+
+        font-size: 13px;
+
+    }
+
+}
