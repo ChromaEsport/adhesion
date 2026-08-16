@@ -268,45 +268,48 @@ boutonDon.addEventListener(
         try {
 
             const response =
-                await fetch(
-                    "chroma-stripe.max2501.workers.dev",
-                    {
-                        method: "POST",
+await fetch(
+"https://chroma-stripe.max2501.workers.dev/",
+{
+method: "POST",
 
-                        headers: {
-                            "Content-Type":
-                                "application/json"
-                        },
 
-                        body: JSON.stringify({
+        headers: {
+            "Content-Type":
+                "application/json"
+        },
 
-                            montant:
-                                montantDon,
+        body: JSON.stringify({
 
-                            email:
-                                user.email || "",
+            montant:
+                montantDon,
 
-                            type:
-                                "don",
+            email:
+                user.email || "",
 
-                            membreId:
-                                "",
+            type:
+                "don",
 
-                            numeroMembre:
-                                "",
+            membreId:
+                "",
 
-                            adhesionId:
-                                "",
+            numeroMembre:
+                "",
 
-                            cotisation:
-                                0,
+            adhesionId:
+                "",
 
-                            don:
-                                montantDon
+            cotisation:
+                0,
 
-                        })
-                    }
-                );
+            don:
+                montantDon
+
+        })
+    }
+);
+
+
 
             const data =
                 await response.json();
