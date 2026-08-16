@@ -198,29 +198,84 @@ document.getElementById(
 "boutonDon"
 );
 
-
+/* =========================================================
+Bouton Don
+========================================================= */
 if (boutonDon) {
-console.log(
-"Bouton Don détecté."
-);
 
+
+console.log(
+    "Bouton Don détecté."
+);
 
 boutonDon.addEventListener(
     "click",
     () => {
+
         console.log(
             "Bouton Don cliqué."
         );
+
+        const montant =
+            prompt(
+                "Quel montant souhaitez-vous donner ?\n\nEntrez un montant en euros."
+            );
+
+        if (
+            montant === null
+        ) {
+            return;
+        }
+
+        const montantDon =
+            Number(
+                montant.replace(
+                    ",",
+                    "."
+                )
+            );
+
+        if (
+            !Number.isFinite(
+                montantDon
+            ) ||
+            montantDon <= 0
+        ) {
+
+            alert(
+                "Veuillez saisir un montant valide."
+            );
+
+            return;
+        }
+
+        console.log(
+            "Montant du don :",
+            montantDon,
+            "€"
+        );
+
+        alert(
+            "Montant du don sélectionné : " +
+            montantDon.toFixed(2) +
+            " €"
+        );
+
     }
 );
 
 
 }
 else {
+
+
 console.error(
-"Bouton Don introuvable."
+    "Bouton Don introuvable."
 );
+
+
 }
+
 
 
 /* =========================================================
