@@ -193,6 +193,22 @@ document.getElementById(
 "boutonRenouvellement"
 );
 
+const boutonDon =
+document.getElementById(
+"boutonDon"
+);
+
+
+if (boutonDon) {
+console.log(
+"Bouton Don détecté."
+);
+}
+else {
+console.error(
+"Bouton Don introuvable."
+);
+}
 
 /* =========================================================
 AUTHENTIFICATION
