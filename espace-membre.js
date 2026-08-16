@@ -198,164 +198,177 @@ document.getElementById(
 "boutonDon"
 );
 
+const popupDon =
+    document.getElementById(
+        "popupDon"
+    );
+
+const fermerPopupDon =
+    document.getElementById(
+        "fermerPopupDon"
+    );
+
+const montantDonInput =
+    document.getElementById(
+        "montantDon"
+    );
+
+const continuerDon =
+    document.getElementById(
+        "continuerDon"
+    );
+
+const erreurMontantDon =
+    document.getElementById(
+        "erreurMontantDon"
+    );
+
+const montantsRapides =
+    document.querySelectorAll(
+        ".montant-don-rapide"
+    );
+
 let membreConnecte = null;
 
 /* =========================================================
 Bouton Don
 ========================================================= */
+/* =========================================================
+POPUP DON
+========================================================= */
+
+function ouvrirPopupDon() {
+
+    if (!popupDon) {
+        return;
+    }
+
+    popupDon.style.display = "flex";
+
+    document.body.classList.add(
+        "popup-don-ouvert"
+    );
+
+    if (montantDonInput) {
+        montantDonInput.value = "";
+    }
+
+    if (erreurMontantDon) {
+        erreurMontantDon.textContent = "";
+    }
+
+    setTimeout(
+        () => {
+
+            if (montantDonInput) {
+                montantDonInput.focus();
+            }
+
+        },
+        100
+    );
+}
+
+
+function fermerPopupDonFonction() {
+
+    if (!popupDon) {
+        return;
+    }
+
+    popupDon.style.display = "none";
+
+    document.body.classList.remove(
+        "popup-don-ouvert"
+    );
+
+}
+
+
+/*
+=========================================
+OUVERTURE DU POPUP
+=========================================
+*/
+
 if (boutonDon) {
 
-console.log(
-    "Bouton Don détecté."
-);
+    boutonDon.addEventListener(
+        "click",
+        () => {
 
-boutonDon.addEventListener(
-    "click",
-    async () => {
+            ouvrirPopupDon();
 
-        console.log(
-            "Bouton Don cliqué."
-        );
-
-        const montant =
-            prompt(
-                "Quel montant souhaitez-vous donner ?\n\nEntrez un montant en euros."
-            );
-
-        if (
-            montant === null
-        ) {
-            return;
         }
+    );
 
-        const montantDon =
-            Number(
-                montant.replace(
-                    ",",
-                    "."
-                )
-            );
+}
 
-        if (
-            !Number.isFinite(
-                montantDon
-            ) ||
-            montantDon <= 0
-        ) {
 
-            alert(
-                "Veuillez saisir un montant valide."
-            );
+/*
+=========================================
+FERMETURE
+=========================================
+*/
 
-            return;
+if (fermerPopupDon) {
+
+    fermerPopupDon.addEventListener(
+        "click",
+        () => {
+
+            fermerPopupDonFonction();
+
         }
+    );
 
-        console.log(
-            "Montant du don :",
-            montantDon
-        );
-
-        const user =
-            auth.currentUser;
-
-        if (!user) {
-
-            alert(
-                "Votre session a expiré. Veuillez vous reconnecter."
-            );
-
-            return;
-        }
-
-        try {
-
-            const response =
-await fetch(
-"https://chroma-stripe.max2501.workers.dev/",
-{
-method: "POST",
+}
 
 
-        headers: {
-            "Content-Type":
-                "application/json"
-        },
+/*
+=========================================
+CLIQUER EN DEHORS DE LA FENÊTRE
+=========================================
+*/
 
-        body: JSON.stringify({
+if (popupDon) {
 
-
-montant:
-    montantDon,
-
-email:
-    user.email || "",
-
-type:
-    "don",
-
-firebaseUid:
-user.uid,
-
-membreId:
-membreConnecte?.id || "",
-
-numeroMembre:
-membreConnecte?.numeroMembre || "",
-
-typeCompte:
-membreConnecte?.typeCompte || "",
-
-adhesionId:
-    "",
-
-cotisation:
-    0,
-
-don:
-    montantDon
-
-
-})
-
-    }
-);
-
-
-
-            const data =
-                await response.json();
-
-            console.log(
-                "Réponse Worker Stripe :",
-                data
-            );
+    popupDon.addEventListener(
+        "click",
+        (event) => {
 
             if (
-                !response.ok ||
-                !data.url
+                event.target ===
+                popupDon
             ) {
 
-                throw new Error(
-                    data.message ||
-                    "Impossible de créer le paiement Stripe."
-                );
+                fermerPopupDonFonction();
 
             }
 
-            window.location.href =
-                data.url;
-
         }
-        catch (error) {
+    );
 
-            console.error(
-                "Erreur paiement don :",
-                error
-            );
+}
 
-            alert(
-                "Impossible de lancer le paiement du don. Veuillez réessayer."
-            );
+
+/*
+=========================================
+TOUCHE ÉCHAP
+=========================================
+*/
+
+document.addEventListener(
+    "keydown",
+    (event) => {
+
+        if (
+            event.key === "Escape" &&
+            popupDon &&
+            popupDon.style.display === "flex"
+        ) {
+
+            fermerPopupDonFonction();
 
         }
 
@@ -363,14 +376,326 @@ don:
 );
 
 
-}
-else {
+/*
+=========================================
+MONTANTS RAPIDES
+=========================================
+*/
 
+montantsRapides.forEach(
+    bouton => {
 
-console.error(
-    "Bouton Don introuvable."
+        bouton.addEventListener(
+            "click",
+            () => {
+
+                const montant =
+                    bouton.dataset.montant;
+
+                if (montantDonInput) {
+
+                    montantDonInput.value =
+                        montant.replace(
+                            ".",
+                            ","
+                        );
+
+                    montantDonInput.focus();
+
+                }
+
+                montantsRapides.forEach(
+                    autreBouton => {
+
+                        autreBouton.classList.remove(
+                            "selectionne"
+                        );
+
+                    }
+                );
+
+                bouton.classList.add(
+                    "selectionne"
+                );
+
+            }
+        );
+
+    }
 );
 
+
+/*
+=========================================
+MODIFICATION MANUELLE DU MONTANT
+=========================================
+*/
+
+if (montantDonInput) {
+
+    montantDonInput.addEventListener(
+        "input",
+        () => {
+
+            montantsRapides.forEach(
+                bouton => {
+
+                    bouton.classList.remove(
+                        "selectionne"
+                    );
+
+                }
+            );
+
+            if (erreurMontantDon) {
+
+                erreurMontantDon.textContent =
+                    "";
+
+            }
+
+        }
+    );
+
+}
+
+
+/*
+=========================================
+CONTINUER VERS STRIPE
+=========================================
+*/
+
+if (continuerDon) {
+
+    continuerDon.addEventListener(
+        "click",
+        async () => {
+
+            if (!montantDonInput) {
+                return;
+            }
+
+            const valeur =
+                montantDonInput.value
+                    .trim()
+                    .replace(
+                        ",",
+                        "."
+                    );
+
+            const montant =
+                Number(
+                    valeur
+                );
+
+
+            /*
+            =====================================
+            VALIDATION
+            =====================================
+            */
+
+            if (
+                !valeur ||
+                !Number.isFinite(
+                    montant
+                ) ||
+                montant <= 0
+            ) {
+
+                if (erreurMontantDon) {
+
+                    erreurMontantDon.textContent =
+                        "Veuillez saisir un montant valide.";
+
+                }
+
+                montantDonInput.focus();
+
+                return;
+
+            }
+
+
+            /*
+            =====================================
+            MAXIMUM DE DÉCIMALES
+            =====================================
+            */
+
+            if (
+                !/^\d+([,.]\d{1,2})?$/.test(
+                    montantDonInput.value.trim()
+                )
+            ) {
+
+                if (erreurMontantDon) {
+
+                    erreurMontantDon.textContent =
+                        "Le montant doit comporter au maximum 2 décimales.";
+
+                }
+
+                montantDonInput.focus();
+
+                return;
+
+            }
+
+
+            /*
+            =====================================
+            UTILISATEUR CONNECTÉ
+            =====================================
+            */
+
+            const user =
+                auth.currentUser;
+
+            if (!user) {
+
+                alert(
+                    "Votre session a expiré. Veuillez vous reconnecter."
+                );
+
+                fermerPopupDonFonction();
+
+                return;
+
+            }
+
+
+            /*
+            =====================================
+            BOUTON EN CHARGEMENT
+            =====================================
+            */
+
+            continuerDon.disabled =
+                true;
+
+            continuerDon.textContent =
+                "⏳ Préparation du paiement...";
+
+
+            try {
+
+                console.log(
+                    "Création du don :",
+                    montant
+                );
+
+
+                const response =
+                    await fetch(
+                        "https://chroma-stripe.max2501.workers.dev/",
+                        {
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
+
+                            body:
+                                JSON.stringify({
+
+                                    montant:
+                                        montant,
+
+                                    email:
+                                        user.email || "",
+
+                                    type:
+                                        "don",
+
+                                    firebaseUid:
+                                        user.uid,
+
+                                    membreId:
+                                        membreConnecte?.id || "",
+
+                                    numeroMembre:
+                                        membreConnecte?.numeroMembre || "",
+
+                                    typeCompte:
+                                        membreConnecte?.typeCompte || "",
+
+                                    adhesionId:
+                                        "",
+
+                                    cotisation:
+                                        0,
+
+                                    don:
+                                        montant
+
+                                })
+
+                        }
+                    );
+
+
+                const data =
+                    await response.json();
+
+
+                console.log(
+                    "Réponse Worker Stripe :",
+                    data
+                );
+
+
+                if (
+                    !response.ok ||
+                    !data.url
+                ) {
+
+                    throw new Error(
+                        data.message ||
+                        "Impossible de créer le paiement Stripe."
+                    );
+
+                }
+
+
+                /*
+                =====================================
+                REDIRECTION STRIPE
+                =====================================
+                */
+
+                window.location.href =
+                    data.url;
+
+            }
+            catch (
+                error
+            ) {
+
+                console.error(
+                    "Erreur paiement don :",
+                    error
+                );
+
+                if (erreurMontantDon) {
+
+                    erreurMontantDon.textContent =
+                        "Impossible de lancer le paiement. Veuillez réessayer.";
+
+                }
+
+                continuerDon.disabled =
+                    false;
+
+                continuerDon.textContent =
+                    "❤️ Continuer vers le paiement";
+
+            }
+
+        }
+    );
 
 }
 
