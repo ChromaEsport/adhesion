@@ -203,6 +203,26 @@ const popupDon =
         "popupDon"
     );
 
+const blocMesDons =
+document.getElementById(
+"blocMesDons"
+);
+
+const totalDons =
+document.getElementById(
+"totalDons"
+);
+
+const nombreDons =
+document.getElementById(
+"nombreDons"
+);
+
+const listeDons =
+document.getElementById(
+"listeDons"
+);
+
 const fermerPopupDon =
     document.getElementById(
         "fermerPopupDon"
@@ -707,27 +727,39 @@ AUTHENTIFICATION
 ========================================================= */
 
 onAuthStateChanged(
-    auth,
-    async (user) => {
+auth,
+async (user) => {
 
-        if (!user) {
+           if (!user) {
 
-            window.location.href =
-                "connexion-membre.html";
+        window.location.href =
+            "connexion-membre.html";
 
-            return;
-        }
-
-        console.log(
-            "Utilisateur Firebase connecté :",
-            user.uid
-        );
-
-        await chargerMembre(
-            user.uid
-        );
+        return;
     }
-);
+
+    console.log(
+        "Utilisateur Firebase connecté :",
+        user.uid
+    );
+
+
+    await chargerMembre(
+        user.uid
+    );
+
+
+    /*
+    =====================================
+    CHARGEMENT DES DONS
+    =====================================
+    */
+
+    await chargerMesDons(
+        user.uid
+    );
+
+});
 
 /* =========================================================
 CHARGER LE MEMBRE
@@ -904,6 +936,300 @@ if (communauteDoc.exists()) {
         );
 
     }
+}
+
+
+async function chargerMesDons(
+firebaseUid
+) {
+
+if (
+    !firebaseUid
+) {
+
+    console.error(
+        "Firebase UID introuvable pour charger les dons."
+    );
+
+    return;
+
+}
+
+
+if (
+    !listeDons ||
+    !totalDons ||
+    !nombreDons
+) {
+
+    return;
+
+}
+
+
+try {
+
+    const requeteDons =
+        query(
+            collection(
+                db,
+                "dons"
+            ),
+            where(
+                "firebaseUid",
+                "==",
+                firebaseUid
+            ),
+            where(
+                "statut",
+                "==",
+                "paye"
+            )
+        );
+
+
+    const resultatDons =
+        await getDocs(
+            requeteDons
+        );
+
+
+    const dons = [];
+
+
+    resultatDons.forEach(
+        documentFirestore => {
+
+            const data =
+                documentFirestore.data();
+
+            dons.push({
+
+                id:
+                    documentFirestore.id,
+
+                ...data
+
+            });
+
+        }
+    );
+
+
+    /*
+    =====================================
+    TRI DU PLUS RÉCENT AU PLUS ANCIEN
+    =====================================
+    */
+
+    dons.sort(
+        (
+            a,
+            b
+        ) => {
+
+            return convertirDate(
+                b.date
+            ) -
+            convertirDate(
+                a.date
+            );
+
+        }
+    );
+
+
+    /*
+    =====================================
+    CALCUL DU TOTAL
+    =====================================
+    */
+
+    let total =
+        0;
+
+
+    dons.forEach(
+        don => {
+
+            total +=
+                Number(
+                    don.montant
+                )
+                ||
+                0;
+
+        }
+    );
+
+
+    /*
+    =====================================
+    AFFICHAGE STATISTIQUES
+    =====================================
+    */
+
+    totalDons.textContent =
+        formatEuro(
+            total
+        );
+
+
+    nombreDons.textContent =
+        dons.length;
+
+
+    /*
+    =====================================
+    AFFICHAGE HISTORIQUE
+    =====================================
+    */
+
+    if (
+        dons.length === 0
+    ) {
+
+        listeDons.innerHTML = `
+
+            <div class="aucun-don">
+
+                <div class="icone-aucun-don">
+                    ❤️
+                </div>
+
+                <p>
+                    Vous n'avez encore effectué
+                    aucun don.
+                </p>
+
+                <p>
+                    Votre soutien apparaîtra ici
+                    après votre premier don.
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    listeDons.innerHTML =
+        dons
+            .map(
+                don => {
+
+                    const date =
+                        convertirDate(
+                            don.date
+                        );
+
+
+                    const dateFormatee =
+                        date
+                        ?
+                        date.toLocaleDateString(
+                            "fr-FR",
+                            {
+                                day:
+                                    "2-digit",
+                                month:
+                                    "2-digit",
+                                year:
+                                    "numeric"
+                            }
+                        )
+                        :
+                        "-";
+
+
+                    return `
+
+                        <div class="ligne-don">
+
+                            <div
+                                class="information-don"
+                            >
+
+                                <div
+                                    class="icone-historique-don"
+                                >
+                                    ❤️
+                                </div>
+
+                                <div>
+
+                                    <span
+                                        class="date-don"
+                                    >
+                                        ${dateFormatee}
+                                    </span>
+
+                                    <span
+                                        class="statut-don"
+                                    >
+                                        🟢 Don payé
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <strong
+                                class="montant-don"
+                            >
+                                ${formatEuro(don.montant)}
+                            </strong>
+
+                        </div>
+
+                    `;
+
+                }
+            )
+            .join("");
+
+}
+catch (
+    error
+) {
+
+    console.error(
+        "Erreur lors du chargement des dons :",
+        error
+    );
+
+
+    totalDons.textContent =
+        "—";
+
+
+    nombreDons.textContent =
+        "—";
+
+
+    listeDons.innerHTML = `
+
+        <div class="aucun-don">
+
+            <div class="icone-aucun-don">
+                ⚠️
+            </div>
+
+            <p>
+                Impossible de charger
+                votre historique de dons.
+            </p>
+
+        </div>
+
+    `;
+
+}
+
 }
 
 /* =========================================================
