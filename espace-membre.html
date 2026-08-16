@@ -326,134 +326,176 @@
 
 
 </div>
-</section> <!-- ===================================================== MON ADHÉSION ====================================================== --> <section id="blocAdhesion" class="bloc-membre" >
-<div class="titre-bloc">
+</section> <!-- ===================================================== MON ADHÉSION ====================================================== --> <!-- =====================================================
+     MON ADHÉSION
+====================================================== -->
 
-
-    <div class="information">
-
-
-        <span class="information-label">
-            Fin de l'adhésion
-        </span>
-
-
-        <span
-            id="dateFinAdhesion"
-            class="information-valeur"
-        >
-            -
-        </span>
-
-
-    </div>
-
-
-
-
-    <div class="information">
-
-
-        <span class="information-label">
-            Paiement
-        </span>
-
-
-        <span
-            id="statutPaiement"
-            class="information-valeur"
-        >
-            -
-        </span>
-
-
-    </div>
-
-
-
-
-    <div class="information">
-
-
-        <span class="information-label">
-            Cotisation
-        </span>
-
-
-        <span
-            id="cotisation"
-            class="information-valeur"
-        >
-            -
-        </span>
-
-
-    </div>
-
-
-
-
-</div>
-
-
-
-
-<!-- =================================================
-     RENOUVELLEMENT
-================================================== -->
-
-
-<div
-    id="blocRenouvellement"
-    style="display: none;"
+<section
+    id="blocAdhesion"
+    class="bloc-membre"
 >
 
+    <div class="titre-bloc">
 
-    <div class="message-renouvellement">
+        <span>
+            📋
+        </span>
 
+        <h3>
+            Mon adhésion
+        </h3>
 
-        <h4>
-            Votre adhésion est expirée
-        </h4>
-
-
-        <p>
-            Votre adhésion à Chroma Esport est arrivée
-            à échéance.
-        </p>
+    </div>
 
 
-        <p>
-            Renouvelez votre adhésion pour continuer
-            à bénéficier de votre statut de membre.
-        </p>
+    <div class="grille-informations">
 
 
-        <div class="information-renouvellement">
+        <div class="information">
 
+            <span class="information-label">
+                Statut
+            </span>
 
-            💳 Cotisation annuelle :
-            <strong>
-                50,00 €
-            </strong>
-
+            <span
+                id="statutAdhesion"
+                class="information-valeur"
+            >
+                -
+            </span>
 
         </div>
 
 
-        <button
-            id="boutonRenouvellement"
-            type="button"
-        >
-            🔄 Renouveler mon adhésion
-        </button>
+        <div class="information">
+
+            <span class="information-label">
+                Année
+            </span>
+
+            <span
+                id="anneeAdhesion"
+                class="information-valeur"
+            >
+                -
+            </span>
+
+        </div>
+
+
+        <div class="information">
+
+            <span class="information-label">
+                Début de l'adhésion
+            </span>
+
+            <span
+                id="dateDebutAdhesion"
+                class="information-valeur"
+            >
+                -
+            </span>
+
+        </div>
+
+
+        <div class="information">
+
+            <span class="information-label">
+                Fin de l'adhésion
+            </span>
+
+            <span
+                id="dateFinAdhesion"
+                class="information-valeur"
+            >
+                -
+            </span>
+
+        </div>
+
+
+        <div class="information">
+
+            <span class="information-label">
+                Paiement
+            </span>
+
+            <span
+                id="statutPaiement"
+                class="information-valeur"
+            >
+                -
+            </span>
+
+        </div>
+
+
+        <div class="information">
+
+            <span class="information-label">
+                Cotisation
+            </span>
+
+            <span
+                id="cotisation"
+                class="information-valeur"
+            >
+                -
+            </span>
+
+        </div>
 
 
     </div>
 
 
-</div>
-</section> <!-- ===================================================== MEMBRE ACTIF ====================================================== --> <section id="blocMembreActif" class="bloc-membre bloc-membre-actif" >
+    <!-- =================================================
+         RENOUVELLEMENT
+    ================================================== -->
+
+    <div
+        id="blocRenouvellement"
+        style="display: none;"
+    >
+
+        <div class="message-renouvellement">
+
+            <h4>
+                Votre adhésion est expirée
+            </h4>
+
+            <p>
+                Votre adhésion à Chroma Esport est arrivée
+                à échéance.
+            </p>
+
+            <p>
+                Renouvelez votre adhésion pour continuer
+                à bénéficier de votre statut de membre.
+            </p>
+
+            <div class="information-renouvellement">
+
+                💳 Cotisation annuelle :
+                <strong>
+                    50,00 €
+                </strong>
+
+            </div>
+
+            <button
+                id="boutonRenouvellement"
+                type="button"
+            >
+                🔄 Renouveler mon adhésion
+            </button>
+
+        </div>
+
+    </div>
+
+</section><!-- ===================================================== MEMBRE ACTIF ====================================================== --> <section id="blocMembreActif" class="bloc-membre bloc-membre-actif" >
 <div class="titre-bloc">
 
 
@@ -743,125 +785,132 @@
     adhésion, contactez l'administration
     de Chroma Esport.
 </p>
-</section> </div> <!-- ===================================================== POPUP DON ====================================================== --> <div id="popupDon" class="popup-don-overlay" style="display: none;" >
+</section> </div> <!-- ===================================================== POPUP DON ====================================================== --> <!-- =====================================================
+     POPUP DON
+====================================================== -->
+
 <div
+    id="popupDon"
+    class="popup-don-overlay"
+    style="display: none;"
+>
 
-
-
+    <div
+        class="popup-don"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="titrePopupDon"
+    >
 
         <button
+            id="fermerPopupDon"
+            class="popup-don-fermer"
             type="button"
-            class="montant-don-rapide"
-            data-montant="5"
+            aria-label="Fermer"
         >
-            5 €
+            ×
         </button>
 
 
+        <div class="popup-don-icone">
+            ❤️
+        </div>
 
 
-        <button
-            type="button"
-            class="montant-don-rapide"
-            data-montant="10"
-        >
-            10 €
-        </button>
+        <h3 id="titrePopupDon">
+            Soutenir Chroma Esport
+        </h3>
 
 
+        <p class="popup-don-description">
+            Votre soutien nous aide à développer
+            nos équipes, nos projets et nos activités.
+        </p>
 
 
-        <button
-            type="button"
-            class="montant-don-rapide"
-            data-montant="20"
-        >
-            20 €
-        </button>
+        <div class="popup-don-montants">
 
-
-
-
-        <button
-            type="button"
-            class="montant-don-rapide"
-            data-montant="50"
-        >
-            50 €
-        </button>
-
-
-
-
-    </div>
-
-
-
-
-    <div class="champ-montant-don">
-
-
-        <label for="montantDon">
-            Montant du don
-        </label>
-
-
-
-
-        <div class="input-montant-wrapper">
-
-
-            <input
-                type="text"
-                id="montantDon"
-                inputmode="decimal"
-                placeholder="0,00"
-                autocomplete="off"
+            <button
+                type="button"
+                class="montant-don-rapide"
+                data-montant="5"
             >
+                5 €
+            </button>
 
+            <button
+                type="button"
+                class="montant-don-rapide"
+                data-montant="10"
+            >
+                10 €
+            </button>
 
-            <span>
-                €
-            </span>
+            <button
+                type="button"
+                class="montant-don-rapide"
+                data-montant="20"
+            >
+                20 €
+            </button>
 
+            <button
+                type="button"
+                class="montant-don-rapide"
+                data-montant="50"
+            >
+                50 €
+            </button>
 
         </div>
 
 
+        <div class="champ-montant-don">
+
+            <label for="montantDon">
+                Montant du don
+            </label>
+
+            <div class="input-montant-wrapper">
+
+                <input
+                    type="text"
+                    id="montantDon"
+                    inputmode="decimal"
+                    placeholder="0,00"
+                    autocomplete="off"
+                >
+
+                <span>
+                    €
+                </span>
+
+            </div>
+
+            <p
+                id="erreurMontantDon"
+                class="erreur-montant-don"
+            ></p>
+
+        </div>
 
 
-        <p
-            id="erreurMontantDon"
-            class="erreur-montant-don"
+        <button
+            id="continuerDon"
+            type="button"
+            class="bouton-continuer-don"
         >
-        </p>
+            ❤️ Continuer vers le paiement
+        </button>
 
+
+        <p class="popup-don-securite">
+            🔒 Vous serez redirigé vers Stripe
+            pour effectuer votre paiement en toute sécurité.
+        </p>
 
     </div>
 
-
-
-
-    <button
-        id="continuerDon"
-        type="button"
-        class="bouton-continuer-don"
-    >
-        ❤️ Continuer vers le paiement
-    </button>
-
-
-
-
-    <p class="popup-don-securite">
-        🔒 Vous serez redirigé vers Stripe
-        pour effectuer votre paiement en toute sécurité.
-    </p>
-
-
-
-
-</div>
 </div> </main> <footer class="membre-footer">
 <p>
     © 2026 Chroma Esport — Tous droits réservés.
