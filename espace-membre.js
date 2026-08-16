@@ -281,31 +281,40 @@ method: "POST",
 
         body: JSON.stringify({
 
-            montant:
-                montantDon,
 
-            email:
-                user.email || "",
+montant:
+    montantDon,
 
-            type:
-                "don",
+email:
+    user.email || "",
 
-            membreId:
-                "",
+type:
+    "don",
 
-            numeroMembre:
-                "",
+firebaseUid:
+    user.uid,
 
-            adhesionId:
-                "",
+membreId:
+    membre.id || "",
 
-            cotisation:
-                0,
+numeroMembre:
+    membre.numeroMembre || "",
 
-            don:
-                montantDon
+typeCompte:
+    membre.typeCompte || "",
 
-        })
+adhesionId:
+    "",
+
+cotisation:
+    0,
+
+don:
+    montantDon
+
+
+})
+
     }
 );
 
