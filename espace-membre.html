@@ -17,7 +17,7 @@
     rel="stylesheet"
     href="espace-membre.css"
 >
-</head> <body> <!-- ===================================================== EN-TÊTE ====================================================== --> <header class="membre-header">
+</head> <body> <header class="membre-header">
 <div class="membre-header-logo">
 
 
@@ -53,7 +53,7 @@
 
 
 </div>
-</header> <!-- ===================================================== CONTENU PRINCIPAL ====================================================== --> <main class="membre-container"> <!-- ===================================================== BIENVENUE ====================================================== --> <section class="bloc-bienvenue">
+</header> <main class="membre-container"> <!-- ===================================================== BIENVENUE ====================================================== --> <section class="bloc-bienvenue">
 <div>
 
 
@@ -63,15 +63,11 @@
 
 
     <h2>
-
-
         Bonjour
         <span id="prenomMembre">
             ...
         </span>
         👋
-
-
     </h2>
 
 
@@ -103,218 +99,7 @@
 
 
 </div>
-</section> <!-- ===================================================== MESSAGE COMMUNAUTÉ ====================================================== --> <section id="blocCommunaute" class="bloc-membre bloc-communaute" style="display: none;" >
-<div class="titre-bloc">
-
-
-    <span>
-        💜
-    </span>
-
-
-    <h3>
-        Ma communauté
-    </h3>
-
-
-</div>
-
-
-
-
-<div class="contenu-communaute">
-
-
-    <div class="message-communaute">
-
-
-        <div class="icone-communaute">
-            💜
-        </div>
-
-
-        <h4>
-            Bienvenue dans la communauté Chroma Esport
-        </h4>
-
-
-        <p>
-            Vous êtes actuellement
-            <strong>
-                Membre Communauté
-            </strong>.
-        </p>
-
-
-        <p>
-            Votre statut vous permet de rester
-            connecté à la vie de Chroma Esport.
-        </p>
-
-
-        <p>
-            Rejoignez notre Discord pour retrouver
-            les autres membres, suivre les équipes,
-            participer aux échanges et découvrir
-            nos actualités.
-        </p>
-
-
-    </div>
-
-
-
-
-    <div
-        id="demandeAdhesionCommunaute"
-        class="demande-adhesion-communaute"
-        style="display: none;"
-    >
-    </div>
-
-
-
-
-    <div class="actions-communaute">
-
-
-        <a
-            href="https://discord.gg/"
-            class="bouton-communaute discord"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            💬 Rejoindre le Discord
-        </a>
-
-
-
-
-        <a
-            id="boutonDevenirAdherent"
-            href="index.html"
-            class="bouton-communaute adherer"
-        >
-            ⭐ Devenir membre adhérent — 50 €/an
-        </a>
-
-
-    </div>
-
-
-</div>
-</section> <!-- ===================================================== INFORMATIONS RAPIDES ====================================================== --> <section class="grille-statistiques">
-<!-- STATUT -->
-
-
-    <div>
-
-
-        <span class="carte-statistique-label">
-            Mon adhésion
-        </span>
-
-
-        <strong
-            id="dateFinCarte"
-            class="carte-statistique-valeur"
-        >
-            -
-        </strong>
-
-
-        <small>
-            Date de fin
-        </small>
-
-
-    </div>
-
-
-</div>
-
-
-
-
-
-
-<!-- PAIEMENT -->
-
-
-<div class="carte-statistique">
-
-
-    <div class="carte-statistique-icone">
-        💳
-    </div>
-
-
-    <div>
-
-
-        <span class="carte-statistique-label">
-            Paiement
-        </span>
-
-
-        <strong
-            id="paiementCarte"
-            class="carte-statistique-valeur"
-        >
-            -
-        </strong>
-
-
-    </div>
-
-
-</div>
-
-
-
-
-
-
-<!-- DONS -->
-
-
-<div class="carte-statistique">
-
-
-    <div class="carte-statistique-icone">
-        ❤️
-    </div>
-
-
-    <div>
-
-
-        <span class="carte-statistique-label">
-            Mes dons
-        </span>
-
-
-        <strong
-            id="totalDonsCarte"
-            class="carte-statistique-valeur"
-        >
-            0,00 €
-        </strong>
-
-
-        <small>
-            <span id="nombreDonsCarte">
-                0
-            </span>
-            don(s)
-        </small>
-
-
-    </div>
-
-
-</div>
-</section> <!-- ===================================================== INFORMATIONS PERSONNELLES ====================================================== --> <section class="bloc-membre bloc-informations-personnelles">
+</section> <!-- ===================================================== GRILLE PRINCIPALE ====================================================== --> <div class="grille-espace-membre"> <!-- ===================================================== MES INFORMATIONS ====================================================== --> <section class="bloc-membre">
 <div class="titre-bloc">
 
 
@@ -444,145 +229,17 @@
 
 
 </div>
-</section> <!-- ===================================================== ADHÉSION + DONS ====================================================== --> <section class="grille-principale">
-<!-- =================================================
-        </span>
-
-
-        <h3>
-            Mes dons
-        </h3>
-
-
-    </div>
-
-
-
-
-    <div class="stats-dons">
-
-
-
-
-        <div class="stat-don">
-
-
-            <span class="stat-don-icone">
-                💰
-            </span>
-
-
-            <div>
-
-
-                <span class="stat-don-label">
-                    Total donné
-                </span>
-
-
-                <strong
-                    id="totalDons"
-                    class="stat-don-valeur"
-                >
-                    0,00 €
-                </strong>
-
-
-            </div>
-
-
-        </div>
-
-
-
-
-
-
-        <div class="stat-don">
-
-
-            <span class="stat-don-icone">
-                ❤️
-            </span>
-
-
-            <div>
-
-
-                <span class="stat-don-label">
-                    Nombre de dons
-                </span>
-
-
-                <strong
-                    id="nombreDons"
-                    class="stat-don-valeur"
-                >
-                    0
-                </strong>
-
-
-            </div>
-
-
-        </div>
-
-
-
-
-    </div>
-
-
-
-
-    <div class="historique-dons">
-
-
-        <h4>
-            Derniers dons
-        </h4>
-
-
-        <div
-            id="listeDons"
-            class="liste-dons"
-        >
-
-
-            <div class="chargement-dons">
-                Chargement de votre historique...
-            </div>
-
-
-        </div>
-
-
-    </div>
-
-
-
-
-    <button
-        id="boutonDonHistorique"
-        type="button"
-        class="bouton-secondaire"
-    >
-        Voir mon historique
-    </button>
-
-
-</div>
-</section> <!-- ===================================================== MES ACTIONS ====================================================== --> <section class="bloc-membre bloc-actions">
+</section> <!-- ===================================================== COMMUNAUTÉ ====================================================== --> <section id="blocCommunaute" class="bloc-membre bloc-communaute" style="display: none;" >
 <div class="titre-bloc">
 
 
     <span>
-        ⚡
+        💜
     </span>
 
 
     <h3>
-        Mes actions
+        Ma communauté
     </h3>
 
 
@@ -591,103 +248,208 @@
 
 
 
-<div class="grille-actions">
+<div class="contenu-communaute">
+
+
+    <div class="message-communaute">
+
+
+        <div class="icone-communaute">
+            💜
+        </div>
+
+
+        <h4>
+            Bienvenue dans la communauté Chroma Esport
+        </h4>
+
+
+        <p>
+            Vous êtes actuellement
+            <strong>
+                Membre Communauté
+            </strong>.
+        </p>
+
+
+        <p>
+            Votre statut vous permet de rester
+            connecté à la vie de Chroma Esport,
+            de suivre nos équipes et de participer
+            aux échanges de la communauté.
+        </p>
+
+
+    </div>
 
 
 
 
-    <!-- RENOUVELLEMENT -->
+    <!-- Zone utilisée par le JavaScript -->
 
 
-    <button
-        id="actionRenouvellement"
-        type="button"
-        class="carte-action"
+    <div
+        id="demandeAdhesionCommunaute"
+        class="demande-adhesion-communaute"
+        style="display: none;"
     >
+    </div>
 
 
-        <span class="carte-action-icone">
-            🔄
+
+
+    <div class="actions-communaute">
+
+
+        <a
+            href="https://discord.gg/"
+            class="bouton-communaute discord"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            💬 Rejoindre le Discord
+        </a>
+
+
+
+
+        <a
+            id="boutonDevenirAdherent"
+            href="index.html"
+            class="bouton-communaute adherer"
+        >
+            ⭐ Devenir membre adhérent — 50 €/an
+        </a>
+
+
+    </div>
+
+
+</div>
+</section> <!-- ===================================================== MON ADHÉSION ====================================================== --> <section id="blocAdhesion" class="bloc-membre" >
+<div class="titre-bloc">
+
+
+    <div class="information">
+
+
+        <span class="information-label">
+            Fin de l'adhésion
         </span>
 
 
-        <span class="carte-action-titre">
-            Renouveler mon adhésion
+        <span
+            id="dateFinAdhesion"
+            class="information-valeur"
+        >
+            -
         </span>
 
 
-        <span class="carte-action-description">
-            Renouveler votre cotisation annuelle
+    </div>
+
+
+
+
+    <div class="information">
+
+
+        <span class="information-label">
+            Paiement
         </span>
 
 
-    </button>
-
-
-
-
-
-
-    <!-- MEMBRE ACTIF -->
-
-
-    <button
-        id="actionMembreActif"
-        type="button"
-        class="carte-action"
-    >
-
-
-        <span class="carte-action-icone">
-            ⭐
+        <span
+            id="statutPaiement"
+            class="information-valeur"
+        >
+            -
         </span>
 
 
-        <span class="carte-action-titre">
-            Devenir membre actif
+    </div>
+
+
+
+
+    <div class="information">
+
+
+        <span class="information-label">
+            Cotisation
         </span>
 
 
-        <span class="carte-action-description">
-            Demander le statut de membre actif
+        <span
+            id="cotisation"
+            class="information-valeur"
+        >
+            -
         </span>
 
 
-    </button>
+    </div>
 
 
 
 
+</div>
 
 
-    <!-- DON -->
 
 
-    <button
-        id="actionDon"
-        type="button"
-        class="carte-action"
-    >
+<!-- =================================================
+     RENOUVELLEMENT
+================================================== -->
 
 
-        <span class="carte-action-icone">
-            ❤️
-        </span>
+<div
+    id="blocRenouvellement"
+    style="display: none;"
+>
 
 
-        <span class="carte-action-titre">
-            Faire un don
-        </span>
+    <div class="message-renouvellement">
 
 
-        <span class="carte-action-description">
-            Soutenir les projets de Chroma Esport
-        </span>
+        <h4>
+            Votre adhésion est expirée
+        </h4>
 
 
-    </button>
+        <p>
+            Votre adhésion à Chroma Esport est arrivée
+            à échéance.
+        </p>
 
 
+        <p>
+            Renouvelez votre adhésion pour continuer
+            à bénéficier de votre statut de membre.
+        </p>
+
+
+        <div class="information-renouvellement">
+
+
+            💳 Cotisation annuelle :
+            <strong>
+                50,00 €
+            </strong>
+
+
+        </div>
+
+
+        <button
+            id="boutonRenouvellement"
+            type="button"
+        >
+            🔄 Renouveler mon adhésion
+        </button>
+
+
+    </div>
 
 
 </div>
@@ -722,7 +484,188 @@
 
 
 </div>
-</section> <!-- ===================================================== CARTE MEMBRE ====================================================== --> <section id="blocCarteMembre" class="bloc-membre bloc-carte-membre" >
+</section> <!-- ===================================================== SOUTENIR CHROMA ESPORT ====================================================== --> <section id="blocDon" class="bloc-membre bloc-don" >
+<div class="titre-bloc">
+
+
+    <span>
+        ❤️
+    </span>
+
+
+    <h3>
+        Soutenir Chroma Esport
+    </h3>
+
+
+</div>
+
+
+
+
+<div class="contenu-don">
+
+
+    <div class="message-don">
+
+
+        <div class="icone-don">
+            ❤️
+        </div>
+
+
+        <h4>
+            Vous souhaitez soutenir Chroma Esport ?
+        </h4>
+
+
+        <p>
+            Votre soutien nous permet de développer
+            nos équipes, nos projets et nos activités
+            au sein de l'association.
+        </p>
+
+
+        <p>
+            Vous pouvez effectuer un don à tout moment,
+            quel que soit votre statut de membre.
+        </p>
+
+
+
+
+        <button
+            id="boutonDon"
+            type="button"
+            class="bouton-don"
+        >
+            ❤️ Faire un don
+        </button>
+
+
+    </div>
+
+
+</div>
+</section> <!-- ===================================================== MES DONS ====================================================== --> <section id="blocMesDons" class="bloc-membre bloc-mes-dons" >
+<div class="titre-bloc">
+
+
+    <span>
+        ❤️
+    </span>
+
+
+    <h3>
+        Mes dons
+    </h3>
+
+
+</div>
+
+
+
+
+<div class="stats-dons">
+
+
+
+
+    <div class="stat-don">
+
+
+        <span class="stat-don-icone">
+            💰
+        </span>
+
+
+        <div>
+
+
+            <span class="stat-don-label">
+                Total donné
+            </span>
+
+
+            <strong
+                id="totalDons"
+                class="stat-don-valeur"
+            >
+                0,00 €
+            </strong>
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+    <div class="stat-don">
+
+
+        <span class="stat-don-icone">
+            ❤️
+        </span>
+
+
+        <div>
+
+
+            <span class="stat-don-label">
+                Nombre de dons
+            </span>
+
+
+            <strong
+                id="nombreDons"
+                class="stat-don-valeur"
+            >
+                0
+            </strong>
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+</div>
+
+
+
+
+<div class="historique-dons">
+
+
+    <h4>
+        Historique de mes dons
+    </h4>
+
+
+
+
+    <div
+        id="listeDons"
+        class="liste-dons"
+    >
+
+
+        <div class="chargement-dons">
+            Chargement de votre historique...
+        </div>
+
+
+    </div>
+
+
+</div>
+</section> <!-- ===================================================== CARTE MEMBRE ====================================================== --> <section id="blocCarteMembre" class="bloc-membre" >
 <div class="titre-bloc">
 
 
@@ -782,37 +725,6 @@
 
 
 </div>
-</section> <!-- ===================================================== ACTIVITÉ RÉCENTE ====================================================== --> <section class="bloc-membre bloc-activite">
-<div class="titre-bloc">
-
-
-    <span>
-        📜
-    </span>
-
-
-    <h3>
-        Mon activité récente
-    </h3>
-
-
-</div>
-
-
-
-
-<div
-    id="activiteRecente"
-    class="activite-recente"
->
-
-
-    <div class="chargement">
-        Chargement de votre activité...
-    </div>
-
-
-</div>
 </section> <!-- ===================================================== INFORMATIONS ASSOCIATION ====================================================== --> <section class="bloc-information-association">
 <h3>
     ℹ️ Chroma Esport
@@ -821,7 +733,7 @@
 
 <p>
     Cet espace vous permet de consulter
-    vos informations d'adhésion et de suivre
+    vos informations, votre adhésion et
     votre statut au sein de l'association.
 </p>
 
@@ -831,9 +743,10 @@
     adhésion, contactez l'administration
     de Chroma Esport.
 </p>
-</section> <!-- ===================================================== POPUP DON ====================================================== --> <div id="popupDon" class="popup-don-overlay" style="display: none;" >
+</section> </div> <!-- ===================================================== POPUP DON ====================================================== --> <div id="popupDon" class="popup-don-overlay" style="display: none;" >
 <div
-    <div class="popup-don-montants">
+
+
 
 
         <button
@@ -845,6 +758,8 @@
         </button>
 
 
+
+
         <button
             type="button"
             class="montant-don-rapide"
@@ -852,6 +767,8 @@
         >
             10 €
         </button>
+
+
 
 
         <button
@@ -863,6 +780,8 @@
         </button>
 
 
+
+
         <button
             type="button"
             class="montant-don-rapide"
@@ -870,6 +789,8 @@
         >
             50 €
         </button>
+
+
 
 
     </div>
@@ -883,6 +804,8 @@
         <label for="montantDon">
             Montant du don
         </label>
+
+
 
 
         <div class="input-montant-wrapper">
@@ -905,10 +828,13 @@
         </div>
 
 
+
+
         <p
             id="erreurMontantDon"
             class="erreur-montant-don"
-        ></p>
+        >
+        </p>
 
 
     </div>
@@ -933,8 +859,10 @@
     </p>
 
 
+
+
 </div>
-</div> </main> <!-- ===================================================== FOOTER ====================================================== --> <footer class="membre-footer">
+</div> </main> <footer class="membre-footer">
 <p>
     © 2026 Chroma Esport — Tous droits réservés.
 </p>
