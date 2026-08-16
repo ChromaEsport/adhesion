@@ -886,3 +886,158 @@ RESPONSIVE
 
 
 }
+
+/* ==============================
+BLOC DON - SOUTENIR CHROMA ESPORT
+============================== */
+
+.bloc-don {
+border:
+1px solid
+rgba(
+143,
+236,
+201,
+0.18
+);
+background:
+linear-gradient(
+135deg,
+#081638,
+rgba(
+60,
+145,
+149,
+0.18
+)
+);
+}
+
+.contenu-don {
+display: flex;
+justify-content: center;
+}
+
+.message-don {
+width: 100%;
+text-align: center;
+padding: 10px 20px 5px 20px;
+}
+
+.icone-don {
+width: 58px;
+height: 58px;
+margin: 0 auto 15px auto;
+display: flex;
+align-items: center;
+justify-content: center;
+border-radius: 50%;
+background:
+rgba(
+143,
+236,
+201,
+0.10
+);
+border:
+1px solid
+rgba(
+143,
+236,
+201,
+0.20
+);
+font-size: 26px;
+}
+
+.message-don h4 {
+margin: 0 0 12px 0;
+color: #8fecc9;
+font-size: 19px;
+}
+
+.message-don p {
+max-width: 700px;
+margin: 8px auto;
+color: #b8c7df;
+line-height: 1.5;
+}
+
+/* ==============================
+BOUTON DON
+============================== */
+
+.bouton-don {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+gap: 8px;
+margin-top: 18px;
+padding: 14px 28px;
+border:
+1px solid
+rgba(
+143,
+236,
+201,
+0.35
+);
+border-radius: 8px;
+cursor: pointer;
+background:
+linear-gradient(
+135deg,
+#3c9195,
+#8fecc9
+);
+color: #010c2c;
+font-size: 16px;
+font-weight: bold;
+transition:
+transform 0.2s,
+opacity 0.2s,
+box-shadow 0.2s;
+}
+
+.bouton-don:hover {
+transform: translateY(-2px);
+opacity: 0.95;
+box-shadow:
+0 6px 20px
+rgba(
+143,
+236,
+201,
+0.18
+);
+}
+
+.bouton-don:active {
+transform: translateY(0);
+}
+
+/* ==============================
+DON - MOBILE
+============================== */
+
+@media (max-width: 500px) {
+
+.message-don {
+padding: 5px 5px 0 5px;
+}
+
+.message-don h4 {
+font-size: 17px;
+}
+
+.message-don p {
+font-size: 14px;
+}
+
+.bouton-don {
+width: 100%;
+padding: 14px 20px;
+}
+
+}
+
