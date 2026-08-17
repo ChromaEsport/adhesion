@@ -1442,10 +1442,6 @@ if (
     numeroMembre.textContent =
         "Communauté";
 
-    numeroMembreHeader.textContent =
-        "💜 COMMUNAUTÉ";
-
-
     statutAdhesion.textContent =
         "💜 Inscription gratuite";
 
