@@ -112,7 +112,11 @@ margin: 20px auto;
     display: grid;
     gap: 20px;
 }
-
+.deuxiemebloc {
+    grid-template-columns: 1fr 2fr 1fr;
+    display: grid;
+    gap: 20px;
+}
 /* ==============================
 BIENVENUE
 ============================== */
@@ -324,13 +328,13 @@ color: #8fecc9;
 /* ==============================
 BLOC MEMBRE ACTIF
 ============================== */
-.titre-blo-actif h3{
+.titre-bloc-actif h3{
     margin: 0;
     color: #8fecc9;
     font-size: 22px;
 }
 
-.titre-blo-actif{
+.titre-bloc-actif{
     text-align:center;
 }
 
