@@ -83,10 +83,6 @@ document.getElementById(
 "nomMembre"
 );
 
-const dateNaissance =
-document.getElementById(
-"dateNaissance"
-);
 
 const emailMembre =
 document.getElementById(
@@ -1257,9 +1253,6 @@ prenomInformation.textContent =
 
 nomMembre.textContent =
     membre.nom || "-";
-    
-dateNaissance.textContent =
-    membre.dateNaissance || "-";
     
 emailMembre.textContent =
     membre.email || "-";
