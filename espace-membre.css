@@ -362,13 +362,19 @@ padding: 20px;
 
 
 }
+.message-membre-actif {
+text-align:center;
+  }
 
 .message-membre-actif a {
   color:#3c9195;
 }
+
 .message-membre-actif:hover a {
   color:#0058ff;
+  font-weight: bold;
 }
+
 /* ==============================
 ÉTAT ÉLIGIBLE
 ============================== */
