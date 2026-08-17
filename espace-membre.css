@@ -368,6 +368,8 @@ text-align:center;
 
 .message-membre-actif a {
   color:#3c9195;
+  text-decoration: none;
+
 }
 
 .message-membre-actif:hover a {
