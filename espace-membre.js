@@ -1259,7 +1259,7 @@ nomMembre.textContent =
     membre.nom || "-";
     
 dateNaissance.textContent =
-membre.naissance || "-";
+    membre.dateNaissance || "-";
     
 emailMembre.textContent =
     membre.email || "-";
