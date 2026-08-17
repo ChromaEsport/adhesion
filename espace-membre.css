@@ -24,12 +24,13 @@ HEADER
 
 .membre-header {
 padding: 25px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
+    display: grid;
     background: #081638;
     border-bottom: 1px solid #3c9195;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    align-items: center;
+    justify-items: center;
 
 
 }
