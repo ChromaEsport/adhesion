@@ -83,6 +83,11 @@ document.getElementById(
 "nomMembre"
 );
 
+const dateNaissance =
+document.getElementById(
+"dateNaissance"
+);
+
 const emailMembre =
 document.getElementById(
 "emailMembre"
@@ -1252,12 +1257,16 @@ prenomInformation.textContent =
 
 nomMembre.textContent =
     membre.nom || "-";
-
+    
+dateNaissance.textContent =
+membre.naissance || "-";
+    
 emailMembre.textContent =
     membre.email || "-";
 
 discordMembre.textContent =
     membre.discord || "-";
+    
 
 
 console.log(
