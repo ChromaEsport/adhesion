@@ -324,6 +324,15 @@ color: #8fecc9;
 /* ==============================
 BLOC MEMBRE ACTIF
 ============================== */
+.titre-blo-actif h3{
+    margin: 0;
+    color: #8fecc9;
+    font-size: 22px;
+}
+
+.titre-blo-actif{
+    text-align:center;
+}
 
 .bloc-membre-actif {
 border:
