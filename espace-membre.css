@@ -161,22 +161,9 @@ STATUT PRINCIPAL
 ============================== */
 
 .statut-principal {
-min-width: 180px;
-
-
 text-align: center;
-
-padding: 20px;
-
-background:
-    rgba(
-        0,
-        0,
-        0,
-        0.2
-    );
-
-border-radius: 12px;
+    border-radius: 12px;
+    display: flex;
 
 
 }
