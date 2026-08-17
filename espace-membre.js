@@ -1999,19 +1999,17 @@ if (
 
             <div class="message-membre-actif">
 
-                <div class="icone-membre-actif">
-                    🔒
-                </div>
-
                 <h4>
-                    Vous n'êtes pas encore éligible
+                  🔒 Vous n'êtes pas encore éligible
                 </h4>
 
                 <p>
                     Pour devenir membre actif,
                     vous devez avoir au minimum
                     6 mois d'ancienneté en tant
-                    que membre adhérent.
+                    que membre adhérent. <a href="documents/statuts-chroma-esport.pdf" target="_blank" rel="noopener">
+      ( Voir Statut de Chroma Esport )
+        </a>
                 </p>
 
                 <div class="date-eligibilite">
