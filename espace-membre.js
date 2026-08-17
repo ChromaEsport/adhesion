@@ -2010,7 +2010,7 @@ if (
                     Pour devenir membre actif,
                     vous devez avoir au minimum
                     6 mois d'ancienneté en tant
-                    que membre adhérent. <a href="documents/statuts-chroma-esport.pdf" target="_blank" rel="noopener">
+                    que membre adhérent. <a href="documents/statuts-chroma-esport.pdf" target="_blank" rel="noopener"><br>
       ( Voir Statut de Chroma Esport )
         </a>
                 </p>
