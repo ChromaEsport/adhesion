@@ -363,6 +363,12 @@ padding: 20px;
 
 }
 
+.meesage-membre-actif a {
+  color:#3c9195;
+}
+.meesage-membre-actif:hover a {
+  color:#3c9195;
+}
 /* ==============================
 ÉTAT ÉLIGIBLE
 ============================== */
