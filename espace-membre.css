@@ -366,13 +366,13 @@ padding: 20px;
 text-align:center;
   }
 
-.message-membre-actif a {
+.statutChroma a {
   color:#3c9195;
   text-decoration: none;
 
 }
 
-.message-membre-actif:hover a {
+.statutChroma:hover a {
   color:#0058ff;
   font-weight: bold;
 }
