@@ -367,10 +367,15 @@ padding: 20px;
 text-align:center;
   }
 
+.statutChroma {
+   text-align:center
+}
+
+
 .statutChroma a {
   color:#3c9195;
   text-decoration: none;
-  text-align:center;
+  
 
 }
 
