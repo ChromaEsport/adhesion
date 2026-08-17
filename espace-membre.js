@@ -1534,8 +1534,7 @@ if (
     numeroMembre.textContent =
         membre.numeroMembre || "-";
 
-    numeroMembreHeader.textContent =
-        membre.numeroMembre || "-";
+    
 
     statutMembre.textContent =
         traduireStatutMembre(
