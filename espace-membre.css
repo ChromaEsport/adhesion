@@ -14,7 +14,7 @@ RESET
 body {
 margin: 0;
 font-family: Arial, Helvetica, sans-serif;
-background: #010c2c;
+background: radial-gradient(circle at center top, #3c9195 1%, #081638 55%);
 color: #ffffff;
 }
 
@@ -23,21 +23,13 @@ HEADER
 ============================== */
 
 .membre-header {
-background:
-linear-gradient(
-135deg,
-#010c2c,
-#3c9195
-);
-
-
 padding: 25px 40px;
-
-display: flex;
-justify-content: space-between;
-align-items: center;
-
-flex-wrap: wrap;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    background: #081638;
+    border-bottom: 1px solid #3c9195;
 
 
 }
@@ -77,27 +69,6 @@ gap: 15px;
 
 }
 
-#numeroMembreHeader {
-padding: 10px 15px;
-
-
-border-radius: 8px;
-
-background:
-    rgba(
-        255,
-        255,
-        255,
-        0.08
-    );
-
-color: #8fecc9;
-
-font-weight: bold;
-
-
-}
-
 #logout {
 border: none;
 
@@ -131,14 +102,14 @@ CONTENEUR
 ============================== */
 
 .membre-container {
-width: 95%;
+margin: 20px auto;
+    width: min(2200px, calc(100% - 50px));
+}
 
-
-max-width: 1200px;
-
-margin: 40px auto;
-
-
+.premierbloc {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    display: grid;
+    gap: 20px;
 }
 
 /* ==============================
@@ -146,35 +117,8 @@ BIENVENUE
 ============================== */
 
 .bloc-bienvenue {
-background:
-linear-gradient(
-135deg,
-rgba(60, 145, 149, 0.35),
-rgba(8, 22, 56, 0.9)
-);
-
-
-border: 1px solid
-    rgba(
-        143,
-        236,
-        201,
-        0.15
-    );
-
-border-radius: 15px;
-
-padding: 30px;
-
-display: flex;
-
-justify-content: space-between;
-
-align-items: center;
-
-gap: 30px;
-
-margin-bottom: 25px;
+margin-bottom: 15px;
+    text-align: center;
 
 
 }
@@ -252,21 +196,13 @@ margin-bottom: 10px;
 
 .badge-statut {
 display: inline-flex;
-
-
-align-items: center;
-
-justify-content: center;
-
-padding: 9px 16px;
-
-border-radius: 8px;
-
-background: #3c9195;
-
-font-size: 16px;
-
-font-weight: bold;
+    padding: 9px 16px;
+    border-radius: 8px;
+    background: #3c9195;
+    font-size: 16px;
+    font-weight: bold;
+    align-items: center;
+    margin: auto;
 
 
 }
@@ -277,22 +213,14 @@ BLOCS PRINCIPAUX
 
 .bloc-membre {
 background: #081638;
-
-
-border-radius: 15px;
-
-padding: 25px;
-
-margin-bottom: 25px;
-
-border: 1px solid
-    rgba(
-        255,
-        255,
-        255,
-        0.06
-    );
-
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border: 1px solid rgba(143, 236, 201, 0.18);
 
 }
 
@@ -320,10 +248,23 @@ margin: 0;
 color: #8fecc9;
 
 font-size: 22px;
-
-
 }
 
+.actions-communaute {
+margin-top: 35px;
+    margin-right: 0px;
+    margin-left: 0px;
+    margin-bottom: 0px;
+  
+}
+#boutonDevenirAdherent {
+  text-decoration: none;
+    background: #3c9195;
+    padding: 10px;
+    border-radius: 8px;
+    color: white;
+
+}
 /* ==============================
 GRILLE INFORMATIONS
 ============================== */
