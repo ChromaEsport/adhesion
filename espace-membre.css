@@ -262,7 +262,7 @@ margin-top: 35px;
     align-items: center;
     justify-content: center;
     gap: 8px;
-    margin-top: 18px;
+    margin-top: 60px;
     padding: 14px 28px;
     border: 1px solid rgba(143, 236, 201, 0.35);
     border-radius: 8px;
@@ -272,7 +272,7 @@ margin-top: 35px;
     font-size: 16px;
     font-weight: bold;
     transition: transform 0.2s, opacity 0.2s, box-shadow 0.2s;
-
+    display:flex;
 }
 
 #boutonDevenirAdherent:hover {
@@ -352,7 +352,7 @@ color: #8fecc9;
 /* ==============================
 BLOC Communaute
 ============================== */
-#blocCommunaute {
+.bloc-communaute {
     display: flex;
     align-items: center;
  
