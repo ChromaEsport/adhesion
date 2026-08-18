@@ -258,11 +258,27 @@ margin-top: 35px;
   
 }
 #boutonDevenirAdherent {
-  text-decoration: none;
-    background: #3c9195;
-    padding: 10px;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 18px;
+    padding: 14px 28px;
+    border: 1px solid rgba(143, 236, 201, 0.35);
     border-radius: 8px;
-    color: white;
+    cursor: pointer;
+    background: linear-gradient(135deg, #3c9195, #8fecc9);
+    color: #010c2c;
+    font-size: 16px;
+    font-weight: bold;
+    transition: transform 0.2s, opacity 0.2s, box-shadow 0.2s;
+
+}
+
+#boutonDevenirAdherent:hover {
+    transform: translateY(-2px);
+    opacity: 0.95;
+    box-shadow: 0 6px 20px rgba(143, 236, 201, 0.18);
 
 }
 /* ==============================
@@ -332,6 +348,16 @@ word-break: break-word;
 .numero-membre {
 color: #8fecc9;
 }
+
+/* ==============================
+BLOC Communaute
+============================== */
+#blocCommunaute {
+    display: flex;
+    align-items: center;
+ 
+}
+
 
 /* ==============================
 BLOC Renouvellement
