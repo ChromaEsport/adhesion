@@ -334,6 +334,30 @@ color: #8fecc9;
 }
 
 /* ==============================
+BLOC Renouvellement
+============================== */
+
+#blocRenouvellement {
+
+    background: #081638;
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 20px;
+    display: flex;
+    border: 1px solid rgba(143, 236, 201, 0.18);
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.message-renouvellement{
+text-align: center;
+}
+
+#boutonRenouvellement{
+margin-top: 20px;
+}
+/* ==============================
 BLOC MEMBRE ACTIF
 ============================== */
 .titre-bloc-actif h3{
