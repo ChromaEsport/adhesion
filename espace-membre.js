@@ -2226,10 +2226,6 @@ contenuMembreActif.innerHTML = `
 
     <div class="message-membre-actif">
 
-        <div class="icone-membre-actif">
-            ⭐
-        </div>
-
         <h4>
             Vous pouvez demander à devenir membre actif
         </h4>
