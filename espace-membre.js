@@ -1666,7 +1666,6 @@ if (
         membre
     );
    
-    verifierExpirationAdhesion(membre);
     
     numeroMembre.textContent =
         membre.numeroMembre || "-";
