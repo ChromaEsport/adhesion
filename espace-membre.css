@@ -198,10 +198,14 @@ display: inline-flex;
     padding: 9px 16px;
     border-radius: 8px;
     background: #3c9195;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
     align-items: center;
     margin: auto;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    padding-left: 45px;
+    padding-right: 45px;
 
 
 }
@@ -300,7 +304,7 @@ justify-content: space-between;
 align-items: center;
 
 gap: 20px;
-
+height: 85px;
 
 }
 
