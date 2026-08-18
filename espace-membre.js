@@ -90,6 +90,11 @@ const dateNaissanceMembre =
 "dateNaissanceMembre"
 );
 
+const adresseMembre = 
+document.getElementById(
+"adresseMembre" 
+);
+
 const emailMembre =
 document.getElementById(
 "emailMembre"
@@ -1276,7 +1281,23 @@ dateNaissanceMembre.textContent =
 dateNaissanceMembre.textContent = "-";
 
 }
- 
+
+adresseMembre.innerHTML =
+
+`<div>${membre.adresse || "-"}</div>` +
+
+
+(membre.complementAdresse
+    ? `<div>${membre.complementAdresse}</div>`
+    : "") +
+
+
+`<div>${membre.codePostal || ""} ${membre.ville || ""}</div>` +
+
+
+`<div>${membre.pays || ""}</div>`;
+
+    
 emailMembre.textContent =
     membre.email || "-";
 
