@@ -1260,7 +1260,10 @@ prenomInformation.textContent =
 
 nomMembre.textContent =
     membre.nom || "-";
-    
+
+dateNaissance.textContent =
+    membre.dateNaissance || "-";
+ 
 emailMembre.textContent =
     membre.email || "-";
 
