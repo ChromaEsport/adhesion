@@ -1250,6 +1250,190 @@ catch (
 
 }
 
+function verifierExpirationAdhesion(membre) {
+
+    const dateFin = membre.dateFinAdhesion;
+
+    const blocRenouvellement =
+        document.getElementById("blocRenouvellement");
+
+    const statutAdhesion =
+        document.getElementById("statutAdhesion");
+
+    if (!dateFin) {
+
+        console.warn(
+            "Aucune date de fin d'adhésion trouvée."
+        );
+
+        return;
+
+    }
+
+
+    let dateExpiration;
+
+
+    /*
+    =========================================
+    DATE FIRESTORE
+    =========================================
+    */
+
+    if (
+        typeof dateFin.toDate === "function"
+    ) {
+
+        dateExpiration =
+            dateFin.toDate();
+
+    }
+
+    else if (
+        dateFin instanceof Date
+    ) {
+
+        dateExpiration =
+            dateFin;
+
+    }
+
+    else {
+
+        /*
+        Si la date est enregistrée sous
+        forme de chaîne.
+        */
+
+        dateExpiration =
+            new Date(dateFin);
+
+    }
+
+
+    if (
+        isNaN(dateExpiration.getTime())
+    ) {
+
+        console.warn(
+            "Date de fin d'adhésion invalide :",
+            dateFin
+        );
+
+        return;
+
+    }
+
+
+    /*
+    =========================================
+    AUJOURD'HUI
+    =========================================
+    */
+
+    const aujourdHui =
+        new Date();
+
+    aujourdHui.setHours(
+        0,
+        0,
+        0,
+        0
+    );
+
+
+    dateExpiration.setHours(
+        0,
+        0,
+        0,
+        0
+    );
+
+
+    /*
+    =========================================
+    CALCUL DU STATUT
+    =========================================
+    */
+
+    if (
+        dateExpiration < aujourdHui
+    ) {
+
+        /*
+        ADHÉSION EXPIRÉE
+        */
+
+        if (statutAdhesion) {
+
+            statutAdhesion.textContent =
+                "Expirée";
+
+            statutAdhesion.classList.add(
+                "expiree"
+            );
+
+            statutAdhesion.classList.remove(
+                "active"
+            );
+
+        }
+
+
+        if (blocRenouvellement) {
+
+            blocRenouvellement.style.display =
+                "block";
+
+        }
+
+
+        console.log(
+            "Adhésion expirée automatiquement."
+        );
+
+    }
+
+    else {
+
+        /*
+        ADHÉSION ACTIVE
+        */
+
+        if (statutAdhesion) {
+
+            statutAdhesion.textContent =
+                "Active";
+
+            statutAdhesion.classList.add(
+                "active"
+            );
+
+            statutAdhesion.classList.remove(
+                "expiree"
+            );
+
+        }
+
+
+        if (blocRenouvellement) {
+
+            blocRenouvellement.style.display =
+                "none";
+
+        }
+
+
+        console.log(
+            "Adhésion active."
+        );
+
+    }
+
+}
+
+
+
 /* =========================================================
 AFFICHER LE MEMBRE
 ========================================================= */
@@ -1576,6 +1760,8 @@ if (
         "Compte membre adhérent chargé :",
         membre
     );
+   
+    verifierExpirationAdhesion(membre);
     
     numeroMembre.textContent =
         membre.numeroMembre || "-";
