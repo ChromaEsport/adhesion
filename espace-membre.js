@@ -1252,25 +1252,20 @@ catch (
 
 async function verifierStatutAdhesionAutomatiquement(membre) {
 
-// Aucun document Firestore exploitable
 if (!membre || !membre.id) {
     return;
 }
 
 
-// Pas de date de fin
 if (!membre.dateFinAdhesion) {
     return;
 }
 
 
 const maintenant = new Date();
-
-
 const dateFin = new Date(membre.dateFinAdhesion);
 
 
-// Vérification de la validité de la date
 if (isNaN(dateFin.getTime())) {
     console.warn(
         "Date de fin d'adhésion invalide :",
@@ -1280,18 +1275,36 @@ if (isNaN(dateFin.getTime())) {
 }
 
 
-let nouveauStatut;
+let nouveauStatutAdhesion;
+let nouveauStatutPaiement = membre.statutPaiement;
 
 
 if (dateFin < maintenant) {
-    nouveauStatut = "expiree";
+
+
+    nouveauStatutAdhesion = "expiree";
+
+
+    // Une adhésion expirée repasse en attente
+    nouveauStatutPaiement = "en-attente";
+
+
 } else {
-    nouveauStatut = "active";
+
+
+    nouveauStatutAdhesion = "active";
+
+
 }
 
 
-// Rien à faire si le statut Firestore est déjà correct
-if (membre.statutAdhesion === nouveauStatut) {
+// Vérifie si une modification est réellement nécessaire
+const modificationNecessaire =
+    membre.statutAdhesion !== nouveauStatutAdhesion ||
+    membre.statutPaiement !== nouveauStatutPaiement;
+
+
+if (!modificationNecessaire) {
     return;
 }
 
@@ -1309,18 +1322,23 @@ try {
     await updateDoc(
         membreRef,
         {
-            statutAdhesion: nouveauStatut
+            statutAdhesion: nouveauStatutAdhesion,
+            statutPaiement: nouveauStatutPaiement
         }
     );
 
 
-    // Mise à jour de l'objet local
-    membre.statutAdhesion = nouveauStatut;
+    // Mise à jour locale
+    membre.statutAdhesion = nouveauStatutAdhesion;
+    membre.statutPaiement = nouveauStatutPaiement;
 
 
     console.log(
-        "Statut d'adhésion mis à jour automatiquement :",
-        nouveauStatut
+        "Statut adhésion mis à jour automatiquement :",
+        {
+            statutAdhesion: nouveauStatutAdhesion,
+            statutPaiement: nouveauStatutPaiement
+        }
     );
 
 
@@ -1328,7 +1346,7 @@ try {
 
 
     console.error(
-        "Erreur lors de la mise à jour automatique du statut :",
+        "Erreur lors de la mise à jour automatique :",
         erreur
     );
 
