@@ -1250,189 +1250,92 @@ catch (
 
 }
 
-function verifierExpirationAdhesion(membre) {
+async function verifierStatutAdhesionAutomatiquement(membre) {
 
-    const dateFin = membre.dateFinAdhesion;
-
-    const blocRenouvellement =
-        document.getElementById("blocRenouvellement");
-
-    const statutAdhesion =
-        document.getElementById("statutAdhesion");
-
-    if (!dateFin) {
-
-        console.warn(
-            "Aucune date de fin d'adhésion trouvée."
-        );
-
-        return;
-
-    }
-
-
-    let dateExpiration;
-
-
-    /*
-    =========================================
-    DATE FIRESTORE
-    =========================================
-    */
-
-    if (
-        typeof dateFin.toDate === "function"
-    ) {
-
-        dateExpiration =
-            dateFin.toDate();
-
-    }
-
-    else if (
-        dateFin instanceof Date
-    ) {
-
-        dateExpiration =
-            dateFin;
-
-    }
-
-    else {
-
-        /*
-        Si la date est enregistrée sous
-        forme de chaîne.
-        */
-
-        dateExpiration =
-            new Date(dateFin);
-
-    }
-
-
-    if (
-        isNaN(dateExpiration.getTime())
-    ) {
-
-        console.warn(
-            "Date de fin d'adhésion invalide :",
-            dateFin
-        );
-
-        return;
-
-    }
-
-
-    /*
-    =========================================
-    AUJOURD'HUI
-    =========================================
-    */
-
-    const aujourdHui =
-        new Date();
-
-    aujourdHui.setHours(
-        0,
-        0,
-        0,
-        0
-    );
-
-
-    dateExpiration.setHours(
-        0,
-        0,
-        0,
-        0
-    );
-
-
-    /*
-    =========================================
-    CALCUL DU STATUT
-    =========================================
-    */
-
-    if (
-        dateExpiration < aujourdHui
-    ) {
-
-        /*
-        ADHÉSION EXPIRÉE
-        */
-
-        if (statutAdhesion) {
-
-            statutAdhesion.textContent =
-                "Expirée";
-
-            statutAdhesion.classList.add(
-                "expiree"
-            );
-
-            statutAdhesion.classList.remove(
-                "active"
-            );
-
-        }
-
-
-        if (blocRenouvellement) {
-
-            blocRenouvellement.style.display =
-                "block";
-
-        }
-
-
-        console.log(
-            "Adhésion expirée automatiquement."
-        );
-
-    }
-
-    else {
-
-        /*
-        ADHÉSION ACTIVE
-        */
-
-        if (statutAdhesion) {
-
-            statutAdhesion.textContent =
-                "Active";
-
-            statutAdhesion.classList.add(
-                "active"
-            );
-
-            statutAdhesion.classList.remove(
-                "expiree"
-            );
-
-        }
-
-
-        if (blocRenouvellement) {
-
-            blocRenouvellement.style.display =
-                "none";
-
-        }
-
-
-        console.log(
-            "Adhésion active."
-        );
-
-    }
-
+// Aucun document Firestore exploitable
+if (!membre || !membre.id) {
+    return;
 }
 
 
+// Pas de date de fin
+if (!membre.dateFinAdhesion) {
+    return;
+}
+
+
+const maintenant = new Date();
+
+
+const dateFin = new Date(membre.dateFinAdhesion);
+
+
+// Vérification de la validité de la date
+if (isNaN(dateFin.getTime())) {
+    console.warn(
+        "Date de fin d'adhésion invalide :",
+        membre.dateFinAdhesion
+    );
+    return;
+}
+
+
+let nouveauStatut;
+
+
+if (dateFin < maintenant) {
+    nouveauStatut = "expiree";
+} else {
+    nouveauStatut = "active";
+}
+
+
+// Rien à faire si le statut Firestore est déjà correct
+if (membre.statutAdhesion === nouveauStatut) {
+    return;
+}
+
+
+try {
+
+
+    const membreRef = doc(
+        db,
+        "membres",
+        membre.id
+    );
+
+
+    await updateDoc(
+        membreRef,
+        {
+            statutAdhesion: nouveauStatut
+        }
+    );
+
+
+    // Mise à jour de l'objet local
+    membre.statutAdhesion = nouveauStatut;
+
+
+    console.log(
+        "Statut d'adhésion mis à jour automatiquement :",
+        nouveauStatut
+    );
+
+
+} catch (erreur) {
+
+
+    console.error(
+        "Erreur lors de la mise à jour automatique du statut :",
+        erreur
+    );
+
+
+}
+
+}
 
 /* =========================================================
 AFFICHER LE MEMBRE
@@ -1440,6 +1343,8 @@ AFFICHER LE MEMBRE
 function afficherMembre(membre) {
 
 membreConnecte = membre;
+
+verifierStatutAdhesionAutomatiquement(membre);   
 /*
 =========================================
 INFORMATIONS COMMUNES
