@@ -120,6 +120,12 @@ document.getElementById(
 "statutMembre"
 );
 
+const datePremiereAdhesion =
+document.getElementById(
+"datePremiereAdhesion"
+);
+
+
 const statutAdhesion =
 document.getElementById(
 "statutAdhesion"
@@ -1574,7 +1580,10 @@ if (
     numeroMembre.textContent =
         membre.numeroMembre || "-";
 
-    
+    datePremiereAdhesion.textContent =
+        afficherDate(
+            membre.datePremiereAdhesion
+        );
 
     statutMembre.textContent =
         traduireStatutMembre(
