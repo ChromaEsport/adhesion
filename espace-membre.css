@@ -308,13 +308,13 @@ gap: 20px;
 color: #8fa3c4;
 
 
-font-size: 13px;
+font-size: 16px;
 
 
 }
 
 .information-valeur {
-font-size: 15px;
+font-size: 18px;
 
 
 font-weight: bold;
@@ -625,34 +625,12 @@ CARTE MEMBRE
 ============================== */
 
 .carte-membre {
-background:
-linear-gradient(
-135deg,
-#081638,
-#3c9195
-);
+background: linear-gradient(135deg, #081638, #3c9195);
+    border: 1px solid rgba(143, 236, 201, 0.2);
+    border-radius: 15px;
+    padding: 25px;
+    height: max(200px);
 
-
-border:
-    1px solid
-    rgba(
-        143,
-        236,
-        201,
-        0.2
-    );
-
-border-radius: 15px;
-
-padding: 25px;
-
-display: flex;
-
-justify-content: space-between;
-
-align-items: center;
-
-gap: 20px;
 
 
 }
@@ -683,6 +661,7 @@ color: #8fecc9;
 
 .carte-statut {
 text-align: right;
+margin-top: 50px;
 }
 
 .carte-statut strong {
