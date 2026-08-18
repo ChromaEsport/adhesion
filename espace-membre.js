@@ -86,9 +86,9 @@ document.getElementById(
 "nomMembre"
 );
 
-const dateNaissance =
+const dateNaissanceMembre =
 document.getElementById(
-"dateNaissance"
+"dateNaissanceMembre"
 );
 
 const emailMembre =
