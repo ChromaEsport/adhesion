@@ -1260,8 +1260,22 @@ prenomInformation.textContent =
 nomMembre.textContent =
     membre.nom || "-";
 
+const dateNaissance =
+membre.dateNaissance || membre.naissance;
+
+if (dateNaissance) {
+
+const date = new Date(dateNaissance);
+
+
 dateNaissanceMembre.textContent =
-    membre.dateNaissance || membre.naissance || "-";
+    date.toLocaleDateString("fr-FR");
+
+} else {
+
+dateNaissanceMembre.textContent = "-";
+
+}
  
 emailMembre.textContent =
     membre.email || "-";
