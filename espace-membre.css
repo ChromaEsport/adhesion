@@ -114,7 +114,7 @@ margin: 20px auto;
     gap: 20px;
 }
 .deuxiemebloc {
-    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-columns: 1fr 3fr;
     display: grid;
     gap: 20px;
 }
