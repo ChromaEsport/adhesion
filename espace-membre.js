@@ -2840,7 +2840,7 @@ switch (
     case "paye":
         return "🟢 Payé";
 
-    case "en_attente":
+    case "en-attente":
         return "🟠 En attente";
 
     default:
