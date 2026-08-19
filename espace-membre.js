@@ -1916,7 +1916,8 @@ function afficherEspaceMembreActif(
         membre.statutMembre ===
         "actif"
     ) {
-
+        blocMembreActif.style.display =
+            "none";
         blocestMembreActif.style.display =
             "block";
 
