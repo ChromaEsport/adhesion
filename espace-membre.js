@@ -1648,12 +1648,8 @@ if (
             demandeAdhesionCommunaute.innerHTML = `
                 <div class="message-demande-adhesion refusee">
 
-                    <div class="icone-demande-adhesion">
-                        ❌
-                    </div>
-
                     <h4>
-                        Votre demande d'adhésion a été refusée
+                      ❌ Votre demande d'adhésion a été refusée
                     </h4>
 
                     <p>
@@ -1922,18 +1918,14 @@ function afficherEspaceMembreActif(
     ) {
 
         blocMembreActif.style.display =
-            "block";
+            "none";
 
         contenuMembreActif.innerHTML = `
 
             <div class="message-membre-actif">
 
-                <div class="icone-membre-actif">
-                    ⭐
-                </div>
-
                 <h4>
-                    Vous êtes membre actif
+                   ⭐ Vous êtes membre actif
                 </h4>
 
                 <p>
