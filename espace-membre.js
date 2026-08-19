@@ -1355,7 +1355,7 @@ try {
 
 }
 
-async function verifierDemandeAdhesionEnAttente(firebaseUid) {
+async function verifierDemandeAdhesionEnAttente() {
 
 const boutonDevenirAdherent =
     document.getElementById("boutonDevenirAdherent");
@@ -1365,45 +1365,93 @@ const messageDevenirAdherent =
     document.getElementById("messageDevenirAdherent");
 
 
-// Sécurité : si les éléments HTML n'existent pas
 if (!boutonDevenirAdherent || !messageDevenirAdherent) {
+    console.warn(
+        "Éléments Devenir adhérent introuvables dans le HTML."
+    );
     return;
 }
 
 
-// Par défaut, on affiche les éléments
+// Par défaut : on affiche
 boutonDevenirAdherent.style.display = "";
 messageDevenirAdherent.style.display = "";
 
 
-if (!firebaseUid) {
+// Récupération directe du compte Firebase connecté
+const utilisateur = auth.currentUser;
+
+
+if (!utilisateur) {
+    console.warn(
+        "Aucun utilisateur Firebase connecté."
+    );
     return;
 }
+
+
+const firebaseUid = utilisateur.uid;
+
+
+console.log(
+    "Vérification demande adhésion pour Firebase UID :",
+    firebaseUid
+);
 
 
 try {
 
 
+    // On recherche uniquement les adhésions de cet utilisateur
     const requete = query(
         collection(db, "adhesions"),
-        where("firebaseUid", "==", firebaseUid),
-        where("statut", "==", "en_attente")
+        where("firebaseUid", "==", firebaseUid)
     );
 
 
     const resultat = await getDocs(requete);
 
 
-    // Une demande d'adhésion est actuellement en attente
-    if (!resultat.empty) {
+    let demandeEnAttente = false;
+
+
+    resultat.forEach((documentAdhesion) => {
+
+
+        const adhesion = documentAdhesion.data();
+
+
+        console.log(
+            "Adhésion trouvée :",
+            adhesion
+        );
+
+
+        if (adhesion.statut === "en_attente") {
+            demandeEnAttente = true;
+        }
+
+
+    });
+
+
+    if (demandeEnAttente) {
+
+
+        console.log(
+            "Demande d'adhésion EN ATTENTE détectée."
+        );
 
 
         boutonDevenirAdherent.style.display = "none";
         messageDevenirAdherent.style.display = "none";
 
 
+    } else {
+
+
         console.log(
-            "Une demande d'adhésion est actuellement en attente."
+            "Aucune demande d'adhésion en attente."
         );
 
 
@@ -1424,7 +1472,6 @@ try {
 }
 
 
-
 /* =========================================================
 AFFICHER LE MEMBRE
 ========================================================= */
@@ -1434,7 +1481,7 @@ membreConnecte = membre;
 
 verifierStatutAdhesionAutomatiquement(membre);   
 
-verifierDemandeAdhesionEnAttente(membre.firebaseUid);
+verifierDemandeAdhesionEnAttente();
 /*
 =========================================
 INFORMATIONS COMMUNES
