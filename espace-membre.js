@@ -1355,6 +1355,76 @@ try {
 
 }
 
+async function verifierDemandeAdhesionEnAttente(firebaseUid) {
+
+const boutonDevenirAdherent =
+    document.getElementById("boutonDevenirAdherent");
+
+
+const messageDevenirAdherent =
+    document.getElementById("messageDevenirAdherent");
+
+
+// Sécurité : si les éléments HTML n'existent pas
+if (!boutonDevenirAdherent || !messageDevenirAdherent) {
+    return;
+}
+
+
+// Par défaut, on affiche les éléments
+boutonDevenirAdherent.style.display = "";
+messageDevenirAdherent.style.display = "";
+
+
+if (!firebaseUid) {
+    return;
+}
+
+
+try {
+
+
+    const requete = query(
+        collection(db, "adhesions"),
+        where("firebaseUid", "==", firebaseUid),
+        where("statut", "==", "en_attente")
+    );
+
+
+    const resultat = await getDocs(requete);
+
+
+    // Une demande d'adhésion est actuellement en attente
+    if (!resultat.empty) {
+
+
+        boutonDevenirAdherent.style.display = "none";
+        messageDevenirAdherent.style.display = "none";
+
+
+        console.log(
+            "Une demande d'adhésion est actuellement en attente."
+        );
+
+
+    }
+
+
+} catch (erreur) {
+
+
+    console.error(
+        "Erreur lors de la vérification de la demande d'adhésion :",
+        erreur
+    );
+
+
+}
+
+}
+
+
+
 /* =========================================================
 AFFICHER LE MEMBRE
 ========================================================= */
@@ -1363,6 +1433,8 @@ function afficherMembre(membre) {
 membreConnecte = membre;
 
 verifierStatutAdhesionAutomatiquement(membre);   
+
+verifierDemandeAdhesionEnAttente(membre.firebaseUid);
 /*
 =========================================
 INFORMATIONS COMMUNES
