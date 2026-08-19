@@ -1553,7 +1553,7 @@ if (
     if (blocCommunaute) {
 
         blocCommunaute.style.display =
-            "block";
+            "flex";
 
     }
 
