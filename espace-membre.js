@@ -1934,11 +1934,11 @@ function afficherEspaceMembreActif(
 
 Conformément à nos statuts, votre adhésion vous confère l'intégralité des droits liés à votre statut, notamment : </p>
 
-<div class="droit"><strong><span class="texte1">Participation :</strong> Vous êtes invité(e) à assister à l'ensemble des assemblées générales (AG).</span>
+<div class="droit"><span class="texte1"><strong>Participation :</strong> Vous êtes invité(e) à assister à l'ensemble des assemblées générales (AG).</span>
 
-<strong>Expression : </strong><span class="texte1">Vous avez la parole lors de ces assemblées pour poser vos questions et proposer des sujets à inscrire à l'ordre du jour.</span>
+<span class="texte1"><strong>Expression : </strong>Vous avez la parole lors de ces assemblées pour poser vos questions et proposer des sujets à inscrire à l'ordre du jour.</span>
 
-<strong>-Décision : </strong><span class="texte1">Vous disposez du droit de vote lors des délibérations en assemblée générale.</span></div>
+<span class="texte1"><strong>Décision : </strong>Vous disposez du droit de vote lors des délibérations en assemblée générale.</span></div>
 
 <p>Nous sommes ravis de vous compter parmi nous et avons hâte de découvrir vos contributions pour faire avancer <strong>Chroma Esport </strong>!</p>
 
