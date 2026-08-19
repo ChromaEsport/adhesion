@@ -1930,17 +1930,17 @@ function afficherEspaceMembreActif(
                
                 <p>Félicitations, votre demande a été validée par le bureau.</p>
 
-<p>En tant que membre actif, vous jouez désormais un rôle central dans la vie et le développement de notre association.</p>
+<p>En tant que membre actif, vous jouez désormais un rôle central dans la vie et le développement de notre association.
 
-<p>Conformément à nos statuts, votre adhésion vous confère l'intégralité des droits liés à votre statut, notamment : </p>
+Conformément à nos statuts, votre adhésion vous confère l'intégralité des droits liés à votre statut, notamment : </p>
 
-<p>-Participation : Vous êtes invité(e) à assister à l'ensemble des assemblées générales (AG).</p>
+<div class="droit"><strong><span class="texte1">Participation :</strong> Vous êtes invité(e) à assister à l'ensemble des assemblées générales (AG).</span>
 
-<p>-Expression : Vous avez la parole lors de ces assemblées pour poser vos questions et proposer des sujets à inscrire à l'ordre du jour.</p>
+<strong>Expression : </strong><span class="texte1">Vous avez la parole lors de ces assemblées pour poser vos questions et proposer des sujets à inscrire à l'ordre du jour.</span>
 
-<p>-Décision : Vous disposez du droit de vote lors des délibérations en assemblée générale.</p>
+<strong>-Décision : </strong><span class="texte1">Vous disposez du droit de vote lors des délibérations en assemblée générale.</span></div>
 
-<p>Nous sommes ravis de vous compter parmi nous et avons hâte de découvrir vos contributions pour faire avancer Chroma Esport !</p>
+<p>Nous sommes ravis de vous compter parmi nous et avons hâte de découvrir vos contributions pour faire avancer <strong>Chroma Esport </strong>!</p>
 
             </div>
 
