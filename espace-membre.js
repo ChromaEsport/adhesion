@@ -1924,14 +1924,14 @@ function afficherEspaceMembreActif(
 
             <div class="message-membre-actif">
 <h4>
-                   Bienvenue parmi les membres actifs de Chroma Esport !
+                   Adhésion expirée
                 </h4>
                
-                <p>Statut de membre : Adhésion expirée</p>
+                <p>Nous vous informons que votre adhésion à Chroma Esport est arrivée à échéance.</p>
 
-<p>Nous vous informons que votre adhésion à Chroma Esport est arrivée à échéance. Par conséquent, vous n'avez actuellement plus accès aux droits liés au statut de membre actif.<br>
-
-Pour retrouver l'ensemble de vos avantages (participation aux assemblées générales, droit de parole et droit de vote), nous vous invitons à renouveler votre adhésion dès que possible. </p>
+<p>Par conséquent, vous n'avez actuellement plus accès aux droits liés au statut de membre actif.<br>
+Pour retrouver l'ensemble de vos avantages (participation aux assemblées générales, droit de parole et droit de vote), 
+<br>nous vous invitons à renouveler votre adhésion dès que possible. </p>
 
 <div class="droit"><span class="texte1"><strong>Comment renouveler ?</strong> Pour procéder au renouvellement, rendez-vous dans la tuile de droite et cliquez sur le bouton "Renouveler mon adhésion.</span> </div>
 
