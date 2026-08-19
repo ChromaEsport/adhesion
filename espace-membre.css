@@ -481,11 +481,11 @@ padding: 20px;
 
 
 }
-.message-membre-actif p h4{
+.message-membre-actif .p .h4{
 text-align:center;
   }
 
-.critere-membre-actif {
+.criteres-membre-actif {
     display: grid;
     justify-content: center;
 }
