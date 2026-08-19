@@ -481,7 +481,7 @@ padding: 20px;
 
 
 }
-.message-membre-actif .p .h4{
+.message-membre-actif p, .message-membre-actif h4{
 text-align:center;
   }
 
