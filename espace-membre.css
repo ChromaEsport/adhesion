@@ -370,7 +370,7 @@ color: #8fecc9;
 /* ==============================
 BLOC Communaute
 ============================== */
-.bloc-communaute {
+#bloc-communaute {
     display: flex;
     align-items: center;
  
