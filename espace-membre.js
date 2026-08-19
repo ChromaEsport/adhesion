@@ -1286,13 +1286,13 @@ if (dateFin < maintenant) {
 
 
     // Une adhésion expirée repasse en attente
-    nouveauStatutPaiement = "en-attente";
+    nouveauStatutPaiement = "en_attente";
 
 
 } else {
 
 
-    nouveauStatutAdhesion = "active";
+    nouveauStatutAdhesion = "en_cours";
 
 
 }
