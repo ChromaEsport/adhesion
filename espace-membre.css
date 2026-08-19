@@ -290,7 +290,7 @@ margin-top: 35px;
     font-size: 16px;
     font-weight: bold;
     transition: transform 0.2s, opacity 0.2s, box-shadow 0.2s;
-    display:flex !important;
+    display:flex;
 }
 
 #boutonDevenirAdherent:hover {
@@ -371,7 +371,7 @@ color: #8fecc9;
 BLOC Communaute
 ============================== */
 .bloc-communaute {
-    display: flex !important;
+    display: flex;
     align-items: center;
  
 }
