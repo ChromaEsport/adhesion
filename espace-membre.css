@@ -125,23 +125,7 @@ margin: 20px auto;
     gap: 20px;
 }
 
-.deuxiemeblocdemande{
-    background: #081638;
-    border-radius: 15px;
-    padding: 25px;
-    margin-bottom: 20px;
-    flex-direction: column;
-    justify-content: space-evenly;
-    border: 1px solid rgba(143, 236, 201, 0.18);
-    display: flex !important;
-    align-items: center;
-    text-align: center;
-    font-size: 16px; 
-}
 
-.deuxiemeblocdemande h4{
-font-size:18px;
-}
 /* ==============================
 BIENVENUE
 ============================== */
@@ -370,12 +354,20 @@ color: #8fecc9;
 /* ==============================
 BLOC Communaute
 ============================== */
-#bloc-communaute {
+#blocCommunaute {
     display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
  
 }
+.message-demande-adhesion{
 
+display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
 /* ==============================
 BLOC Renouvellement
