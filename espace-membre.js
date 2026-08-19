@@ -1936,7 +1936,7 @@ Conformément à nos statuts, votre adhésion vous confère l'intégralité des 
 
 <div class="droit"><span class="texte1"><strong>Participation :</strong> Vous êtes invité(e) à assister à l'ensemble des assemblées générales (AG).</span>
 
-<span class="texte1"><strong>Expression : </strong>Vous avez la parole lors de ces assemblées pour poser vos questions et proposer des sujets à inscrire à l'ordre du jour.</span>
+<span class="texte1"><strong>Expression : </strong>Vous avez la parole lors de ces assemblées pour poser vos questions.</span>
 
 <span class="texte1"><strong>Décision : </strong>Vous disposez du droit de vote lors des délibérations en assemblée générale.</span></div>
 
