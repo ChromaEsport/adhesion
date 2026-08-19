@@ -257,14 +257,15 @@ margin-top: 35px;
     margin-right: 0px;
     margin-left: 0px;
     margin-bottom: 0px;
-  
+  display: flex;
+    flex-direction: column;
 }
 #boutonDevenirAdherent {
     text-decoration: none;
     align-items: center;
     justify-content: center;
     gap: 8px;
-    margin-top: 60px;
+    margin-top: 20px;
     padding: 14px 28px;
     border: 1px solid rgba(143, 236, 201, 0.35);
     border-radius: 8px;
@@ -360,6 +361,10 @@ BLOC Communaute
     align-items: center;
     justify-content: center;
  
+}
+
+.message-communaute{
+text-align:center;
 }
 .message-demande-adhesion{
 
