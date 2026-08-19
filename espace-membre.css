@@ -490,9 +490,16 @@ text-align:center;
     justify-content: center;
 }
 
+.criteres-membre-actif h5 {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    font-size: 16px;
+}
+
+
 .information-demande-actif{
 text-align:center;
-  
+margin-top: 35px;
 }
 
 .statutChroma {
