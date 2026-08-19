@@ -2032,12 +2032,8 @@ if (
         contenuMembreActif.innerHTML = `
             <div class="message-membre-actif">
 
-                <div class="icone-membre-actif">
-                    ❌
-                </div>
-
                 <h4>
-                    Demande refusée
+                  ❌ Demande refusée
                 </h4>
 
                 <p>
