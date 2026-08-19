@@ -1932,7 +1932,7 @@ function afficherEspaceMembreActif(
 <p>Par conséquent, vous n'avez actuellement plus accès aux droits liés au statut de membre actif.<br><br>
 Pour retrouver l'ensemble de vos avantages <strong>(participation aux assemblées générales, droit de parole et droit de vote)</strong>, <br>nous vous invitons à renouveler votre adhésion dès que possible. </p>
 
-<div class="droit"><span class="texte1"><strong>Comment renouveler ?</strong> Pour procéder au renouvellement, rendez-vous dans la tuile précédente et cliquez sur le bouton "Renouveler mon adhésion.</span> </div>
+<div class="droit"><span class="texte2"><strong>Comment renouveler ?</strong> Pour procéder au renouvellement, rendez-vous dans la tuile précédente et cliquez sur le bouton "Renouveler mon adhésion.</span> </div>
 
 <p>Une fois votre adhésion renouvelée, votre statut de membre actif sera automatiquement réactivé. <br>Nous espérons vous compter parmi nous pour cette nouvelle année au sein de l'association !!</p>
 
