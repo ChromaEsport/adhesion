@@ -1357,55 +1357,45 @@ try {
 
 async function verifierDemandeAdhesionEnAttente() {
 
-const boutonDevenirAdherent =
+const bouton =
     document.getElementById("boutonDevenirAdherent");
 
 
-const messageDevenirAdherent =
+const message =
     document.getElementById("messageDevenirAdherent");
 
 
-if (!boutonDevenirAdherent || !messageDevenirAdherent) {
+if (!bouton || !message) {
     console.warn(
-        "Éléments Devenir adhérent introuvables dans le HTML."
+        "Bouton ou message 'Devenir adhérent' introuvable."
     );
     return;
 }
 
 
-// Par défaut : on affiche
-boutonDevenirAdherent.style.display = "";
-messageDevenirAdherent.style.display = "";
+// Affichage par défaut
+bouton.hidden = false;
+message.hidden = false;
 
 
-// Récupération directe du compte Firebase connecté
 const utilisateur = auth.currentUser;
 
 
 if (!utilisateur) {
-    console.warn(
-        "Aucun utilisateur Firebase connecté."
-    );
     return;
 }
-
-
-const firebaseUid = utilisateur.uid;
-
-
-console.log(
-    "Vérification demande adhésion pour Firebase UID :",
-    firebaseUid
-);
 
 
 try {
 
 
-    // On recherche uniquement les adhésions de cet utilisateur
     const requete = query(
         collection(db, "adhesions"),
-        where("firebaseUid", "==", firebaseUid)
+        where(
+            "firebaseUid",
+            "==",
+            utilisateur.uid
+        )
     );
 
 
@@ -1418,7 +1408,8 @@ try {
     resultat.forEach((documentAdhesion) => {
 
 
-        const adhesion = documentAdhesion.data();
+        const adhesion =
+            documentAdhesion.data();
 
 
         console.log(
@@ -1427,7 +1418,9 @@ try {
         );
 
 
-        if (adhesion.statut === "en_attente") {
+        if (
+            adhesion.statut === "en_attente"
+        ) {
             demandeEnAttente = true;
         }
 
@@ -1439,20 +1432,12 @@ try {
 
 
         console.log(
-            "Demande d'adhésion EN ATTENTE détectée."
+            "Demande EN ATTENTE → masquage du bouton et du message."
         );
 
 
-        boutonDevenirAdherent.style.display = "none";
-        messageDevenirAdherent.style.display = "none";
-
-
-    } else {
-
-
-        console.log(
-            "Aucune demande d'adhésion en attente."
-        );
+        bouton.hidden = true;
+        message.hidden = true;
 
 
     }
@@ -1462,7 +1447,7 @@ try {
 
 
     console.error(
-        "Erreur lors de la vérification de la demande d'adhésion :",
+        "Erreur vérification demande adhésion :",
         erreur
     );
 
