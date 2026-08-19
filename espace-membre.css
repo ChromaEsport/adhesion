@@ -530,6 +530,15 @@ margin-top: 35px;
   font-weight: bold;
 }
 
+.droit{
+    display: grid;
+    justify-content: center;
+    justify-items: stretch;
+    line-height: 1.8;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
 /* ==============================
 ÉTAT ÉLIGIBLE
 ============================== */
