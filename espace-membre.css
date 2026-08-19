@@ -514,6 +514,7 @@ margin-top: 35px;
 
 .statutChroma {
    text-align:center
+  margin-top: 20px;
 }
 
 
@@ -548,6 +549,10 @@ text-align:center;
     align-items: center;
     align-content: center;
   
+}
+.message-membre-actif-expiree p{
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 /* ==============================
 ÉTAT ÉLIGIBLE
