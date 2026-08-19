@@ -1963,7 +1963,8 @@ Conformément à nos statuts, votre adhésion vous confère l'intégralité des 
 
         blocMembreActif.style.display =
             "block";
-
+        blocestMembreActif.style.display =
+            "none";
         contenuMembreActif.innerHTML = `
 
             <div class="message-membre-actif">
@@ -2003,7 +2004,8 @@ if (
 
     blocMembreActif.style.display =
         "block";
-
+    blocestMembreActif.style.display =
+            "none";
     const motif =
         membre.motifRefusMembreActif
         ||
@@ -2167,7 +2169,8 @@ if (
 
         blocMembreActif.style.display =
             "block";
-
+        blocestMembreActif.style.display =
+            "none";
         contenuMembreActif.innerHTML = `
 
             <div class="message-membre-actif">
@@ -2243,7 +2246,8 @@ if (
 
         blocMembreActif.style.display =
             "block";
-
+        blocestMembreActif.style.display =
+            "none";
         contenuMembreActif.innerHTML = `
 
             <div class="message-membre-actif">
@@ -2297,7 +2301,8 @@ if (
 
 blocMembreActif.style.display =
     "block";
-
+blocestMembreActif.style.display =
+            "none";
 const cotisationAJour =
     membre.statutPaiement ===
     "paye";
