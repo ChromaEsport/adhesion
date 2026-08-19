@@ -1955,8 +1955,8 @@ Conformément à nos statuts, votre adhésion vous confère l'intégralité des 
     */
  if (
         membre.statutMembre ===
-        "actif"
-     membre.statutAdhesion === "expiree"
+        "actif" &&
+        membre.statutAdhesion === "expiree"
     ) {
         blocMembreActif.style.display =
             "none";
@@ -1976,7 +1976,7 @@ Conformément à nos statuts, votre adhésion vous confère l'intégralité des 
 
 Pour retrouver l'ensemble de vos avantages (participation aux assemblées générales, droit de parole et droit de vote), nous vous invitons à renouveler votre adhésion dès que possible. </p>
 
-<div class="droit"><span class="texte1"><strong>Comment renouveler ?</strong> Pour procéder au renouvellement, rendez-vous dans la tuile de droite et cliquez sur le bouton "Renouveler mon adhésion.</span>
+<div class="droit"><span class="texte1"><strong>Comment renouveler ?</strong> Pour procéder au renouvellement, rendez-vous dans la tuile de droite et cliquez sur le bouton "Renouveler mon adhésion.</span> </div>
 
 <p>Une fois votre adhésion renouvelée et validée, votre statut de membre actif sera automatiquement réactivé. Nous espérons vous compter parmi nous pour cette nouvelle année au sein de l'association !!</p>
 
