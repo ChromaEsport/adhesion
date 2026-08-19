@@ -504,6 +504,10 @@ text-align:center;
     margin-top: 25px;
 }
 
+.motif-refus p {
+margin-left: 5px;
+}
+
 .information-demande-actif{
 text-align:center;
 margin-top: 35px;
