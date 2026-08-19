@@ -1968,12 +1968,8 @@ function afficherEspaceMembreActif(
 
             <div class="message-membre-actif">
 
-                <div class="icone-membre-actif">
-                    ⏳
-                </div>
-
                 <h4>
-                    Demande en cours d'examen
+                   ⏳ Demande en cours d'examen
                 </h4>
 
                 <p>
@@ -1985,10 +1981,6 @@ function afficherEspaceMembreActif(
                     L'administration de Chroma Esport
                     doit maintenant examiner votre demande.
                 </p>
-
-                <span class="badge-demande-en-attente">
-                    ⏳ En attente
-                </span>
 
             </div>
 
