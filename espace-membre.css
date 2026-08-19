@@ -481,9 +481,14 @@ padding: 20px;
 
 
 }
-.message-membre-actif {
+.message-membre-actif p h4{
 text-align:center;
   }
+
+.critere-membre-actif {
+    display: grid;
+    justify-content: center;
+}
 
 .statutChroma {
    text-align:center
@@ -579,7 +584,7 @@ font-weight: bold;
 
 transition: 0.2s;
 
-
+margin-bottom: 15px;
 }
 
 #demanderMembreActif:hover {
