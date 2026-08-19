@@ -1930,7 +1930,7 @@ function afficherEspaceMembreActif(
                
                 <p>Félicitations, votre demande a été validée par le bureau.</p>
 
-<p>En tant que membre actif, vous jouez désormais un rôle central dans la vie et le développement de notre association.
+<p>En tant que membre actif, vous jouez désormais un rôle central dans la vie et le développement de notre association.<br>
 
 Conformément à nos statuts, votre adhésion vous confère l'intégralité des droits liés à votre statut, notamment : </p>
 
