@@ -542,17 +542,21 @@ margin-top: 35px;
 .date-eligibilite {
 text-align:center;
 }
-.text2{
+.texte2 {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.texte2 strong{
     display: grid;
-    justify-items: center;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-  
+}
+
+.message-membre-actif-expiree{
+    text-align:center;
 }
 .message-membre-actif-expiree p{
     margin-top: 0px;
     margin-bottom: 0px;
+    text-align:center;
 }
 /* ==============================
 ÉTAT ÉLIGIBLE
