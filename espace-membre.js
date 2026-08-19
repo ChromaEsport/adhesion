@@ -2045,7 +2045,7 @@ if (
                 <div class="motif-refus">
 
                     <strong>
-                        Motif :
+                        Motif : 
                     </strong>
 
                     <p>
