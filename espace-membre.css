@@ -541,7 +541,14 @@ margin-top: 35px;
 .date-eligibilite {
 text-align:center;
 }
-
+.text2{
+    display: grid;
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+  
+}
 /* ==============================
 ÉTAT ÉLIGIBLE
 ============================== */
