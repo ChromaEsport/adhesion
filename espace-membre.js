@@ -1500,7 +1500,7 @@ if (
                 <div class="message-demande-adhesion en-attente">
 
                     <h4>
-                        ⏳ Votre demande d'adhésion est en cours
+                        ⏳ Votre demande d’adhésion est en cours d’examen.
                     </h4>
 
                     <p>
