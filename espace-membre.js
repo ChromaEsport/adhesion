@@ -1927,20 +1927,20 @@ function afficherEspaceMembreActif(
 <h4>
                    Bienvenue parmi les membres actifs de Chroma Esport !
                 </h4>
-                <p>
-                    
-Félicitations, votre demande a été validée par le bureau. En tant que membre actif, vous jouez désormais un rôle central dans la vie et le développement de notre association.
+               
+                <p>Félicitations, votre demande a été validée par le bureau.</p>
 
-Conformément à nos statuts, votre adhésion vous confère l'intégralité des droits liés à votre statut, notamment :
+<p>En tant que membre actif, vous jouez désormais un rôle central dans la vie et le développement de notre association.</p>
 
-- Participation : Vous êtes invité(e) à assister à l'ensemble des assemblées générales (AG).
+<p>Conformément à nos statuts, votre adhésion vous confère l'intégralité des droits liés à votre statut, notamment : </p>
 
-- Expression : Vous avez la parole lors de ces assemblées pour poser vos questions et proposer des sujets à inscrire à l'ordre du jour.
+<p>-Participation : Vous êtes invité(e) à assister à l'ensemble des assemblées générales (AG).</p>
 
-- Décision : Vous disposez du droit de vote lors des délibérations en assemblée générale.
+<p>-Expression : Vous avez la parole lors de ces assemblées pour poser vos questions et proposer des sujets à inscrire à l'ordre du jour.</p>
 
-Nous sommes ravis de vous compter parmi nous et avons hâte de découvrir vos contributions pour faire avancer Chroma Esport !
-                </p>
+<p>-Décision : Vous disposez du droit de vote lors des délibérations en assemblée générale.</p>
+
+<p>Nous sommes ravis de vous compter parmi nous et avons hâte de découvrir vos contributions pour faire avancer Chroma Esport !</p>
 
             </div>
 
