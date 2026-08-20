@@ -1018,30 +1018,13 @@ BLOC DON - SOUTENIR CHROMA ESPORT
 ============================== */
 
 .bloc-don {
-border:
-1px solid
-rgba(
-143,
-236,
-201,
-0.18
-);
-background:
-linear-gradient(
-135deg,
-#081638,
-rgba(
-60,
-145,
-149,
-0.18
-)
-);
+display: grid;
+align-items: center;
 }
 
 .contenu-don {
-display: flex;
-justify-content: center;
+/*display: flex;
+justify-content: center;*/
 }
 
 .message-don {
@@ -1772,26 +1755,9 @@ MES DONS
 ===================================================== */
 
 .bloc-mes-dons {
-border:
-1px solid
-rgba(
-143,
-236,
-201,
-0.18
-);
-
-background:
-    linear-gradient(
-        135deg,
-        #081638,
-        rgba(
-            60,
-            145,
-            149,
-            0.14
-        )
-    );
+    display: grid;
+    align-items: center;
+    align-content: center;
 
 }
 
