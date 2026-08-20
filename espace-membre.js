@@ -1111,10 +1111,6 @@ try {
 
             <div class="aucun-don">
 
-                <div class="icone-aucun-don">
-                    ❤️
-                </div>
-
                 <p>
                     Vous n'avez encore effectué
                     aucun don.
