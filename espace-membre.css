@@ -1034,7 +1034,7 @@ BLOC DON - SOUTENIR CHROMA ESPORT
 margin-bottom: 20px;
   
 }
-.blocDon .titre-bloc{
+#blocDon .titre-bloc{
     display: grid;
     justify-items: center;
 }
