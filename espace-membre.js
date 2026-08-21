@@ -1170,7 +1170,8 @@ try {
                                 <div
                                     class="icone-historique-don"
                                 >
-                                    ❤️
+                                    paye
+                                     💳​
                                 </div>
 
                                 <div>
