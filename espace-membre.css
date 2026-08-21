@@ -1031,12 +1031,13 @@ BLOC DON - SOUTENIR CHROMA ESPORT
     align-items: center;
 }
 .troisiemebloc .titre-bloc h3{
-display: flex;
-justify-content: center;
 margin-bottom: 20px;
   
 }
-
+.blocDon .titre-bloc{
+    display: grid;
+    justify-items: center;
+}
 
 .contenu-don {
 /*display: flex;
