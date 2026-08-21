@@ -1827,9 +1827,9 @@ if (
     =========================================
     CARTE MEMBRE
     =========================================
-    */
+   /*
 
-    numeroCarte.textContent =
+    /*numeroCarte.textContent =
         membre.numeroMembre || "-";
 
 
@@ -1846,7 +1846,7 @@ if (
         statutCarte.textContent =
             "🔴 Carte non envoyée";
 
-    }
+    }/*
 
 
     /*
