@@ -977,11 +977,26 @@ DISCORD & TWITCH
     margin-top: auto;
     transition: transform 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease;
 }
-bouton-discord {
+.bouton-discord {
     background: #5865F2;
     box-shadow: 0 7px 22px rgba(88, 101, 242, 0.3);
 }
-
+.twitch-principal {
+    border: 1px solid rgba(145, 70, 255, 0.45);
+    background: linear-gradient(135deg, rgba(145, 70, 255, 0.16), rgba(145, 70, 255, 0.05));
+    box-shadow: 0 12px 35px rgba(145, 70, 255, 0.1);
+}
+.bouton-twitch {
+    background: #9146FF;
+    box-shadow: 0 7px 22px rgba(145, 70, 255, 0.3);
+}
+.carte-plateforme:hover {
+    transform: translateY(-4px);
+}
+.bouton-plateforme:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.08);
+}
 
 
 /* ==============================
