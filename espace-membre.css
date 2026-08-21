@@ -1024,9 +1024,19 @@ BLOC DON - SOUTENIR CHROMA ESPORT
 ============================== */
 
 .bloc-don {
-display: grid;
-align-items: center;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    justify-items: stretch;
+    align-items: center;
 }
+.troisiemebloc .titre-bloc h3{
+display: flex;
+justify-content: center;
+margin-bottom: 20px;
+  
+}
+
 
 .contenu-don {
 /*display: flex;
