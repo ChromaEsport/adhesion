@@ -880,7 +880,7 @@ border-radius: 12px;
 padding: 20px;
 
 margin-bottom: 30px;
-
+text-align: center;
 
 }
 
@@ -900,6 +900,15 @@ color: #8fa3c4;
 line-height: 1.5;
 
 
+}
+.bloc-information-association a {
+color: #3c9195;
+text-decoration: none;
+}
+
+.bloc-information-association:hover a {
+color: rgb(0, 88, 255);
+    font-weight: bold;
 }
 
 /* ==============================
