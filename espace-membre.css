@@ -2069,7 +2069,7 @@ color: #8fa3c4;
 }
 
 /* ==============================
-RESPONSIVE
+RESPONSIVE TABLETTE
 ============================== */
 
 @media (max-width: 1440px) {
@@ -2092,7 +2092,10 @@ max-width: stretch;
   
 }
 
-@media (max-width: 500px) {
+/* ==============================
+RESPONSIVE MOBILE
+============================== */
+@media (max-width: 1000px) {
 
 
 .membre-container {
@@ -2123,7 +2126,7 @@ max-width: stretch;
 MOBILE
 ============================== */
 
-@media (max-width: 600px) {
+@media (max-width: 1000px) {
 
 .stats-dons {
 
@@ -2160,7 +2163,7 @@ MOBILE
    MOBILE
 ============================== */
 
-@media (max-width: 500px) {
+@media (max-width: 1000px) {
 
     .popup-don {
 
@@ -2199,7 +2202,7 @@ MOBILE
 DON - MOBILE
 ============================== */
 
-@media (max-width: 500px) {
+@media (max-width: 1000px) {
 
 .message-don {
 padding: 5px 5px 0 5px;
