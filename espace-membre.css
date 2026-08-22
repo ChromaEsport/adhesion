@@ -2102,21 +2102,60 @@ RESPONSIVE TABLETTE 800px - 1000px
 ============================== */
 @media (max-width: 1000px) {
 
+  .bloc-bienvenue h2 {
+    font-size: 22px;
+}
+.bloc-bienvenue p:not(.petit-titre)
+Specificity: (0,2,1)
+ {
+    font-size: 14px;
+}
+.titre-bloc span {
+    font-size: 20px;
+}
+.titre-bloc h3 {
+    font-size: 18px;
+}
+.information-label
+Specificity: (0,1,0){
+    font-size: 14px;
+}
+.information-valeur
+Specificity: (0,1,0){
+    font-size: 16px;
+}
+.badge-statut {
+    font-size: 14px;
+}
+.titre-bloc-actif h3 {
+    font-size: 18px;
+}
+.message-membre-actif {
+ font-size: 14px; 
+}
+.statutChroma a {
+    font-size: 14px;
+}
+  
+.dongroup {
+grid-template-columns: 1fr;
+}
+  
 .stats-dons {
-    grid-template-columns: 1fr;
+grid-template-columns: 1fr;
 }
 .ligne-don {
-    align-items: flex-start;
+align-items: flex-start;
 }
 .montant-don {
-    font-size: 16px;
+font-size: 16px;
 }
 .message-don {
 padding: 5px 5px 0 5px;
 }
 
 .message-don h4 {
-font-size: 17px;
+font-size: 16px;
 }
 
 .message-don p {
@@ -2126,7 +2165,34 @@ font-size: 14px;
 .bouton-don {
 width: 100%;
 padding: 14px 20px;
+font-size:16px;
 }
+#blocMesDons .titre-bloc h4 {
+    font-size: 16px;
+}
+#blocMesDons .titre-bloc h4 {
+    font-size: 16px;
+}
+.stat-don-valeur {
+    font-size: 16px;
+}
+.bloc-information-association h3 {
+    font-size: 18px;
+}
+.bloc-information-association p {
+    font-size: 14px;
+}
+.carte-plateforme h3
+Specificity: (0,1,1)
+ {
+    font-size: 16px;
+}
+.carte-plateforme p {
+    font-size: 14px;
+}
+
+
+  
 }
 
 /* ==============================
