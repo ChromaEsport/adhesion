@@ -2208,8 +2208,7 @@ Specificity: (0,1,0){
 }
 
   
-.grille-informations
-Specificity: (0,1,0){
+.grille-informations {
     grid-template-columns: 1fr;
 }
 .information-label
