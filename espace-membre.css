@@ -2098,7 +2098,7 @@ margin-top: 00px;
 }
 
 /* ==============================
-RESPONSIVE TABLETTE 500px - 1000px
+RESPONSIVE TABLETTE 645px - 1000px
 ============================== */
 @media (max-width: 1000px) {
 
@@ -2219,7 +2219,17 @@ font-size:16px;
 .plateformes-principales {
     grid-template-columns: 1fr;   
 }
-
+.badge-statut {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+  .bouton-plateforme{
+    font-size: 14px;
+}
+ .navigation-membre {
+    width: 100%;
+} 
   
     .popup-don {
 
