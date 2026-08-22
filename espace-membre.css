@@ -2198,6 +2198,16 @@ Specificity: (0,1,1)
 
 @media (max-width: 800px) {
 
+
+.membre-header
+Specificity: (0,1,0){
+    grid-template-columns: 1fr;
+}
+.membre-header-logo h1 {
+    text-align: center;
+}
+
+  
 .grille-informations
 Specificity: (0,1,0){
     grid-template-columns: 1fr;
