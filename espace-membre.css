@@ -2069,7 +2069,7 @@ color: #8fa3c4;
 }
 
 /* ==============================
-RESPONSIVE TABLETTE
+RESPONSIVE TABLETTE 1000px - 1440px
 ============================== */
 
 @media (max-width: 1440px) {
@@ -2095,83 +2095,45 @@ margin-top: 20px;
 .titrediscordtwitch{
 margin-top: 00px;
 }  
-
-
-  
 }
 
 /* ==============================
-RESPONSIVE MOBILE
+RESPONSIVE TABLETTE 600px - 1000px
 ============================== */
-@media (max-width: 1000px) {
-
-
-.membre-container {
-    width: 92%;
-
-    margin: 25px auto;
-}
-
-.bloc-bienvenue,
-.bloc-membre {
-    padding: 20px;
-}
-
-.bloc-bienvenue h2 {
-    font-size: 24px;
-}
-
-.titre-bloc h3 {
-    font-size: 19px;
-}
-
-.carte-numero strong {
-    font-size: 21px;
-}
-
-
-}/* ==============================
-MOBILE
-============================== */
-
 @media (max-width: 1000px) {
 
 .stats-dons {
-
-
     grid-template-columns: 1fr;
-
-
 }
-
-
-
-
 .ligne-don {
-
-
     align-items: flex-start;
-
-
 }
-
-
-
-
 .montant-don {
-
-
     font-size: 16px;
-
-
+}
+.message-don {
+padding: 5px 5px 0 5px;
 }
 
+.message-don h4 {
+font-size: 17px;
 }
+
+.message-don p {
+font-size: 14px;
+}
+
+.bouton-don {
+width: 100%;
+padding: 14px 20px;
+}
+}
+
 /* ==============================
-   MOBILE
+   MOBILE <600px
 ============================== */
 
-@media (max-width: 1000px) {
+@media (max-width: 600px) {
 
     .popup-don {
 
@@ -2206,27 +2168,3 @@ MOBILE
 
 }
 
-/* ==============================
-DON - MOBILE
-============================== */
-
-@media (max-width: 1000px) {
-
-.message-don {
-padding: 5px 5px 0 5px;
-}
-
-.message-don h4 {
-font-size: 17px;
-}
-
-.message-don p {
-font-size: 14px;
-}
-
-.bouton-don {
-width: 100%;
-padding: 14px 20px;
-}
-
-}
