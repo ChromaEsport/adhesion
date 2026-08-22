@@ -1018,106 +1018,6 @@ font-size: 13px;
 }
 
 /* ==============================
-RESPONSIVE
-============================== */
-
-@media (max-width: 800px) {
-
-
-.membre-header {
-    padding: 20px;
-
-    flex-direction: column;
-
-    align-items: flex-start;
-
-    gap: 20px;
-}
-
-.navigation-membre {
-    width: 100%;
-
-    flex-direction: column;
-
-    align-items: stretch;
-}
-
-#numeroMembreHeader,
-#logout {
-    width: 100%;
-
-    text-align: center;
-}
-
-.bloc-bienvenue {
-    flex-direction: column;
-
-    align-items: stretch;
-}
-
-.statut-principal {
-    width: 100%;
-}
-
-.grille-informations {
-    grid-template-columns: 1fr;
-}
-
-.information {
-    flex-direction: column;
-
-    align-items: flex-start;
-
-    gap: 7px;
-}
-
-.information-valeur {
-    text-align: left;
-}
-
-.carte-membre {
-    flex-direction: column;
-
-    align-items: flex-start;
-}
-
-.carte-statut {
-    text-align: left;
-}
-
-
-}
-
-@media (max-width: 500px) {
-
-
-.membre-container {
-    width: 92%;
-
-    margin: 25px auto;
-}
-
-.bloc-bienvenue,
-.bloc-membre {
-    padding: 20px;
-}
-
-.bloc-bienvenue h2 {
-    font-size: 24px;
-}
-
-.titre-bloc h3 {
-    font-size: 19px;
-}
-
-.carte-numero strong {
-    font-size: 21px;
-}
-
-
-}
-
-/* ==============================
 BLOC DON - SOUTENIR CHROMA ESPORT
 ============================== */
 
@@ -1251,30 +1151,6 @@ rgba(
 transform: translateY(0);
 }
 
-/* ==============================
-DON - MOBILE
-============================== */
-
-@media (max-width: 500px) {
-
-.message-don {
-padding: 5px 5px 0 5px;
-}
-
-.message-don h4 {
-font-size: 17px;
-}
-
-.message-don p {
-font-size: 14px;
-}
-
-.bouton-don {
-width: 100%;
-padding: 14px 20px;
-}
-
-}
 
 /* =====================================================
    POPUP DON
@@ -1838,44 +1714,7 @@ body.popup-don-ouvert {
 }
 
 
-/* ==============================
-   MOBILE
-============================== */
 
-@media (max-width: 500px) {
-
-    .popup-don {
-
-        padding:
-            28px 20px;
-
-        border-radius: 17px;
-
-    }
-
-
-    .popup-don h3 {
-
-        font-size: 21px;
-
-    }
-
-
-    .popup-don-montants {
-
-        grid-template-columns:
-            repeat(2, 1fr);
-
-    }
-
-
-    .popup-don-description {
-
-        font-size: 13px;
-
-    }
-
-}
 /* =====================================================
 MES DONS
 ===================================================== */
@@ -2230,6 +2069,104 @@ color: #8fa3c4;
 }
 
 /* ==============================
+RESPONSIVE
+============================== */
+
+@media (max-width: 1440px) {
+
+
+.membre-header {
+    padding: 20px;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 20px;
+}
+
+.navigation-membre {
+    width: 100%;
+
+    flex-direction: column;
+
+    align-items: stretch;
+}
+
+#numeroMembreHeader,
+#logout {
+    width: 100%;
+
+    text-align: center;
+}
+
+.bloc-bienvenue {
+    flex-direction: column;
+
+    align-items: stretch;
+}
+
+.statut-principal {
+    width: 100%;
+}
+
+.grille-informations {
+    grid-template-columns: 1fr;
+}
+
+.information {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 7px;
+}
+
+.information-valeur {
+    text-align: left;
+}
+
+.carte-membre {
+    flex-direction: column;
+
+    align-items: flex-start;
+}
+
+.carte-statut {
+    text-align: left;
+}
+
+
+}
+
+@media (max-width: 500px) {
+
+
+.membre-container {
+    width: 92%;
+
+    margin: 25px auto;
+}
+
+.bloc-bienvenue,
+.bloc-membre {
+    padding: 20px;
+}
+
+.bloc-bienvenue h2 {
+    font-size: 24px;
+}
+
+.titre-bloc h3 {
+    font-size: 19px;
+}
+
+.carte-numero strong {
+    font-size: 21px;
+}
+
+
+}/* ==============================
 MOBILE
 ============================== */
 
@@ -2263,6 +2200,69 @@ MOBILE
     font-size: 16px;
 
 
+}
+
+}
+/* ==============================
+   MOBILE
+============================== */
+
+@media (max-width: 500px) {
+
+    .popup-don {
+
+        padding:
+            28px 20px;
+
+        border-radius: 17px;
+
+    }
+
+
+    .popup-don h3 {
+
+        font-size: 21px;
+
+    }
+
+
+    .popup-don-montants {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+
+    .popup-don-description {
+
+        font-size: 13px;
+
+    }
+
+}
+
+/* ==============================
+DON - MOBILE
+============================== */
+
+@media (max-width: 500px) {
+
+.message-don {
+padding: 5px 5px 0 5px;
+}
+
+.message-don h4 {
+font-size: 17px;
+}
+
+.message-don p {
+font-size: 14px;
+}
+
+.bouton-don {
+width: 100%;
+padding: 14px 20px;
 }
 
 }
