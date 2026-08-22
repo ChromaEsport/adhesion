@@ -2074,7 +2074,10 @@ RESPONSIVE
 
 @media (max-width: 1440px) {
 
-
+.premierbloc {
+grid-template-columns: 1fr;
+  
+}
 .membre-header {
     padding: 20px;
 
@@ -2108,22 +2111,6 @@ RESPONSIVE
 
 .statut-principal {
     width: 100%;
-}
-
-.grille-informations {
-    grid-template-columns: 1fr;
-}
-
-.information {
-    flex-direction: column;
-
-    align-items: flex-start;
-
-    gap: 7px;
-}
-
-.information-valeur {
-    text-align: left;
 }
 
 .carte-membre {
