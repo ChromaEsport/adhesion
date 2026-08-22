@@ -2230,6 +2230,10 @@ font-size:16px;
  .navigation-membre {
     width: 100%;
 } 
+
+#logout {
+    width: 100%;
+}  
   
     .popup-don {
 
