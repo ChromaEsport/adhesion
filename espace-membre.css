@@ -2098,7 +2098,7 @@ margin-top: 00px;
 }
 
 /* ==============================
-RESPONSIVE TABLETTE 800px - 1000px
+RESPONSIVE TABLETTE 500px - 1000px
 ============================== */
 @media (max-width: 1000px) {
 
@@ -2188,10 +2188,10 @@ font-size:16px;
 }
 
 /* ==============================
-   MOBILE <800px
+   MOBILE <500px
 ============================== */
 
-@media (max-width: 800px) {
+@media (max-width: 500px) {
 
 
 .membre-header {
