@@ -2188,10 +2188,10 @@ font-size:16px;
 }
 
 /* ==============================
-   MOBILE <500px
+   MOBILE <645px
 ============================== */
 
-@media (max-width: 500px) {
+@media (max-width: 645px) {
 
 
 .membre-header {
@@ -2216,7 +2216,9 @@ font-size:16px;
 .information {
     gap: 5px;
 }
-
+.plateformes-principales {
+    grid-template-columns: 1fr;   
+}
 
   
     .popup-don {
