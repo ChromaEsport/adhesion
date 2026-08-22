@@ -2106,7 +2106,6 @@ RESPONSIVE TABLETTE 800px - 1000px
     font-size: 22px;
 }
 .bloc-bienvenue p:not(.petit-titre)
-Specificity: (0,2,1)
  {
     font-size: 14px;
 }
@@ -2116,12 +2115,10 @@ Specificity: (0,2,1)
 .titre-bloc h3 {
     font-size: 18px;
 }
-.information-label
-Specificity: (0,1,0){
+.information-label {
     font-size: 14px;
 }
-.information-valeur
-Specificity: (0,1,0){
+.information-valeur {
     font-size: 15px;
 }
 .badge-statut {
@@ -2182,9 +2179,7 @@ font-size:16px;
 .bloc-information-association p {
     font-size: 14px;
 }
-.carte-plateforme h3
-Specificity: (0,1,1)
- {
+.carte-plateforme h3 {
     font-size: 16px;
 }
 .carte-plateforme p {
@@ -2199,24 +2194,20 @@ Specificity: (0,1,1)
 @media (max-width: 800px) {
 
 
-.membre-header
-Specificity: (0,1,0){
+.membre-header {
     grid-template-columns: 1fr;
 }
 .membre-header-logo h1 {
     text-align: center;
 }
 
-  
 .grille-informations {
     grid-template-columns: 1fr;
 }
-.information-label
-Specificity: (0,1,0){
+.information-label {
     font-size: 14px;
 }
-.information-valeur
-Specificity: (0,1,0){
+.information-valeur {
     font-size: 15px;
 }
 .badge-statut {
