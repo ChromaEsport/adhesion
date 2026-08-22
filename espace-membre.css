@@ -2078,7 +2078,7 @@ RESPONSIVE
 grid-template-columns: 1fr;
 }
 
-bloc-membre{
+.bloc-membre{
  margin-bottom:0px;
 }
   
@@ -2086,7 +2086,10 @@ bloc-membre{
 grid-template-columns: 1fr;
   
 }
-
+.plateformes-principales{
+max-width: stretch;
+}
+  
 }
 
 @media (max-width: 500px) {
