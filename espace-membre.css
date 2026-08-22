@@ -2098,7 +2098,7 @@ margin-top: 00px;
 }
 
 /* ==============================
-RESPONSIVE TABLETTE 600px - 1000px
+RESPONSIVE TABLETTE 800px - 1000px
 ============================== */
 @media (max-width: 1000px) {
 
@@ -2130,10 +2130,10 @@ padding: 14px 20px;
 }
 
 /* ==============================
-   MOBILE <600px
+   MOBILE <800px
 ============================== */
 
-@media (max-width: 600px) {
+@media (max-width: 800px) {
 
     .popup-don {
 
