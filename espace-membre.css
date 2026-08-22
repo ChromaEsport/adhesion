@@ -2084,11 +2084,19 @@ grid-template-columns: 1fr;
   
 .deuxiemebloc {
 grid-template-columns: 1fr;
-  
+margin-top: 20px;
+margin-bottom: 20px;
 }
 .plateformes-principales{
 max-width: stretch;
+margin-top: 20px;
 }
+
+.titrediscordtwitch{
+margin-top: 00px;
+}  
+
+
   
 }
 
