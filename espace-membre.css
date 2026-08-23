@@ -2230,7 +2230,27 @@ font-size:16px;
  .navigation-membre {
     width: 100%;
 } 
+.titre-bloc-renouvellement span {
+    font-size: 18px;
+}
+.titre-bloc-renouvellement h3 {
+    font-size: 18px;
+}
+.titre-bloc-renouvellement {
+    margin-bottom: 0px;
+}
+.message-renouvellement p {
+font-size: 14px;
+}
+#boutonRenouvellement{
+    margin-top: 10px;
+    padding: 10px 5px;
+}
+plateforme.label h2 {
+font-size:22px
+}
 
+  
 #logout {
     width: 100%;
 }  
