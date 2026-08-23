@@ -442,6 +442,13 @@ input[type="date"] {
     transition:
         border-color 0.2s ease,
         background 0.2s ease;
+   display: flex;
+    flex-direction: row;
+    align-items: flex-start; 
+    gap: 12px;               
+    text-align: left;
+   font-weight: bold;
+
 }
 .checkbox-group:hover {
     background:
@@ -504,6 +511,12 @@ input[type="date"] {
 
    font-weight: bold;
     align-items: center;
+}
+.checkbox-group.statut a {
+   color: var(--chroma-light);
+    text-decoration: none;
+    transition: color 0.2s ease;
+       font-weight: bold;
 }
 .checkbox-group input[type="checkbox"] {
     flex:
