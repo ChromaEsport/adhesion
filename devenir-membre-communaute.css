@@ -875,7 +875,10 @@ a:hover {
         font-size:
             0.82rem;
     }
-
+.checkbox-group-statut label {
+        font-size:
+            0.82rem;
+    }
     button[type="submit"] {
         min-height:
             52px;
