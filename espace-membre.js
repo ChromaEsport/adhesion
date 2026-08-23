@@ -1714,8 +1714,8 @@ if (
         "-";
 
 
-    numeroCarte.textContent =
-        "COMMUNAUTÉ";
+    /*numeroCarte.textContent =
+        "COMMUNAUTÉ";*/
 
     statutCarte.textContent =
         "💜 Membre Communauté";
