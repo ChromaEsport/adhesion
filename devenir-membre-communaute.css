@@ -210,9 +210,6 @@ body {
     border:
         1px solid var(--border);
 
-    border-left:
-        4px solid var(--chroma);
-
     border-radius:
         var(--radius-small);
 
