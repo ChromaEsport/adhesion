@@ -486,7 +486,6 @@ input[type="date"] {
         1.5;
 
    font-weight: bold;
-    align-items: center;
 }
 .checkbox-group.statut label {
     display: flex;
