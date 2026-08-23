@@ -2249,6 +2249,17 @@ font-size: 14px;
 plateforme.label h2 {
 font-size:22px
 }
+message-communaute p{
+font-size: 14px;
+}
+.titre-bloc h3 {
+font-size: 18px;
+text-align: center;
+    }
+#boutonDevenirAdherent {
+padding: 10px 5px;
+text-align: center;
+}
 
   
 #logout {
