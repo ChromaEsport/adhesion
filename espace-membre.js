@@ -1717,8 +1717,8 @@ if (
     /*numeroCarte.textContent =
         "COMMUNAUTÉ";*/
 
-    statutCarte.textContent =
-        "💜 Membre Communauté";
+    /*statutCarte.textContent =
+        "💜 Membre Communauté";*/
 
 
     return;
