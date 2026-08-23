@@ -2246,10 +2246,10 @@ font-size: 14px;
     margin-top: 10px;
     padding: 10px 5px;
 }
-plateforme.label h2 {
+.plateforme.label h2 {
 font-size:22px
 }
-message-communaute p{
+.message-communaute p{
 font-size: 14px;
 }
 .titre-bloc h3 {
