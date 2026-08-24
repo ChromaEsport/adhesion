@@ -28,15 +28,15 @@ body {
 ========================================= */
 
 .page-success {
-   
-    max-width: 600px;
-    text-align: center;
-    width: 100%;
-    background: #3c9b9f40;
-    border: 1px solid #3c9195;
-    border-radius: 14px;
-    padding: 32px;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.30);
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 30px 20px;
 }
 
 
@@ -46,25 +46,14 @@ body {
 
 .success-card {
 
-    width: 100%;
-
+   width: 100%;
     max-width: 600px;
-
     padding: 50px 40px;
-
     text-align: center;
-
-    background:
-        rgba(22, 24, 35, 0.95);
-
-    border:
-        1px solid rgba(139, 92, 246, 0.35);
-
     border-radius: 20px;
-
-    box-shadow:
-        0 20px 60px rgba(0, 0, 0, 0.45),
-        0 0 40px rgba(124, 58, 237, 0.10);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45), 0 0 40px #3c91951a;
+    background: #3c9b9f40;
+    border: 1px solid #3c9195;
 
 }
 
