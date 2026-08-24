@@ -1,0 +1,442 @@
+:root {
+--couleur-principale: #7c3aed;
+--couleur-principale-hover: #6d28d9;
+--couleur-secondaire: #a855f7;
+--couleur-fond: #0f0f17;
+--couleur-fond-secondaire: #171722;
+--couleur-bloc: #1b1b29;
+--couleur-bloc-hover: #202031;
+--couleur-texte: #ffffff;
+--couleur-texte-secondaire: #a9a9b8;
+--couleur-bordure: #2d2d3d;
+--couleur-erreur: #ef4444;
+--rayon: 14px;
+}
+
+/* =========================================
+RESET
+========================================= */
+
+{
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+}
+
+body {
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+
+font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+background:
+    radial-gradient(
+        circle at top,
+        rgba(124, 58, 237, 0.12),
+        transparent 45%
+    ),
+    var(--couleur-fond);
+
+color: var(--couleur-texte);
+
+}
+
+/* =========================================
+HEADER
+========================================= */
+
+.membre-header {
+width: 100%;
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+padding: 28px 30px;
+
+border-bottom: 1px solid var(--couleur-bordure);
+
+background:
+    rgba(15, 15, 23, 0.95);
+
+box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.25);
+
+}
+
+.membre-header-logo {
+text-align: center;
+}
+
+.membre-header-logo h1 {
+font-size: 26px;
+font-weight: 800;
+letter-spacing: 2px;
+
+background:
+    linear-gradient(
+        90deg,
+        var(--couleur-principale),
+        var(--couleur-secondaire)
+    );
+
+-webkit-background-clip: text;
+background-clip: text;
+
+color: transparent;
+
+}
+
+.membre-header-logo p {
+margin-top: 6px;
+
+color: var(--couleur-texte-secondaire);
+
+font-size: 14px;
+
+}
+
+/* =========================================
+CONTENEUR
+========================================= */
+
+.membre-container {
+width: 100%;
+max-width: 620px;
+
+margin: 0 auto;
+
+padding: 50px 20px 60px;
+
+flex: 1;
+
+display: flex;
+align-items: flex-start;
+justify-content: center;
+
+}
+
+/* =========================================
+BLOC CONNEXION
+========================================= */
+
+.bloc-membre {
+width: 100%;
+
+background:
+    var(--couleur-bloc);
+
+border: 1px solid var(--couleur-bordure);
+
+border-radius: var(--rayon);
+
+padding: 32px;
+
+box-shadow:
+    0 15px 40px rgba(0, 0, 0, 0.30);
+
+}
+
+/* =========================================
+TITRE DU BLOC
+========================================= */
+
+.titre-bloc {
+display: flex;
+align-items: center;
+gap: 12px;
+
+margin-bottom: 24px;
+
+}
+
+.titre-bloc span {
+width: 42px;
+height: 42px;
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+border-radius: 12px;
+
+background:
+    rgba(124, 58, 237, 0.15);
+
+font-size: 21px;
+
+}
+
+.titre-bloc h2 {
+font-size: 22px;
+font-weight: 700;
+}
+
+/* =========================================
+TEXTE INTRODUCTIF
+========================================= */
+
+.bloc-membre > p {
+margin-bottom: 28px;
+
+color: var(--couleur-texte-secondaire);
+
+font-size: 15px;
+line-height: 1.6;
+
+}
+
+/* =========================================
+FORMULAIRE
+========================================= */
+
+#formConnexion {
+display: flex;
+flex-direction: column;
+
+gap: 20px;
+
+}
+
+/* =========================================
+CHAMPS
+========================================= */
+
+.information {
+display: flex;
+flex-direction: column;
+
+gap: 8px;
+
+}
+
+.information-label {
+color: var(--couleur-texte);
+
+font-size: 14px;
+font-weight: 600;
+
+}
+
+.information input {
+width: 100%;
+
+padding: 13px 15px;
+
+border: 1px solid var(--couleur-bordure);
+
+border-radius: 10px;
+
+background:
+    #12121c;
+
+color: var(--couleur-texte);
+
+font-size: 15px;
+
+outline: none;
+
+transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+
+}
+
+.information input::placeholder {
+color: #666678;
+}
+
+.information input:focus {
+border-color: var(--couleur-principale);
+
+background:
+    #151521;
+
+box-shadow:
+    0 0 0 3px rgba(124, 58, 237, 0.15);
+
+}
+
+/* =========================================
+BOUTON CONNEXION
+========================================= */
+
+#boutonConnexion {
+width: 100%;
+
+margin-top: 4px;
+
+padding: 14px 20px;
+
+border: none;
+
+border-radius: 10px;
+
+background:
+    linear-gradient(
+        135deg,
+        var(--couleur-principale),
+        var(--couleur-secondaire)
+    );
+
+color: #ffffff;
+
+font-size: 15px;
+font-weight: 700;
+
+cursor: pointer;
+
+transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
+
+}
+
+#boutonConnexion:hover {
+transform: translateY(-1px);
+
+box-shadow:
+    0 8px 20px rgba(124, 58, 237, 0.30);
+
+}
+
+#boutonConnexion:active {
+transform: translateY(0);
+}
+
+#boutonConnexion:disabled {
+opacity: 0.6;
+
+cursor: not-allowed;
+
+transform: none;
+
+box-shadow: none;
+
+}
+
+/* =========================================
+MESSAGE DE CONNEXION
+========================================= */
+
+#messageConnexion {
+min-height: 20px;
+
+margin-top: -4px;
+
+text-align: center;
+
+font-size: 14px;
+
+line-height: 1.5;
+
+}
+
+/* =========================================
+LIENS
+========================================= */
+
+.liens-connexion {
+margin-top: 26px;
+
+padding-top: 22px;
+
+border-top:
+    1px solid var(--couleur-bordure);
+
+text-align: center;
+
+}
+
+.liens-connexion a {
+color: var(--couleur-secondaire);
+
+font-size: 14px;
+font-weight: 600;
+
+text-decoration: none;
+
+transition:
+    color 0.2s ease;
+
+}
+
+.liens-connexion a:hover {
+color: #c084fc;
+
+text-decoration: underline;
+
+}
+
+/* =========================================
+FOOTER
+========================================= */
+
+.membre-footer {
+width: 100%;
+
+padding: 22px 20px;
+
+border-top:
+    1px solid var(--couleur-bordure);
+
+background:
+    rgba(15, 15, 23, 0.95);
+
+text-align: center;
+
+}
+
+.membre-footer p {
+color: var(--couleur-texte-secondaire);
+
+font-size: 13px;
+
+}
+
+/* =========================================
+RESPONSIVE
+========================================= */
+
+@media (max-width: 600px) {
+
+.membre-header {
+    padding: 22px 20px;
+}
+
+
+.membre-header-logo h1 {
+    font-size: 22px;
+}
+
+
+.membre-container {
+    padding:
+        30px 15px 40px;
+}
+
+
+.bloc-membre {
+    padding: 24px 20px;
+}
+
+
+.titre-bloc h2 {
+    font-size: 20px;
+}
+
+
+.titre-bloc span {
+    width: 38px;
+    height: 38px;
+
+    font-size: 19px;
+}
+
+}
