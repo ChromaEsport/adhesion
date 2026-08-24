@@ -36,7 +36,7 @@ font-family:
 background: radial-gradient(circle at center top, #005a5f 0%, #001e1e 30%, #001e1e 100%);
 
 color: var(--couleur-texte);
-
+margin:0px;
 }
 
 /* =========================================
@@ -70,8 +70,7 @@ font-size: 26px;
 font-weight: 800;
 letter-spacing: 2px;
 
-background:#ffffff
-    );
+background:#ffffff;
 
 -webkit-background-clip: text;
 background-clip: text;
@@ -137,6 +136,7 @@ TITRE DU BLOC
 display: flex;
 align-items: center;
 gap: 12px;
+justify-content: center;
 }
 
 .titre-bloc span {
