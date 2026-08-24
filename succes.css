@@ -1,0 +1,325 @@
+/* =========================================
+   CHROMA ESPORT
+   PAGE PAIEMENT RÉUSSI
+========================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background:
+        radial-gradient(
+            circle at top,
+            #24104f 0%,
+            #11131c 45%,
+            #090a0f 100%
+        );
+
+    color: #ffffff;
+}
+
+
+/* =========================================
+   CONTENEUR PRINCIPAL
+========================================= */
+
+.page-success {
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 30px 20px;
+}
+
+
+/* =========================================
+   CARTE
+========================================= */
+
+.success-card {
+
+    width: 100%;
+
+    max-width: 600px;
+
+    padding: 50px 40px;
+
+    text-align: center;
+
+    background:
+        rgba(22, 24, 35, 0.95);
+
+    border:
+        1px solid rgba(139, 92, 246, 0.35);
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.45),
+        0 0 40px rgba(124, 58, 237, 0.10);
+
+}
+
+
+/* =========================================
+   ICÔNE SUCCÈS
+========================================= */
+
+.success-icon {
+
+    width: 90px;
+
+    height: 90px;
+
+    margin: 0 auto 25px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        rgba(34, 197, 94, 0.15);
+
+    border:
+        2px solid #22c55e;
+
+    color: #22c55e;
+
+    font-size: 48px;
+
+    font-weight: bold;
+
+    box-shadow:
+        0 0 30px rgba(34, 197, 94, 0.20);
+
+}
+
+
+/* =========================================
+   TITRE
+========================================= */
+
+.success-card h1 {
+
+    margin-bottom: 18px;
+
+    font-size: 32px;
+
+    font-weight: 700;
+
+}
+
+
+/* =========================================
+   MESSAGE PRINCIPAL
+========================================= */
+
+.success-message {
+
+    margin-bottom: 15px;
+
+    font-size: 19px;
+
+    line-height: 1.5;
+
+    color: #ffffff;
+
+}
+
+.success-message strong {
+
+    color: #a78bfa;
+
+}
+
+
+/* =========================================
+   INFORMATIONS
+========================================= */
+
+.success-info {
+
+    max-width: 500px;
+
+    margin: 0 auto;
+
+    font-size: 16px;
+
+    line-height: 1.7;
+
+    color: #b8bdc9;
+
+}
+
+
+/* =========================================
+   SÉPARATEUR
+========================================= */
+
+.success-separator {
+
+    width: 80px;
+
+    height: 2px;
+
+    margin: 30px auto;
+
+    background:
+        #7c3aed;
+
+    border-radius: 10px;
+
+}
+
+
+/* =========================================
+   MESSAGE DE REMERCIEMENT
+========================================= */
+
+.success-thanks {
+
+    margin-bottom: 30px;
+
+    font-size: 16px;
+
+    line-height: 1.5;
+
+    color: #e5e7eb;
+
+}
+
+
+/* =========================================
+   BOUTON
+========================================= */
+
+.btn-retour {
+
+    display: inline-block;
+
+    padding: 14px 25px;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #7c3aed,
+            #9333ea
+        );
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease;
+
+    box-shadow:
+        0 8px 25px rgba(124, 58, 237, 0.25);
+
+}
+
+
+.btn-retour:hover {
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 12px 30px rgba(124, 58, 237, 0.40);
+
+}
+
+
+.btn-retour:active {
+
+    transform:
+        translateY(0);
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .page-success {
+
+        padding: 20px 15px;
+
+    }
+
+    .success-card {
+
+        padding: 40px 22px;
+
+        border-radius: 16px;
+
+    }
+
+    .success-icon {
+
+        width: 75px;
+
+        height: 75px;
+
+        font-size: 40px;
+
+        margin-bottom: 20px;
+
+    }
+
+    .success-card h1 {
+
+        font-size: 27px;
+
+    }
+
+    .success-message {
+
+        font-size: 17px;
+
+    }
+
+    .success-info {
+
+        font-size: 15px;
+
+    }
+
+    .btn-retour {
+
+        width: 100%;
+
+        padding: 14px 20px;
+
+    }
+
+}
