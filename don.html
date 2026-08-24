@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Faire un don | Chroma Esport
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="don.css"
+    >
+
+</head>
+
+
+<body>
+
+<header class="don-header">
+
+    <div class="don-header-logo">
+
+        <h1>
+            CHROMA ESPORT
+        </h1>
+
+        <p>
+            Soutenir l'association
+        </p>
+
+    </div>
+
+</header>
+
+
+<main class="don-container">
+
+
+    <!-- =========================================
+         PRÉSENTATION
+    ========================================== -->
+
+    <section class="bloc-don">
+
+        <div class="titre-bloc">
+
+            <span>
+                ❤️
+            </span>
+
+            <h2>
+                Faire un don
+            </h2>
+
+        </div>
+
+
+        <div class="message-don">
+
+            <h3>
+                Soutenez Chroma Esport
+            </h3>
+
+            <p>
+                Vous souhaitez soutenir nos équipes
+                et nos projets sans devenir membre ?
+            </p>
+
+            <p>
+                Vous pouvez faire un don libre à
+                Chroma Esport afin de contribuer au
+                développement de nos activités.
+            </p>
+
+            <p>
+                Votre don est entièrement facultatif
+                et ne nécessite pas d'adhésion à
+                l'association.
+            </p>
+
+        </div>
+
+
+        <!-- =========================================
+             MONTANT
+        ========================================== -->
+
+        <div class="section-don">
+
+            <h3>
+                Choisissez votre montant
+            </h3>
+
+
+            <div class="montants-rapides">
+
+                <button
+                    type="button"
+                    class="montant-rapide"
+                    data-montant="5"
+                >
+                    5 €
+                </button>
+
+
+                <button
+                    type="button"
+                    class="montant-rapide"
+                    data-montant="10"
+                >
+                    10 €
+                </button>
+
+
+                <button
+                    type="button"
+                    class="montant-rapide"
+                    data-montant="20"
+                >
+                    20 €
+                </button>
+
+
+                <button
+                    type="button"
+                    class="montant-rapide"
+                    data-montant="50"
+                >
+                    50 €
+                </button>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="montantDon">
+                    Montant du don
+                </label>
+
+
+                <div class="input-montant">
+
+                    <input
+                        type="text"
+                        id="montantDon"
+                        inputmode="decimal"
+                        placeholder="0,00"
+                        autocomplete="off"
+                    >
+
+                    <span>
+                        €
+                    </span>
+
+                </div>
+
+
+                <small>
+                    Vous pouvez choisir librement
+                    le montant de votre don.
+                </small>
+
+
+                <p
+                    id="erreurMontant"
+                    class="erreur"
+                ></p>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================================
+             RÉCAPITULATIF
+        ========================================== -->
+
+        <div class="recapitulatif">
+
+            <div class="ligne-total">
+
+                <span>
+                    Votre don
+                </span>
+
+                <strong id="affichageDon">
+                    0,00 €
+                </strong>
+
+            </div>
+
+
+            <div class="ligne-total total-final">
+
+                <span>
+                    Total
+                </span>
+
+                <strong id="affichageTotal">
+                    0,00 €
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================================
+             PAIEMENT
+        ========================================== -->
+
+        <button
+            type="button"
+            id="boutonDon"
+            class="bouton-don"
+        >
+            ❤️ Continuer vers le paiement
+        </button>
+
+
+        <p
+            id="message"
+            class="message"
+        ></p>
+
+
+        <p class="securite">
+
+            🔒 Vous serez redirigé vers Stripe
+            pour effectuer votre paiement
+            en toute sécurité.
+
+        </p>
+
+
+        <!-- =========================================
+             RETOUR
+        ========================================== -->
+
+        <div class="retour">
+
+            <a href="accueil.html">
+                ← Retour à l'accueil
+            </a>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+<footer class="don-footer">
+
+    <p>
+        © 2026 Chroma Esport — Tous droits réservés.
+    </p>
+
+</footer>
+
+
+<script
+    type="module"
+    src="don.js"
+></script>
+
+</body>
+
+</html>
