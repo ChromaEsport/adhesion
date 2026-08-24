@@ -1,0 +1,377 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f5f7;
+    color: #202124;
+    min-height: 100vh;
+}
+
+
+/* =========================================
+   HEADER
+========================================== */
+
+.don-header {
+    background: #111318;
+    color: white;
+    padding: 24px 40px;
+    display: flex;
+    justify-content: center;
+}
+
+
+.don-header-logo {
+    width: 100%;
+    max-width: 1100px;
+}
+
+
+.don-header-logo h1 {
+    font-size: 24px;
+    letter-spacing: 2px;
+    font-weight: 800;
+}
+
+
+.don-header-logo p {
+    margin-top: 5px;
+    color: #b8bbc2;
+    font-size: 14px;
+}
+
+
+/* =========================================
+   CONTENEUR
+========================================== */
+
+.don-container {
+    width: 100%;
+    max-width: 850px;
+    margin: 45px auto;
+    padding: 0 20px;
+}
+
+
+/* =========================================
+   CARTE
+========================================== */
+
+.bloc-don {
+    background: white;
+    border-radius: 14px;
+    padding: 35px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.07);
+}
+
+
+/* =========================================
+   TITRE
+========================================== */
+
+.titre-bloc {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 20px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+
+.titre-bloc span {
+    font-size: 28px;
+}
+
+
+.titre-bloc h2 {
+    font-size: 24px;
+    color: #17191f;
+}
+
+
+/* =========================================
+   MESSAGE
+========================================== */
+
+.message-don {
+    background: #f7f7f8;
+    border-radius: 10px;
+    padding: 25px;
+    margin-bottom: 30px;
+}
+
+
+.message-don h3 {
+    margin-bottom: 15px;
+    font-size: 19px;
+}
+
+
+.message-don p {
+    line-height: 1.6;
+    margin-bottom: 10px;
+    color: #555a63;
+}
+
+
+.message-don p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* =========================================
+   SECTION DON
+========================================== */
+
+.section-don {
+    margin-top: 25px;
+}
+
+
+.section-don h3 {
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+
+/* =========================================
+   MONTANTS RAPIDES
+========================================== */
+
+.montants-rapides {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+
+.montant-rapide {
+    border: 1px solid #d9dce1;
+    background: white;
+    border-radius: 8px;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+
+.montant-rapide:hover {
+    border-color: #111318;
+    background: #f1f2f4;
+}
+
+
+.montant-rapide.active {
+    background: #111318;
+    color: white;
+    border-color: #111318;
+}
+
+
+/* =========================================
+   FORMULAIRE
+========================================== */
+
+.form-group {
+    margin-top: 20px;
+}
+
+
+.form-group label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+
+.input-montant {
+    display: flex;
+    align-items: center;
+    border: 1px solid #cfd3d9;
+    border-radius: 8px;
+    overflow: hidden;
+    background: white;
+}
+
+
+.input-montant input {
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 14px;
+    font-size: 18px;
+}
+
+
+.input-montant span {
+    padding-right: 15px;
+    font-weight: 700;
+    color: #555a63;
+}
+
+
+.form-group small {
+    display: block;
+    margin-top: 8px;
+    color: #777c84;
+}
+
+
+/* =========================================
+   ERREUR
+========================================== */
+
+.erreur {
+    margin-top: 8px;
+    color: #c62828;
+    font-size: 14px;
+}
+
+
+/* =========================================
+   RÉCAPITULATIF
+========================================== */
+
+.recapitulatif {
+    margin-top: 30px;
+    padding: 20px;
+    background: #f7f7f8;
+    border-radius: 10px;
+}
+
+
+.ligne-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    color: #555a63;
+}
+
+
+.total-final {
+    border-top: 1px solid #dddfe3;
+    margin-top: 10px;
+    padding-top: 15px;
+    color: #17191f;
+    font-size: 18px;
+}
+
+
+/* =========================================
+   BOUTON
+========================================== */
+
+.bouton-don {
+    width: 100%;
+    margin-top: 25px;
+    border: none;
+    border-radius: 8px;
+    padding: 16px;
+    background: #111318;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+
+.bouton-don:hover {
+    background: #292c33;
+}
+
+
+/* =========================================
+   SÉCURITÉ
+========================================== */
+
+.securite {
+    text-align: center;
+    margin-top: 15px;
+    color: #777c84;
+    font-size: 13px;
+}
+
+
+/* =========================================
+   RETOUR
+========================================== */
+
+.retour {
+    text-align: center;
+    margin-top: 25px;
+}
+
+
+.retour a {
+    color: #33363d;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+
+.retour a:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================================
+   MESSAGE
+========================================== */
+
+.message {
+    margin-top: 15px;
+    text-align: center;
+    font-weight: 600;
+}
+
+
+/* =========================================
+   FOOTER
+========================================== */
+
+.don-footer {
+    text-align: center;
+    padding: 25px;
+    color: #777c84;
+    font-size: 13px;
+}
+
+
+/* =========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 600px) {
+
+    .don-header {
+        padding: 20px;
+    }
+
+    .don-container {
+        margin: 25px auto;
+    }
+
+    .bloc-don {
+        padding: 22px;
+    }
+
+    .montants-rapides {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .titre-bloc h2 {
+        font-size: 21px;
+    }
+
+}
