@@ -333,27 +333,17 @@ async function lancerPaiement() {
         return;
     }
 
-
     const montant =
         recupererMontant();
 
-
-    /* Bouton en chargement */
-
-    boutonDon.disabled =
-        true;
+    boutonDon.disabled = true;
 
     boutonDon.textContent =
         "⏳ Préparation du paiement...";
 
-
     if (message) {
-
-        message.textContent =
-            "";
-
+        message.textContent = "";
     }
-
 
     try {
 
@@ -361,7 +351,6 @@ async function lancerPaiement() {
             "Création du don :",
             montant
         );
-
 
         const response =
             await fetch(
@@ -374,83 +363,76 @@ async function lancerPaiement() {
                             "application/json"
                     },
 
-                    body:
-                        JSON.stringify({
+                    body: JSON.stringify({
 
-                            /* Montant total */
+                        montant: montant,
 
-                            montant:
-                                montant,
+                        don: montant,
 
-                            /* Don */
+                        cotisation: 0,
 
-                            don:
-                                montant,
+                        type: "don",
 
-                            /* Pas de cotisation */
+                        email: "",
 
-                            cotisation:
-                                0,
+                        firebaseUid: "",
 
-                            /* Type de paiement */
+                        membreId: "",
 
-                            type:
-                                "don",
+                        numeroMembre: "",
 
-                            /*
-                            Aucun compte membre
-                            n'est nécessaire
-                            */
+                        typeCompte: "",
 
-                            email:
-                                "",
+                        adhesionId: ""
 
-                            firebaseUid:
-                                "",
-
-                            membreId:
-                                "",
-
-                            numeroMembre:
-                                "",
-
-                            typeCompte:
-                                "",
-
-                            adhesionId:
-                                ""
-
-                        })
+                    })
                 }
             );
-
 
         const data =
             await response.json();
 
-
         console.log(
-            "Réponse Worker Stripe :",
+            "Réponse Worker :",
             data
         );
 
 
-        if (
-            !response.ok ||
-            !data.url
-        ) {
+        if (!response.ok) {
+
+            console.error(
+                "Erreur Worker :",
+                data
+            );
 
             throw new Error(
                 data.message ||
-                "Impossible de créer le paiement Stripe."
+                data.error ||
+                "Le Worker a refusé la création du paiement."
             );
 
         }
 
 
-        /* =================================================
-           REDIRECTION VERS STRIPE
-        ================================================= */
+        if (!data.url) {
+
+            console.error(
+                "Aucune URL Stripe reçue :",
+                data
+            );
+
+            throw new Error(
+                "Stripe n'a pas retourné d'URL de paiement."
+            );
+
+        }
+
+
+        console.log(
+            "Redirection vers Stripe :",
+            data.url
+        );
+
 
         window.location.href =
             data.url;
@@ -467,7 +449,8 @@ async function lancerPaiement() {
         if (erreurMontant) {
 
             erreurMontant.textContent =
-                "Impossible de lancer le paiement. Veuillez réessayer.";
+                error.message ||
+                "Impossible de lancer le paiement.";
 
         }
 
