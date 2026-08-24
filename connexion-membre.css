@@ -18,7 +18,7 @@ padding: 0;
 }
 
 body {
-min-height: 100vh;
+min-height: 98.4vh;
 display: flex;
 flex-direction: column;
 
@@ -38,7 +38,6 @@ HEADER
 ========================================= */
 
 .membre-header {
-width: 100%;
 
 display: flex;
 align-items: center;
@@ -332,7 +331,7 @@ transition:
 }
 
 .liens-connexion a:hover {
-color: #00e5ff
+color: #00e5ff;
 
 text-decoration: underline;
 
@@ -343,7 +342,6 @@ FOOTER
 ========================================= */
 
 .membre-footer {
-width: 100%;
 
 padding: 22px 20px;
 
