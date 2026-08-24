@@ -791,9 +791,9 @@ a:hover {
    RESPONSIVE TABLETTE
    ========================================================= */
 @media (max-width: 1000px) {
-
+.adhesion-card {
 padding: 0px 00px 00px;
-
+}
 }
 @media (max-width: 760px) {
 
