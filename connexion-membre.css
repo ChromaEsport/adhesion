@@ -307,7 +307,8 @@ padding-top: 22px;
 border-top: 1px solid #3c9195;
 
 text-align: center;
-
+display: grid;
+    gap: 10px;
 }
 
 .liens-connexion a {
