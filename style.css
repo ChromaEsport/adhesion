@@ -791,9 +791,14 @@ a:hover {
    RESPONSIVE TABLETTE
    ========================================================= */
 @media (max-width: 1000px) {
+
 .adhesion-card {
 padding: 0px 00px 00px;
 }
+.checkbox-group-statut label{
+font-size:0.82rem;
+}
+   
 }
 @media (max-width: 760px) {
 
