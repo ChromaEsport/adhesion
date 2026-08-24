@@ -453,7 +453,33 @@ input[type="password"] {
         border-color 0.2s ease,
         background 0.2s ease;
 }
+.checkbox-group-statut {
+    margin:
+        14px 0;
 
+    padding:
+        15px 16px;
+
+    background:
+        rgba(255, 255, 255, 0.025);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.07);
+
+    border-radius:
+        var(--radius-small);
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease;
+   display: flex;
+    flex-direction: row;
+    align-items: flex-start; 
+    gap: 12px;               
+    text-align: left;
+   font-weight: bold;
+
+}
 .checkbox-group:hover {
     background:
         rgba(60, 145, 149, 0.05);
@@ -461,7 +487,13 @@ input[type="password"] {
     border-color:
         rgba(60, 145, 149, 0.25);
 }
+.checkbox-group-statut:hover {
+    background:
+        rgba(60, 145, 149, 0.05);
 
+    border-color:
+        rgba(60, 145, 149, 0.25);
+}
 .checkbox-group label {
     display: flex;
     gap: 12px;
@@ -473,7 +505,36 @@ input[type="password"] {
     font-weight: bold;
     align-items: center;
 }
+.checkbox-group.statut label {
+    display: flex;
 
+    align-items:
+        flex-start;
+
+    gap: 12px;
+
+    margin: 0;
+
+    cursor: pointer;
+
+    color:
+        var(--text-secondary);
+
+    font-size:
+        16px;
+
+    line-height:
+        1.5;
+
+   font-weight: bold;
+    align-items: center;
+}
+.checkbox-group.statut a {
+   color: var(--chroma-light);
+    text-decoration: none;
+    transition: color 0.2s ease;
+       font-weight: bold;
+}
 .checkbox-group input[type="checkbox"] {
     flex:
         0 0 auto;
@@ -500,6 +561,31 @@ input[type="password"] {
         pointer;
 }
 
+.checkbox-group-statut input[type="checkbox"] {
+    flex:
+        0 0 auto;
+
+    width:
+        18px;
+
+    height:
+        18px;
+
+    min-height:
+        18px;
+
+    margin:
+        2px 0 0;
+
+    padding:
+        0;
+
+    accent-color:
+        var(--chroma);
+
+    cursor:
+        pointer;
+}
 
 /* =========================================================
    ZONE DON
