@@ -1,0 +1,266 @@
+body {
+margin: 0;
+padding: 0;
+min-height: 100vh;
+
+font-family: Arial, Helvetica, sans-serif;
+
+background: #0f1115;
+color: #f1f1f1;
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+}
+
+.espace-membre-container {
+width: 100%;
+max-width: 520px;
+padding: 30px 20px;
+box-sizing: border-box;
+}
+
+.espace-membre-carte {
+background: #181b21;
+
+border: 1px solid #2b3038;
+border-radius: 16px;
+
+padding: 40px;
+
+box-sizing: border-box;
+
+box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+
+}
+
+.espace-membre-carte h1 {
+margin: 0 0 8px;
+
+text-align: center;
+
+font-size: 30px;
+font-weight: 800;
+letter-spacing: 2px;
+
+color: #ffffff;
+
+}
+
+.espace-membre-carte h2 {
+margin: 0 0 25px;
+
+text-align: center;
+
+font-size: 22px;
+font-weight: 700;
+
+color: #ffffff;
+
+}
+
+.espace-membre-carte > p {
+margin: 0 0 25px;
+
+text-align: center;
+
+line-height: 1.6;
+
+color: #b8bdc7;
+
+}
+
+/* =========================================
+FORMULAIRE
+========================================= */
+
+#formMotDePasse {
+display: flex;
+flex-direction: column;
+gap: 18px;
+}
+
+.champ {
+display: flex;
+flex-direction: column;
+gap: 8px;
+}
+
+.champ label {
+font-size: 14px;
+font-weight: 600;
+
+color: #dfe3e8;
+
+}
+
+.champ input {
+width: 100%;
+
+box-sizing: border-box;
+
+padding: 13px 14px;
+
+background: #101216;
+
+border: 1px solid #343a44;
+border-radius: 8px;
+
+color: #ffffff;
+
+font-size: 15px;
+
+outline: none;
+
+transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+
+}
+
+.champ input:focus {
+border-color: #ffffff;
+
+box-shadow:
+    0 0 0 2px rgba(255, 255, 255, 0.08);
+
+}
+
+.champ input::placeholder {
+color: #6f7681;
+}
+
+/* =========================================
+BOUTON
+========================================= */
+
+#formMotDePasse button {
+width: 100%;
+
+margin-top: 5px;
+
+padding: 14px 18px;
+
+border: none;
+border-radius: 8px;
+
+background: #ffffff;
+color: #111318;
+
+font-size: 15px;
+font-weight: 700;
+
+cursor: pointer;
+
+transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+
+}
+
+#formMotDePasse button:hover {
+background: #e7e9ec;
+
+transform: translateY(-1px);
+
+}
+
+#formMotDePasse button:active {
+transform: translateY(0);
+}
+
+/* =========================================
+INFORMATION SPAM
+========================================= */
+
+#formMotDePasse small {
+display: block;
+
+margin-top: -5px;
+
+color: #858c97;
+
+font-size: 12px;
+
+line-height: 1.5;
+
+text-align: center;
+
+}
+
+/* =========================================
+MESSAGE
+========================================= */
+
+.message {
+margin-top: 20px;
+
+padding: 12px 14px;
+
+border-radius: 8px;
+
+font-size: 14px;
+
+line-height: 1.5;
+
+text-align: center;
+
+}
+
+/* =========================================
+RETOUR CONNEXION
+========================================= */
+
+.espace-membre-carte > p:last-child {
+margin-top: 25px;
+margin-bottom: 0;
+}
+
+.espace-membre-carte a {
+color: #dfe3e8;
+
+font-size: 14px;
+font-weight: 600;
+
+text-decoration: none;
+
+transition: color 0.2s ease;
+
+}
+
+.espace-membre-carte a:hover {
+color: #ffffff;
+
+text-decoration: underline;
+
+}
+
+/* =========================================
+MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+.espace-membre-container {
+    padding: 20px 15px;
+}
+
+
+.espace-membre-carte {
+    padding: 30px 22px;
+
+    border-radius: 14px;
+}
+
+
+.espace-membre-carte h1 {
+    font-size: 25px;
+}
+
+
+.espace-membre-carte h2 {
+    font-size: 20px;
+}
+
+}
