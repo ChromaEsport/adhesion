@@ -1,4 +1,10 @@
 :root {
+--fond-principal: #0b0d10;
+--fond-secondaire: #111419;
+--fond-bloc: #161a20;
+--fond-input: #ffffff;
+--bordure: #292e36;
+--bordure-hover: #3a414c;
 --couleur-texte: #ffffff;
 --couleur-texte-secondaire: #ffffff;
 --couleur-bordure: #3c9195;
