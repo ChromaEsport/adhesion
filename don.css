@@ -7,8 +7,8 @@
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background: #f4f5f7;
-    color: #202124;
+    background: radial-gradient(circle at center top, #005a5f 0%, #001e1e 45%, #001e1e 100%);
+    color: #ffffff;
     min-height: 100vh;
 }
 
@@ -18,17 +18,18 @@ body {
 ========================================== */
 
 .don-header {
-    background: #111318;
-    color: white;
-    padding: 24px 40px;
-    display: flex;
+   display: flex;
+    align-items: center;
     justify-content: center;
+    padding: 28px 30px;
+    border-bottom: 1px solid #3c9195;
+    background: #3c9b9f40;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
 }
 
 
 .don-header-logo {
-    width: 100%;
-    max-width: 1100px;
+    text-align: center;
 }
 
 
@@ -41,7 +42,7 @@ body {
 
 .don-header-logo p {
     margin-top: 5px;
-    color: #b8bbc2;
+    color: #ffffff;
     font-size: 14px;
 }
 
@@ -63,7 +64,7 @@ body {
 ========================================== */
 
 .bloc-don {
-    background: white;
+    background: #3c9b9f40;
     border-radius: 14px;
     padding: 35px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.07);
@@ -80,7 +81,8 @@ body {
     gap: 12px;
     padding-bottom: 20px;
     margin-bottom: 25px;
-    border-bottom: 1px solid #e5e7eb;
+    border-bottom: 1px solid #3c9195;
+    justify-content: center;
 }
 
 
@@ -91,7 +93,7 @@ body {
 
 .titre-bloc h2 {
     font-size: 24px;
-    color: #17191f;
+    color: #ffffff;
 }
 
 
@@ -100,10 +102,11 @@ body {
 ========================================== */
 
 .message-don {
-    background: #f7f7f8;
+    background:#3c9195;
     border-radius: 10px;
     padding: 25px;
     margin-bottom: 30px;
+    text-align: center;
 }
 
 
@@ -116,7 +119,7 @@ body {
 .message-don p {
     line-height: 1.6;
     margin-bottom: 10px;
-    color: #555a63;
+    color: #ffffff;
 }
 
 
@@ -222,7 +225,7 @@ body {
 .form-group small {
     display: block;
     margin-top: 8px;
-    color: #777c84;
+    color: #ffffff;
 }
 
 
@@ -277,7 +280,7 @@ body {
     border: none;
     border-radius: 8px;
     padding: 16px;
-    background: #111318;
+   background: #3c9195;
     color: white;
     font-size: 16px;
     font-weight: 700;
@@ -287,7 +290,8 @@ body {
 
 
 .bouton-don:hover {
-    background: #292c33;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px #3c9195cc;
 }
 
 
@@ -298,7 +302,7 @@ body {
 .securite {
     text-align: center;
     margin-top: 15px;
-    color: #777c84;
+    color: #ffffff;
     font-size: 13px;
 }
 
@@ -314,7 +318,7 @@ body {
 
 
 .retour a {
-    color: #33363d;
+    color: #ffffff;
     text-decoration: none;
     font-weight: 600;
 }
@@ -343,7 +347,7 @@ body {
 .don-footer {
     text-align: center;
     padding: 25px;
-    color: #777c84;
+    color: #ffffff;
     font-size: 13px;
 }
 
