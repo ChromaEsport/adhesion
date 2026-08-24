@@ -33,13 +33,7 @@ font-family:
     Helvetica,
     sans-serif;
 
-background:
-    radial-gradient(
-        circle at top,
-        rgba(124, 58, 237, 0.12),
-        transparent 45%
-    ),
-    var(--couleur-fond);
+background: radial-gradient(circle at center top, #005a5f 0%, #001e1e 30%, #001e1e 100%);
 
 color: var(--couleur-texte);
 
@@ -60,8 +54,7 @@ padding: 28px 30px;
 
 border-bottom: 1px solid var(--couleur-bordure);
 
-background:
-    rgba(15, 15, 23, 0.95);
+background: #005a5f;
 
 box-shadow:
     0 4px 20px rgba(0, 0, 0, 0.25);
@@ -77,11 +70,7 @@ font-size: 26px;
 font-weight: 800;
 letter-spacing: 2px;
 
-background:
-    linear-gradient(
-        90deg,
-        var(--couleur-principale),
-        var(--couleur-secondaire)
+background:#ffffff
     );
 
 -webkit-background-clip: text;
@@ -94,7 +83,7 @@ color: transparent;
 .membre-header-logo p {
 margin-top: 6px;
 
-color: var(--couleur-texte-secondaire);
+color: #ffffff;
 
 font-size: 14px;
 
@@ -127,8 +116,7 @@ BLOC CONNEXION
 .bloc-membre {
 width: 100%;
 
-background:
-    var(--couleur-bloc);
+background:#005a5f;
 
 border: 1px solid var(--couleur-bordure);
 
@@ -149,9 +137,6 @@ TITRE DU BLOC
 display: flex;
 align-items: center;
 gap: 12px;
-
-margin-bottom: 24px;
-
 }
 
 .titre-bloc span {
@@ -163,9 +148,6 @@ align-items: center;
 justify-content: center;
 
 border-radius: 12px;
-
-background:
-    rgba(124, 58, 237, 0.15);
 
 font-size: 21px;
 
@@ -181,9 +163,9 @@ TEXTE INTRODUCTIF
 ========================================= */
 
 .bloc-membre > p {
-margin-bottom: 28px;
+margin-bottom: 20px;
 
-color: var(--couleur-texte-secondaire);
+color: #ffffff;
 
 font-size: 15px;
 line-height: 1.6;
@@ -223,7 +205,6 @@ font-weight: 600;
 }
 
 .information input {
-width: 100%;
 
 padding: 13px 15px;
 
@@ -232,9 +213,9 @@ border: 1px solid var(--couleur-bordure);
 border-radius: 10px;
 
 background:
-    #12121c;
+    #ffffff;
 
-color: var(--couleur-texte);
+color: #000000;
 
 font-size: 15px;
 
@@ -252,13 +233,9 @@ color: #666678;
 }
 
 .information input:focus {
-border-color: var(--couleur-principale);
-
-background:
-    #151521;
-
-box-shadow:
-    0 0 0 3px rgba(124, 58, 237, 0.15);
+border-color: #3ad1ed;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.15);
 
 }
 
@@ -277,12 +254,7 @@ border: none;
 
 border-radius: 10px;
 
-background:
-    linear-gradient(
-        135deg,
-        var(--couleur-principale),
-        var(--couleur-secondaire)
-    );
+background: #3c9195;
 
 color: #ffffff;
 
@@ -301,8 +273,7 @@ transition:
 #boutonConnexion:hover {
 transform: translateY(-1px);
 
-box-shadow:
-    0 8px 20px rgba(124, 58, 237, 0.30);
+box-shadow: 0 8px 20px #3c9195cc;
 
 }
 
@@ -347,15 +318,14 @@ margin-top: 26px;
 
 padding-top: 22px;
 
-border-top:
-    1px solid var(--couleur-bordure);
+border-top: 1px solid #3c9195;
 
 text-align: center;
 
 }
 
 .liens-connexion a {
-color: var(--couleur-secondaire);
+color: #ffffff;
 
 font-size: 14px;
 font-weight: 600;
@@ -368,7 +338,7 @@ transition:
 }
 
 .liens-connexion a:hover {
-color: #c084fc;
+color: #00e5ff
 
 text-decoration: underline;
 
@@ -386,9 +356,7 @@ padding: 22px 20px;
 border-top:
     1px solid var(--couleur-bordure);
 
-background:
-    rgba(15, 15, 23, 0.95);
-
+background: #005a5f;
 text-align: center;
 
 }
