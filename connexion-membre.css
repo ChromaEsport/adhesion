@@ -1,14 +1,7 @@
 :root {
---couleur-principale: #7c3aed;
---couleur-principale-hover: #6d28d9;
---couleur-secondaire: #a855f7;
---couleur-fond: #0f0f17;
---couleur-fond-secondaire: #171722;
---couleur-bloc: #1b1b29;
---couleur-bloc-hover: #202031;
 --couleur-texte: #ffffff;
---couleur-texte-secondaire: #a9a9b8;
---couleur-bordure: #2d2d3d;
+--couleur-texte-secondaire: #ffffff;
+--couleur-bordure: #3c9195;
 --couleur-erreur: #ef4444;
 --rayon: 14px;
 }
@@ -34,7 +27,7 @@ font-family:
     Helvetica,
     sans-serif;
 
-background: radial-gradient(circle at center top, #005a5f 0%, #001e1e 30%, #001e1e 100%);
+background: radial-gradient(circle at center top, #005a5f 0%, #001e1e 45%, #001e1e 100%);
 
 color: var(--couleur-texte);
 margin:0px;
@@ -55,7 +48,7 @@ padding: 28px 30px;
 
 border-bottom: 1px solid var(--couleur-bordure);
 
-background: #005a5f;
+background: #3c9b9f40;
 
 box-shadow:
     0 4px 20px rgba(0, 0, 0, 0.25);
@@ -116,7 +109,7 @@ BLOC CONNEXION
 .bloc-membre {
 width: 100%;
 
-background:#005a5f;
+background:#3c9b9f40;
 
 border: 1px solid var(--couleur-bordure);
 
@@ -357,7 +350,7 @@ padding: 22px 20px;
 border-top:
     1px solid var(--couleur-bordure);
 
-background: #005a5f;
+background: #3c9b9f40;
 text-align: center;
 
 }
