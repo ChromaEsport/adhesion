@@ -776,6 +776,10 @@ a:hover {
 
 @media (max-width: 760px) {
 
+.communaute-card {
+   width:90%;
+   padding:0px 0px 0px;
+}
     .page {
         padding:
             25px 14px 50px;
