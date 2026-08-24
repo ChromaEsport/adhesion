@@ -21,7 +21,7 @@ font-family:
 
 background: radial-gradient(circle at center top, #005a5f 0%, #001e1e 45%, #001e1e 100%);
 
-color: ffffff;
+color: #ffffff;
 margin:0px;
 }
 
@@ -141,6 +141,7 @@ font-size: 21px;
 .titre-bloc h2 {
 font-size: 22px;
 font-weight: 700;
+    margin-bottom: 20px;
 }
 
 /* =========================================
@@ -154,7 +155,7 @@ color: #ffffff;
 
 font-size: 15px;
 line-height: 1.6;
-
+text-align: center;
 }
 
 /* =========================================
@@ -204,7 +205,7 @@ color: #000000;
 
 font-size: 15px;
 
-outline: none;
+/*outline: none;*/
 
 transition:
     border-color 0.2s ease,
