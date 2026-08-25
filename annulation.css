@@ -10,7 +10,7 @@
 
 body {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #0f111a;
+    background: radial-gradient(circle at center top, #005a5f 0%, #001e1e 45%, #001e1e 100%);
     color: #f0f0f5;
     display: flex;
     height: 100vh;
