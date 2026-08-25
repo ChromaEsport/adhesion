@@ -83,8 +83,8 @@ function mettreAJourAffichage() {
         montant <= 0
     ) {
 
-        affichageDon.textContent =
-            "0,00 €";
+        /*affichageDon.textContent =
+            "0,00 €";*/
 
         affichageTotal.textContent =
             "0,00 €";
@@ -94,8 +94,8 @@ function mettreAJourAffichage() {
     }
 
 
-    affichageDon.textContent =
-        formatEuro(montant);
+    /*affichageDon.textContent =
+        formatEuro(montant);*/
 
     affichageTotal.textContent =
         formatEuro(montant);
