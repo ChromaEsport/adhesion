@@ -788,32 +788,62 @@ MEMBRES COMMUNAUTÉ
 → COLLECTION communauté
 ========================================= */
 
-if (filtreActuel === "communaute") {
+if (
+filtreActuel ===
+"communaute"
+) {
 
-const resultat = await getDocs(
-    collection(db, "communauté")
-);
+const resultat =
+    await getDocs(
+        collection(
+            db,
+            "communauté"
+        )
+    );
+
 
 membres = [];
 
-resultat.forEach(documentFirestore => {
 
-    const membre = {
-        id:
-            documentFirestore.id,
-        ...documentFirestore.data()
-    };
+resultat.forEach(
+    documentFirestore => {
 
-     membres.push(
-            membre
-        );
+        const membre = {
+
+            id:
+                documentFirestore.id,
+
+            ...documentFirestore.data()
+
+        };
+
+
+        /*
+        =========================================
+        UNIQUEMENT LES MEMBRES
+        DONT LE STATUT EST "communaute"
+        =========================================
+        */
+
+        if (
+            membre.statut ===
+            "communaute"
+        ) {
+
+            membres.push(
+                membre
+            );
+
+        }
 
     }
 );
 
-afficherMembres(
+
+afficherMembresCommunaute(
     membres
 );
+
 
 return;
 
