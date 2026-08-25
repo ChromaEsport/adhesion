@@ -797,7 +797,7 @@ const resultat =
     await getDocs(
         collection(
             db,
-            "communauté"
+            "communaute"
         )
     );
 
