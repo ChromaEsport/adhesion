@@ -971,7 +971,86 @@ if (filtreActuel === "membres_actifs") {
 
 }
 
+function afficherMembresCommunaute(
+liste
+) {
 
+listeMembres.innerHTML = "";
+
+
+if (
+    liste.length === 0
+) {
+
+    listeMembres.innerHTML = `
+        <tr>
+            <td colspan="7">
+                Aucun membre de la communauté trouvé.
+            </td>
+        </tr>
+    `;
+
+    return;
+}
+
+
+liste.forEach(
+    membre => {
+
+        const ligne =
+            document.createElement(
+                "tr"
+            );
+
+
+        ligne.innerHTML = `
+
+            <td>
+                -
+            </td>
+
+
+            <td>
+                ${membre.prenom || ""}
+                ${membre.nom || ""}
+            </td>
+
+
+            <td>
+                ${membre.discord || "-"}
+            </td>
+
+
+            <td>
+                -
+            </td>
+
+
+            <td>
+                -
+            </td>
+
+
+            <td>
+                Communauté
+            </td>
+
+
+            <td>
+                -
+            </td>
+
+        `;
+
+
+        listeMembres.appendChild(
+            ligne
+        );
+
+    }
+);
+
+}
 
 function adhesionEstExpiree(membre){
 
