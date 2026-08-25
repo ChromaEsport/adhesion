@@ -785,13 +785,13 @@ if (
 }
 /* =========================================
 MEMBRES COMMUNAUTÉ
-→ Tous les membres avec adhésion valide
+→ COLLECTION communauté
 ========================================= */
 
 if (filtreActuel === "communaute") {
 
 const resultat = await getDocs(
-    collection(db, "membres")
+    collection(db, "communauté")
 );
 
 membres = [];
@@ -804,17 +804,16 @@ resultat.forEach(documentFirestore => {
         ...documentFirestore.data()
     };
 
-    if (
-        !adhesionEstExpiree(membre)
-    ) {
-
-        membres.push(membre);
+     membres.push(
+            membre
+        );
 
     }
+);
 
-});
-
-afficherMembres(membres);
+afficherMembres(
+    membres
+);
 
 return;
 
