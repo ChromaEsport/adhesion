@@ -63,13 +63,13 @@ p {
 
 /* Lien de secours */
 a {
-  color: #3c9195;
+  color: #59c6cb;
     text-decoration: none;
     transition: color 0.2s ease;
     font-weight: bold;
 }
 
 a:hover {
-    color: #3c9195;
+    color: #59c6cb5;
     text-decoration: underline;
 }
