@@ -783,7 +783,42 @@ if (
 
     return;
 }
+/* =========================================
+MEMBRES COMMUNAUTÉ
+→ Tous les membres avec adhésion valide
+========================================= */
 
+if (filtreActuel === "communaute") {
+
+const resultat = await getDocs(
+    collection(db, "membres")
+);
+
+membres = [];
+
+resultat.forEach(documentFirestore => {
+
+    const membre = {
+        id:
+            documentFirestore.id,
+        ...documentFirestore.data()
+    };
+
+    if (
+        !adhesionEstExpiree(membre)
+    ) {
+
+        membres.push(membre);
+
+    }
+
+});
+
+afficherMembres(membres);
+
+return;
+
+}
 
         
 
