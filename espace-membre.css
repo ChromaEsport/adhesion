@@ -14,7 +14,7 @@ RESET
 body {
 margin: 0;
 font-family: Arial, Helvetica, sans-serif;
-background: radial-gradient(circle at center top, #3c9195 1%, #081638 55%);
+background: radial-gradient(circle at center top, #005a5f 0%, #001e1e 45%, #001e1e 100%);
 color: #ffffff;
 }
 
@@ -239,16 +239,15 @@ BLOCS PRINCIPAUX
 ============================== */
 
 .bloc-membre {
-background: #081638;
+
     border-radius: 15px;
     padding: 25px;
-    margin-bottom: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    margin-bottom: 20px;  
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    border: 1px solid rgba(143, 236, 201, 0.18);
-
+background: #3c9b9f40;
+    border: 1px solid #3c9195;
 }
 
 .titre-bloc {
