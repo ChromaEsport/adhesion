@@ -263,11 +263,9 @@ body {
 
 
 .total-final {
-    border-top: 1px solid #dddfe3;
-    margin-top: 10px;
-    padding-top: 15px;
     color: #17191f;
     font-size: 18px;
+    font-weight: bold;
 }
 
 
