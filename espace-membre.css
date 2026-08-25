@@ -406,15 +406,16 @@ BLOC Renouvellement
 
 #blocRenouvellement {
 
-    background: #081638;
+    
     border-radius: 15px;
     padding: 25px;
     margin-bottom: 20px;
     display: flex;
-    border: 1px solid rgba(143, 236, 201, 0.18);
+    border: 1px solid #3c9195;
     align-items: center;
     flex-direction: column;
     justify-content: flex-start;
+  background: #3c9b9f40;
 }
 
 .titre-bloc-renouvellement{
@@ -706,7 +707,7 @@ font-size: 18px;
 }
 
 .demande-membre-actif p {
-color: #b8c7df;
+color: #ffffff;
 
 
 line-height: 1.5;
@@ -756,7 +757,7 @@ font-size: 18px;
 }
 
 .demande-refusee p {
-color: #b8c7df;
+color: #ffffff;
 
 
 line-height: 1.5;
@@ -874,13 +875,13 @@ color: #8fecc9;
 }
 
 .bloc-information-association p {
-color: #8fa3c4;
+color: #ffffff;
 line-height: 1.5;
 margin-bottom: 0px;
 
 }
 .bloc-information-association a {
-color: #3c9195;
+color: ##5accd1;;
 text-decoration: none;
 }
 
@@ -1001,8 +1002,7 @@ text-align: center;
 
 padding: 25px;
 
-color: #6f82a5;
-
+color: #d5d5d5
 font-size: 13px;
 
 
@@ -1074,7 +1074,7 @@ font-size: 19px;
 .message-don p {
 max-width: 700px;
 margin: 8px auto;
-color: #b8c7df;
+color: #ffffff;
 line-height: 1.5;
 }
 
@@ -1828,7 +1828,7 @@ display: block;
 margin-bottom: 5px;
 
 
-color: #8fa3c4;
+color: #d5d5d5;
 
 
 font-size: 13px;
