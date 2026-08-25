@@ -10,13 +10,16 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #0f111a; /* Fond sombre typique gaming */
+    background-color: #0f111a;
     color: #f0f0f5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: grid;
     height: 100vh;
     overflow: hidden;
+    grid-auto-flow: row;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
 }
 
 .annulation-container {
@@ -37,8 +40,8 @@ h1 {
 }
 
 p {
-    font-size: 0.95rem;
-    color: #a0a4b8;
+   font-size: 20px;
+    color: white;
     margin-bottom: 1.5rem;
     line-height: 1.5;
 }
@@ -62,13 +65,13 @@ p {
 
 /* Lien de secours */
 a {
-    color: #6366f1;
+  color: #3c9195;
     text-decoration: none;
-    font-weight: 500;
     transition: color 0.2s ease;
+    font-weight: bold;
 }
 
 a:hover {
-    color: #818cf8;
+    color: #3c9195;
     text-decoration: underline;
 }
