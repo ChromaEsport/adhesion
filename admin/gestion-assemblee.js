@@ -11,6 +11,10 @@ signOut
 import {
 getFirestore,
 doc,
+collection, 
+getDocs, 
+query, 
+where,
 getDoc
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
@@ -151,6 +155,46 @@ document.getElementById(
 "logout"
 );
 
+const nombreAdherents =
+document.getElementById(
+"nombreAdherents"
+);
+
+const nombreActifs =
+document.getElementById(
+"nombreActifs"
+);
+
+const nombreDestinataires =
+document.getElementById(
+"nombreDestinataires"
+);
+
+const dateConvocationGestion =
+document.getElementById(
+"dateConvocationGestion"
+);
+
+const dateLimitePropositionsGestion =
+document.getElementById(
+"dateLimitePropositionsGestion"
+);
+
+const preparerConvocation =
+document.getElementById(
+"preparerConvocation"
+);
+
+const apercuConvocation =
+document.getElementById(
+"apercuConvocation"
+);
+
+const contenuApercuConvocation =
+document.getElementById(
+"contenuApercuConvocation"
+);
+
 /*
 RÉCUPÉRATION DE L'ID DANS L'URL
 
@@ -181,9 +225,10 @@ async user => {
             "index.html";
 
         return;
-
+        
     }
-
+    
+await chargerDestinatairesConvocation();
 
     if (!idAG) {
 
@@ -751,3 +796,254 @@ async () => {
 }
 
 );
+
+/*
+CHARGER LES DESTINATAIRES DE LA CONVOCATION
+
+*/
+
+async function chargerDestinatairesConvocation() {
+
+try {
+
+    /*
+    =========================================
+    MEMBRES ADHÉRENTS
+    =========================================
+    */
+
+    const requeteAdherents =
+        query(
+            collection(
+                db,
+                "membres"
+            ),
+            where(
+                "statutMembre",
+                "==",
+                "adherent"
+            )
+        );
+
+
+    const resultatAdherents =
+        await getDocs(
+            requeteAdherents
+        );
+
+
+    /*
+    =========================================
+    MEMBRES ACTIFS
+    =========================================
+    */
+
+    const requeteActifs =
+        query(
+            collection(
+                db,
+                "membres"
+            ),
+            where(
+                "statutMembre",
+                "==",
+                "actif"
+            )
+        );
+
+
+    const resultatActifs =
+        await getDocs(
+            requeteActifs
+        );
+
+
+    /*
+    =========================================
+    TABLEAU DES DESTINATAIRES
+    =========================================
+    */
+
+    const destinataires =
+        new Map();
+
+
+    /*
+    =========================================
+    AJOUT DES ADHÉRENTS
+    =========================================
+    */
+
+    resultatAdherents.forEach(
+        documentFirestore => {
+
+            const membre =
+                documentFirestore.data();
+
+
+            destinataires.set(
+                documentFirestore.id,
+                {
+                    id:
+                        documentFirestore.id,
+
+                    ...membre
+                }
+            );
+
+        }
+    );
+
+
+    /*
+    =========================================
+    AJOUT DES ACTIFS
+    =========================================
+    */
+
+    resultatActifs.forEach(
+        documentFirestore => {
+
+            const membre =
+                documentFirestore.data();
+
+
+            destinataires.set(
+                documentFirestore.id,
+                {
+                    id:
+                        documentFirestore.id,
+
+                    ...membre
+                }
+            );
+
+        }
+    );
+
+
+    /*
+    =========================================
+    COMPTAGE
+    =========================================
+    */
+
+    const totalAdherents =
+        resultatAdherents.size;
+
+
+    const totalActifs =
+        resultatActifs.size;
+
+
+    const totalDestinataires =
+        destinataires.size;
+
+
+    /*
+    =========================================
+    AFFICHAGE
+    =========================================
+    */
+
+    if (
+        nombreAdherents
+    ) {
+
+        nombreAdherents.textContent =
+            totalAdherents;
+
+    }
+
+
+    if (
+        nombreActifs
+    ) {
+
+        nombreActifs.textContent =
+            totalActifs;
+
+    }
+
+
+    if (
+        nombreDestinataires
+    ) {
+
+        nombreDestinataires.textContent =
+            totalDestinataires;
+
+    }
+
+
+    /*
+    =========================================
+    CONSOLE
+    =========================================
+    */
+
+    console.log(
+        "Destinataires de la convocation :",
+        {
+            adherents:
+                totalAdherents,
+
+            actifs:
+                totalActifs,
+
+            total:
+                totalDestinataires
+        }
+    );
+
+
+    return Array.from(
+        destinataires.values()
+    );
+
+}
+catch (
+    error
+) {
+
+    console.error(
+        "Erreur chargement destinataires :",
+        error
+    );
+
+
+    if (
+        nombreAdherents
+    ) {
+
+        nombreAdherents.textContent =
+            "Erreur";
+
+    }
+
+
+    if (
+        nombreActifs
+    ) {
+
+        nombreActifs.textContent =
+            "Erreur";
+
+    }
+
+
+    if (
+        nombreDestinataires
+    ) {
+
+        nombreDestinataires.textContent =
+            "Erreur";
+
+    }
+
+
+    return [];
+
+}
+
+}
