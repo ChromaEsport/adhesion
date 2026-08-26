@@ -201,6 +201,11 @@ document.getElementById(
 "enregistrerDatesConvocation"
 );
 
+const listeDestinatairesConvocation = 
+document.getElementById( 
+"listeDestinatairesConvocation" 
+);
+
 enregistrerDatesConvocation.addEventListener( 
 "click", sauvegarderDatesConvocation 
 );
