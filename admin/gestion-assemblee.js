@@ -2406,7 +2406,35 @@ console.log(
     urlWorker
 );
 
+const corpsRequete = {
 
+    type:
+        "convocation_ag",
+
+    ag:
+        donneesConvocation,
+
+    destinataires:
+        donneesEnvoi.destinataires
+
+};
+
+console.log(
+    "================================="
+);
+
+console.log(
+    "ÉTAPE 7.32 — REQUÊTE WORKER"
+);
+
+console.log(
+    "================================="
+);
+
+console.log(
+    "Corps de la requête :",
+    corpsRequete
+);
     
 alert(
     "Les données de la convocation sont prêtes.\n\n" +
