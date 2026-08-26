@@ -1980,3 +1980,238 @@ apercuConvocation.scrollIntoView({
 });
 
 }
+
+/*
+CHARGER LES DESTINATAIRES DE LA CONVOCATION
+
+*/
+
+async function chargerDestinatairesConvocation() {
+
+try {
+
+    const resultat =
+        await getDocs(
+            collection(
+                db,
+                "membres"
+            )
+        );
+
+
+    const destinataires = [];
+
+
+    resultat.forEach(
+        documentFirestore => {
+
+            const membre = {
+
+                id:
+                    documentFirestore.id,
+
+                ...documentFirestore.data()
+
+            };
+
+
+            /*
+            =========================================
+            MEMBRES ADHÉRENTS ET ACTIFS UNIQUEMENT
+            =========================================
+            */
+
+            if (
+                membre.statutMembre ===
+                "adherent"
+                ||
+                membre.statutMembre ===
+                "actif"
+            ) {
+
+                destinataires.push(
+                    membre
+                );
+
+            }
+
+        }
+    );
+
+
+    console.log(
+        "Destinataires de la convocation :",
+        destinataires
+    );
+
+
+    afficherDestinatairesConvocation(
+        destinataires
+    );
+
+
+}
+catch (
+    error
+) {
+
+    console.error(
+        "Erreur récupération destinataires :",
+        error
+    );
+
+
+    afficherErreur(
+        "Impossible de récupérer les destinataires de la convocation."
+    );
+
+}
+
+}
+
+/*
+AFFICHER LES DESTINATAIRES
+
+*/
+
+function afficherDestinatairesConvocation(
+destinataires
+) {
+
+if (
+    !listeDestinatairesConvocation
+) {
+
+    return;
+
+}
+
+
+listeDestinatairesConvocation.innerHTML =
+    "";
+
+
+/*
+=========================================
+AUCUN DESTINATAIRE
+=========================================
+*/
+
+if (
+    destinataires.length ===
+    0
+) {
+
+    listeDestinatairesConvocation.innerHTML = `
+
+        <p class="message-info">
+
+            Aucun membre adhérent ou actif
+            n'a été trouvé.
+
+        </p>
+
+    `;
+
+    return;
+
+}
+
+
+/*
+=========================================
+COMPTEUR
+=========================================
+*/
+
+const titre =
+    document.createElement(
+        "p"
+    );
+
+
+titre.innerHTML = `
+
+    <strong>
+        ${destinataires.length}
+    </strong>
+
+    membre(s) recevront la convocation.
+
+`;
+
+
+listeDestinatairesConvocation.appendChild(
+    titre
+);
+
+
+/*
+=========================================
+LISTE
+=========================================
+*/
+
+destinataires.forEach(
+    membre => {
+
+        const ligne =
+            document.createElement(
+                "div"
+            );
+
+
+        ligne.className =
+            "destinataire-convocation";
+
+
+        const nom =
+            `${
+                membre.prenom || ""
+            } ${
+                membre.nom || ""
+            }`.trim();
+
+
+        const statut =
+            membre.statutMembre ===
+            "actif"
+                ? "Membre actif"
+                : "Membre adhérent";
+
+
+        ligne.innerHTML = `
+
+            <span>
+
+                👤
+                ${nom || "Nom inconnu"}
+
+            </span>
+
+
+            <span>
+
+                ${membre.email || "⚠️ Aucun email"}
+
+            </span>
+
+
+            <span>
+
+                ${statut}
+
+            </span>
+
+        `;
+
+
+        listeDestinatairesConvocation.appendChild(
+            ligne
+        );
+
+    }
+);
+
+}
+
