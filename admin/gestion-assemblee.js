@@ -238,6 +238,12 @@ parametresURL.get(
 "id"
 );
 
+if (!idAG) {
+    console.error(
+        "Aucun identifiant d'Assemblée Générale fourni."
+    );
+}
+
 let agActuelle = null;
 /*
 AUTHENTIFICATION
