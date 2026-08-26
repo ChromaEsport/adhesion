@@ -186,6 +186,11 @@ document.getElementById(
 "preparerConvocation"
 );
 
+const envoyerConvocations = 
+document.getElementById( 
+"envoyerConvocations" 
+);
+
 const apercuConvocation =
 document.getElementById(
 "apercuConvocation"
@@ -212,6 +217,10 @@ enregistrerDatesConvocation.addEventListener(
 
 preparerConvocation.addEventListener( 
 "click", preparerApercuConvocation 
+);
+
+envoyerConvocations.addEventListener( 
+"click", confirmerEnvoiConvocations 
 );
 
 /*
@@ -1720,7 +1729,7 @@ AFFICHER L'APERÇU
 apercuConvocation.style.display =
     "";
 
-
+envoyerConvocations.disabled = false;
 /*
 =========================================
 FAIRE DÉFILER VERS L'APERÇU
