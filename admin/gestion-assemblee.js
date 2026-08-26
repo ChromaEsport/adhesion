@@ -2107,3 +2107,58 @@ function afficherDestinatairesConvocation(
     );
 
 }
+
+/*
+CONFIRMATION AVANT ENVOI
+
+*/
+
+function confirmerEnvoiConvocations() {
+
+if (!agActuelle) {
+
+    alert(
+        "Aucune assemblée générale n'est chargée."
+    );
+
+    return;
+
+}
+
+
+const nombre =
+    nombreDestinataires
+        ? nombreDestinataires.textContent
+        : "0";
+
+
+const confirmation =
+    confirm(
+
+        "⚠️ ENVOI DES CONVOCATIONS\n\n" +
+
+        "Vous êtes sur le point d'envoyer " +
+        "la convocation à " +
+        nombre +
+        " membre(s).\n\n" +
+
+        "Les membres adhérents et les membres actifs " +
+        "recevront la convocation par email.\n\n" +
+
+        "Voulez-vous continuer ?"
+
+    );
+
+
+if (!confirmation) {
+
+    return;
+
+}
+
+
+alert(
+    "L'envoi des convocations sera configuré à l'étape suivante."
+);
+
+}
