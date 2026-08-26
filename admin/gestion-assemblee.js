@@ -205,6 +205,10 @@ enregistrerDatesConvocation.addEventListener(
 "click", sauvegarderDatesConvocation 
 );
 
+preparerConvocation.addEventListener( 
+"click", preparerApercuConvocation 
+);
+
 /*
 RÉCUPÉRATION DE L'ID DANS L'URL
 
@@ -1601,5 +1605,378 @@ catch (
     );
 
 }
+
+}
+
+/*
+PRÉPARER L'APERÇU DE LA CONVOCATION
+
+*/
+
+function preparerApercuConvocation() {
+
+if (!agActuelle) {
+
+    alert(
+        "Aucune assemblée générale n'est chargée."
+    );
+
+    return;
+
+}
+
+
+/*
+=========================================
+INFORMATIONS GÉNÉRALES
+=========================================
+*/
+
+const type =
+    agActuelle.type ||
+    "Assemblée Générale";
+
+
+const date =
+    formaterDateSimple(
+        agActuelle.dateAG
+    );
+
+
+const heure =
+    agActuelle.heureAG ||
+    "—";
+
+
+/*
+=========================================
+MODE
+=========================================
+*/
+
+let informationsParticipation =
+    "";
+
+
+if (
+    agActuelle.modeAG ===
+    "presentiel"
+) {
+
+    informationsParticipation = `
+
+        <p>
+
+            <strong>
+                📍 Lieu :
+            </strong>
+
+            ${agActuelle.lieuAG || "—"}
+
+        </p>
+
+    `;
+
+}
+
+else if (
+    agActuelle.modeAG ===
+    "visio"
+) {
+
+    informationsParticipation = `
+
+        <p>
+
+            <strong>
+                💻 Participation :
+            </strong>
+
+            En visioconférence
+
+        </p>
+
+    `;
+
+}
+
+else if (
+    agActuelle.modeAG ===
+    "hybride"
+) {
+
+    informationsParticipation = `
+
+        <p>
+
+            <strong>
+                📍 Lieu :
+            </strong>
+
+            ${agActuelle.lieuAG || "—"}
+
+        </p>
+
+
+        <p>
+
+            <strong>
+                💻 Visioconférence :
+            </strong>
+
+            Disponible
+
+        </p>
+
+    `;
+
+}
+
+
+/*
+=========================================
+DATE LIMITE PROPOSITIONS
+=========================================
+*/
+
+const dateLimite =
+    agActuelle.dateCloturePropositions
+        ? formaterDateSimple(
+            agActuelle.dateCloturePropositions
+        )
+        : "—";
+
+
+/*
+=========================================
+ORDRE DU JOUR
+=========================================
+*/
+
+let ordreDuJourHTML =
+    "<p>Aucun sujet défini.</p>";
+
+
+if (
+    Array.isArray(
+        agActuelle.ordreDuJour
+    )
+    &&
+    agActuelle.ordreDuJour.length > 0
+) {
+
+    ordreDuJourHTML =
+        "<ol>";
+
+
+    agActuelle.ordreDuJour.forEach(
+        sujet => {
+
+            /*
+            Si ton objet possède
+            titre + description
+            */
+
+            if (
+                typeof sujet ===
+                "object"
+            ) {
+
+                ordreDuJourHTML += `
+
+                    <li>
+
+                        <strong>
+                            ${sujet.titre || ""}
+                        </strong>
+
+                        ${
+                            sujet.description
+                                ? `
+                                    <br>
+                                    <span>
+                                        ${sujet.description}
+                                    </span>
+                                  `
+                                : ""
+                        }
+
+                    </li>
+
+                `;
+
+            }
+
+            else {
+
+                ordreDuJourHTML += `
+
+                    <li>
+                        ${sujet}
+                    </li>
+
+                `;
+
+            }
+
+        }
+    );
+
+
+    ordreDuJourHTML +=
+        "</ol>";
+
+}
+
+
+/*
+=========================================
+CONSTRUCTION DE L'APERÇU
+=========================================
+*/
+
+contenuApercuConvocation.innerHTML = `
+
+    <div class="convocation-apercu">
+
+        <h3>
+            📢 Convocation à l'Assemblée Générale
+        </h3>
+
+
+        <p>
+            Bonjour,
+        </p>
+
+
+        <p>
+
+            Vous êtes invité(e) à participer à
+            l'Assemblée Générale de
+            <strong>
+                Chroma Esport
+            </strong>.
+
+        </p>
+
+
+        <p>
+
+            <strong>
+                Type :
+            </strong>
+
+            ${type}
+
+        </p>
+
+
+        <p>
+
+            <strong>
+                📅 Date :
+            </strong>
+
+            ${date}
+
+        </p>
+
+
+        <p>
+
+            <strong>
+                🕐 Heure :
+            </strong>
+
+            ${heure}
+
+        </p>
+
+
+        ${informationsParticipation}
+
+
+        <h4>
+            📋 Ordre du jour
+        </h4>
+
+
+        ${ordreDuJourHTML}
+
+
+        <h4>
+            💡 Propositions de sujets
+        </h4>
+
+
+        <p>
+
+            Les membres adhérents et les membres actifs
+            disposent d'un délai de <strong>7 jours</strong>
+            à compter de l'envoi de la convocation
+            pour proposer l'ajout d'un sujet à l'ordre du jour.
+
+        </p>
+
+
+        <p>
+
+            La date limite pour transmettre une proposition
+            est fixée au :
+
+            <strong>
+                ${dateLimite}
+            </strong>.
+
+        </p>
+
+
+        <h4>
+            🗳️ Droit de vote
+        </h4>
+
+
+        <p>
+
+            Seuls les <strong>membres actifs</strong>
+            disposent du droit de vote lors de
+            l'Assemblée Générale, dans les conditions
+            prévues par les statuts de Chroma Esport.
+
+        </p>
+
+
+        <p>
+            Cordialement,<br>
+            <strong>
+                Chroma Esport
+            </strong>
+        </p>
+
+    </div>
+
+`;
+
+
+/*
+=========================================
+AFFICHER L'APERÇU
+=========================================
+*/
+
+apercuConvocation.style.display =
+    "";
+
+
+/*
+=========================================
+FAIRE DÉFILER VERS L'APERÇU
+=========================================
+*/
+
+apercuConvocation.scrollIntoView({
+    behavior:
+        "smooth"
+});
 
 }
