@@ -12,6 +12,7 @@ import {
 getFirestore, 
 collection, 
 addDoc, 
+getDocs,
 serverTimestamp 
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
@@ -132,6 +133,11 @@ document.getElementById(
 "enregistrerAG" 
 );
 
+const listeAssemblees = 
+document.getElementById( 
+"listeAssemblees" 
+);
+
 /*
 AUTHENTIFICATION
 
@@ -139,14 +145,19 @@ AUTHENTIFICATION
 
 onAuthStateChanged(
 auth,
-user => {
+async user => {
 
     if (!user) {
 
         window.location.href =
             "index.html";
 
+        return;
+
     }
+
+
+    await chargerAssemblees();
 
 }
 
@@ -806,3 +817,287 @@ enregistrerAG.addEventListener(
 "click",
 enregistrerBrouillonAG 
 );
+
+
+/*
+CHARGER LES ASSEMBLÉES GÉNÉRALES
+
+*/
+
+async function chargerAssemblees() {
+
+if (!listeAssemblees) {
+
+    return;
+
+}
+
+
+try {
+
+    const resultat =
+        await getDocs(
+            collection(
+                db,
+                "assemblees_generales"
+            )
+        );
+
+
+    const assemblees = [];
+
+
+    resultat.forEach(
+        documentFirestore => {
+
+            assemblees.push({
+
+                id:
+                    documentFirestore.id,
+
+                ...documentFirestore.data()
+
+            });
+
+        }
+    );
+
+
+    /*
+    =========================================
+    TRI PAR DATE
+    Plus proche / récente en premier
+    =========================================
+    */
+
+    assemblees.sort(
+        (a, b) => {
+
+            const dateA =
+                new Date(
+                    a.dateAG || "9999-12-31"
+                );
+
+
+            const dateB =
+                new Date(
+                    b.dateAG || "9999-12-31"
+                );
+
+
+            return dateA - dateB;
+
+        }
+    );
+
+
+    afficherAssemblees(
+        assemblees
+    );
+
+}
+catch (
+    error
+) {
+
+    console.error(
+        "Erreur chargement assemblées générales :",
+        error
+    );
+
+
+    listeAssemblees.innerHTML = `
+
+        <tr>
+
+            <td colspan="5">
+
+                Impossible de charger les assemblées générales.
+
+            </td>
+
+        </tr>
+
+    `;
+
+}
+
+}
+
+/*
+AFFICHER LES ASSEMBLÉES
+
+*/
+
+function afficherAssemblees(
+assemblees
+) {
+
+listeAssemblees.innerHTML =
+    "";
+
+
+if (
+    assemblees.length === 0
+) {
+
+    listeAssemblees.innerHTML = `
+
+        <tr>
+
+            <td colspan="5">
+
+                Aucune assemblée générale créée.
+
+            </td>
+
+        </tr>
+
+    `;
+
+    return;
+
+}
+
+
+assemblees.forEach(
+    ag => {
+
+        const ligne =
+            document.createElement(
+                "tr"
+            );
+
+
+        const type =
+            ag.type === "AGE"
+                ? "AGE"
+                : "AGO";
+
+
+        const typeTexte =
+            ag.type === "AGE"
+                ? "Assemblée Générale Extraordinaire"
+                : "Assemblée Générale Ordinaire";
+
+
+        const statut =
+            ag.statut ||
+            "—";
+
+
+        ligne.innerHTML = `
+
+            <td
+                title="${typeTexte}"
+            >
+                ${type}
+            </td>
+
+
+            <td>
+                ${formaterDateSimple(
+                    ag.dateAG
+                )}
+            </td>
+
+
+            <td>
+                ${ag.heureAG || "—"}
+            </td>
+
+
+            <td>
+                ${statut}
+            </td>
+
+
+            <td>
+
+                <button
+                    type="button"
+                    class="voir-ag"
+                    data-id="${ag.id}"
+                >
+                    👁️ Gérer
+                </button>
+
+            </td>
+
+        `;
+
+
+        listeAssemblees.appendChild(
+            ligne
+        );
+
+
+
+        /*
+        =========================================
+        BOUTON GÉRER
+        =========================================
+        */
+
+        const bouton =
+            ligne.querySelector(
+                ".voir-ag"
+            );
+
+
+        bouton.addEventListener(
+            "click",
+            () => {
+
+                window.location.href =
+                    "gestion-assemblee.html?id=" +
+                    ag.id;
+
+            }
+        );
+
+    }
+);
+
+}
+
+/*
+FORMAT DATE
+
+*/
+
+function formaterDateSimple(
+date
+) {
+
+if (!date) {
+
+    return "—";
+
+}
+
+
+const morceaux =
+    date.split(
+        "-"
+    );
+
+
+if (
+    morceaux.length !== 3
+) {
+
+    return date;
+
+}
+
+
+return (
+    morceaux[2] +
+    "/" +
+    morceaux[1] +
+    "/" +
+    morceaux[0]
+);
+
+}
