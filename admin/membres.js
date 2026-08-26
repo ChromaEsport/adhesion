@@ -1134,7 +1134,38 @@ if (
 
 }
 
+/*
+TRI PAR DATE D'INSCRIPTION
+DU PLUS ANCIEN AU PLUS RÉCENT
 
+*/
+
+liste.sort(
+(a, b) => {
+
+    const dateA =
+        a.dateInscription &&
+        typeof a.dateInscription.toDate === "function"
+            ? a.dateInscription.toDate()
+            : new Date(
+                a.dateInscription || 0
+            );
+
+
+    const dateB =
+        b.dateInscription &&
+        typeof b.dateInscription.toDate === "function"
+            ? b.dateInscription.toDate()
+            : new Date(
+                b.dateInscription || 0
+            );
+
+
+    return dateA - dateB;
+
+}
+
+);
 /*
 =========================================
 AFFICHAGE DES MEMBRES
@@ -1206,9 +1237,14 @@ liste.forEach(
         ligne.innerHTML = `
 
             <td>
-                ${membre.prenom || ""}
-                ${membre.nom || ""}
-            </td>
+<strong>
+${liste.indexOf(membre) + 1}
+</strong>
+-
+${membre.prenom || ""}
+${membre.nom || ""}
+
+</td>
 
             <td>
                 ${membre.discord || "-"}
