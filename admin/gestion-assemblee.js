@@ -2283,15 +2283,14 @@ console.log(
 console.log(
     "================================="
 );
-
 console.log(
-    "Données prêtes pour le Worker :",
-    donneesEnvoi
+    "Données destinataires vérifiées :",
+    destinatairesConvocation
 );
 
 console.log(
-    "Nombre de destinataires :",
-    donneesEnvoi.destinataires.length
+    "Nombre réel de destinataires :",
+    destinatairesConvocation.length
 );
 
 console.log(
