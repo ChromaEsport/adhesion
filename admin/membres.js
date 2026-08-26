@@ -1263,7 +1263,9 @@ function adhesionEstExpiree(membre){
 
 
 function afficherMembres(liste) {
-
+    
+    restaurerColonnesMembres();
+    
     listeMembres.innerHTML = "";
 
     if (liste.length === 0) {
