@@ -387,7 +387,6 @@ titreAG.textContent =
         ? "Assemblée Générale Extraordinaire"
         : "Assemblée Générale Ordinaire";
 
-
 /*
 -----------------------------------------
 STATUT
