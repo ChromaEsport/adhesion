@@ -2399,7 +2399,7 @@ destinatairesConvocation.forEach(
 );
 
 const urlWorker =
-    "chroma-stripe.max2501.workers.dev";
+    "https://chroma-stripe.max2501.workers.dev";
 
 console.log(
     "URL du Worker :",
