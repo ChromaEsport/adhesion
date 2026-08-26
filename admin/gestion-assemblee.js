@@ -196,6 +196,15 @@ document.getElementById(
 "contenuApercuConvocation"
 );
 
+const enregistrerDatesConvocation = 
+document.getElementById( 
+"enregistrerDatesConvocation"
+);
+
+enregistrerDatesConvocation.addEventListener( 
+"click", sauvegarderDatesConvocation 
+);
+
 /*
 RÉCUPÉRATION DE L'ID DANS L'URL
 
@@ -1372,7 +1381,7 @@ ENREGISTRER LES DATES DE CONVOCATION
 
 */
 
-async function enregistrerDatesConvocation() {
+async function sauvegarderDatesConvocation() {
 
 if (!agActuelle) {
 
