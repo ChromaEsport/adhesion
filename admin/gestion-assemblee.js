@@ -2218,11 +2218,62 @@ console.log(
     donneesConvocation
 );
 
+console.log(
+    "================================="
+);
 
+console.log(
+    "ÉTAPE 7.25 — DONNÉES CONVOCATION"
+);
+
+console.log(
+    "================================="
+);
+
+console.log(
+    "AG ID :",
+    donneesConvocation.agId
+);
+
+console.log(
+    "Type :",
+    donneesConvocation.type
+);
+
+console.log(
+    "Date AG :",
+    donneesConvocation.dateAG
+);
+
+console.log(
+    "Nombre de destinataires :",
+    nombreDestinataires
+        ? nombreDestinataires.textContent
+        : "0"
+);
+
+console.log(
+    "Destinataires chargés :",
+    listeDestinatairesConvocation
+        ? listeDestinatairesConvocation.children.length
+        : 0
+);
 alert(
     "Les données de la convocation sont prêtes.\n\n" +
     "La prochaine étape consistera à préparer " +
     "l'envoi des emails."
 );
+
+}
+
+
+async function envoyerConvocationsWorker(
+    donneesConvocation
+) {
+
+    console.log(
+        "Préparation de l'envoi des convocations :",
+        donneesConvocation
+    );
 
 }
