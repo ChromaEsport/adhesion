@@ -971,6 +971,62 @@ if (filtreActuel === "membres_actifs") {
 
 }
 
+function restaurerColonnesMembres() {
+
+document.getElementById(
+    "thNumero"
+).style.display = "";
+
+document.getElementById(
+    "thPaiement"
+).style.display = "";
+
+document.getElementById(
+    "thAdhesion"
+).style.display = "";
+
+document.getElementById(
+    "thAction"
+).style.display = "";
+
+
+document.getElementById(
+    "thNom"
+).textContent =
+    "Nom";
+
+
+document.getElementById(
+    "thDiscord"
+).textContent =
+    "Discord";
+
+
+document.getElementById(
+    "thStatut"
+).textContent =
+    "Statut";
+
+
+const thDateInscription =
+    document.getElementById(
+        "thDateInscription"
+    );
+
+
+if (
+    thDateInscription
+) {
+
+    thDateInscription.style.display =
+        "none";
+
+}
+
+}
+
+
+
 function afficherMembresCommunaute(
 liste
 ) {
