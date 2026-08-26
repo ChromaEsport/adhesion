@@ -771,7 +771,7 @@ try {
     */
 
     window.location.href =
-        "assemblee-generale.html?id=" +
+        "gestion-assemblee.html?id=" +
         documentAG.id;
 
 
