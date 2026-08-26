@@ -518,4 +518,4 @@ INITIALISATION
 
 mettreAJourModeAG();
 
-calculerDatesAG();`
+calculerDatesAG();
