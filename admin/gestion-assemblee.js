@@ -2258,6 +2258,84 @@ console.log(
         ? listeDestinatairesConvocation.children.length
         : 0
 );
+
+const destinataires =
+    await chargerDestinatairesConvocation();
+
+console.log(
+    "Destinataires récupérés pour l'envoi :",
+    destinataires
+);
+
+if (
+    !destinataires ||
+    destinataires.length === 0
+) {
+
+    alert(
+        "Aucun destinataire disponible pour l'envoi."
+    );
+
+    return;
+
+}
+
+const donneesEnvoi = {
+
+    ag:
+        donneesConvocation,
+
+    destinataires:
+        destinataires.map(
+            membre => ({
+
+                id:
+                    membre.id || "",
+
+                prenom:
+                    membre.prenom || "",
+
+                nom:
+                    membre.nom || "",
+
+                email:
+                    membre.email || "",
+
+                numeroMembre:
+                    membre.numeroMembre || "",
+
+                statutMembre:
+                    membre.statutMembre || ""
+
+            })
+        )
+
+};
+
+console.log(
+    "================================="
+);
+
+console.log(
+    "ÉTAPE 7.26 — DONNÉES D'ENVOI"
+);
+
+console.log(
+    "================================="
+);
+
+console.log(
+    "Données prêtes pour le Worker :",
+    donneesEnvoi
+);
+
+console.log(
+    "Nombre de destinataires :",
+    donneesEnvoi.destinataires.length
+);
+
+
+    
 alert(
     "Les données de la convocation sont prêtes.\n\n" +
     "La prochaine étape consistera à préparer " +
