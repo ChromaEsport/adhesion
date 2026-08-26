@@ -2119,7 +2119,7 @@ CONFIRMATION ET PRÉPARATION DE L'ENVOI
 
 */
 
-function confirmerEnvoiConvocations() {
+async function confirmerEnvoiConvocations() {
 
 if (!agActuelle) {
 
