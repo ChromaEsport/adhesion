@@ -978,21 +978,112 @@ liste
 listeMembres.innerHTML = "";
 
 
+/*
+=========================================
+ADAPTATION DES COLONNES
+=========================================
+*/
+
+document.getElementById(
+    "thNumero"
+).style.display = "none";
+
+document.getElementById(
+    "thPaiement"
+).style.display = "none";
+
+document.getElementById(
+    "thAdhesion"
+).style.display = "none";
+
+document.getElementById(
+    "thAction"
+).style.display = "none";
+
+
+document.getElementById(
+    "thNom"
+).textContent = "Nom";
+
+document.getElementById(
+    "thDiscord"
+).textContent = "Discord";
+
+document.getElementById(
+    "thStatut"
+).textContent = "Statut";
+
+
+/*
+=========================================
+DATE D'INSCRIPTION
+=========================================
+
+On ajoute la colonne uniquement pour
+l'affichage communauté.
+*/
+
+let thDateInscription =
+    document.getElementById(
+        "thDateInscription"
+    );
+
+
+if (!thDateInscription) {
+
+    thDateInscription =
+        document.createElement(
+            "th"
+        );
+
+    thDateInscription.id =
+        "thDateInscription";
+
+    thDateInscription.textContent =
+        "Date d'inscription";
+
+
+    document.querySelector(
+        ".table-membres thead tr"
+    ).appendChild(
+        thDateInscription
+    );
+
+}
+
+
+thDateInscription.style.display =
+    "";
+
+
+/*
+=========================================
+AUCUN MEMBRE
+=========================================
+*/
+
 if (
     liste.length === 0
 ) {
 
     listeMembres.innerHTML = `
         <tr>
-            <td colspan="7">
+            <td colspan="4">
                 Aucun membre de la communauté trouvé.
             </td>
         </tr>
     `;
 
     return;
+
 }
 
+
+/*
+=========================================
+AFFICHAGE DES MEMBRES
+=========================================
+*/
 
 liste.forEach(
     membre => {
@@ -1003,41 +1094,76 @@ liste.forEach(
             );
 
 
+        /*
+        =========================================
+        DATE D'INSCRIPTION
+        =========================================
+        */
+
+        let dateInscription =
+            "-";
+
+
+        if (
+            membre.dateInscription
+        ) {
+
+            if (
+                typeof membre.dateInscription.toDate ===
+                "function"
+            ) {
+
+                dateInscription =
+                    membre.dateInscription
+                    .toDate()
+                    .toLocaleDateString(
+                        "fr-FR"
+                    );
+
+            }
+            else {
+
+                const date =
+                    new Date(
+                        membre.dateInscription
+                    );
+
+
+                if (
+                    !isNaN(
+                        date.getTime()
+                    )
+                ) {
+
+                    dateInscription =
+                        date.toLocaleDateString(
+                            "fr-FR"
+                        );
+
+                }
+
+            }
+
+        }
+
+
         ligne.innerHTML = `
-
-            <td>
-                -
-            </td>
-
 
             <td>
                 ${membre.prenom || ""}
                 ${membre.nom || ""}
             </td>
 
-
             <td>
                 ${membre.discord || "-"}
             </td>
 
-
             <td>
-                -
+                ${membre.statut || "-"}
             </td>
 
-
             <td>
-                -
-            </td>
-
-
-            <td>
-                Communauté
-            </td>
-
-
-            <td>
-                -
+                ${dateInscription}
             </td>
 
         `;
