@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+
+<html lang="fr"> <head>
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+    Gestion de l'assemblée générale - Chroma Esport
+</title>
+
+<link
+    rel="stylesheet"
+    href="style.css"
+>
+</head> <body> <header class="admin-header">
+<div>
+
+    <h1>
+        CHROMA ESPORT
+    </h1>
+
+    <p>
+        Gestion de l'assemblée générale
+    </p>
+
+</div>
+
+
+<div class="navigation-admin">
+
+    <a
+        href="membre.html"
+        class="bouton-navigation"
+    >
+        👥 Membres
+    </a>
+
+
+    <a
+        href="assemblee-generale.html"
+        class="bouton-navigation"
+    >
+        ➕ Nouvelle AG
+    </a>
+
+
+    <button id="logout">
+        Déconnexion
+    </button>
+
+</div>
+</header> <main class="admin-container">
+<div id="chargementAG">
+
+    Chargement de l'assemblée générale...
+
+</div>
+
+
+
+<div
+    id="contenuAG"
+    style="display:none;"
+>
+
+
+    <!-- =====================================================
+         TITRE
+    ====================================================== -->
+
+    <h2 id="titreAG">
+        Assemblée générale
+    </h2>
+
+
+    <p class="description-dashboard">
+        Gestion et préparation de l'assemblée générale.
+    </p>
+
+
+
+    <!-- =====================================================
+         STATUT
+    ====================================================== -->
+
+    <section class="formulaire-section">
+
+        <h3>
+            📌 Statut de l'assemblée
+        </h3>
+
+
+        <p>
+
+            <strong>
+                Statut :
+            </strong>
+
+            <span id="statutAG">
+                —
+            </span>
+
+        </p>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         INFORMATIONS
+    ====================================================== -->
+
+    <section class="formulaire-section">
+
+        <h3>
+            📅 Informations
+        </h3>
+
+
+        <p>
+
+            <strong>
+                Date :
+            </strong>
+
+            <span id="dateAGAffichage">
+                —
+            </span>
+
+        </p>
+
+
+        <p>
+
+            <strong>
+                Heure :
+            </strong>
+
+            <span id="heureAGAffichage">
+                —
+            </span>
+
+        </p>
+
+
+        <p>
+
+            <strong>
+                Type :
+            </strong>
+
+            <span id="typeAGAffichage">
+                —
+            </span>
+
+        </p>
+
+
+        <p>
+
+            <strong>
+                Mode :
+            </strong>
+
+            <span id="modeAGAffichage">
+                —
+            </span>
+
+        </p>
+
+
+        <p id="ligneLieu">
+
+            <strong>
+                Lieu :
+            </strong>
+
+            <span id="lieuAGAffichage">
+                —
+            </span>
+
+        </p>
+
+
+        <p id="ligneVisio">
+
+            <strong>
+                Visioconférence :
+            </strong>
+
+            <span id="lienVisioAGAffichage">
+                —
+            </span>
+
+        </p>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         CALENDRIER
+    ====================================================== -->
+
+    <section class="formulaire-section">
+
+        <h3>
+            🗓️ Calendrier
+        </h3>
+
+
+        <p>
+
+            <strong>
+                Date de convocation :
+            </strong>
+
+            <span id="dateConvocationAffichage">
+                —
+            </span>
+
+        </p>
+
+
+        <p>
+
+            <strong>
+                Ouverture des propositions :
+            </strong>
+
+            <span id="dateOuvertureAffichage">
+                —
+            </span>
+
+        </p>
+
+
+        <p>
+
+            <strong>
+                Clôture des propositions :
+            </strong>
+
+            <span id="dateClotureAffichage">
+                —
+            </span>
+
+        </p>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         ORDRE DU JOUR
+    ====================================================== -->
+
+    <section class="formulaire-section">
+
+        <h3>
+            📝 Ordre du jour
+        </h3>
+
+
+        <div id="ordreDuJourAffichage">
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         ACTIONS
+    ====================================================== -->
+
+    <section class="actions-ag">
+
+        <button
+            id="modifierAG"
+            class="bouton-principal"
+        >
+            ✏️ Modifier l'AG
+        </button>
+
+
+        <button
+            id="retourAG"
+            class="bouton-secondaire"
+        >
+            ← Retour
+        </button>
+
+    </section>
+
+
+</div>
+</main> <script type="module" src="gestion-assemblee.js" ></script> </body> </html>
