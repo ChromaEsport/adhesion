@@ -2397,6 +2397,16 @@ destinatairesConvocation.forEach(
 
     }
 );
+
+const urlWorker =
+    "chroma-stripe.max2501.workers.dev";
+
+console.log(
+    "URL du Worker :",
+    urlWorker
+);
+
+
     
 alert(
     "Les données de la convocation sont prêtes.\n\n" +
