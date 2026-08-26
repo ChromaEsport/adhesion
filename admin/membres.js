@@ -1033,6 +1033,19 @@ liste
 
 listeMembres.innerHTML = "";
 
+    const compteurMembresCommunaute =
+document.getElementById(
+"compteurMembresCommunaute"
+);
+
+if (
+compteurMembresCommunaute
+) {
+
+compteurMembresCommunaute.textContent =
+    liste.length;
+
+}
 
 /*
 =========================================
