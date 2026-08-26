@@ -1953,100 +1953,148 @@ async function chargerDestinatairesConvocation() {
 
 }
 
-
 /*
-=========================================
-COMPTEUR
-=========================================
+AFFICHER LES DESTINATAIRES
+
 */
 
-const titre =
-    document.createElement(
-        "p"
-    );
+function afficherDestinatairesConvocation(
+    destinataires
+) {
+
+    if (
+        !listeDestinatairesConvocation
+    ) {
+
+        return;
+
+    }
 
 
-titre.innerHTML = `
-
-    <strong>
-        ${destinataires.length}
-    </strong>
-
-    membre(s) recevront la convocation.
-
-`;
+    listeDestinatairesConvocation.innerHTML =
+        "";
 
 
-listeDestinatairesConvocation.appendChild(
-    titre
-);
+    /*
+    =========================================
+    AUCUN DESTINATAIRE
+    =========================================
+    */
 
+    if (
+        destinataires.length ===
+        0
+    ) {
 
-/*
-=========================================
-LISTE
-=========================================
-*/
+        listeDestinatairesConvocation.innerHTML = `
 
-destinataires.forEach(
-    membre => {
+            <p class="message-info">
 
-        const ligne =
-            document.createElement(
-                "div"
-            );
+                Aucun membre adhérent ou actif
+                n'a été trouvé.
 
-
-        ligne.className =
-            "destinataire-convocation";
-
-
-        const nom =
-            `${
-                membre.prenom || ""
-            } ${
-                membre.nom || ""
-            }`.trim();
-
-
-        const statut =
-            membre.statutMembre ===
-            "actif"
-                ? "Membre actif"
-                : "Membre adhérent";
-
-
-        ligne.innerHTML = `
-
-            <span>
-
-                👤
-                ${nom || "Nom inconnu"}
-
-            </span>
-
-
-            <span>
-
-                ${membre.email || "⚠️ Aucun email"}
-
-            </span>
-
-
-            <span>
-
-                ${statut}
-
-            </span>
+            </p>
 
         `;
 
-
-        listeDestinatairesConvocation.appendChild(
-            ligne
-        );
+        return;
 
     }
-);
 
 
+    /*
+    =========================================
+    COMPTEUR
+    =========================================
+    */
+
+    const titre =
+        document.createElement(
+            "p"
+        );
+
+
+    titre.innerHTML = `
+
+        <strong>
+            ${destinataires.length}
+        </strong>
+
+        membre(s) recevront la convocation.
+
+    `;
+
+
+    listeDestinatairesConvocation.appendChild(
+        titre
+    );
+
+
+    /*
+    =========================================
+    LISTE
+    =========================================
+    */
+
+    destinataires.forEach(
+        membre => {
+
+            const ligne =
+                document.createElement(
+                    "div"
+                );
+
+
+            ligne.className =
+                "destinataire-convocation";
+
+
+            const nom =
+                `${
+                    membre.prenom || ""
+                } ${
+                    membre.nom || ""
+                }`.trim();
+
+
+            const statut =
+                membre.statutMembre ===
+                "actif"
+                    ? "Membre actif"
+                    : "Membre adhérent";
+
+
+            ligne.innerHTML = `
+
+                <span>
+
+                    👤
+                    ${nom || "Nom inconnu"}
+
+                </span>
+
+
+                <span>
+
+                    ${membre.email || "⚠️ Aucun email"}
+
+                </span>
+
+
+                <span>
+
+                    ${statut}
+
+                </span>
+
+            `;
+
+
+            listeDestinatairesConvocation.appendChild(
+                ligne
+            );
+
+        }
+    );
+
+}
