@@ -2109,7 +2109,7 @@ function afficherDestinatairesConvocation(
 }
 
 /*
-CONFIRMATION AVANT ENVOI
+CONFIRMATION ET PRÉPARATION DE L'ENVOI
 
 */
 
@@ -2157,8 +2157,66 @@ if (!confirmation) {
 }
 
 
+/*
+=========================================
+DONNÉES DE L'AG
+=========================================
+*/
+
+const donneesConvocation = {
+
+    agId:
+        agActuelle.id,
+
+    type:
+        agActuelle.type || "",
+
+    dateAG:
+        agActuelle.dateAG || "",
+
+    heureAG:
+        agActuelle.heureAG || "",
+
+    mode:
+        agActuelle.mode || "",
+
+    lieu:
+        agActuelle.lieu || "",
+
+    lienVisio:
+        agActuelle.lienVisio || "",
+
+    ordreDuJour:
+        agActuelle.ordreDuJour || [],
+
+    dateConvocation:
+        agActuelle.dateConvocation || "",
+
+    dateOuverturePropositions:
+        agActuelle.dateOuverturePropositions || "",
+
+    dateCloturePropositions:
+        agActuelle.dateCloturePropositions || ""
+
+};
+
+
+/*
+=========================================
+VÉRIFICATION
+=========================================
+*/
+
+console.log(
+    "Données de la convocation prêtes :",
+    donneesConvocation
+);
+
+
 alert(
-    "L'envoi des convocations sera configuré à l'étape suivante."
+    "Les données de la convocation sont prêtes.\n\n" +
+    "La prochaine étape consistera à préparer " +
+    "l'envoi des emails."
 );
 
 }
