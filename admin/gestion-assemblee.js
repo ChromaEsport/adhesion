@@ -2049,5 +2049,4 @@ destinataires.forEach(
     }
 );
 
-}
 
