@@ -1206,11 +1206,73 @@ DATE DE L'AG
 =========================================
 */
 
-const dateAG =
+let dateAG;
+
+/*
+TIMESTAMP FIRESTORE
+
+*/
+
+if (
+typeof agActuelle.dateAG.toDate ===
+"function"
+) {
+
+dateAG =
+    agActuelle.dateAG.toDate();
+
+}
+
+/*
+DATE JAVASCRIPT
+
+*/
+
+else if (
+agActuelle.dateAG instanceof Date
+) {
+
+dateAG =
+    new Date(
+        agActuelle.dateAG
+    );
+
+}
+
+/*
+CHAÎNE DE CARACTÈRES
+
+*/
+
+else {
+
+dateAG =
     new Date(
         agActuelle.dateAG +
         "T00:00:00"
     );
+
+}
+
+/*
+VÉRIFICATION
+
+*/
+
+if (
+isNaN(
+dateAG.getTime()
+)
+) {
+
+console.error(
+    "Date AG invalide :",
+    agActuelle.dateAG
+);
+
+return;
+
+}
 
 
 /*
