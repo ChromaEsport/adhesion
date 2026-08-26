@@ -210,6 +210,7 @@ parametresURL.get(
 "id"
 );
 
+let agActuelle = null;
 /*
 AUTHENTIFICATION
 
@@ -230,18 +231,24 @@ async user => {
     
 await chargerDestinatairesConvocation();
 
-    if (!idAG) {
+if (!idAG) {
 
-        afficherErreur(
-            "Aucune assemblée générale n'a été indiquée."
-        );
+afficherErreur(
+    "Aucune assemblée générale n'a été indiquée."
+);
 
-        return;
+return;
 
-    }
+}
 
+await chargerAG();
 
-    await chargerAG();
+/*
+CALCUL DES DATES DE CONVOCATION
+
+*/
+
+calculerDatesConvocationGestion();
 
 }
 
@@ -281,19 +288,31 @@ try {
     }
 
 
-    const ag =
-        resultat.data();
+   const ag =
+resultat.data();
 
+/*
+STOCKER L'AG ACTUELLE
 
-    console.log(
-        "Assemblée générale chargée :",
-        ag
-    );
+*/
 
+agActuelle = {
 
-    afficherAG(
-        ag
-    );
+id:
+    resultat.id,
+
+...ag
+
+};
+
+console.log(
+"Assemblée générale chargée :",
+agActuelle
+);
+
+afficherAG(
+ag
+)
 
 }
 catch (
@@ -1045,5 +1064,144 @@ catch (
     return [];
 
 }
+
+}
+
+
+/*
+CALCUL DES DATES DE CONVOCATION
+
+*/
+
+function calculerDatesConvocationGestion() {
+
+if (
+    !agActuelle ||
+    !agActuelle.dateAG
+) {
+
+    if (
+        dateConvocationGestion
+    ) {
+
+        dateConvocationGestion.textContent =
+            "—";
+
+    }
+
+    if (
+        dateLimitePropositionsGestion
+    ) {
+
+        dateLimitePropositionsGestion.textContent =
+            "—";
+
+    }
+
+    return;
+
+}
+
+
+/*
+=========================================
+DATE DE L'AG
+=========================================
+*/
+
+const dateAG =
+    new Date(
+        agActuelle.dateAG +
+        "T00:00:00"
+    );
+
+
+/*
+=========================================
+CONVOCATION
+AG - 15 JOURS
+=========================================
+*/
+
+const dateConvocation =
+    new Date(
+        dateAG
+    );
+
+
+dateConvocation.setDate(
+    dateConvocation.getDate() -
+    15
+);
+
+
+/*
+=========================================
+FIN DES PROPOSITIONS
+CONVOCATION + 7 JOURS
+=========================================
+*/
+
+const dateLimite =
+    new Date(
+        dateConvocation
+    );
+
+
+dateLimite.setDate(
+    dateLimite.getDate() +
+    7
+);
+
+
+/*
+=========================================
+AFFICHAGE
+=========================================
+*/
+
+if (
+    dateConvocationGestion
+) {
+
+    dateConvocationGestion.textContent =
+        formaterDateSimple(
+            dateConvocation
+        );
+
+}
+
+
+if (
+    dateLimitePropositionsGestion
+) {
+
+    dateLimitePropositionsGestion.textContent =
+        formaterDateSimple(
+            dateLimite
+        );
+
+}
+
+
+console.log(
+    "Dates convocation AG :",
+    {
+        dateAG:
+            formaterDateSimple(
+                dateAG
+            ),
+
+        convocation:
+            formaterDateSimple(
+                dateConvocation
+            ),
+
+        cloturePropositions:
+            formaterDateSimple(
+                dateLimite
+            )
+    }
+);
 
 }
