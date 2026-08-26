@@ -1414,9 +1414,23 @@ return (
 
 
 
-afficherMembres(
-resultat
+if (
+filtreActuel ===
+"communaute"
+) {
+
+afficherMembresCommunaute(
+    resultat
 );
+
+}
+else {
+
+afficherMembres(
+    resultat
+);
+
+}
 
 
 }
