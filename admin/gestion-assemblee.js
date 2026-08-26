@@ -2435,6 +2435,68 @@ console.log(
     "Corps de la requête :",
     corpsRequete
 );
+
+try {
+
+    const reponseWorker =
+        await fetch(
+            urlWorker,
+            {
+                method:
+                    "POST",
+
+                headers: {
+                    "Content-Type":
+                        "application/json"
+                },
+
+                body:
+                    JSON.stringify(
+                        corpsRequete
+                    )
+            }
+        );
+
+    const resultatWorker =
+        await reponseWorker.text();
+
+    console.log(
+        "================================="
+    );
+
+    console.log(
+        "ÉTAPE 7.33 — RÉPONSE DU WORKER"
+    );
+
+    console.log(
+        "================================="
+    );
+
+    console.log(
+        "Statut HTTP :",
+        reponseWorker.status
+    );
+
+    console.log(
+        "Réponse Worker :",
+        resultatWorker
+    );
+
+}
+catch (error) {
+
+    console.error(
+        "Erreur communication Worker :",
+        error
+    );
+
+    alert(
+        "Impossible de contacter le serveur d'envoi."
+    );
+
+    return;
+
+}
     
 alert(
     "Les données de la convocation sont prêtes.\n\n" +
