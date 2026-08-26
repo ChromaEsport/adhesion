@@ -2353,5 +2353,4 @@ async function envoyerConvocationsWorker(
         "Préparation de l'envoi des convocations :",
         donneesConvocation
     );
-
 }
