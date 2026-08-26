@@ -245,6 +245,8 @@ if (!idAG) {
 }
 
 let agActuelle = null;
+
+let destinatairesConvocation = [];
 /*
 AUTHENTIFICATION
 
@@ -1766,7 +1768,7 @@ async function chargerDestinatairesConvocation() {
             );
 
 
-        const destinataires = [];
+        destinatairesConvocation = [];
 
         let totalAdherents = 0;
 
@@ -1803,9 +1805,9 @@ async function chargerDestinatairesConvocation() {
                     "adherent"
                 ) {
 
-                    destinataires.push(
-                        membre
-                    );
+                    destinatairesConvocation.push(
+    membre
+);
 
                     totalAdherents++;
 
@@ -1823,9 +1825,9 @@ async function chargerDestinatairesConvocation() {
                     "actif"
                 ) {
 
-                    destinataires.push(
-                        membre
-                    );
+                    destinatairesConvocation.push(
+    membre
+);
 
                     totalActifs++;
 
@@ -1842,7 +1844,7 @@ async function chargerDestinatairesConvocation() {
         */
 
         const totalDestinataires =
-            destinataires.length;
+    destinatairesConvocation.length;
 
 
         /*
@@ -1909,11 +1911,11 @@ async function chargerDestinatairesConvocation() {
         */
 
         afficherDestinatairesConvocation(
-            destinataires
-        );
+    destinatairesConvocation
+);
 
 
-        return destinataires;
+        return destinatairesConvocation;
 
     }
     catch (
