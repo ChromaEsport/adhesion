@@ -1741,132 +1741,215 @@ CHARGER LES DESTINATAIRES DE LA CONVOCATION
 
 async function chargerDestinatairesConvocation() {
 
-try {
+    try {
 
-    const resultat =
-        await getDocs(
-            collection(
-                db,
-                "membres"
-            )
+        const resultat =
+            await getDocs(
+                collection(
+                    db,
+                    "membres"
+                )
+            );
+
+
+        const destinataires = [];
+
+        let totalAdherents = 0;
+
+        let totalActifs = 0;
+
+
+        /*
+        =========================================
+        MEMBRES ADHÉRENTS ET ACTIFS UNIQUEMENT
+        =========================================
+        */
+
+        resultat.forEach(
+            documentFirestore => {
+
+                const membre = {
+
+                    id:
+                        documentFirestore.id,
+
+                    ...documentFirestore.data()
+
+                };
+
+
+                /*
+                -----------------------------------------
+                MEMBRE ADHÉRENT
+                -----------------------------------------
+                */
+
+                if (
+                    membre.statutMembre ===
+                    "adherent"
+                ) {
+
+                    destinataires.push(
+                        membre
+                    );
+
+                    totalAdherents++;
+
+                }
+
+
+                /*
+                -----------------------------------------
+                MEMBRE ACTIF
+                -----------------------------------------
+                */
+
+                else if (
+                    membre.statutMembre ===
+                    "actif"
+                ) {
+
+                    destinataires.push(
+                        membre
+                    );
+
+                    totalActifs++;
+
+                }
+
+            }
         );
 
 
-    const destinataires = [];
+        /*
+        =========================================
+        TOTAL DES DESTINATAIRES
+        =========================================
+        */
+
+        const totalDestinataires =
+            destinataires.length;
 
 
-    resultat.forEach(
-        documentFirestore => {
+        /*
+        =========================================
+        MISE À JOUR DES COMPTEURS
+        =========================================
+        */
 
-            const membre = {
+        if (
+            nombreAdherents
+        ) {
 
-                id:
-                    documentFirestore.id,
-
-                ...documentFirestore.data()
-
-            };
-
-
-            /*
-            =========================================
-            MEMBRES ADHÉRENTS ET ACTIFS UNIQUEMENT
-            =========================================
-            */
-
-            if (
-                membre.statutMembre ===
-                "adherent"
-                ||
-                membre.statutMembre ===
-                "actif"
-            ) {
-
-                destinataires.push(
-                    membre
-                );
-
-            }
+            nombreAdherents.textContent =
+                totalAdherents;
 
         }
-    );
 
 
-    console.log(
-        "Destinataires de la convocation :",
-        destinataires
-    );
+        if (
+            nombreActifs
+        ) {
+
+            nombreActifs.textContent =
+                totalActifs;
+
+        }
 
 
-    afficherDestinatairesConvocation(
-        destinataires
-    );
+        if (
+            nombreDestinataires
+        ) {
+
+            nombreDestinataires.textContent =
+                totalDestinataires;
+
+        }
 
 
-}
-catch (
-    error
-) {
+        /*
+        =========================================
+        CONSOLE
+        =========================================
+        */
 
-    console.error(
-        "Erreur récupération destinataires :",
+        console.log(
+            "Destinataires de la convocation :",
+            {
+                adherents:
+                    totalAdherents,
+
+                actifs:
+                    totalActifs,
+
+                total:
+                    totalDestinataires
+            }
+        );
+
+
+        /*
+        =========================================
+        AFFICHAGE DE LA LISTE
+        =========================================
+        */
+
+        afficherDestinatairesConvocation(
+            destinataires
+        );
+
+
+        return destinataires;
+
+    }
+    catch (
         error
-    );
+    ) {
+
+        console.error(
+            "Erreur récupération destinataires :",
+            error
+        );
 
 
-    afficherErreur(
-        "Impossible de récupérer les destinataires de la convocation."
-    );
+        if (
+            nombreAdherents
+        ) {
 
-}
+            nombreAdherents.textContent =
+                "Erreur";
 
-}
-
-/*
-AFFICHER LES DESTINATAIRES
-
-*/
-
-function afficherDestinatairesConvocation(
-destinataires
-) {
-
-if (
-    !listeDestinatairesConvocation
-) {
-
-    return;
-
-}
+        }
 
 
-listeDestinatairesConvocation.innerHTML =
-    "";
+        if (
+            nombreActifs
+        ) {
+
+            nombreActifs.textContent =
+                "Erreur";
+
+        }
 
 
-/*
-=========================================
-AUCUN DESTINATAIRE
-=========================================
-*/
+        if (
+            nombreDestinataires
+        ) {
 
-if (
-    destinataires.length ===
-    0
-) {
+            nombreDestinataires.textContent =
+                "Erreur";
 
-    listeDestinatairesConvocation.innerHTML = `
+        }
 
-        <p class="message-info">
 
-            Aucun membre adhérent ou actif
-            n'a été trouvé.
+        afficherErreur(
+            "Impossible de récupérer les destinataires de la convocation."
+        );
 
-        </p>
 
-    `;
+        return [];
 
-    return;
+    }
 
 }
 
