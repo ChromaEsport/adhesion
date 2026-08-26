@@ -15,7 +15,8 @@ collection,
 getDocs, 
 query, 
 where,
-getDoc
+getDoc,
+updateDoc
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -1362,5 +1363,234 @@ console.log(
             )
     }
 );
+
+}
+
+
+/*
+ENREGISTRER LES DATES DE CONVOCATION
+
+*/
+
+async function enregistrerDatesConvocation() {
+
+if (!agActuelle) {
+
+    alert(
+        "Aucune assemblée générale n'est chargée."
+    );
+
+    return;
+
+}
+
+
+if (!agActuelle.dateAG) {
+
+    alert(
+        "La date de l'assemblée générale est manquante."
+    );
+
+    return;
+
+}
+
+
+/*
+=========================================
+CONVERSION DE LA DATE DE L'AG
+=========================================
+*/
+
+let dateAG;
+
+
+if (
+    typeof agActuelle.dateAG.toDate ===
+    "function"
+) {
+
+    dateAG =
+        agActuelle.dateAG.toDate();
+
+}
+
+else if (
+    agActuelle.dateAG instanceof Date
+) {
+
+    dateAG =
+        new Date(
+            agActuelle.dateAG
+        );
+
+}
+
+else {
+
+    dateAG =
+        new Date(
+            agActuelle.dateAG +
+            "T00:00:00"
+        );
+
+}
+
+
+if (
+    isNaN(
+        dateAG.getTime()
+    )
+) {
+
+    alert(
+        "La date de l'assemblée générale est invalide."
+    );
+
+    return;
+
+}
+
+
+/*
+=========================================
+DATE CONVOCATION
+AG - 15 JOURS
+=========================================
+*/
+
+const dateConvocation =
+    new Date(
+        dateAG
+    );
+
+
+dateConvocation.setDate(
+    dateConvocation.getDate() -
+    15
+);
+
+
+/*
+=========================================
+OUVERTURE PROPOSITIONS
+=========================================
+*/
+
+const dateOuverturePropositions =
+    new Date(
+        dateConvocation
+    );
+
+
+/*
+=========================================
+CLÔTURE PROPOSITIONS
+CONVOCATION + 7 JOURS
+=========================================
+*/
+
+const dateCloturePropositions =
+    new Date(
+        dateConvocation
+    );
+
+
+dateCloturePropositions.setDate(
+    dateCloturePropositions.getDate() +
+    7
+);
+
+
+/*
+=========================================
+ENREGISTREMENT FIRESTORE
+=========================================
+*/
+
+try {
+
+    await updateDoc(
+        doc(
+            db,
+            "assemblees_generales",
+            agActuelle.id
+        ),
+        {
+
+            dateConvocation:
+                dateConvocation,
+
+            dateOuverturePropositions:
+                dateOuverturePropositions,
+
+            dateCloturePropositions:
+                dateCloturePropositions,
+
+            statutConvocation:
+                "a_preparer"
+
+        }
+    );
+
+
+    /*
+    =========================================
+    MISE À JOUR LOCALE
+    =========================================
+    */
+
+    agActuelle.dateConvocation =
+        dateConvocation;
+
+    agActuelle.dateOuverturePropositions =
+        dateOuverturePropositions;
+
+    agActuelle.dateCloturePropositions =
+        dateCloturePropositions;
+
+    agActuelle.statutConvocation =
+        "a_preparer";
+
+
+    /*
+    =========================================
+    ACTUALISER L'AFFICHAGE
+    =========================================
+    */
+
+    calculerDatesConvocationGestion();
+
+
+    alert(
+        "Les dates de convocation ont été enregistrées."
+    );
+
+
+    console.log(
+        "Dates de convocation enregistrées :",
+        {
+            dateConvocation,
+            dateOuverturePropositions,
+            dateCloturePropositions
+        }
+    );
+
+}
+catch (
+    error
+) {
+
+    console.error(
+        "Erreur enregistrement dates convocation :",
+        error
+    );
+
+
+    alert(
+        "Impossible d'enregistrer les dates de convocation."
+    );
+
+}
 
 }
