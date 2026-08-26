@@ -2294,7 +2294,58 @@ console.log(
     donneesEnvoi.destinataires.length
 );
 
+console.log(
+    "================================="
+);
 
+console.log(
+    "ÉTAPE 7.29 — DESTINATAIRES"
+);
+
+console.log(
+    "================================="
+);
+
+console.log(
+    "Tableau destinatairesConvocation :",
+    destinatairesConvocation
+);
+
+console.log(
+    "Nombre réel de destinataires :",
+    destinatairesConvocation.length
+);
+
+destinatairesConvocation.forEach(
+    (membre, index) => {
+
+        console.log(
+            "Destinataire " +
+            (index + 1) +
+            ":",
+            {
+                id:
+                    membre.id,
+
+                nom:
+                    membre.nom,
+
+                prenom:
+                    membre.prenom,
+
+                email:
+                    membre.email,
+
+                numeroMembre:
+                    membre.numeroMembre,
+
+                statutMembre:
+                    membre.statutMembre
+            }
+        );
+
+    }
+);
     
 alert(
     "Les données de la convocation sont prêtes.\n\n" +
