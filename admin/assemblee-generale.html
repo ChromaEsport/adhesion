@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+
+<html lang="fr"> <head>
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+    Assemblée générale - Chroma Esport
+</title>
+
+<link
+    rel="stylesheet"
+    href="style.css"
+>
+</head> <body> <header class="admin-header">
+<div>
+
+    <h1>
+        CHROMA ESPORT
+    </h1>
+
+    <p>
+        Assemblée générale
+    </p>
+
+</div>
+
+
+<div class="navigation-admin">
+
+    <a
+        href="membre.html"
+        class="bouton-navigation"
+    >
+        👥 Membres
+    </a>
+
+
+    <button id="logout">
+        Déconnexion
+    </button>
+
+</div>
+</header> <main class="admin-container">
+<h2>
+    📢 Préparer une assemblée générale
+</h2>
+
+
+<p class="description-dashboard">
+
+    Créez et préparez une nouvelle assemblée générale
+    de Chroma Esport.
+
+</p>
+
+
+
+<!-- =====================================================
+     INFORMATIONS DE L'ASSEMBLÉE
+====================================================== -->
+
+<section class="formulaire-section">
+
+
+    <h3>
+        Informations de l'assemblée
+    </h3>
+
+
+
+    <!-- TYPE -->
+
+    <div class="champ-formulaire">
+
+        <label for="typeAG">
+            Type d'assemblée
+        </label>
+
+
+        <select id="typeAG">
+
+            <option value="AGO">
+                Assemblée Générale Ordinaire
+            </option>
+
+            <option value="AGE">
+                Assemblée Générale Extraordinaire
+            </option>
+
+        </select>
+
+    </div>
+
+
+
+    <!-- DATE -->
+
+    <div class="champ-formulaire">
+
+        <label for="dateAG">
+            📅 Date de l'assemblée
+        </label>
+
+
+        <input
+            type="date"
+            id="dateAG"
+            required
+        >
+
+    </div>
+
+
+
+    <!-- HEURE -->
+
+    <div class="champ-formulaire">
+
+        <label for="heureAG">
+            🕐 Heure
+        </label>
+
+
+        <input
+            type="time"
+            id="heureAG"
+            required
+        >
+
+    </div>
+
+
+
+    <!-- MODE -->
+
+    <div class="champ-formulaire">
+
+        <label for="modeAG">
+            Mode de participation
+        </label>
+
+
+        <select id="modeAG">
+
+            <option value="presentiel">
+                📍 Présentiel
+            </option>
+
+            <option value="visio">
+                💻 Visioconférence
+            </option>
+
+            <option value="hybride">
+                🔄 Présentiel + visioconférence
+            </option>
+
+        </select>
+
+    </div>
+
+
+
+    <!-- LIEU -->
+
+    <div
+        class="champ-formulaire"
+        id="blocLieu"
+    >
+
+        <label for="lieuAG">
+            📍 Lieu
+        </label>
+
+
+        <input
+            type="text"
+            id="lieuAG"
+            placeholder="Adresse ou lieu de l'assemblée"
+        >
+
+    </div>
+
+
+
+    <!-- LIEN VISIO -->
+
+    <div
+        class="champ-formulaire"
+        id="blocVisio"
+        style="display:none;"
+    >
+
+        <label for="lienVisioAG">
+            🔗 Lien de visioconférence
+        </label>
+
+
+        <input
+            type="url"
+            id="lienVisioAG"
+            placeholder="https://..."
+        >
+
+    </div>
+
+
+
+</section>
+
+
+
+<!-- =====================================================
+     ORDRE DU JOUR
+====================================================== -->
+
+<section class="formulaire-section">
+
+
+    <h3>
+        📝 Ordre du jour
+    </h3>
+
+
+    <p class="description-dashboard">
+
+        Ajoutez les différents points qui seront
+        présentés lors de l'assemblée.
+
+    </p>
+
+
+    <div id="listeOrdreDuJour">
+
+
+        <div class="ordre-du-jour-item">
+
+
+            <input
+                type="text"
+                class="ordre-du-jour-titre"
+                placeholder="Sujet de l'ordre du jour"
+            >
+
+
+            <textarea
+                class="ordre-du-jour-description"
+                placeholder="Description ou précisions (facultatif)"
+            ></textarea>
+
+
+            <button
+                type="button"
+                class="supprimer-sujet"
+            >
+                🗑️ Supprimer
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <button
+        type="button"
+        id="ajouterSujet"
+        class="bouton-navigation"
+    >
+
+        ➕ Ajouter un sujet
+
+    </button>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     INFORMATIONS CALCULÉES
+====================================================== -->
+
+<section class="formulaire-section">
+
+
+    <h3>
+        📅 Calendrier de l'assemblée
+    </h3>
+
+
+    <div class="info-ag">
+
+        <p>
+
+            <strong>
+                Convocation :
+            </strong>
+
+            <span id="dateConvocation">
+                —
+            </span>
+
+        </p>
+
+
+        <p>
+
+            <strong>
+                Ouverture des propositions :
+            </strong>
+
+            <span id="dateOuverturePropositions">
+                —
+            </span>
+
+        </p>
+
+
+        <p>
+
+            <strong>
+                Clôture des propositions :
+            </strong>
+
+            <span id="dateCloturePropositions">
+                —
+            </span>
+
+        </p>
+
+
+    </div>
+
+
+    <p class="description-dashboard">
+
+        Les convocations doivent être envoyées
+        15 jours avant l'assemblée générale.
+        Les membres adhérents et actifs disposent
+        ensuite de 7 jours pour proposer des sujets
+        à l'ordre du jour.
+
+    </p>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     ACTIONS
+====================================================== -->
+
+<section class="actions-ag">
+
+
+    <button
+        type="button"
+        id="enregistrerAG"
+        class="bouton-principal"
+    >
+        💾 Enregistrer le brouillon
+    </button>
+
+
+    <button
+        type="button"
+        id="annulerAG"
+        class="bouton-secondaire"
+    >
+        Annuler
+    </button>
+
+
+</section>
+</main> <script type="module" src="assemblee-generale.js" ></script> </body> </html>
