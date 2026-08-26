@@ -2258,58 +2258,17 @@ console.log(
         : 0
 );
 
-const destinataires =
-    await chargerDestinatairesConvocation();
-
 console.log(
-    "Destinataires récupérés pour l'envoi :",
-    destinataires
+    "Destinataires actuellement affichés :",
+    listeDestinatairesConvocation
 );
 
-if (
-    !destinataires ||
-    destinataires.length === 0
-) {
-
-    alert(
-        "Aucun destinataire disponible pour l'envoi."
-    );
-
-    return;
-
-}
-
-const donneesEnvoi = {
-
-    ag:
-        donneesConvocation,
-
-    destinataires:
-        destinataires.map(
-            membre => ({
-
-                id:
-                    membre.id || "",
-
-                prenom:
-                    membre.prenom || "",
-
-                nom:
-                    membre.nom || "",
-
-                email:
-                    membre.email || "",
-
-                numeroMembre:
-                    membre.numeroMembre || "",
-
-                statutMembre:
-                    membre.statutMembre || ""
-
-            })
-        )
-
-};
+console.log(
+    "Nombre de destinataires affichés :",
+    nombreDestinataires
+        ? nombreDestinataires.textContent
+        : "0"
+);
 
 console.log(
     "================================="
