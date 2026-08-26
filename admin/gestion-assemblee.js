@@ -676,28 +676,125 @@ if (!date) {
 }
 
 
-const morceaux =
-    date.split(
-        "-"
-    );
-
+/*
+=========================================
+FIRESTORE TIMESTAMP
+=========================================
+*/
 
 if (
-    morceaux.length !== 3
+    typeof date.toDate ===
+    "function"
 ) {
 
-    return date;
+    date =
+        date.toDate();
 
 }
 
 
-return (
-    morceaux[2] +
-    "/" +
-    morceaux[1] +
-    "/" +
-    morceaux[0]
-);
+/*
+=========================================
+OBJET DATE JAVASCRIPT
+=========================================
+*/
+
+if (
+    date instanceof Date
+) {
+
+    return date.toLocaleDateString(
+        "fr-FR",
+        {
+            day:
+                "2-digit",
+
+            month:
+                "2-digit",
+
+            year:
+                "numeric"
+        }
+    );
+
+}
+
+
+/*
+=========================================
+CHAÎNE YYYY-MM-DD
+=========================================
+*/
+
+if (
+    typeof date ===
+    "string"
+) {
+
+    const morceaux =
+        date.split("-");
+
+
+    if (
+        morceaux.length ===
+        3
+    ) {
+
+        return (
+            morceaux[2] +
+            "/" +
+            morceaux[1] +
+            "/" +
+            morceaux[0]
+        );
+
+    }
+
+
+    /*
+    Si ce n'est pas YYYY-MM-DD,
+    on essaie quand même de
+    convertir la date.
+    */
+
+    const dateConvertie =
+        new Date(
+            date
+        );
+
+
+    if (
+        !isNaN(
+            dateConvertie.getTime()
+        )
+    ) {
+
+        return dateConvertie.toLocaleDateString(
+            "fr-FR",
+            {
+                day:
+                    "2-digit",
+
+                month:
+                    "2-digit",
+
+                year:
+                    "numeric"
+            }
+        );
+
+    }
+
+}
+
+
+/*
+=========================================
+AUTRE FORMAT INCONNU
+=========================================
+*/
+
+return "—";
 
 }
 
