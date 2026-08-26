@@ -2292,7 +2292,59 @@ console.log(
     "Nombre réel de destinataires :",
     destinatairesConvocation.length
 );
+const donneesEnvoi = {
 
+    ag:
+        donneesConvocation,
+
+    destinataires:
+        destinatairesConvocation.map(
+            membre => ({
+
+                id:
+                    membre.id || "",
+
+                prenom:
+                    membre.prenom || "",
+
+                nom:
+                    membre.nom || "",
+
+                email:
+                    membre.email || "",
+
+                numeroMembre:
+                    membre.numeroMembre || "",
+
+                statutMembre:
+                    membre.statutMembre || ""
+
+            })
+        )
+
+};
+
+console.log(
+    "================================="
+);
+
+console.log(
+    "ÉTAPE 7.30 — DONNÉES FINALES"
+);
+
+console.log(
+    "================================="
+);
+
+console.log(
+    "Données préparées pour le Worker :",
+    donneesEnvoi
+);
+
+console.log(
+    "Nombre de destinataires à envoyer :",
+    donneesEnvoi.destinataires.length
+);
 console.log(
     "================================="
 );
