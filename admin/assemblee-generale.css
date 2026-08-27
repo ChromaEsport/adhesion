@@ -139,6 +139,18 @@ line-height: 1.6;
 
 }
 
+.formulaire-section .description-dashboard {
+margin: 8px 0 22px;
+
+color: #000000;
+
+font-size: 16px;
+
+line-height: 1.6;
+
+
+}
+
 /*
 
 # SECTIONS
@@ -171,9 +183,9 @@ padding-bottom: 12px;
 
 border-bottom: 1px solid #e8ebef;
 
-color: #181b22;
+color: #000000;
 
-font-size: 20px;
+font-size: 18px;
 
 font-weight: 800;
 
@@ -252,11 +264,8 @@ min-height: 44px;
 .champ-formulaire select:focus,
 .ordre-du-jour-item input:focus,
 .ordre-du-jour-item textarea:focus {
-border-color: #6c4cff;
-
-
-box-shadow:
-    0 0 0 3px rgba(108, 76, 255, 0.12);
+border-color: #000000;
+    box-shadow: 0 0 0 3px rgb(0 0 0 / 12%);
 
 
 }
