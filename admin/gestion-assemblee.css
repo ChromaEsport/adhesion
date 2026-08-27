@@ -1,0 +1,687 @@
+* {
+  box-sizing: border-box;
+  }
+
+html {
+scroll-behavior: smooth;
+}
+
+body {
+margin: 0;
+padding: 0;
+font-family: Arial, Helvetica, sans-serif;
+background: #f4f6f9;
+color: #20242a;
+line-height: 1.6;
+}
+
+/*
+
+# HEADER ADMIN
+
+*/
+
+.admin-header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+gap: 30px;
+
+
+padding: 22px 40px;
+
+background: #181b22;
+color: #ffffff;
+
+border-bottom: 3px solid #6c4cff;
+
+
+}
+
+.admin-header h1 {
+margin: 0;
+font-size: 25px;
+font-weight: 800;
+letter-spacing: 1px;
+}
+
+.admin-header p {
+margin: 4px 0 0;
+color: #b8bdc8;
+font-size: 14px;
+}
+
+/*
+
+# NAVIGATION ADMIN
+
+*/
+
+.navigation-admin {
+display: flex;
+align-items: center;
+gap: 10px;
+flex-wrap: wrap;
+}
+
+.navigation-admin a,
+.navigation-admin button {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+
+
+min-height: 42px;
+
+padding: 9px 15px;
+
+border-radius: 8px;
+
+font-size: 14px;
+font-weight: 700;
+
+text-decoration: none;
+
+cursor: pointer;
+
+transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+
+
+}
+
+.bouton-navigation {
+background: #292e38;
+color: #ffffff;
+border: 1px solid #3b414d;
+}
+
+.bouton-navigation:hover {
+background: #343a46;
+transform: translateY(-1px);
+}
+
+.navigation-admin button {
+border: none;
+background: #b42318;
+color: #ffffff;
+}
+
+.navigation-admin button:hover {
+background: #d92d20;
+transform: translateY(-1px);
+}
+
+/*
+
+# CONTENEUR PRINCIPAL
+
+*/
+
+.admin-container {
+width: min(1100px, calc(100% - 40px));
+margin: 40px auto 60px;
+}
+
+ /*
+
+# TITRE
+
+*/
+
+#titreAG {
+margin: 0;
+
+
+color: #181b22;
+
+font-size: 32px;
+line-height: 1.25;
+font-weight: 800;
+
+
+}
+
+.description-dashboard {
+margin: 8px 0 24px;
+
+
+color: #69707d;
+
+font-size: 15px;
+
+
+}
+
+/*
+
+# CHARGEMENT
+
+*/
+
+#chargementAG {
+padding: 40px;
+
+
+background: #ffffff;
+
+border-radius: 12px;
+
+text-align: center;
+
+color: #69707d;
+
+box-shadow:
+    0 4px 18px rgba(0, 0, 0, 0.06);
+
+
+}
+
+/*
+
+# SECTIONS
+
+*/
+
+.formulaire-section {
+margin-bottom: 24px;
+
+
+padding: 25px;
+
+background: #ffffff;
+
+border: 1px solid #e3e6eb;
+
+border-radius: 14px;
+
+box-shadow:
+    0 4px 18px rgba(0, 0, 0, 0.05);
+
+
+}
+
+.formulaire-section h3 {
+margin: 0 0 20px;
+
+
+padding-bottom: 12px;
+
+border-bottom: 1px solid #e8ebef;
+
+color: #181b22;
+
+font-size: 20px;
+font-weight: 800;
+
+
+}
+
+.formulaire-section p {
+margin: 10px 0;
+
+
+color: #4e5561;
+
+
+}
+
+.formulaire-section strong {
+color: #252a32;
+}
+
+ /*
+
+# STATUT AG
+
+*/
+
+#statutAG {
+display: inline-flex;
+align-items: center;
+
+
+min-height: 30px;
+
+padding: 4px 11px;
+
+border-radius: 999px;
+
+background: #eeeaff;
+
+color: #5940d8;
+
+font-size: 13px;
+font-weight: 800;
+
+
+}
+
+/*
+
+# INFORMATIONS AG
+
+*/
+
+#dateAGAffichage,
+#heureAGAffichage,
+#typeAGAffichage,
+#modeAGAffichage,
+#lieuAGAffichage,
+#dateConvocationAffichage,
+#dateOuvertureAffichage,
+#dateClotureAffichage {
+font-weight: 600;
+color: #181b22;
+}
+
+/*
+
+# VISIO
+
+*/
+
+#lienVisioAGAffichage a {
+color: #5b45d6;
+font-weight: 700;
+text-decoration: none;
+}
+
+#lienVisioAGAffichage a:hover {
+text-decoration: underline;
+}
+
+/*
+
+# ORDRE DU JOUR
+
+*/
+
+#ordreDuJourAffichage {
+display: flex;
+flex-direction: column;
+gap: 12px;
+}
+
+.ordre-du-jour-item {
+padding: 16px 18px;
+
+
+background: #f7f8fa;
+
+border: 1px solid #e5e8ed;
+
+border-left: 4px solid #6c4cff;
+
+border-radius: 9px;
+
+
+}
+
+.ordre-du-jour-item h4 {
+margin: 0 0 6px;
+
+
+color: #20242a;
+
+font-size: 16px;
+
+
+}
+
+.ordre-du-jour-item p {
+margin: 0;
+
+
+color: #68707d;
+
+font-size: 14px;
+
+
+}
+
+/*
+
+# BLOC INFORMATIONS CONVOCATION
+
+*/
+
+.info-ag {
+padding: 20px;
+
+
+background: #f8f9fb;
+
+border: 1px solid #e2e6eb;
+
+border-radius: 10px;
+
+
+}
+
+.info-ag p {
+display: flex;
+justify-content: space-between;
+align-items: center;
+
+
+gap: 20px;
+
+padding: 11px 0;
+
+margin: 0;
+
+border-bottom: 1px solid #e5e8ed;
+
+
+}
+
+.info-ag p:last-child {
+border-bottom: none;
+}
+
+#nombreAdherents,
+#nombreActifs,
+#nombreDestinataires {
+display: inline-flex;
+justify-content: center;
+align-items: center;
+
+
+min-width: 38px;
+min-height: 30px;
+
+padding: 3px 10px;
+
+border-radius: 999px;
+
+background: #e9e7ff;
+
+color: #5038c8;
+
+font-weight: 800;
+
+
+}
+
+ /*
+
+# LISTE DESTINATAIRES
+
+*/
+
+.liste-destinataires-convocation {
+margin: 20px 0;
+}
+
+.destinataire-convocation {
+display: grid;
+grid-template-columns: 1.2fr 1.5fr 1fr;
+
+
+gap: 15px;
+
+padding: 13px 15px;
+
+border-bottom: 1px solid #e5e8ed;
+
+font-size: 14px;
+
+
+}
+
+.destinataire-convocation:first-of-type {
+border-top: 1px solid #e5e8ed;
+}
+
+.destinataire-convocation span {
+min-width: 0;
+overflow-wrap: anywhere;
+}
+
+.message-info {
+padding: 15px;
+
+
+background: #f1f3f6;
+
+border-radius: 8px;
+
+color: #626a76;
+
+
+}
+
+/*
+
+# ACTIONS
+
+*/
+
+.actions-ag {
+display: flex;
+flex-wrap: wrap;
+
+
+gap: 12px;
+
+margin-top: 22px;
+
+
+}
+
+.bouton-principal,
+.bouton-secondaire {
+min-height: 44px;
+
+
+padding: 10px 18px;
+
+border-radius: 9px;
+
+font-size: 14px;
+font-weight: 800;
+
+cursor: pointer;
+
+transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+
+
+}
+
+.bouton-principal {
+border: none;
+
+
+background: #6c4cff;
+
+color: #ffffff;
+
+
+}
+
+.bouton-principal:hover:not(:disabled) {
+background: #5940dc;
+
+
+transform: translateY(-1px);
+
+box-shadow:
+    0 5px 14px rgba(108, 76, 255, 0.25);
+
+
+}
+
+.bouton-secondaire {
+border: 1px solid #d4d8df;
+
+
+background: #ffffff;
+
+color: #343a44;
+
+
+}
+
+.bouton-secondaire:hover {
+background: #f1f3f6;
+
+
+transform: translateY(-1px);
+
+
+}
+
+.bouton-principal:disabled,
+.bouton-secondaire:disabled {
+opacity: 0.5;
+
+
+cursor: not-allowed;
+
+transform: none;
+
+
+}
+
+ /*
+
+# APERÇU CONVOCATION
+
+*/
+
+#apercuConvocation {
+margin-top: 30px;
+}
+
+#apercuConvocation hr {
+margin: 30px 0;
+
+
+border: 0;
+
+border-top: 1px solid #e1e4e8;
+
+
+}
+
+#apercuConvocation h4 {
+margin: 0 0 10px;
+
+
+color: #20242a;
+
+font-size: 18px;
+
+
+}
+
+.apercu-convocation {
+padding: 25px;
+
+
+background: #fafbfc;
+
+border: 1px solid #e0e4e9;
+
+border-radius: 10px;
+
+
+}
+
+# /*
+
+# RESPONSIVE
+
+*/
+
+@media (max-width: 800px) {
+
+
+.admin-header {
+    flex-direction: column;
+    align-items: flex-start;
+
+    padding: 20px;
+}
+
+.navigation-admin {
+    width: 100%;
+}
+
+.navigation-admin a,
+.navigation-admin button {
+    flex: 1;
+}
+
+.admin-container {
+    width: min(100% - 24px, 1100px);
+
+    margin-top: 25px;
+}
+
+#titreAG {
+    font-size: 26px;
+}
+
+.formulaire-section {
+    padding: 20px;
+}
+
+.destinataire-convocation {
+    grid-template-columns: 1fr;
+
+    gap: 5px;
+}
+
+
+}
+
+@media (max-width: 520px) {
+
+
+.admin-header h1 {
+    font-size: 21px;
+}
+
+.navigation-admin {
+    flex-direction: column;
+}
+
+.navigation-admin a,
+.navigation-admin button {
+    width: 100%;
+    flex: none;
+}
+
+.actions-ag {
+    flex-direction: column;
+}
+
+.bouton-principal,
+.bouton-secondaire {
+    width: 100%;
+}
+
+.info-ag p {
+    flex-direction: column;
+    align-items: flex-start;
+
+    gap: 5px;
+}
+
+.formulaire-section {
+    padding: 17px;
+}
+
+.apercu-convocation {
+    padding: 17px;
+}
+
+
+}
