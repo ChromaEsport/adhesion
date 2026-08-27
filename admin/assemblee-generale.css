@@ -56,19 +56,14 @@ margin-top: 8px;
 
 .navigation-admin {
 display: flex;
-
-
-align-items: center;
-
-gap: 10px;
-
-flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
 
 
 }
 
 .bouton-navigation,
-.navigation-admin button {
+.navigation-admin button #logout {
 display: inline-flex;
 
 align-items: center;
@@ -101,27 +96,16 @@ transition:
 
 }
 
+#logou{
+  background: #c0392b;
+}
+
 .bouton-navigation:hover,
 .navigation-admin button:hover {
-background: #343a46;
+transform: translateY(-2px);
+    opacity: 0.9;
 
 
-transform: translateY(-1px);
-
-
-}
-
-.navigation-admin button {
-border-color: #b42318;
-
-
-background: #b42318;
-
-
-}
-
-.navigation-admin button:hover {
-background: #d92d20;
 }
 
 /*
