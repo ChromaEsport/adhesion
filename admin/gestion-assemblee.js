@@ -1792,7 +1792,19 @@ async function chargerDestinatairesConvocation() {
                     ...documentFirestore.data()
 
                 };
+                 if (
+                     membre.statutAdhesion ===
+                     "expiree"
+                ) {
 
+                console.log(
+                "Membre exclu de la convocation car adhésion expirée :",
+                membre.email
+                 );
+
+               return;
+
+                }
 
                 /*
                 -----------------------------------------
