@@ -63,45 +63,25 @@ display: flex;
 }
 
 .bouton-navigation,
-.navigation-admin button #logout {
-display: inline-flex;
-
-align-items: center;
-justify-content: center;
-
-min-height: 42px;
-
-padding: 9px 15px;
-
-border-radius: 8px;
-
-border: 1px solid #3b414d;
-
-background: #292e38;
-
-color: #ffffff;
-
-font-size: 14px;
-
-font-weight: 700;
-
-text-decoration: none;
-
-cursor: pointer;
-
-transition:
-    background 0.2s ease,
-    transform 0.2s ease;
+.navigation-admin button, #logout {
+border: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+    background: #1875c2;
+    transition: 0.2s;
 
 
 }
 
-#logou{
+#logout{
   background: #c0392b;
 }
 
 .bouton-navigation:hover,
-.navigation-admin button:hover {
+.navigation-admin button:hover, #logout:hover {
 transform: translateY(-2px);
     opacity: 0.9;
 
