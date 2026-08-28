@@ -500,7 +500,7 @@ transition:
 .bouton-principal {
 border: none;
 
-background: #6c4cff;
+background: #3c9195;
 
 color: #ffffff;
 
@@ -508,13 +508,9 @@ color: #ffffff;
 }
 
 .bouton-principal:hover {
-background: #5940dc;
-
-
-transform: translateY(-1px);
-
-box-shadow:
-    0 5px 14px rgba(108, 76, 255, 0.25);
+    background: #3c9195;
+    transform: translateY(-1px);
+    box-shadow: 0 5px 14px #3c919540;
 
 
 }
