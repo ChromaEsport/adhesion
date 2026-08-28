@@ -210,9 +210,9 @@ padding: 4px 11px;
 
 border-radius: 999px;
 
-background: #3c9195;
+background: #953c3c1c;
 
-color: #3c91951c;
+color: #953c3c;
 
 font-size: 14px;
 font-weight: 800;
@@ -252,6 +252,7 @@ text-decoration: none;
 
 #lienVisioAGAffichage a:hover {
 text-decoration: underline;
+font-weight: 800;
 }
 
 /*
@@ -274,7 +275,7 @@ background: #f7f8fa;
 
 border: 1px solid #e5e8ed;
 
-border-left: 4px solid #6c4cff;
+border-left: 4px solid #3c9195;
 
 border-radius: 9px;
 
@@ -358,9 +359,9 @@ padding: 3px 10px;
 
 border-radius: 999px;
 
-background: #e9e7ff;
+background: #3c91951c
 
-color: #5038c8;
+color: #3c9195;
 
 font-weight: 800;
 
@@ -388,8 +389,8 @@ padding: 13px 15px;
 
 border-bottom: 1px solid #e5e8ed;
 
-font-size: 14px;
-
+font-size: 16px;
+color: #000000;
 
 }
 
