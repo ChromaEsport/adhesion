@@ -252,7 +252,6 @@ text-decoration: none;
 
 #lienVisioAGAffichage a:hover {
 text-decoration: underline;
-font-weight: 800;
 }
 
 /*
@@ -460,7 +459,7 @@ transition:
 border: none;
 
 
-background: #6c4cff;
+background: #3c9195;
 
 color: #ffffff;
 
@@ -468,13 +467,12 @@ color: #ffffff;
 }
 
 .bouton-principal:hover:not(:disabled) {
-background: #5940dc;
+background: #3c9195;
 
 
 transform: translateY(-1px);
 
-box-shadow:
-    0 5px 14px rgba(108, 76, 255, 0.25);
+box-shadow: 0 5px 14px #3c919540;
 
 
 }
