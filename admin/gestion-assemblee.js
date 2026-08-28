@@ -1416,50 +1416,59 @@ const heure =
 
 
 /*
-=========================================
-MODE
-=========================================
+
+# MODE
+
 */
 
 let modeTexte = "";
 
 if (
-    agActuelle.modeAG ===
-    "presentiel"
+agActuelle.modeAG ===
+"presentiel"
 ) {
 
-    modeTexte =
-        "présentiel";
+
+modeTexte =
+    "présentiel";
+
 
 }
 
 else if (
-    agActuelle.modeAG ===
-    "visio"
+agActuelle.modeAG ===
+"visio"
 ) {
 
-    modeTexte =
-        "visioconférence";
+
+modeTexte =
+    "visioconférence";
+
 
 }
 
 else if (
-    agActuelle.modeAG ===
-    "hybride"
+agActuelle.modeAG ===
+"hybride"
 ) {
 
-    modeTexte =
-        "présentiel et visioconférence";
+
+modeTexte =
+    "présentiel et en visioconférence";
+
 
 }
 
 else {
 
-    modeTexte =
-        agActuelle.modeAG ||
-        "—";
+
+modeTexte =
+    agActuelle.modeAG ||
+    "—";
+
 
 }
+
 
 
 /*
