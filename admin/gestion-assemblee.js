@@ -1426,78 +1426,221 @@ agActuelle.mode ||
 agActuelle.modeAG ||
 "";
 
-let modeTexte = "—";
+let blocParticipation = "";
+
+/*
+
+# PRÉSENTIEL
+
+*/
 
 if (
 modeAG === "presentiel"
 ) {
 
 
-modeTexte =
-    "présentiel";
+blocParticipation = `
+
+    <p>
+
+        Nous avons le plaisir de vous
+        convier à l'Assemblée Générale
+        de Chroma Esport, qui se tiendra
+        le <strong>${date}</strong>
+        à <strong>${heure}</strong>.
+
+    </p>
+
+    <p>
+
+        <strong>
+            📍 En présentiel
+        </strong>
+
+    </p>
+
+    <p>
+
+        La réunion se déroulera à
+        l'adresse suivante :
+
+        <strong>
+            ${agActuelle.lieu || agActuelle.lieuAG || "—"}
+        </strong>.
+
+    </p>
+
+`;
 
 
 }
+
+/*
+
+# VISIO
+
+*/
 
 else if (
 modeAG === "visio"
 ) {
 
 
-modeTexte =
-    "visioconférence";
+blocParticipation = `
+
+    <p>
+
+        Nous avons le plaisir de vous
+        convier à l'Assemblée Générale
+        de Chroma Esport, qui se tiendra
+        le <strong>${date}</strong>
+        à <strong>${heure}</strong>.
+
+    </p>
+
+    <p>
+
+        <strong>
+            💻 En visioconférence
+        </strong>
+
+    </p>
+
+    <p>
+
+        Pour participer à distance, vous
+        pourrez rejoindre la visioconférence
+        en utilisant le lien suivant :
+
+    </p>
+
+    <p>
+
+        <a
+            href="${agActuelle.lienVisio || agActuelle.lienVisioAG || "#"}"
+            class="email-lien-visio"
+            target="_blank"
+        >
+            ${agActuelle.lienVisio || agActuelle.lienVisioAG || "Lien de visioconférence"}
+        </a>
+
+    </p>
+
+`;
 
 
 }
+
+/*
+
+# HYBRIDE
+
+*/
 
 else if (
 modeAG === "hybride"
 ) {
 
 
-modeTexte =
-    "présentiel et en visioconférence";
+blocParticipation = `
+
+    <p>
+
+        Nous avons le plaisir de vous
+        convier à l'Assemblée Générale
+        de Chroma Esport, qui se tiendra
+        le <strong>${date}</strong>
+        à <strong>${heure}</strong>.
+
+    </p>
+
+    <p>
+
+        Cette Assemblée Générale sera
+        accessible <strong>en présentiel
+        et en visioconférence</strong>.
+
+    </p>
+
+
+    <p>
+
+        <strong>
+            📍 En présentiel
+        </strong>
+
+    </p>
+
+    <p>
+
+        La réunion se déroulera à
+        l'adresse suivante :
+
+        <strong>
+            ${agActuelle.lieu || agActuelle.lieuAG || "—"}
+        </strong>.
+
+    </p>
+
+
+    <p>
+
+        <strong>
+            💻 À distance
+        </strong>
+
+    </p>
+
+    <p>
+
+        Pour participer à distance, vous
+        pourrez rejoindre la visioconférence
+        en utilisant le lien suivant :
+
+    </p>
+
+    <p>
+
+        <a
+            href="${agActuelle.lienVisio || agActuelle.lienVisioAG || "#"}"
+            class="email-lien-visio"
+            target="_blank"
+        >
+            ${agActuelle.lienVisio || agActuelle.lienVisioAG || "Lien de visioconférence"}
+        </a>
+
+    </p>
+
+`;
 
 
 }
 
-console.log(
-"MODE AG FIRESTORE :",
-agActuelle.mode
-);
-
-console.log(
-"MODE AG MODEAG :",
-agActuelle.modeAG
-);
-
-console.log(
-"MODE UTILISÉ :",
-modeAG
-);
-
-
-
 /*
-=========================================
-LIEU
-=========================================
+
+# MODE INCONNU
+
 */
 
-const lieu =
-    agActuelle.lieuAG ||
-    "";
+else {
 
 
-/*
-=========================================
-LIEN VISIO
-=========================================
-*/
+blocParticipation = `
 
-const lienVisio =
-    agActuelle.lienVisioAG ||
-    "";
+    <p>
+
+        Nous avons le plaisir de vous
+        convier à l'Assemblée Générale
+        de Chroma Esport, qui se tiendra
+        le <strong>${date}</strong>
+        à <strong>${heure}</strong>.
+
+    </p>
+
+`;
+
+
+}
 
 
 /*
