@@ -1638,13 +1638,13 @@ Nous avons le plaisir de vous convier à l'Assemblée Générale de Chroma Espor
 
 {si le parametre lieu }
 
-La réunion se déroulera à l'adresse suivante : ${lieu}.
+La réunion se déroulera à l'adresse suivante : ${lieuAGAffichage}.
 
 {si le parametre visio}
 
 Pour participer à distance, vous pourrez rejoindre la visioconférence en utilisant le lien suivant :
 
-${lienVisio}
+${lienVisioAGAffichage}
 
 
 
