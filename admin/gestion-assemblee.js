@@ -1609,19 +1609,18 @@ contenuApercuConvocation.innerHTML = `
     <div class="convocation-apercu">
 
         <h3>
-            📢 Convocation à l'Assemblée Générale
+            📢 {Prénom Nom}, vous êtes invité(e) à participer à l'Assemblée Générale de Chroma Esport
         </h3>
 
 
         <p>
-            Bonjour,
+            Bonjour {Prénom Nom},
         </p>
 
 
         <p>
 
-            Vous êtes invité(e) à participer à
-            l'Assemblée Générale de
+           Vous êtes invité(e) à participer à l'Assemblée Générale de 
             <strong>
                 Chroma Esport
             </strong>.
@@ -1631,11 +1630,23 @@ contenuApercuConvocation.innerHTML = `
 
         <p>
 
-            <strong>
-                Type :
-            </strong>
+            <strong>📢 Informations concernant l'Assemblée Générale </strong>
 
-            ${type}
+
+
+Nous avons le plaisir de vous convier à l'Assemblée Générale de Chroma Esport, qui se tiendra le ${date} à ${heure}, en ${mode}.
+
+{si le parametre lieu }
+
+La réunion se déroulera à l'adresse suivante : ${lieu}.
+
+{si le parametre visio}
+
+Pour participer à distance, vous pourrez rejoindre la visioconférence en utilisant le lien suivant :
+
+${lienVisio}
+
+
 
         </p>
 
