@@ -1416,9 +1416,9 @@ const heure =
 
 
  /*
-
-# MODE
-
+=========================================
+MODE
+=========================================
 */
 
 const modeAG =
@@ -1461,6 +1461,20 @@ modeTexte =
 
 }
 
+console.log(
+"MODE AG FIRESTORE :",
+agActuelle.mode
+);
+
+console.log(
+"MODE AG MODEAG :",
+agActuelle.modeAG
+);
+
+console.log(
+"MODE UTILISÉ :",
+modeAG
+);
 
 
 
