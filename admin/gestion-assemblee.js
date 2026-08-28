@@ -211,8 +211,6 @@ document.getElementById(
 "listeDestinatairesConvocation" 
 );
 
-);
-
 enregistrerDatesConvocation.addEventListener( 
 "click", sauvegarderDatesConvocation 
 );
