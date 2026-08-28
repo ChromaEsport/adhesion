@@ -211,6 +211,11 @@ document.getElementById(
 "listeDestinatairesConvocation" 
 );
 
+const mode = 
+document.getElementById( 
+"mode" 
+);
+
 enregistrerDatesConvocation.addEventListener( 
 "click", sauvegarderDatesConvocation 
 );
@@ -1634,7 +1639,7 @@ contenuApercuConvocation.innerHTML = `
 
 
 
-Nous avons le plaisir de vous convier à l'Assemblée Générale de Chroma Esport, qui se tiendra le ${date} à ${heure}, en ${modeAGAffichage}.
+Nous avons le plaisir de vous convier à l'Assemblée Générale de Chroma Esport, qui se tiendra le ${date} à ${heure}, en ${informationsParticipation}.
 
 {si le parametre lieu }
 
