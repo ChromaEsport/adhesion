@@ -1738,90 +1738,6 @@ if (
 
 }
 
-
-/*
-=========================================
-BLOC LIEU
-=========================================
-*/
-
-const blocLieu =
-    lieu
-        ? `
-
-            <p>
-
-                La réunion se déroulera à
-                l'adresse suivante :
-
-                <strong>
-                    ${lieu}
-                </strong>.
-
-            </p>
-
-          `
-        : "";
-
-
-/*
-=========================================
-BLOC VISIO
-=========================================
-*/
-
-const blocVisio =
-    lienVisio
-        ? `
-
-            <p>
-
-                Pour participer à distance,
-                vous pourrez rejoindre la
-                visioconférence en utilisant
-                le lien suivant :
-
-            </p>
-
-
-            <p>
-
-                <a
-                    href="${lienVisio}"
-                    class="email-lien-visio"
-                    target="_blank"
-                >
-                    ${lienVisio}
-                </a>
-
-            </p>
-
-
-            <p>
-
-                Pour participer à l'Assemblée
-                Générale à distance, une
-                visioconférence sera disponible
-                le <strong>${date} à ${heure}</strong>.
-
-            </p>
-
-
-            <div class="email-bouton-visio">
-
-                <a
-                    href="${lienVisio}"
-                    target="_blank"
-                >
-                    💻 Rejoindre l'AG en visioconférence
-                </a>
-
-            </div>
-
-          `
-        : "";
-
-
 /*
 =========================================
 CONSTRUCTION DE L'EMAIL
@@ -1877,17 +1793,11 @@ contenuApercuConvocation.innerHTML = `
                 convier à l'Assemblée Générale
                 de Chroma Esport, qui se tiendra
                 le <strong>${date}</strong>
-                à <strong>${heure}</strong>,
-                en <strong>${modeTexte}</strong>.
+                à <strong>${heure}</strong>.
 
             </p>
 
-
-            ${blocLieu}
-
-
-            ${blocVisio}
-
+${blocParticipation}
 
             <hr>
 
