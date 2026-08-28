@@ -54,34 +54,6 @@ display: flex;
     align-items: center;
 }
 
-/*.navigation-admin a,
-.navigation-admin button {
-display: inline-flex;
-align-items: center;
-justify-content: center;
-
-
-min-height: 42px;
-
-padding: 9px 15px;
-
-border-radius: 8px;
-
-font-size: 14px;
-font-weight: 700;
-
-text-decoration: none;
-
-cursor: pointer;
-
-transition:
-    transform 0.2s ease,
-    background 0.2s ease,
-    box-shadow 0.2s ease;
-
-
-}*/
-
 .bouton-navigation, .navigation-admin button, #logout {
     border: none;
     padding: 12px 18px;
@@ -102,27 +74,6 @@ transition:
 #logout {
     background: #c0392b;
 }
-/*.bouton-navigation {
-background: #292e38;
-color: #ffffff;
-border: 1px solid #3b414d;
-}
-
-.bouton-navigation:hover {
-background: #343a46;
-transform: translateY(-1px);
-}
-
-.navigation-admin button {
-border: none;
-background: #b42318;
-color: #ffffff;
-}
-
-.navigation-admin button:hover {
-background: #d92d20;
-transform: translateY(-1px);
-}*/
 
 /*
 
@@ -145,9 +96,9 @@ margin: 40px auto 60px;
 margin: 0;
 
 
-color: #181b22;
+color: #ffffff;
 
-font-size: 32px;
+font-size: 28px;
 line-height: 1.25;
 font-weight: 800;
 
@@ -158,9 +109,9 @@ font-weight: 800;
 margin: 8px 0 24px;
 
 
-color: #69707d;
+color: #d1d1d1;
 
-font-size: 15px;
+font-size: 16px;
 
 
 }
@@ -203,7 +154,7 @@ padding: 25px;
 
 background: #ffffff;
 
-border: 1px solid #e3e6eb;
+border: 1px solid #d1d1d1;
 
 border-radius: 14px;
 
@@ -219,11 +170,11 @@ margin: 0 0 20px;
 
 padding-bottom: 12px;
 
-border-bottom: 1px solid #e8ebef;
+border-bottom: 1px solid #d1d1d1;
 
 color: #181b22;
 
-font-size: 20px;
+font-size: 18px;
 font-weight: 800;
 
 
@@ -233,13 +184,13 @@ font-weight: 800;
 margin: 10px 0;
 
 
-color: #4e5561;
+color: #000000;
 
 
 }
 
 .formulaire-section strong {
-color: #252a32;
+color: #000000;
 }
 
  /*
@@ -259,11 +210,11 @@ padding: 4px 11px;
 
 border-radius: 999px;
 
-background: #eeeaff;
+background: #3c9195;
 
-color: #5940d8;
+color: #3c91951c;
 
-font-size: 13px;
+font-size: 14px;
 font-weight: 800;
 
 
@@ -284,7 +235,7 @@ font-weight: 800;
 #dateOuvertureAffichage,
 #dateClotureAffichage {
 font-weight: 600;
-color: #181b22;
+color: #213da7;
 }
 
 /*
@@ -294,7 +245,7 @@ color: #181b22;
 */
 
 #lienVisioAGAffichage a {
-color: #5b45d6;
+color: #213da7;
 font-weight: 700;
 text-decoration: none;
 }
