@@ -159,7 +159,7 @@ line-height: 1.6;
 
 .formulaire-section {
 margin-bottom: 24px;
-
+margin-top:25px;
 
 padding: 25px;
 
@@ -301,8 +301,7 @@ background: #f8f9fb;
 
 border: 1px solid #e1e5ea;
 
-border-left: 4px solid #6c4cff;
-
+border-left: 4px solid #3c9195;
 border-radius: 10px;
 
 
@@ -371,13 +370,13 @@ transform: translateY(-1px);
 border: none;
 
 
-background: #292e38;
+background: #3c9195;
 
 
 }
 
 #ajouterSujet:hover {
-background: #343a46;
+background: #3c9195;
 }
 
 /*
@@ -444,10 +443,9 @@ padding: 5px 10px;
 
 border-radius: 7px;
 
-background: #eeeaff;
+background: #3c91951c;
 
-color: #5940d8;
-
+color: #3c9195;
 font-weight: 700;
 
 text-align: center;
