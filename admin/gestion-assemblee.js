@@ -211,9 +211,6 @@ document.getElementById(
 "listeDestinatairesConvocation" 
 );
 
-const mode = 
-document.getElementById( 
-"mode" 
 );
 
 enregistrerDatesConvocation.addEventListener( 
@@ -1382,12 +1379,8 @@ catch (
 
 }
 
-/*
-PRÉPARER L'APERÇU DE LA CONVOCATION
-
-*/
-
 function preparerApercuConvocation() {
+
 
 if (!agActuelle) {
 
@@ -1412,9 +1405,11 @@ const type =
 
 
 const date =
-    formaterDateSimple(
-        agActuelle.dateAG
-    );
+    agActuelle.dateAG
+        ? formaterDateSimple(
+            agActuelle.dateAG
+        )
+        : "—";
 
 
 const heure =
@@ -1428,28 +1423,15 @@ MODE
 =========================================
 */
 
-let informationsParticipation =
-    "";
-
+let modeTexte = "";
 
 if (
     agActuelle.modeAG ===
     "presentiel"
 ) {
 
-    informationsParticipation = `
-
-        <p>
-
-            <strong>
-                📍 Lieu :
-            </strong>
-
-            ${agActuelle.lieuAG || "—"}
-
-        </p>
-
-    `;
+    modeTexte =
+        "présentiel";
 
 }
 
@@ -1458,19 +1440,8 @@ else if (
     "visio"
 ) {
 
-    informationsParticipation = `
-
-        <p>
-
-            <strong>
-                💻 Participation :
-            </strong>
-
-            En visioconférence
-
-        </p>
-
-    `;
+    modeTexte =
+        "visioconférence";
 
 }
 
@@ -1479,37 +1450,45 @@ else if (
     "hybride"
 ) {
 
-    informationsParticipation = `
+    modeTexte =
+        "présentiel et visioconférence";
 
-        <p>
+}
 
-            <strong>
-                📍 Lieu :
-            </strong>
+else {
 
-            ${agActuelle.lieuAG || "—"}
-
-        </p>
-
-
-        <p>
-
-            <strong>
-                💻 Visioconférence :
-            </strong>
-
-            Disponible
-
-        </p>
-
-    `;
+    modeTexte =
+        agActuelle.modeAG ||
+        "—";
 
 }
 
 
 /*
 =========================================
-DATE LIMITE PROPOSITIONS
+LIEU
+=========================================
+*/
+
+const lieu =
+    agActuelle.lieuAG ||
+    "";
+
+
+/*
+=========================================
+LIEN VISIO
+=========================================
+*/
+
+const lienVisio =
+    agActuelle.lienVisioAG ||
+    "";
+
+
+/*
+=========================================
+DATE LIMITE
 =========================================
 */
 
@@ -1528,7 +1507,7 @@ ORDRE DU JOUR
 */
 
 let ordreDuJourHTML =
-    "<p>Aucun sujet défini.</p>";
+    "<p>Aucun sujet n'est actuellement inscrit à l'ordre du jour.</p>";
 
 
 if (
@@ -1540,16 +1519,11 @@ if (
 ) {
 
     ordreDuJourHTML =
-        "<ol>";
+        `<div class="email-ordre-du-jour">`;
 
 
     agActuelle.ordreDuJour.forEach(
-        sujet => {
-
-            /*
-            Si ton objet possède
-            titre + description
-            */
+        (sujet, index) => {
 
             if (
                 typeof sujet ===
@@ -1558,24 +1532,24 @@ if (
 
                 ordreDuJourHTML += `
 
-                    <li>
+                    <div class="email-sujet">
 
                         <strong>
+                            ${index + 1}.
                             ${sujet.titre || ""}
                         </strong>
 
                         ${
                             sujet.description
                                 ? `
-                                    <br>
-                                    <span>
+                                    <p>
                                         ${sujet.description}
-                                    </span>
+                                    </p>
                                   `
                                 : ""
                         }
 
-                    </li>
+                    </div>
 
                 `;
 
@@ -1585,9 +1559,14 @@ if (
 
                 ordreDuJourHTML += `
 
-                    <li>
-                        ${sujet}
-                    </li>
+                    <div class="email-sujet">
+
+                        <strong>
+                            ${index + 1}.
+                            ${sujet}
+                        </strong>
+
+                    </div>
 
                 `;
 
@@ -1598,149 +1577,514 @@ if (
 
 
     ordreDuJourHTML +=
-        "</ol>";
+        "</div>";
 
 }
 
 
 /*
 =========================================
-CONSTRUCTION DE L'APERÇU
+BLOC LIEU
+=========================================
+*/
+
+const blocLieu =
+    lieu
+        ? `
+
+            <p>
+
+                La réunion se déroulera à
+                l'adresse suivante :
+
+                <strong>
+                    ${lieu}
+                </strong>.
+
+            </p>
+
+          `
+        : "";
+
+
+/*
+=========================================
+BLOC VISIO
+=========================================
+*/
+
+const blocVisio =
+    lienVisio
+        ? `
+
+            <p>
+
+                Pour participer à distance,
+                vous pourrez rejoindre la
+                visioconférence en utilisant
+                le lien suivant :
+
+            </p>
+
+
+            <p>
+
+                <a
+                    href="${lienVisio}"
+                    class="email-lien-visio"
+                    target="_blank"
+                >
+                    ${lienVisio}
+                </a>
+
+            </p>
+
+
+            <p>
+
+                Pour participer à l'Assemblée
+                Générale à distance, une
+                visioconférence sera disponible
+                le <strong>${date} à ${heure}</strong>.
+
+            </p>
+
+
+            <div class="email-bouton-visio">
+
+                <a
+                    href="${lienVisio}"
+                    target="_blank"
+                >
+                    💻 Rejoindre l'AG en visioconférence
+                </a>
+
+            </div>
+
+          `
+        : "";
+
+
+/*
+=========================================
+CONSTRUCTION DE L'EMAIL
 =========================================
 */
 
 contenuApercuConvocation.innerHTML = `
 
-    <div class="convocation-apercu">
-
-        <h3>
-            📢 {Prénom Nom}, vous êtes invité(e) à participer à l'Assemblée Générale de Chroma Esport
-        </h3>
+    <div class="email-brevo-apercu">
 
 
-        <p>
-            Bonjour {Prénom Nom},
-        </p>
+        <!-- EN-TÊTE -->
+
+        <div class="email-header">
+
+            <strong>
+                CHROMA ESPORT
+            </strong>
+
+        </div>
 
 
-        <p>
+        <!-- CONTENU -->
 
-           Vous êtes invité(e) à participer à l'Assemblée Générale de 
+        <div class="email-contenu">
+
+
+            <h2>
+                Bonjour Maxime Fiant,
+            </h2>
+
+
+            <p>
+
+                Vous êtes invité(e) à participer
+                à l'Assemblée Générale de
+                <strong>
+                    Chroma Esport
+                </strong>.
+
+            </p>
+
+
+            <h3>
+                📢 Informations concernant
+                l'Assemblée Générale
+            </h3>
+
+
+            <p>
+
+                Nous avons le plaisir de vous
+                convier à l'Assemblée Générale
+                de Chroma Esport, qui se tiendra
+                le <strong>${date}</strong>
+                à <strong>${heure}</strong>,
+                en <strong>${modeTexte}</strong>.
+
+            </p>
+
+
+            ${blocLieu}
+
+
+            ${blocVisio}
+
+
+            <hr>
+
+
+            <h3>
+                📋 Ordre du jour
+            </h3>
+
+
+            <p>
+
+                Cette Assemblée Générale sera
+                consacrée aux différents sujets
+                inscrits à l'ordre du jour.
+
+            </p>
+
+
+            <p>
+
+                Vous trouverez ci-dessous les
+                points qui seront abordés lors
+                de la réunion :
+
+            </p>
+
+
+            ${ordreDuJourHTML}
+
+
+            <p>
+
+                Nous vous invitons à prendre
+                connaissance de ces différents
+                sujets avant l'Assemblée Générale
+                afin de pouvoir participer
+                pleinement aux échanges.
+
+            </p>
+
+
+            <hr>
+
+
+            <h3>
+                💡 Proposer un sujet à l'ordre du jour
+            </h3>
+
+
+            <p>
+
+                Vous souhaitez qu'un sujet soit
+                abordé lors de cette Assemblée
+                Générale ?
+
+            </p>
+
+
+            <p>
+
+                Les membres adhérents et les
+                membres actifs peuvent proposer
+                l'ajout d'un sujet à l'ordre du
+                jour dans le délai prévu à cet effet.
+
+            </p>
+
+
+            <p>
+
+                Pour cela, il vous suffit de nous
+                transmettre votre proposition avant
+                le <strong>${dateLimite}</strong>.
+
+            </p>
+
+
+            <p>
+
+                Votre proposition peut concerner
+                tout sujet lié à la vie, au
+                fonctionnement ou aux projets de
+                <strong>Chroma Esport</strong>.
+
+            </p>
+
+
+            <p>
+
+                N'hésitez pas à nous faire part
+                de vos idées, questions ou
+                propositions : les Assemblées
+                Générales sont aussi l'occasion
+                de construire ensemble l'avenir
+                de l'association.
+
+            </p>
+
+
+            <hr>
+
+
+            <h3>
+                🗳️ Le droit de vote
+            </h3>
+
+
+            <p>
+
+                L'Assemblée Générale est également
+                un moment important pour participer
+                aux décisions de
+                <strong>Chroma Esport</strong>.
+
+            </p>
+
+
+            <p>
+
+                Conformément aux statuts de
+                l'association,
+                <strong>
+                    seuls les membres actifs
+                    disposent du droit de vote
+                </strong>
+                lors des Assemblées Générales.
+
+            </p>
+
+
+            <p>
+
+                Les membres adhérents peuvent
+                participer aux échanges et faire
+                entendre leur voix, mais ne disposent
+                pas du droit de vote tant qu'ils
+                n'ont pas le statut de membre actif.
+
+            </p>
+
+
+            <p>
+
+                Les votes seront organisés au cours
+                de l'Assemblée Générale lorsque
+                cela sera nécessaire.
+
+            </p>
+
+
+            ${lienVisio ? "<hr>" : ""}
+
+
+            ${
+                lienVisio
+                    ? `
+
+                        <p>
+
+                            Pour participer à
+                            l'Assemblée Générale
+                            à distance, une
+                            visioconférence sera
+                            disponible le
+                            <strong>
+                                ${date} à ${heure}
+                            </strong>.
+
+                        </p>
+
+
+                        <p>
+
+                            Le bouton ci-dessous
+                            vous permettra de
+                            rejoindre directement
+                            la visioconférence
+                            <strong>
+                                le jour et à l'heure
+                                prévus pour
+                                l'Assemblée Générale
+                            </strong>.
+
+                        </p>
+
+
+                        <div class="email-bouton-visio">
+
+                            <a
+                                href="${lienVisio}"
+                                target="_blank"
+                            >
+                                💻 Rejoindre l'AG
+                                en visioconférence
+                            </a>
+
+                        </div>
+
+                      `
+                    : ""
+            }
+
+
+            <p>
+
+                Nous espérons pouvoir compter
+                sur votre présence et votre
+                participation à cette Assemblée
+                Générale.
+
+            </p>
+
+
+            <p>
+
+                Votre présence et vos échanges
+                contribuent directement à faire
+                vivre Chroma Esport et à construire
+                ensemble son avenir.
+
+            </p>
+
+
+            <p>
+
+                Si vous avez des questions
+                concernant cette Assemblée Générale,
+                n'hésitez pas à nous contacter.
+
+            </p>
+
+
+            <p>
+
+                Au plaisir de vous retrouver
+                prochainement,
+
+            </p>
+
+
+            <p>
+
+                <strong>
+                    L'équipe Chroma Esport ❤️
+                </strong>
+
+            </p>
+
+
+            <hr>
+
+
+            <!-- BUREAU -->
+
+            <h3>
+                👥 Le bureau de Chroma Esport
+            </h3>
+
+
+            <p>
+
+                Cette Assemblée Générale sera
+                conduite par les membres du bureau
+                de <strong>Chroma Esport</strong>,
+                qui seront présents pour assurer
+                son bon déroulement et accompagner
+                les échanges tout au long de la séance.
+
+            </p>
+
+
+            <div class="email-bureau">
+
+
+                <div class="email-bureau-membre">
+
+                    <strong>
+                        Nathan Fiant
+                    </strong>
+
+                    <span>
+                        Président
+                    </span>
+
+                </div>
+
+
+                <div class="email-bureau-membre">
+
+                    <strong>
+                        Floriane Fiant
+                    </strong>
+
+                    <span>
+                        Secrétaire
+                    </span>
+
+                </div>
+
+
+                <div class="email-bureau-membre">
+
+                    <strong>
+                        Ugo Caruel
+                    </strong>
+
+                    <span>
+                        Trésorier
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+            <p>
+
+                Ils assureront la conduite de la
+                séance, la présentation des différents
+                points inscrits à l'ordre du jour ainsi
+                que le bon déroulement des échanges et
+                des votes, conformément aux statuts de
+                Chroma Esport.
+
+            </p>
+
+
+        </div>
+
+
+        <!-- PIED DE PAGE -->
+
+        <div class="email-footer">
+
             <strong>
                 Chroma Esport
-            </strong>.
-
-        </p>
-
-
-        <p>
-
-            <strong>📢 Informations concernant l'Assemblée Générale </strong>
-
-
-
-Nous avons le plaisir de vous convier à l'Assemblée Générale de Chroma Esport, qui se tiendra le ${date} à ${heure}, en ${informationsParticipation}.
-
-{si le parametre lieu }
-
-La réunion se déroulera à l'adresse suivante : ${lieuAGAffichage}.
-
-{si le parametre visio}
-
-Pour participer à distance, vous pourrez rejoindre la visioconférence en utilisant le lien suivant :
-
-${lienVisioAGAffichage}
-
-
-
-        </p>
-
-
-        <p>
-
-            <strong>
-                📅 Date :
             </strong>
 
-            ${date}
+            <p>
 
-        </p>
+                Cet email a été envoyé à
+                <strong>
+                    max2501@outlook.fr
+                </strong>.
 
+            </p>
 
-        <p>
+        </div>
 
-            <strong>
-                🕐 Heure :
-            </strong>
-
-            ${heure}
-
-        </p>
-
-
-        ${informationsParticipation}
-
-
-        <h4>
-            📋 Ordre du jour
-        </h4>
-
-
-        ${ordreDuJourHTML}
-
-
-        <h4>
-            💡 Propositions de sujets
-        </h4>
-
-
-        <p>
-
-            Les membres adhérents et les membres actifs
-            disposent d'un délai de <strong>7 jours</strong>
-            à compter de l'envoi de la convocation
-            pour proposer l'ajout d'un sujet à l'ordre du jour.
-
-        </p>
-
-
-        <p>
-
-            La date limite pour transmettre une proposition
-            est fixée au :
-
-            <strong>
-                ${dateLimite}
-            </strong>.
-
-        </p>
-
-
-        <h4>
-            🗳️ Droit de vote
-        </h4>
-
-
-        <p>
-
-            Seuls les <strong>membres actifs</strong>
-            disposent du droit de vote lors de
-            l'Assemblée Générale, dans les conditions
-            prévues par les statuts de Chroma Esport.
-
-        </p>
-
-
-        <p>
-            Cordialement,<br>
-            <strong>
-                Chroma Esport
-            </strong>
-        </p>
 
     </div>
-
-`;
+`
+;
 
 
 /*
@@ -1752,7 +2096,11 @@ AFFICHER L'APERÇU
 apercuConvocation.style.display =
     "";
 
-envoyerConvocations.disabled = false;
+
+envoyerConvocations.disabled =
+    false;
+
+
 /*
 =========================================
 FAIRE DÉFILER VERS L'APERÇU
@@ -1763,6 +2111,7 @@ apercuConvocation.scrollIntoView({
     behavior:
         "smooth"
 });
+
 
 }
 
