@@ -645,3 +645,438 @@ border-radius: 10px;
 
 
 }
+
+
+/*
+
+# APERÇU EMAIL BREVO
+
+*/
+
+.email-brevo-apercu {
+width: 100%;
+max-width: 700px;
+
+```
+margin: 30px auto;
+
+background: #ffffff;
+
+border: 1px solid #e1e5ea;
+
+border-radius: 12px;
+
+overflow: hidden;
+
+box-shadow:
+    0 8px 30px rgba(0, 0, 0, 0.08);
+
+color: #333333;
+
+font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+line-height: 1.65;
+
+
+}
+
+/*
+
+# EN-TÊTE EMAIL
+
+*/
+
+.email-header {
+padding: 28px 35px;
+
+
+background: #181b22;
+
+color: #ffffff;
+
+text-align: center;
+
+font-size: 22px;
+
+font-weight: 800;
+
+letter-spacing: 1px;
+
+
+}
+
+/*
+
+# CONTENU EMAIL
+
+*/
+
+.email-contenu {
+padding: 40px 45px;
+
+
+background: #ffffff;
+
+
+}
+
+.email-contenu h2 {
+margin: 0 0 25px;
+
+
+color: #181b22;
+
+font-size: 25px;
+
+line-height: 1.3;
+
+
+}
+
+.email-contenu h3 {
+margin: 32px 0 15px;
+
+
+padding-bottom: 8px;
+
+color: #181b22;
+
+font-size: 19px;
+
+line-height: 1.4;
+
+
+}
+
+.email-contenu p {
+margin: 0 0 16px;
+
+
+color: #4a4f58;
+
+font-size: 15px;
+
+
+}
+
+.email-contenu strong {
+color: #242831;
+}
+
+/*
+
+# SÉPARATEURS
+
+*/
+
+.email-contenu hr {
+margin: 32px 0;
+
+
+border: 0;
+
+border-top: 1px solid #e5e7eb;
+
+
+}
+
+/*
+
+# ORDRE DU JOUR
+
+*/
+
+.email-ordre-du-jour {
+margin: 20px 0 25px;
+
+
+padding: 5px 0;
+
+border-left: 4px solid #6c4cff;
+
+background: #f8f9fb;
+
+border-radius: 0 8px 8px 0;
+
+
+}
+
+.email-sujet {
+padding: 13px 18px;
+
+
+border-bottom: 1px solid #e4e7eb;
+
+color: #333942;
+
+
+}
+
+.email-sujet:last-child {
+border-bottom: none;
+}
+
+.email-sujet strong {
+display: block;
+
+
+color: #252a32;
+
+font-size: 15px;
+
+
+}
+
+.email-sujet p {
+margin: 6px 0 0;
+
+
+color: #69707d;
+
+font-size: 14px;
+
+
+}
+
+/*
+
+# LIEN VISIO
+
+*/
+
+.email-lien-visio {
+display: inline-block;
+
+
+padding: 10px 14px;
+
+background: #f3f0ff;
+
+border-radius: 7px;
+
+color: #5b3fd3;
+
+font-weight: 700;
+
+text-decoration: none;
+
+word-break: break-all;
+
+
+}
+
+.email-lien-visio:hover {
+background: #e9e4ff;
+}
+
+/*
+
+# BOUTON VISIO
+
+*/
+
+.email-bouton-visio {
+margin: 28px 0;
+
+text-align: center;
+
+
+}
+
+.email-bouton-visio a {
+display: inline-block;
+
+padding: 14px 24px;
+
+border-radius: 9px;
+
+background: #6c4cff;
+
+color: #ffffff;
+
+font-size: 15px;
+
+font-weight: 800;
+
+text-decoration: none;
+
+box-shadow:
+    0 5px 14px rgba(108, 76, 255, 0.22);
+
+transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+
+
+}
+
+.email-bouton-visio a:hover {
+background: #5940dc;
+
+transform: translateY(-1px);
+
+
+}
+
+ /*
+
+# BUREAU DE CHROMA ESPORT
+
+*/
+
+.email-bureau {
+display: flex;
+
+
+gap: 12px;
+
+margin: 25px 0;
+
+flex-wrap: wrap;
+
+
+}
+
+.email-bureau-membre {
+flex: 1;
+
+
+min-width: 150px;
+
+padding: 18px 15px;
+
+background: #f8f9fb;
+
+border: 1px solid #e2e6eb;
+
+border-radius: 10px;
+
+text-align: center;
+
+
+}
+
+.email-bureau-membre strong {
+display: block;
+
+
+margin-bottom: 5px;
+
+color: #181b22;
+
+font-size: 15px;
+
+
+}
+
+.email-bureau-membre span {
+display: block;
+
+
+color: #6c4cff;
+
+font-size: 13px;
+
+font-weight: 700;
+
+
+}
+
+/*
+
+# PIED DE PAGE
+
+*/
+
+.email-footer {
+padding: 25px 35px;
+
+`
+background: #f4f5f7;
+
+border-top: 1px solid #e2e5e9;
+
+color: #737985;
+
+text-align: center;
+
+font-size: 12px;
+
+
+}
+
+.email-footer strong {
+color: #343942;
+}
+
+.email-footer p {
+margin: 8px 0 0;
+
+
+color: #858b96;
+
+font-size: 12px;
+
+
+}
+
+ /*
+
+# APERÇU SUR PETIT ÉCRAN
+
+*/
+
+@media (max-width: 700px) {
+
+
+.email-brevo-apercu {
+    margin: 20px 0;
+
+    border-radius: 8px;
+}
+
+.email-header {
+    padding: 22px 20px;
+
+    font-size: 19px;
+}
+
+.email-contenu {
+    padding: 28px 22px;
+}
+
+.email-contenu h2 {
+    font-size: 22px;
+}
+
+.email-contenu h3 {
+    font-size: 18px;
+}
+
+.email-contenu p {
+    font-size: 14px;
+}
+
+.email-bureau {
+    flex-direction: column;
+}
+
+.email-bureau-membre {
+    width: 100%;
+}
+
+.email-bouton-visio a {
+    width: 100%;
+
+    padding: 13px 15px;
+}
+
+.email-footer {
+    padding: 22px 20px;
+}
+
+
+}
