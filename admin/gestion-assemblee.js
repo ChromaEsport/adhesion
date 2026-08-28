@@ -1642,6 +1642,10 @@ blocParticipation = `
 
 }
 
+const lienVisio =
+agActuelle.lienVisio ||
+agActuelle.lienVisioAG ||
+"";
 
 /*
 =========================================
@@ -1948,57 +1952,73 @@ ${blocParticipation}
             </p>
 
 
-            ${lienVisio ? "<hr>" : ""}
-
-
             ${
-                lienVisio
-                    ? `
+(
+modeAG === "visio" ||
+modeAG === "hybride"
+)
+&&
+lienVisio
+? "<hr>"
+: ""
+}
 
-                        <p>
-
-                            Pour participer à
-                            l'Assemblée Générale
-                            à distance, une
-                            visioconférence sera
-                            disponible le
-                            <strong>
-                                ${date} à ${heure}
-                            </strong>.
-
-                        </p>
-
-
-                        <p>
-
-                            Le bouton ci-dessous
-                            vous permettra de
-                            rejoindre directement
-                            la visioconférence
-                            <strong>
-                                le jour et à l'heure
-                                prévus pour
-                                l'Assemblée Générale
-                            </strong>.
-
-                        </p>
+${
+(
+modeAG === "visio" ||
+modeAG === "hybride"
+)
+&&
+lienVisio
+? `
 
 
-                        <div class="email-bouton-visio">
+        <p>
 
-                            <a
-                                href="${lienVisio}"
-                                target="_blank"
-                            >
-                                💻 Rejoindre l'AG
-                                en visioconférence
-                            </a>
+            Pour participer à
+            l'Assemblée Générale
+            à distance, une
+            visioconférence sera
+            disponible le
+            <strong>
+                ${date} à ${heure}
+            </strong>.
 
-                        </div>
+        </p>
 
-                      `
-                    : ""
-            }
+
+        <p>
+
+            Le bouton ci-dessous vous
+            permettra de rejoindre
+            directement la visioconférence
+            <strong>
+                le jour et à l'heure
+                prévus pour
+                l'Assemblée Générale
+            </strong>.
+
+        </p>
+
+
+        <div class="email-bouton-visio">
+
+            <a
+                href="${lienVisio}"
+                target="_blank"
+            >
+                💻 Rejoindre l'AG
+                en visioconférence
+            </a>
+
+        </div>
+
+      `
+    : ""
+
+
+}
+
 
 
             <p>
