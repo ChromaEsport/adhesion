@@ -1634,7 +1634,7 @@ contenuApercuConvocation.innerHTML = `
 
 
 
-Nous avons le plaisir de vous convier à l'Assemblée Générale de Chroma Esport, qui se tiendra le ${date} à ${heure}, en ${mode}.
+Nous avons le plaisir de vous convier à l'Assemblée Générale de Chroma Esport, qui se tiendra le ${date} à ${heure}, en ${modeAGAffichage}.
 
 {si le parametre lieu }
 
