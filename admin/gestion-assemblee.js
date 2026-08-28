@@ -1415,17 +1415,21 @@ const heure =
     "—";
 
 
-/*
+ /*
 
 # MODE
 
 */
 
-let modeTexte = "";
+const modeAG =
+agActuelle.mode ||
+agActuelle.modeAG ||
+"";
+
+let modeTexte = "—";
 
 if (
-agActuelle.modeAG ===
-"presentiel"
+modeAG === "presentiel"
 ) {
 
 
@@ -1436,8 +1440,7 @@ modeTexte =
 }
 
 else if (
-agActuelle.modeAG ===
-"visio"
+modeAG === "visio"
 ) {
 
 
@@ -1448,8 +1451,7 @@ modeTexte =
 }
 
 else if (
-agActuelle.modeAG ===
-"hybride"
+modeAG === "hybride"
 ) {
 
 
@@ -1459,15 +1461,6 @@ modeTexte =
 
 }
 
-else {
-
-
-modeTexte =
-    agActuelle.modeAG ||
-    "—";
-
-
-}
 
 
 
